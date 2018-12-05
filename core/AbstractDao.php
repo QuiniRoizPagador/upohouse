@@ -51,7 +51,7 @@ abstract class AbstractDao {
     }
 
     public function delete($id) {
-        $query = "DELETE FROM $this->table WHERE id = ?;";
+        $query = "DELETE FROM $this->table WHERE id = ?";
         $data = array('i', "id" => $id);
         $res = $this::preparedStatement($query, $data, FALSE);
         $this->closeConnection();
@@ -66,7 +66,7 @@ abstract class AbstractDao {
 
         if (isset($data)) {
             $bind = $this->bindData($data);
-            $stmt = mysqli_stmt_init($this->mysqli);
+            $stmt = mysqli_stmt_init($this->mysqli) or die();
             $this->stmt = $stmt;
             mysqli_stmt_prepare($stmt, $sql);
             call_user_func_array(array($stmt, 'bind_param'), $bind);
@@ -76,7 +76,7 @@ abstract class AbstractDao {
                 $resultado = mysqli_stmt_get_result($stmt);
             }
         } else {
-            $resultado = mysqli_query($this-->mysqli, $sql);
+            $resultado = mysqli_query($this-- > mysqli, $sql);
         }
         if (mysqli_error($this->mysqli)) {
             die('Error en la conexión sql.' . mysqli_error($this->mysqli));
@@ -98,9 +98,9 @@ abstract class AbstractDao {
 
     public function closeConnection() {
         if (isset($this->stmt)) {
-            $this->stmt->close();
+            mysqli_stmt_close($this->stmt);
         }
-        $this->mysqli->close();
+        mysqli_close($this->mysqli);
     }
 
 }

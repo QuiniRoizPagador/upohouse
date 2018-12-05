@@ -13,8 +13,8 @@ class UserModel extends AbstractModel {
         parent::__construct($this->userDao);
     }
 
-    public function getImage($id) {
-        return $this->userDao->getImage($id);
+    public function deleteUser($id) {
+        return $this->userDao->deleteUser($id);
     }
 
     public function verify($usuario, $password) {

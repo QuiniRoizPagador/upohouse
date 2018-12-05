@@ -46,7 +46,8 @@ class AbstractController {
     }
 
     protected function verifySession() {
-        if (!filter_has_var(INPUT_SESSION, "name")) {
+        session_start();
+        if (!isset($_SESSION['name'])) {
             $this->redirect();
         }
     }

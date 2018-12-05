@@ -32,8 +32,9 @@ class SessionController extends AbstractController {
             if (!isset($errors)) {
                 $filtrado = $this->sanearStrings(array("name", "password"));
                 $user = $this->userModel->verify($filtrado['name'], $filtrado['password']);
-                if ($user) {
-                    $_SESSION['name'] = $user['name'];
+                if (isset($user['nombre'])) {
+                    session_start();
+                    $_SESSION['name'] = $user['nombre'];
                     $this->redirect("User", "index");
                 } else {
                     $errors['login'] = "Usuario o contraseña erróneos";

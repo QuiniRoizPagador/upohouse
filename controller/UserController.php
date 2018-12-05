@@ -12,9 +12,9 @@ class UserController extends AbstractController {
     }
 
     public function index() {
-        
+
         $this->verifySession();
-        
+
         //Conseguimos todos los usuarios
         $allusers = $this->userModel->getAll();
 
@@ -99,13 +99,8 @@ class UserController extends AbstractController {
         $this->verifySession();
 
         if (filter_has_var(INPUT_GET, "id")) {
-            $id = (int) $_GET["id"];
-            //$image = $this->userModel->getImage($id);
-            /* if (trim($image["image"]) != "") {
-              require_once 'core/GestionFicheros.php';
-              eliminarImagen($image);
-              } */
-            $rem = $this->userModel->delete($id);
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+            $rem = $this->userModel->deleteUser($id);
             if ($rem == 0) {
                 die("Error al eliminar usuario");
             }

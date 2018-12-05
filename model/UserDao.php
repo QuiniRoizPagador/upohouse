@@ -48,14 +48,19 @@ class UserDao extends AbstractDao {
         return $res;
     }
 
-    public function getImage($id) {       
+    public function deleteUser($id) {
         $query = "SELECT image FROM $this->table WHERE id = ? ;";
         $data = array("i", "id" => $id);
         $resultSet = parent::preparedStatement($query, $data);
-        $res = mysqli_fetch_assoc($resultSet);
+        $image = mysqli_fetch_assoc($resultSet);
         mysqli_free_result($resultSet);
-        $this->closeConnection();
-        return $res;
+
+        $lineas = $this->delete($id);
+        if ($lineas == 1 && trim($image["image"]) != "") {
+            require_once 'core/GestionFicheros.php';
+            eliminarImagen($image['image']);
+        }
+        return $lineas;
     }
 
 }
