@@ -63,17 +63,14 @@ abstract class AbstractDao {
     public abstract function create($obj);
 
     public function preparedStatement($sql, $data, $get = TRUE) {
-
         if (isset($data)) {
             $bind = $this->bindData($data);
-            $stmt = mysqli_stmt_init($this->mysqli) or die();
-            $this->stmt = $stmt;
-            mysqli_stmt_prepare($stmt, $sql);
-            call_user_func_array(array($stmt, 'bind_param'), $bind);
-            $filas = mysqli_stmt_execute($stmt);
-
+            $this->stmt = mysqli_stmt_init($this->mysqli) or die();
+            mysqli_stmt_prepare($this->stmt, $sql);
+            call_user_func_array(array($this->stmt, 'bind_param'), $bind);
+            $filas = mysqli_stmt_execute($this->stmt);
             if ($get) {
-                $resultado = mysqli_stmt_get_result($stmt);
+                $resultado = mysqli_stmt_get_result($this->stmt);
             }
         } else {
             $resultado = mysqli_query($this-- > mysqli, $sql);
