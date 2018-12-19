@@ -120,11 +120,12 @@ class UserController extends AbstractController {
     public function update() {
         // TODO: controlar admin o usuario mismo
         $values = array("name", "surname", "mail", "password", "id");
-        $errors = $this->filtrarInt(array("id"));
+        $errors = $this->filtrarString($values);
         if ($errors == null) {
             $filtrado = $this->sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
+            $usuario->setId($filtrado['id']);
             if (isset($filtrado["name"])) {
                 $usuario->setName($filtrado['name']);
             }

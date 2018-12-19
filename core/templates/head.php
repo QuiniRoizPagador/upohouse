@@ -11,15 +11,16 @@ function error($text) {
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
-        <meta charset="utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title><?php echo $title ?></title>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.min.css">
 
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <!--<link rel="stylesheet" href="view/assets/lib/font-awesome/css/font-awesome.css">-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+        
         <!-- Metis core stylesheet -->
         <link rel="stylesheet" href="view/assets/css/main.rtl.css">
 
@@ -27,10 +28,10 @@ function error($text) {
         <link rel="stylesheet" href="view/assets/lib/metismenu/metisMenu.css">
 
         <!-- onoffcanvas stylesheet -->
-        <link rel="stylesheet" href="view/assets/lib/onoffcanvas/onoffcanvas.css">
+        <link rel="stylesheet" href="view/assets/lib/onoffcanvas/onoffcanvas.min.css">
 
         <!-- animate.css stylesheet -->
-        <link rel="stylesheet" href="view/assets/lib/animate.css/animate.css">
+        <link rel="stylesheet" href="view/assets/lib/animate.css/animate.min.css">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,10 +40,10 @@ function error($text) {
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!--jQuery -->
-        <script src="view/assets/lib/jquery/jquery.js"></script>
+        <script src="view/assets/lib/jquery/jquery.min.js"></script>
 
         <!--Bootstrap -->
-        <script src="view/assets/lib/bootstrap/js/bootstrap.js"></script>
+        <script src="view/assets/lib/bootstrap/js/bootstrap.min.js"></script>
 
 
         <script type="text/javascript">

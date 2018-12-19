@@ -49,19 +49,26 @@ class UserDao extends AbstractDao {
     }
 
     public function update($obj) {
-        // TODO: revisar y arreglar, da error
-        $query = "SELECT * FROM $this->table WHERE email = ?";
-        $data = array("s", "email" => $obj->getEmail());
+        $query = "SELECT * FROM $this->table WHERE id = ?";
+        $data = array("i", "id" => $obj->getId());
         $resultSet = parent::preparedStatement($query, $data);
         $prev = mysqli_fetch_assoc($resultSet);
         mysqli_free_result($resultSet);
-
-
-        $query = "UPDATE $this->table SET (nombre,apellido,password)
-                VALUES(?,?,?) WHERE id = ? ;";
+        if (trim($obj->getName()) == '') {
+            $obj->setName($prev['nombre']);
+        }
+        if (trim($obj->getSurname()) == '') {
+            $obj->setSurname($prev['apellido']);
+        }
+        if (trim($obj->getPassword()) == '') {
+            $obj->setPassword($prev['password']);
+        } else {
+            $obj->setPassword(password_hash($obj->getPassword(), PASSWORD_DEFAULT));
+        }
+        $query = "UPDATE $this->table SET nombre = ?, apellido = ?, password = ? WHERE id = ? ";
         $data = array("sssi", "nombre" => $obj->getName(), "apellido" => $obj->getSurname(),
-            "password" => password_hash($obj->getPassword(), PASSWORD_DEFAULT)
-            , "id" => $obj->getId());
+            "password" => $obj->getPassword(), "id" => $obj->getId());
+        print_r($obj);
         $res = parent::preparedStatement($query, $data, FALSE);
         $this->closeConnection();
         return $res;
