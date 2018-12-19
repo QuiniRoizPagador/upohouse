@@ -12,7 +12,9 @@ class SessionController extends AbstractController {
     }
 
     public function login() {
-        $this->view("login", array());
+        $this->view("login", array(
+            "title"=> "login",
+        ));
     }
 
     public function logout() {
@@ -45,6 +47,7 @@ class SessionController extends AbstractController {
         }
 
         $this->view("login", array(
+            "title"=> "login",
             'errors' => $errors
         ));
     }

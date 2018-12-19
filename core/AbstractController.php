@@ -37,6 +37,19 @@ class AbstractController {
             return null;
         }
     }
+    
+    public function filtrarInt($values) {
+        foreach ($values as $v) {
+            if (!filter_has_var(INPUT_POST, $v)) {
+                $errors[$v] = "";
+            }
+        }
+        if (isset($errors)) {
+            return $errors;
+        } else {
+            return null;
+        }
+    }
 
     protected function sanearStrings($values) {
         foreach ($values as $v) {

@@ -19,11 +19,11 @@ abstract class AbstractModel {
     }
 
     public function read($id) {
-        return $this->dao . read($id);
+        return $this->dao->read($id);
     }
 
     public function search($key, $value) {
-        return $this->dao . search($key, $value);
+        return $this->dao->search($key, $value);
     }
 
     public function create($obj) {
