@@ -37,7 +37,7 @@ class AbstractController {
             return null;
         }
     }
-    
+
     public function filtrarInt($values) {
         foreach ($values as $v) {
             if (!filter_has_var(INPUT_POST, $v)) {
@@ -57,12 +57,4 @@ class AbstractController {
         }
         return filter_input_array(INPUT_POST, $filtro);
     }
-
-    protected function verifySession() {
-        session_start();
-        if (!isset($_SESSION['name'])) {
-            $this->redirect();
-        }
-    }
-
 }

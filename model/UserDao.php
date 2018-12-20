@@ -27,8 +27,7 @@ class UserDao extends AbstractDao {
 
     //put your code here
     public function create($obj) {
-        // controlar existencia de usuario
-        $query = "SELECT * FROM $this->table WHERE email = ?";
+        $query = "SELECT * FROM $this->table WHERE email = ? LIMIT 1";
         $data = array("s", "email" => $obj->getEmail());
         $resultSet = parent::preparedStatement($query, $data);
         $res = mysqli_fetch_assoc($resultSet);
@@ -49,7 +48,7 @@ class UserDao extends AbstractDao {
     }
 
     public function update($obj) {
-        $query = "SELECT * FROM $this->table WHERE id = ?";
+        $query = "SELECT * FROM $this->table WHERE id = ? LIMIT 1";
         $data = array("i", "id" => $obj->getId());
         $resultSet = parent::preparedStatement($query, $data);
         $prev = mysqli_fetch_assoc($resultSet);

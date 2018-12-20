@@ -17,8 +17,6 @@ class UserController extends AbstractController {
     public function index() {
         //TODO: según el usuario se mostrará la dashboard del admin 
         // por defecto o su página de administración básica
-        $this->verifySession();
-
         //Conseguimos todos los usuarios
         $allusers = $this->userModel->getAll();
 
@@ -33,9 +31,6 @@ class UserController extends AbstractController {
      * Creación de un usuario por parte del admin
      */
     public function create() {
-        //TODO: CONTROLAR TIPO USUARIO (admin)       
-        $this->verifySession();
-
         $values = array("name", "surname", "email", "password");
         $errors = $this->filtrarStrings($values);
         if ($errors == null) {
@@ -65,7 +60,6 @@ class UserController extends AbstractController {
                 die("Error al insertar usuario");
             }
         }
-        // si existe algún usuario...
         if (isset($errors)) {
             //Conseguimos todos los usuarios
             $allusers = $this->userModel->getAll();
@@ -84,7 +78,7 @@ class UserController extends AbstractController {
      */
 
     public function register() {
-        // TODO: controlar mensajes de error para el usuario
+        //TODO: mostrar errores
         $values = array("name", "surname", "mail", "password");
         $errors = $this->filtrarStrings($values);
         if ($errors == null) {
@@ -105,12 +99,8 @@ class UserController extends AbstractController {
             } catch (Exception $ex) {
                 die("Error al insertar usuario");
             }
-            $this->redirect("Session", "login");
-        } else {
-            $this->view("login", array(
-                'errors' => $errors
-            ));
         }
+        $this->redirect();
     }
 
     /*
@@ -118,9 +108,9 @@ class UserController extends AbstractController {
      */
 
     public function update() {
-        // TODO: controlar admin o usuario mismo
+        // TODO: same user or admin
         $values = array("name", "surname", "mail", "password", "id");
-        $errors = $this->filtrarString($values);
+        $errors = $this->filtrarStrings($values);
         if ($errors == null) {
             $filtrado = $this->sanearStrings($values);
             //Creamos un usuario
@@ -160,8 +150,6 @@ class UserController extends AbstractController {
     }
 
     public function remove() {
-        //TODO: CONTROLAR TIPO USUARIO  (admin)      
-        $this->verifySession();
         if (filter_has_var(INPUT_GET, "id")) {
             $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
             $rem = $this->userModel->deleteUser($id);

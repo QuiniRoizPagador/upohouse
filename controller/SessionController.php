@@ -13,7 +13,7 @@ class SessionController extends AbstractController {
 
     public function login() {
         $this->view("login", array(
-            "title"=> "login",
+            "title" => "login",
         ));
     }
 
@@ -37,6 +37,7 @@ class SessionController extends AbstractController {
                 if (isset($user['nombre'])) {
                     session_start();
                     $_SESSION['name'] = $user['nombre'];
+                    $_SESSION['type_user'] = 'ADMIN';// = $user['type_user'];
                     $this->redirect("User", "index");
                 } else {
                     $errors['login'] = "Usuario o contraseña erróneos";
@@ -47,7 +48,7 @@ class SessionController extends AbstractController {
         }
 
         $this->view("login", array(
-            "title"=> "login",
+            "title" => "login",
             'errors' => $errors
         ));
     }
