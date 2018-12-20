@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `apellido` varchar(50) COLLATE utf8_bin NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,
   `password` blob NOT NULL,
+  `image` varchar(100) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
