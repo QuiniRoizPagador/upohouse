@@ -41,6 +41,8 @@ class UserController extends AbstractController {
             $usuario->setSurname($filtrado["surname"]);
             $usuario->setEmail($filtrado["email"]);
             $usuario->setPassword($filtrado["password"]);
+            $usuario->setUuid(uniqid());
+            $usuario->setRole(2);
 
             try {
                 if (isset($_FILES['image'])) {
@@ -88,6 +90,7 @@ class UserController extends AbstractController {
             $usuario->setSurname($filtrado["surname"]);
             $usuario->setEmail($filtrado["mail"]);
             $usuario->setPassword($filtrado["password"]);
+            $usuario->setUuid(uniqid());
             $usuario->setRole(2);
             try {
                 $save = $this->userModel->create($usuario);
@@ -108,13 +111,14 @@ class UserController extends AbstractController {
      */
     public function update() {
         // TODO: same user or admin
-        $values = array("name", "surname", "mail", "password", "id");
+        $values = array("uuid");
         $errors = $this->userModel->filtrarStrings($values);
         if ($errors == null) {
+            $values = array("name", "surname", "password", "uuid");
             $filtrado = $this->userModel->sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
-            $usuario->setId($filtrado['id']);
+            $usuario->setUuid($filtrado['uuid']);
             if (isset($filtrado["name"])) {
                 $usuario->setName($filtrado['name']);
             }
@@ -149,9 +153,8 @@ class UserController extends AbstractController {
     }
 
     public function remove() {
-        if (filter_has_var(INPUT_POST, "id")) {
-            $filtro = $this->userModel->sanearIntegers(array('id'));
-            $id = $this->userModel->sanearIntegers(array('id'))['id'];
+        if (filter_has_var(INPUT_POST, "uuid") && !verifyIsAdmin()) {
+            $id = $this->userModel->sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->deleteUser($id);
             if ($rem == 0) {
                 die("Error al eliminar usuario");

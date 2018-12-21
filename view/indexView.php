@@ -50,6 +50,7 @@ require_once 'core/templates/head.php';
                                         <th>Name <i class="fa fa-sort"></i></th>
                                         <th>Surname <i class="fa fa-sort"></i></th>
                                         <th>Mail <i class="fa fa-sort"></i></th>
+                                        <th>Role <i class="fa fa-sort"></i></th>
                                         <th>Remove <i class="fa fa-sort"></i></th>
                                         <th>Edit <i class="fa fa-sort"></i></th>
                                     </tr>
@@ -65,16 +66,17 @@ require_once 'core/templates/head.php';
                                             </td>
                                             <td><?= $user->nombre; ?> </td>
                                             <td><?= $user->apellido; ?> </td>
-                                            <td><?= $user->email; ?> -</td>
+                                            <td><?= $user->email; ?> </td>
+                                            <td><?= $user->user_role; ?> </td>
                                             <td>
                                                 <form method="post" action="<?= $helper->url("user", "remove"); ?>">
-                                                    <input type="hidden" value="<?php echo $user->id; ?>" name="id" />
+                                                    <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                     <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Borrar</button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <button type="button" data-toggle="modal" data-target="#edit<?= $user->id ?>" class="btn btn-warning"><i class="fa fa-user"></i>  Edit</button> 
-                                                <div id="edit<?= $user->id ?>" class="modal fade" role="dialog">
+                                                <button type="button" data-toggle="modal" data-target="#edit<?= $user->uuid ?>" class="btn btn-warning"><i class="fa fa-user"></i>  Edit</button> 
+                                                <div id="edit<?= $user->uuid ?>" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
 
                                                         <!-- Modal content-->
@@ -85,7 +87,7 @@ require_once 'core/templates/head.php';
                                                             </div>
                                                             <form action="<?php echo $helper->url("user", "update"); ?>" method="post" enctype="multipart/form-data">
                                                                 <div class="modal-body">    
-                                                                    <input type="hidden" value="<?= $user->id ?>" name="id"/>
+                                                                    <input type="hidden" value="<?= $user->uuid ?>" name="uuid"/>
                                                                     Nombre: <input type="text" name="name" value="<?= $user->nombre ?>" class="form-control"/><?= isset($errors['name']) ? "<p class='alert alert-danger'>Requerido</p>" : "" ?> <br />
                                                                     Apellido: <input type="text" name="surname" value="<?= $user->apellido ?>" class="form-control"/><?= isset($errors['surname']) ? "<p class='alert alert-danger'>Requerido</p> " : "" ?> <br />
                                                                     Contraseña: <input type="password" name="password" class="form-control"/><?= isset($errors['password']) ? "<p class='alert alert-danger'>Requerido</p> <br />" : "" ?> <br />

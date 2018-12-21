@@ -4,7 +4,7 @@ namespace core;
 
 abstract class AbstractModel {
 
-    private $dao;
+    protected $dao;
 
     public function __construct($dao) {
         $this->dao = $dao;
@@ -34,7 +34,7 @@ abstract class AbstractModel {
         return $this->dao->update($obj);
     }
 
-    public function filtrarStrings($values) {
+    public function filtrarStrings(&$values) {
         foreach ($values as $v) {
             if (!filter_has_var(INPUT_POST, $v) || trim($_POST[$v]) == "") {
                 $errors[$v] = "";
@@ -47,7 +47,7 @@ abstract class AbstractModel {
         }
     }
 
-    public function filtrarInt($values) {
+    public function filtrarInt(&$values) {
         foreach ($values as $v) {
             if (!filter_has_var(INPUT_POST, $v)) {
                 $errors[$v] = "";

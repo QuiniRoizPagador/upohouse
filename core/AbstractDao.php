@@ -6,10 +6,10 @@ require_once 'Conect.php';
 
 abstract class AbstractDao {
 
-    private $table;
-    private $mysqli;
-    private $db;
-    private $stmt;
+    protected $table;
+    protected $mysqli;
+    protected $db;
+    protected $stmt;
 
     public function __construct($table) {
         $this->table = (string) $table;

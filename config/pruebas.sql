@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(50) COLLATE utf8_bin UNIQUE NOT NULL,
   `nombre` varchar(50) COLLATE utf8_bin NOT NULL,
   `apellido` varchar(50) COLLATE utf8_bin NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,

@@ -3,6 +3,7 @@
 class User {
 
     private $id;
+    private $uuid;
     private $name;
     private $surname;
     private $email;
@@ -12,6 +13,14 @@ class User {
 
     public function __construct() {
         
+    }
+
+    public function getUuid() {
+        return $this->uuid;
+    }
+
+    public function setUuid($uuid) {
+        $this->uuid = $uuid;
     }
 
     public function getId() {
