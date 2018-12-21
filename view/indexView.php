@@ -50,6 +50,7 @@ require_once 'core/templates/head.php';
                                         <th>Name <i class="fa fa-sort"></i></th>
                                         <th>Surname <i class="fa fa-sort"></i></th>
                                         <th>Mail <i class="fa fa-sort"></i></th>
+                                        <th>Remove <i class="fa fa-sort"></i></th>
                                         <th>Edit <i class="fa fa-sort"></i></th>
                                     </tr>
                                 </thead>
@@ -66,7 +67,12 @@ require_once 'core/templates/head.php';
                                             <td><?= $user->apellido; ?> </td>
                                             <td><?= $user->email; ?> -</td>
                                             <td>
-                                                <a href="<?= $helper->url("user", "remove"); ?>&id=<?php echo $user->id; ?>" class="btn btn-danger">Borrar</a>
+                                                <form method="post" action="<?= $helper->url("user", "remove"); ?>">
+                                                    <input type="hidden" value="<?php echo $user->id; ?>" name="id" />
+                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Borrar</button>
+                                                </form>
+                                            </td>
+                                            <td>
                                                 <button type="button" data-toggle="modal" data-target="#edit<?= $user->id ?>" class="btn btn-warning"><i class="fa fa-user"></i>  Edit</button> 
                                                 <div id="edit<?= $user->id ?>" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">

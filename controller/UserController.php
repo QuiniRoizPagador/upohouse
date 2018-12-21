@@ -32,9 +32,9 @@ class UserController extends AbstractController {
      */
     public function create() {
         $values = array("name", "surname", "email", "password");
-        $errors = $this->filtrarStrings($values);
+        $errors = $this->userModel->filtrarStrings($values);
         if ($errors == null) {
-            $filtrado = $this->sanearStrings($values);
+            $filtrado = $this->userModel->sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
@@ -73,22 +73,22 @@ class UserController extends AbstractController {
         }
     }
 
-    /*
+    /**
      * Registro desde la propia aplicación
      */
-
     public function register() {
         //TODO: mostrar errores
         $values = array("name", "surname", "mail", "password");
-        $errors = $this->filtrarStrings($values);
+        $errors = $this->userModel->filtrarStrings($values);
         if ($errors == null) {
-            $filtrado = $this->sanearStrings($values);
+            $filtrado = $this->userModel->sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
             $usuario->setSurname($filtrado["surname"]);
             $usuario->setEmail($filtrado["mail"]);
             $usuario->setPassword($filtrado["password"]);
+            $usuario->setRole(2);
             try {
                 $save = $this->userModel->create($usuario);
                 if ($save == 0) {
@@ -103,16 +103,15 @@ class UserController extends AbstractController {
         $this->redirect();
     }
 
-    /*
+    /**
      * Actualización de usuario 
      */
-
     public function update() {
         // TODO: same user or admin
         $values = array("name", "surname", "mail", "password", "id");
-        $errors = $this->filtrarStrings($values);
+        $errors = $this->userModel->filtrarStrings($values);
         if ($errors == null) {
-            $filtrado = $this->sanearStrings($values);
+            $filtrado = $this->userModel->sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setId($filtrado['id']);
@@ -150,8 +149,9 @@ class UserController extends AbstractController {
     }
 
     public function remove() {
-        if (filter_has_var(INPUT_GET, "id")) {
-            $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+        if (filter_has_var(INPUT_POST, "id")) {
+            $filtro = $this->userModel->sanearIntegers(array('id'));
+            $id = $this->userModel->sanearIntegers(array('id'))['id'];
             $rem = $this->userModel->deleteUser($id);
             if ($rem == 0) {
                 die("Error al eliminar usuario");

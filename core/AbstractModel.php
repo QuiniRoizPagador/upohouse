@@ -34,4 +34,51 @@ abstract class AbstractModel {
         return $this->dao->update($obj);
     }
 
+    public function filtrarStrings($values) {
+        foreach ($values as $v) {
+            if (!filter_has_var(INPUT_POST, $v) || trim($_POST[$v]) == "") {
+                $errors[$v] = "";
+            }
+        }
+        if (isset($errors)) {
+            return $errors;
+        } else {
+            return null;
+        }
+    }
+
+    public function filtrarInt($values) {
+        foreach ($values as $v) {
+            if (!filter_has_var(INPUT_POST, $v)) {
+                $errors[$v] = "";
+            }
+        }
+        if (isset($errors)) {
+            return $errors;
+        } else {
+            return null;
+        }
+    }
+
+    public function sanearStrings($values) {
+        foreach ($values as $v) {
+            $filtro[$v] = FILTER_SANITIZE_STRING;
+        }
+        return filter_input_array(INPUT_POST, $filtro);
+    }
+
+    public function sanearIntegers($values) {
+        foreach ($values as $v) {
+            $filtro[$v] = FILTER_SANITIZE_NUMBER_INT;
+        }
+        return filter_input_array(INPUT_POST, $filtro);
+    }
+
+    public function sanearFloats($values) {
+        foreach ($values as $v) {
+            $filtro[$v] = FILTER_SANITIZE_NUMBER_FLOAT;
+        }
+        return filter_input_array(INPUT_POST, $filtro);
+    }
+
 }

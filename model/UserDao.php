@@ -27,7 +27,6 @@ class UserDao extends AbstractDao {
         return $datos;
     }
 
-    //put your code here
     public function create($obj) {
         $query = "SELECT * FROM $this->table WHERE email = ? LIMIT 1";
         $data = array("s", "email" => $obj->getEmail());
@@ -39,10 +38,10 @@ class UserDao extends AbstractDao {
             return 0;
         } else {
             $query = "INSERT INTO $this->table (id,nombre,apellido,email,password, image, user_role)
-                VALUES(NULL,?,?,?,?,?, 2) ;";
-            $data = array("sssss", "nombre" => $obj->getName(), "apellido" => $obj->getSurname(),
+                VALUES(NULL,?,?,?,?,?,?) ;";
+            $data = array("sssssi", "nombre" => $obj->getName(), "apellido" => $obj->getSurname(),
                 "email" => $obj->getEmail(), "password" => password_hash($obj->getPassword(), PASSWORD_DEFAULT)
-                , "image" => $obj->getImage());
+                , "image" => $obj->getImage(), 'user_role' => $obj->getRole());
             $res = parent::preparedStatement($query, $data, FALSE);
             $this->closeConnection();
             return $res;

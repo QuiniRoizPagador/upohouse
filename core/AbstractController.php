@@ -24,37 +24,4 @@ class AbstractController {
     public function redirect($controlador = CONTROLADOR_DEFECTO, $accion = ACCION_DEFECTO) {
         header("Location:index.php?controller=" . $controlador . "&action=" . $accion);
     }
-
-    protected function filtrarStrings($values) {
-        foreach ($values as $v) {
-            if (!filter_has_var(INPUT_POST, $v) || trim($_POST[$v]) == "") {
-                $errors[$v] = "";
-            }
-        }
-        if (isset($errors)) {
-            return $errors;
-        } else {
-            return null;
-        }
-    }
-
-    public function filtrarInt($values) {
-        foreach ($values as $v) {
-            if (!filter_has_var(INPUT_POST, $v)) {
-                $errors[$v] = "";
-            }
-        }
-        if (isset($errors)) {
-            return $errors;
-        } else {
-            return null;
-        }
-    }
-
-    protected function sanearStrings($values) {
-        foreach ($values as $v) {
-            $filtro[$v] = FILTER_SANITIZE_STRING;
-        }
-        return filter_input_array(INPUT_POST, $filtro);
-    }
 }

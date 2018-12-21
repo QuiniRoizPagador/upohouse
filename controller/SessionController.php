@@ -32,7 +32,7 @@ class SessionController extends AbstractController {
                 $errors['password'] = "Campo Requerido";
             }
             if (!isset($errors)) {
-                $filtrado = $this->sanearStrings(array("name", "password"));
+                $filtrado = $this->userModel->sanearStrings(array("name", "password"));
                 $user = $this->userModel->verify($filtrado['name'], $filtrado['password']);
                 if (isset($user['nombre'])) {
                     session_start();
