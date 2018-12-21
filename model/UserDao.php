@@ -28,13 +28,9 @@ class UserDao extends AbstractDao {
     }
 
     public function create($obj) {
-        $query = "SELECT * FROM $this->table WHERE email = ? LIMIT 1";
-        $data = array("s", "email" => $obj->getEmail());
-        $resultSet = parent::preparedStatement($query, $data);
-        $res = mysqli_fetch_assoc($resultSet);
-        mysqli_free_result($resultSet);
+        $res = $this->search("email", $obj->getEmail());
         if (isset($res['id'])) {
-            //$this->closeConnection();
+            $this->closeConnection();
             return 0;
         } else {
             $query = "INSERT INTO $this->table (id,nombre,apellido,email,password, image, user_role)
@@ -49,11 +45,7 @@ class UserDao extends AbstractDao {
     }
 
     public function update($obj) {
-        $query = "SELECT * FROM $this->table WHERE id = ? LIMIT 1";
-        $data = array("i", "id" => $obj->getId());
-        $resultSet = parent::preparedStatement($query, $data);
-        $prev = mysqli_fetch_assoc($resultSet);
-        mysqli_free_result($resultSet);
+        $prev = $this->read($id, FALSE);
         if (trim($obj->getName()) == '') {
             $obj->setName($prev['nombre']);
         }
@@ -78,11 +70,11 @@ class UserDao extends AbstractDao {
         $query = "SELECT image FROM $this->table WHERE id = ? ;";
         $data = array("i", "id" => $id);
         $resultSet = parent::preparedStatement($query, $data);
-        $image = mysqli_fetch_assoc($resultSet);
+        $user = mysqli_fetch_assoc($resultSet);
         mysqli_free_result($resultSet);
 
         $lineas = $this->delete($id);
-        if ($lineas == 1 && trim($image["image"]) != "") {
+        if ($lineas == 1 && trim($user["image"]) != "") {
             require_once 'core/GestionFicheros.php';
             eliminarImagen($image['image']);
         }

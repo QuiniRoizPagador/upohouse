@@ -17,7 +17,7 @@ abstract class AbstractDao {
         $this->mysqli = $this->db->getConnection();
     }
 
-    public function getAll() {
+    public function getAll($close = True) {
         $query = $this->mysqli->query("SELECT * FROM $this->table ORDER BY id DESC;");
 
         //Devolvemos el resultset en forma de array de objetos
@@ -25,38 +25,46 @@ abstract class AbstractDao {
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
         }
-        
+
         mysqli_free_result($query);
-        mysqli_close($this->mysqli);
+        if ($close) {
+            mysqli_close($this->mysqli);
+        }
         return $resultSet;
     }
 
-    public function read($id) {
-        $query = "SELECT * FROM $this->table WHERE id = ?";
+    public function read($id, $close = True) {
+        $query = "SELECT * FROM $this->table WHERE id = ? LIMIT 1";
         $data = array('i', "id" => $id);
 
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_assoc($resultSet);
         mysqli_free_result($resultSet);
-        $this->closeConnection();
+        if ($close) {
+            $this->closeConnection();
+        }
         return $res;
     }
 
-    public function search($column, $value) {
+    public function search($column, $value, $close = True) {
         $query = "SELECT * FROM $this->table WHERE $column = ?";
         $data = array("s", $column => $value);
         $resultSet = $this->preparedStatement($query, $data);
         $datos = mysqli_fetch_assoc($resultSet);
         mysqli_free_result($resultSet);
-        $this->closeConnection();
+        if ($close) {
+            $this->closeConnection();
+        }
         return $datos;
     }
 
-    public function delete($id) {
-        $query = "DELETE FROM $this->table WHERE id = ?";
+    public function delete($id, $close = True) {
+        $query = "DELETE FROM $this->table WHERE id = ? LIMIT 1";
         $data = array('i', "id" => $id);
         $res = $this::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
+        if ($close) {
+            $this->closeConnection();
+        }
         return $res;
     }
 
