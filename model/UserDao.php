@@ -45,7 +45,7 @@ class UserDao extends AbstractDao {
     }
 
     public function update($obj) {
-        $prev = $this->read($id, FALSE);
+        $prev = $this->read($obj->getId(), FALSE);
         if (trim($obj->getName()) == '') {
             $obj->setName($prev['nombre']);
         }
