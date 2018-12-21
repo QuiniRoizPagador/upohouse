@@ -5,24 +5,26 @@ require_once "core/AbstractDao.php";
 use core\AbstractDao;
 
 class UserDao extends AbstractDao {
-    /*
-     * CREATE TABLE IF NOT EXISTS `pruebas`.`users`(
-      `id` INT primary key AUTO_INCREMENT,
-      `nombre` VARCHAR(50) NOT NULL,
-      `apellido` VARCHAR(50) NOT NULL,
-      `email` VARCHAR(100) NOT NULL,
-      `password` BLOB NOT NULL
-      ) ENGINE = InnoDB;
-
-      insert into `pruebas`.`users` (id, nombre, apellido, email, password)
-      values (null, "quini", "roiz", "quiniroiz@gmail.com", AES_ENCRYPT("micontraseña", "keyPrivada"));
-     */
 
     private $table;
 
     public function __construct() {
         $this->table = "users";
         parent::__construct($this->table);
+    }
+
+    public function searchUser($column, $value) {
+        $query = "SELECT u.nombre, u.apellido, u.email, u.password, "
+                . "u.image, r.user_role "
+                . "FROM users AS u JOIN user_roles AS r "
+                . "ON u.user_role = r.id "
+                . "WHERE $column = ?";
+        $data = array("s", $column => $value);
+        $resultSet = $this->preparedStatement($query, $data);
+        $datos = mysqli_fetch_assoc($resultSet);
+        mysqli_free_result($resultSet);
+        $this->closeConnection();
+        return $datos;
     }
 
     //put your code here
@@ -36,8 +38,8 @@ class UserDao extends AbstractDao {
             //$this->closeConnection();
             return 0;
         } else {
-            $query = "INSERT INTO $this->table (id,nombre,apellido,email,password, image)
-                VALUES(NULL,?,?,?,?,?) ;";
+            $query = "INSERT INTO $this->table (id,nombre,apellido,email,password, image, user_role)
+                VALUES(NULL,?,?,?,?,?, 2) ;";
             $data = array("sssss", "nombre" => $obj->getName(), "apellido" => $obj->getSurname(),
                 "email" => $obj->getEmail(), "password" => password_hash($obj->getPassword(), PASSWORD_DEFAULT)
                 , "image" => $obj->getImage());

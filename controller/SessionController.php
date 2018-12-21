@@ -37,7 +37,7 @@ class SessionController extends AbstractController {
                 if (isset($user['nombre'])) {
                     session_start();
                     $_SESSION['name'] = $user['nombre'];
-                    $_SESSION['type_user'] = 'ADMIN';// = $user['type_user'];
+                    $_SESSION['user_role'] = $user['user_role'];
                     $this->redirect("User", "index");
                 } else {
                     $errors['login'] = "Usuario o contraseña erróneos";

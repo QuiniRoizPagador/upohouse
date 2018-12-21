@@ -6,7 +6,7 @@ function verifyOffSession() {
     }
     if (!isset($_SESSION['name'])) {
         return False;
-    } else if (isset($_GET['action']) && in_array($_GET['action'], ADMIN_ACTIONS)) {
+    } else if (isset($_GET['action']) && in_array($_GET['action'], ACTIONS['ADMIN'])) {
         // luego comprobar si el método requiere de administración
         return verifyIsAdmin();
     }
@@ -21,15 +21,15 @@ function verifyOnSession() {
 }
 
 function verifyIsAdmin() {
-    return $_SESSION['type_user'] === 'ADMIN';
+    return $_SESSION['user_role'] === 'ADMIN';
 }
 
 function secureSession() {
     // primero verificar la seguridad interna
-    if (in_array($_GET["action"], IN_ACTIONS)) {
+    if (in_array($_GET["action"], ACTIONS['USER'])) {
         return verifyOffSession();
         // en este caso estamos dentro y no debemos salir sin sentido            
-    } else if (in_array($_GET["action"], OUT_ACTIONS)) {
+    } else if (in_array($_GET["action"], ACTIONS['GUEST'])) {
         return verifyOnSession();
     }
     return True;
