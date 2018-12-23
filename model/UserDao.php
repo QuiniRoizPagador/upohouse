@@ -26,13 +26,13 @@ class UserDao extends AbstractDao {
         return $resultSet;
     }
 
-    public function searchUser($column, $value) {
+    public function searchUser($login) {
         $query = "SELECT u.nombre, u.apellido, u.email, u.password, "
                 . "u.image, r.user_role "
                 . "FROM users AS u JOIN user_roles AS r "
                 . "ON u.user_role = r.id "
-                . "WHERE $column = ?";
-        $data = array("s", $column => $value);
+                . "WHERE LOWER(nombre) = LOWER(?) OR LOWER(email) = LOWER(?) ";
+        $data = array("ss", "nombre" => $login, "email" => $login);
         $resultSet = $this->preparedStatement($query, $data);
         $datos = mysqli_fetch_assoc($resultSet);
         mysqli_free_result($resultSet);
@@ -80,7 +80,7 @@ class UserDao extends AbstractDao {
 
     public function deleteUser($id) {
         $user = $this->search("uuid", $id, FALSE);
-        if (isset($res['id'])) {
+        if (isset($res['uuid'])) {
             $this->closeConnection();
             return 0;
         } else {

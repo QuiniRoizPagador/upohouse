@@ -153,7 +153,7 @@ class UserController extends AbstractController {
     }
 
     public function remove() {
-        if (filter_has_var(INPUT_POST, "uuid") && !verifyIsAdmin()) {
+        if (filter_has_var(INPUT_POST, "uuid") && (verifyIsAdmin()/* || verifyIsSame() */)) {
             $id = $this->userModel->sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->deleteUser($id);
             if ($rem == 0) {

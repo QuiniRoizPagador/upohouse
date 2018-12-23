@@ -37,6 +37,7 @@ class SessionController extends AbstractController {
                 if (isset($user['nombre'])) {
                     session_start();
                     $_SESSION['name'] = $user['nombre'];
+                    $_SESSION['uuid'] = $user['uuid'];
                     $_SESSION['user_role'] = $user['user_role'];
                     $this->redirect("User", "index");
                 } else {

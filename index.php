@@ -18,12 +18,7 @@ if (isset($_GET["controller"])) {
     lanzarAccion($controllerObj);
 } else {
     // si no se carga controlador verificar si se redirige dentro o fuera
-    if (verifyOffSession()) {
-        $controllerObj = cargarControlador("User");
-        $_GET['action'] = "index";
-    } else {
-        $controllerObj = cargarControlador(CONTROLADOR_DEFECTO);
-    }
+    $controllerObj = cargarControlador(CONTROLADOR_DEFECTO);
     lanzarAccion($controllerObj);
 }
 ?>

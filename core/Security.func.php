@@ -1,6 +1,6 @@
 <?php
 
-function verifyOffSession() {
+function verifySession() {
     if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
     }
@@ -13,24 +13,25 @@ function verifyOffSession() {
     return True;
 }
 
-function verifyOnSession() {
-    if (session_status() != PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-    return !isset($_SESSION['name']);
+function verifyIsSame() {
+    return $_SESSION['uuid'] === $_POST['uuid'];
 }
 
 function verifyIsAdmin() {
-    return $_SESSION['user_role'] === 'ADMIN';
+    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'ADMIN';
+}
+
+function verifyIsLogin() {
+    return isset($_GET["action"]) && $_GET["action"] == 'login';
 }
 
 function secureSession() {
     // primero verificar la seguridad interna
     if (in_array($_GET["action"], ACTIONS['USER'])) {
-        return verifyOffSession();
+        return verifySession();
         // en este caso estamos dentro y no debemos salir sin sentido            
     } else if (in_array($_GET["action"], ACTIONS['GUEST'])) {
-        return verifyOnSession();
+        return !verifySession();
     }
     return True;
 }

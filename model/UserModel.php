@@ -18,7 +18,7 @@ class UserModel extends AbstractModel {
     }
 
     public function verify($usuario, $password) {
-        $user = $this->userDao->searchUser("nombre", $usuario);
+        $user = $this->userDao->searchUser($usuario);
         if (isset($user['nombre']) && password_verify($password, $user['password']) === TRUE) {
             return $user;
         } else {

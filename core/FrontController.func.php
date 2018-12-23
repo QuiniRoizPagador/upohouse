@@ -23,12 +23,9 @@ function lanzarAccion($controllerObj) {
     if (isset($_GET["action"]) && method_exists($controllerObj, $_GET["action"]) && secureSession()) {
         cargarAccion($controllerObj, $_GET["action"]);
     } else {
-        // si no se encuentra el controlador/action, controlar si hay que redirigir dentro o fuera
-        if (verifyOffSession()) {
-            cargarAccion(cargarControlador("User"), "index") ;
-        } else {
-            cargarAccion(cargarControlador(CONTROLADOR_DEFECTO), ACCION_DEFECTO);
-        }
+        $_GET["action"] = ACCION_DEFECTO;
+        $_GET["controller"] = CONTROLADOR_DEFECTO;
+        cargarAccion(cargarControlador($_GET["controller"]), $_GET["action"]);
     }
 }
 

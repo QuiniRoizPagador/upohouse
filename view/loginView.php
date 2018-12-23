@@ -1,5 +1,6 @@
 <?php
 require_once 'core/templates/head.php';
+require_once 'core/templates/header.php' 
 ?>
 <div class="form-signin">
     <div class="tab-content">
