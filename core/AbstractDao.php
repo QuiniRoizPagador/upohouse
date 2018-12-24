@@ -83,7 +83,7 @@ abstract class AbstractDao {
                 $resultado = mysqli_stmt_get_result($this->stmt);
             }
         } else {
-            $resultado = mysqli_query($this-- > mysqli, $sql);
+            $resultado = mysqli_query($this->mysqli, $sql);
         }
         if (mysqli_error($this->mysqli)) {
             die('Error en la conexión sql.' . mysqli_error($this->mysqli));

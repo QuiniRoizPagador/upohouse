@@ -1,7 +1,7 @@
 <?php
 
 function verifySession() {
-    if (session_status() != PHP_SESSION_ACTIVE) {
+    if (session_status() == PHP_SESSION_DISABLED || session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     if (!isset($_SESSION['name'])) {
