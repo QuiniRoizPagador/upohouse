@@ -47,7 +47,7 @@
     </footer>
     <?php } else{ ?>
 
-    </div>
+   
     <!-- /#wrap -->
     <footer class="Footer bg-dark dker">
         <p>Footer</p>

@@ -21,6 +21,7 @@ require_once 'core/templates/head.php';
         }
         ?>
     </main>
-    <?php
-    require_once "core/templates/footer.php";
-    ?>
+</div>
+<?php
+require_once "core/templates/footer.php";
+?>

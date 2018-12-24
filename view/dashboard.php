@@ -49,31 +49,34 @@
                             </td>
                             <td>
                                 <button type="button" data-toggle="modal" data-target="#edit<?= $user->uuid ?>" class="btn btn-warning"><i class="fa fa-user"></i>  Edit</button> 
-                                <div id="edit<?= $user->uuid ?>" class="modal fade" role="dialog">
+                                <div role="dialog" aria-labelledby="<?= $user->nombre ?>" aria-hidden="true" tabindex="-1" id="edit<?= $user->uuid ?>" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
 
                                         <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Editar datos de <?= $user->nombre ?></h4>
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Editar datos de <?= $user->nombre ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="<?php echo $helper->url("user", "update"); ?>" method="post" enctype="multipart/form-data">
+                                                    <div class="modal-body">    
+                                                        <input type="hidden" value="<?= $user->uuid ?>" name="uuid"/>
+                                                        Nombre: <input type="text" name="name" value="<?= $user->nombre ?>" class="form-control"/><?= isset($errors['name']) ? "<p class='alert alert-danger'>Requerido</p>" : "" ?> <br />
+                                                        Apellido: <input type="text" name="surname" value="<?= $user->apellido ?>" class="form-control"/><?= isset($errors['surname']) ? "<p class='alert alert-danger'>Requerido</p> " : "" ?> <br />
+                                                        Contraseña: <input type="password" name="password" class="form-control"/><?= isset($errors['password']) ? "<p class='alert alert-danger'>Requerido</p> <br />" : "" ?> <br />
+                                                        <!--Imagen Perfil: <input type="file" name="image" /><br />-->
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success">Enviar</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <form action="<?php echo $helper->url("user", "update"); ?>" method="post" enctype="multipart/form-data">
-                                                <div class="modal-body">    
-                                                    <input type="hidden" value="<?= $user->uuid ?>" name="uuid"/>
-                                                    Nombre: <input type="text" name="name" value="<?= $user->nombre ?>" class="form-control"/><?= isset($errors['name']) ? "<p class='alert alert-danger'>Requerido</p>" : "" ?> <br />
-                                                    Apellido: <input type="text" name="surname" value="<?= $user->apellido ?>" class="form-control"/><?= isset($errors['surname']) ? "<p class='alert alert-danger'>Requerido</p> " : "" ?> <br />
-                                                    Contraseña: <input type="password" name="password" class="form-control"/><?= isset($errors['password']) ? "<p class='alert alert-danger'>Requerido</p> <br />" : "" ?> <br />
-                                                    <!--Imagen Perfil: <input type="file" name="image" /><br />-->
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success">Enviar</button>
-                                                </div>
-                                            </form>
-                                        </div>
 
+                                        </div>
                                     </div>
-                                </div>
                             </td>
 
                         </tr>

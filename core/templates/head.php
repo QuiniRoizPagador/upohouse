@@ -50,29 +50,14 @@ function error($text) {
                 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
                 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
-            <!--jQuery -->
-            <script src="view/assets/lib/jquery/jquery.min.js"></script>
-
-            <!--Bootstrap -->
-            <script src="view/assets/lib/bootstrap/js/bootstrap.min.js"></script>
 
 
-            <script type="text/javascript">
-                (function ($) {
-                    $(document).ready(function () {
-                        $('.list-inline li > a').click(function () {
-                            var activeForm = $(this).attr('href') + ' > form';
-                            //console.log(activeForm);
-                            $(activeForm).addClass('animated fadeIn');
-                            //set timer to 1 seconds, after that, unload the animate animation
-                            setTimeout(function () {
-                                $(activeForm).removeClass('animated fadeIn');
-                            }, 1000);
-                        });
-                    });
-                })(jQuery);
-            </script>
+
+            
         <?php } ?>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <style>
             .jumbotron{
                 background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fsavannahrealestate.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fhome.jpg&f=1');
@@ -99,27 +84,42 @@ function error($text) {
             }
         </style>
         <script type="text/javascript">
-            $(document).ready(function () {
-                /*$(".searcher").blur(function () {
-                 $(".searcher").val("");
-                 var lista = $("#searchList");
-                 lista.empty();
-                 });*/
-                $(".searcher").keyup(function () {
-                    var lista = $("#searchList");
-                    lista.empty();
-                    $.post("<?= $helper->url("WebService", "prueba"); ?>", {nombre: $(".searcher").val()}).done(function (data) {
-                        if (data !== "" && data !== null) {
-                            $.map($.parseJSON(data), function (k, v) {
-                                lista.append("<li class='list-group-item' style='width:50em; text-align:left;'> "
-                                        + "<a href='<?php echo $helper->url("User", "index"); ?>' class='text-muted'>"
-                                        + k.id + "-" + k.nombre +
-                                        "</a></li>");
-                            });
-                        }
+                (function ($) {
+                    $(document).ready(function () {
+                        $('.list-inline li > a').click(function () {
+                            var activeForm = $(this).attr('href') + ' > form';
+                            //console.log(activeForm);
+                            $(activeForm).addClass('animated fadeIn');
+                            //set timer to 1 seconds, after that, unload the animate animation
+                            setTimeout(function () {
+                                $(activeForm).removeClass('animated fadeIn');
+                            }, 1000);
+                        });
+                    });
+                })(jQuery);
+            </script>
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    /*$(".searcher").blur(function () {
+                     $(".searcher").val("");
+                     var lista = $("#searchList");
+                     lista.empty();
+                     });*/
+                    $(".searcher").keyup(function () {
+                        var lista = $("#searchList");
+                        lista.empty();
+                        $.post("<?= $helper->url("WebService", "prueba"); ?>", {nombre: $(".searcher").val()}).done(function (data) {
+                            if (data !== "" && data !== null) {
+                                $.map($.parseJSON(data), function (k, v) {
+                                    lista.append("<li class='list-group-item' style='width:50em; text-align:left;'> "
+                                            + "<a href='<?php echo $helper->url("User", "index"); ?>' class='text-muted'>"
+                                            + k.id + "-" + k.nombre +
+                                            "</a></li>");
+                                });
+                            }
+                        });
                     });
                 });
-            });
         </script>
 
     </head>
