@@ -13,6 +13,11 @@ require_once 'core/Security.func.php';
 require_once 'core/FrontController.func.php';
 
 //Cargamos controladores y acciones
+if (session_status() === PHP_SESSION_DISABLED || session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
 if (isset($_GET["controller"])) {
     $controllerObj = cargarControlador($_GET["controller"]);
     lanzarAccion($controllerObj);

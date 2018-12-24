@@ -1,9 +1,6 @@
 <?php
 
 function verifySession() {
-    if (session_status() == PHP_SESSION_DISABLED || session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
     if (!isset($_SESSION['name'])) {
         return False;
     } else if (isset($_GET['action']) && in_array($_GET['action'], ACTIONS['ADMIN'])) {
