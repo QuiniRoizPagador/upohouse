@@ -42,10 +42,33 @@
                             <td><?= $user->email; ?> </td>
                             <td><?= $user->user_role; ?> </td>
                             <td>
-                                <form method="post" action="<?= $helper->url("user", "remove"); ?>">
-                                    <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
-                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Borrar</button>
-                                </form>
+                                <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" class="btn btn-danger"><i class="fa fa-database"></i>  Borrar</button> 
+                                <div role="dialog" aria-labelledby="<?= $user->nombre ?>" aria-hidden="true" tabindex="-1" id="remove<?= $user->uuid ?>" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Eliminar registro de <?= $user->nombre ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                    <div class="modal-body">    
+                                                        &iquest;Estás Seguro?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="<?= $helper->url("user", "remove"); ?>">
+                                                            <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                            <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Borrar</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        </form>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                             </td>
                             <td>
                                 <button type="button" data-toggle="modal" data-target="#edit<?= $user->uuid ?>" class="btn btn-warning"><i class="fa fa-user"></i>  Edit</button> 
