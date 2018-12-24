@@ -80,7 +80,7 @@ class UserDao extends AbstractDao {
 
     public function deleteUser($id) {
         $user = $this->search("uuid", $id, FALSE);
-        if (!isset($res['uuid'])) {
+        if (!isset($user['uuid'])) {
             $this->closeConnection();
             return 0;
         } else {
