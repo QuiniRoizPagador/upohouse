@@ -1,6 +1,9 @@
 <?php
 
+require_once 'core/RegularUtils.php';
+
 use core\AbstractController;
+use core\RegularUtils;
 
 class UserController extends AbstractController {
 
@@ -31,24 +34,21 @@ class UserController extends AbstractController {
      * Creación de un usuario por parte del admin
      */
     public function create() {
-        $values = array("name", "surname", "email", "password");
-        $errors = $this->userModel->filtrarStrings($values);
+        $values = array("name", "login", "surname", "email", "password");
+        $errors = RegularUtils::filtrarVariable($values);
         if ($errors == null) {
-            $filtrado = $this->userModel->sanearStrings($values);
+            $filtrado = RegularUtils::sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
             $usuario->setSurname($filtrado["surname"]);
             $usuario->setEmail($filtrado["email"]);
+            $usuario->setLogiN($filtrado['login']);
             $usuario->setPassword($filtrado["password"]);
-            $usuario->setUuid(uniqid());
-            $usuario->setRole(2);
+            $usuario->setUuid(RegularUtils::uuid());
+            $usuario->setUserRole(1);
 
             try {
-                if (isset($_FILES['image'])) {
-                    require_once 'core/GestionFicheros.php';
-                    $usuario->setImage(moverImagen('image'));
-                }
                 $save = $this->userModel->create($usuario);
                 if ($save == 0) {
                     $errors['query'] = "Error al insertar Usuario";
@@ -81,16 +81,16 @@ class UserController extends AbstractController {
     public function register() {
         //TODO: mostrar errores
         $values = array("name", "surname", "mail", "password");
-        $errors = $this->userModel->filtrarStrings($values);
+        $errors = RegularUtils::filtrarVariable($values);
         if ($errors == null) {
-            $filtrado = $this->userModel->sanearStrings($values);
+            $filtrado = RegularUtils::sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
             $usuario->setSurname($filtrado["surname"]);
             $usuario->setEmail($filtrado["mail"]);
             $usuario->setPassword($filtrado["password"]);
-            $usuario->setUuid(uniqid());
+            $usuario->setUuid(RegularUtils::uuid());
             $usuario->setRole(2);
             try {
                 $save = $this->userModel->create($usuario);
@@ -112,10 +112,10 @@ class UserController extends AbstractController {
     public function update() {
         // TODO: same user or admin
         $values = array("uuid");
-        $errors = $this->userModel->filtrarStrings($values);
+        $errors = RegularUtils::filtrarVariable($values);
         if ($errors == null) {
             $values = array("name", "surname", "password", "uuid");
-            $filtrado = $this->userModel->sanearStrings($values);
+            $filtrado = RegularUtils::sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setUuid($filtrado['uuid']);
@@ -154,8 +154,8 @@ class UserController extends AbstractController {
 
     public function remove() {
         if (filter_has_var(INPUT_POST, "uuid") && (verifyIsAdmin()/* || verifyIsSame() */)) {
-            $id = $this->userModel->sanearStrings(array('uuid'))['uuid'];
-            $rem = $this->userModel->deleteUser($id);
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->userModel->delete($id);
             if ($rem == 0) {
                 die("Error al eliminar usuario");
             }

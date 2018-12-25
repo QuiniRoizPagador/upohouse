@@ -15,7 +15,8 @@ function verifyIsSame() {
 }
 
 function verifyIsAdmin() {
-    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'ADMIN';
+    //die("<script>alert('" . $_SESSION['user_role'] . "')</script>");
+    return isset($_SESSION['user_role']) && $_SESSION['user_role'] == ROLES['ADMIN'];
 }
 
 function verifyIsLogin() {

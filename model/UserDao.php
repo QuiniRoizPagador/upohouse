@@ -10,29 +10,10 @@ class UserDao extends AbstractDao {
         parent::__construct("users");
     }
 
-    public function getAll($close = True) {
-        $query = $this->mysqli->query("SELECT u.id, u.uuid, u.nombre, u.apellido, u.email, u.password, "
-                . "u.image, r.user_role FROM users AS u JOIN user_roles AS r "
-                . " ON u.user_role = r.id ORDER BY u.id DESC;");
-
-        //Devolvemos el resultset en forma de array de objetos
-        $resultSet = array();
-        while ($row = $query->fetch_object()) {
-            $resultSet[] = $row;
-        }
-
-        mysqli_free_result($query);
-        mysqli_close($this->mysqli);
-        return $resultSet;
-    }
-
     public function searchUser($login) {
-        $query = "SELECT u.nombre, u.apellido, u.email, u.password, "
-                . "u.image, r.user_role "
-                . "FROM users AS u JOIN user_roles AS r "
-                . "ON u.user_role = r.id "
-                . "WHERE LOWER(nombre) = LOWER(?) OR LOWER(email) = LOWER(?) ";
-        $data = array("ss", "nombre" => $login, "email" => $login);
+        $query = "SELECT * FROM users "
+                . "WHERE LOWER(name) = LOWER(?) OR LOWER(email) = LOWER(?) ";
+        $data = array("ss", "name" => $login, "email" => $login);
         $resultSet = $this->preparedStatement($query, $data);
         $user = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
@@ -46,11 +27,11 @@ class UserDao extends AbstractDao {
             $this->closeConnection();
             return 0;
         } else {
-            $query = "INSERT INTO $this->table (id, uuid, nombre, apellido, email, password, image, user_role)
-                VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
-            $data = array("ssssssi", "uuid" => $obj->getUuid(), "nombre" => $obj->getName(), "apellido" => $obj->getSurname(),
+            $query = "INSERT INTO $this->table (`uuid`, `name`, `surname`,`email`, `password`, `login`, `user_role`)
+                VALUES(?, ?, ?, ?, ?, ?, ?)";
+            $data = array("ssssssi", "uuid" => $obj->getUuid(), "name" => $obj->getName(), "surname" => $obj->getSurname(),
                 "email" => $obj->getEmail(), "password" => password_hash($obj->getPassword(), PASSWORD_DEFAULT)
-                , "image" => $obj->getImage(), 'user_role' => $obj->getRole());
+                , "login" => $obj->getLogin(), 'user_role' => $obj->getUserRole());
             $res = parent::preparedStatement($query, $data, FALSE);
             $this->closeConnection();
             return $res;
@@ -60,37 +41,22 @@ class UserDao extends AbstractDao {
     public function update($obj) {
         $prev = $this->search("uuid", $obj->getUuid(), FALSE);
         if (trim($obj->getName()) == '') {
-            $obj->setName($prev->nombre);
+            $obj->setName($prev->name);
         }
         if (trim($obj->getSurname()) == '') {
-            $obj->setSurname($prev->apellido);
+            $obj->setSurname($prev->surname);
         }
         if (trim($obj->getPassword()) == '') {
             $obj->setPassword($prev->password);
         } else {
             $obj->setPassword(password_hash($obj->getPassword(), PASSWORD_DEFAULT));
         }
-        $query = "UPDATE $this->table SET nombre = ?, apellido = ?, password = ? WHERE uuid = ?";
-        $data = array("ssss", "nombre" => $obj->getName(), "apellido" => $obj->getSurname(),
+        $query = "UPDATE $this->table SET name = ?, surname = ?, password = ? WHERE uuid = ?";
+        $data = array("ssss", "name" => $obj->getName(), "surname" => $obj->getSurname(),
             "password" => $obj->getPassword(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
         $this->closeConnection();
         return $res;
-    }
-
-    public function deleteUser($id) {
-        $user = $this->search("uuid", $id, FALSE, 1);
-        if (!isset($user->id)) {
-            $this->closeConnection();
-            return 0;
-        } else {
-            $lineas = $this->delete($user->id);
-            if ($lineas == 1 && trim($user->image) != "") {
-                require_once 'core/GestionFicheros.php';
-                eliminarImagen($user['image']);
-            }
-            return $lineas;
-        }
     }
 
 }

@@ -34,8 +34,8 @@ abstract class AbstractDao {
     }
 
     public function read($id, $close = True) {
-        $query = "SELECT * FROM $this->table WHERE id = ? LIMIT 1";
-        $data = array('i', "id" => $id);
+        $query = "SELECT * FROM $this->table WHERE id = ?  OR uuid = ? LIMIT 1";
+        $data = array('ss', "id" => $id, "uuid" => $id);
 
         $resultSet = $this->preparedStatement($query, $data);
         while ($obj = $resultSet->fetch_object()) {
@@ -58,6 +58,7 @@ abstract class AbstractDao {
         if ($limit !== FALSE) {
             $res = $resultSet->fetch_object();
         } else {
+            $res = array();
             while ($obj = $resultSet->fetch_object()) {
                 $res[] = $obj;
             }
@@ -70,8 +71,8 @@ abstract class AbstractDao {
     }
 
     public function delete($id, $close = True) {
-        $query = "DELETE FROM $this->table WHERE id = ? LIMIT 1";
-        $data = array('i', "id" => $id);
+        $query = "DELETE FROM $this->table WHERE id = ? OR uuid = ? LIMIT 1";
+        $data = array('ss', "id" => $id, "uuid" => $id);
         $res = $this::preparedStatement($query, $data, FALSE);
         if ($close) {
             $this->closeConnection();

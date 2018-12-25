@@ -13,13 +13,9 @@ class UserModel extends AbstractModel {
         parent::__construct($this->userDao);
     }
 
-    public function deleteUser($id) {
-        return $this->userDao->deleteUser($id);
-    }
-
     public function verify($usuario, $password) {
         $user = $this->userDao->searchUser($usuario);
-        if (isset($user['nombre']) && password_verify($password, $user['password']) === TRUE) {
+        if (isset($user->login) && password_verify($password, $user->password) === TRUE) {
             return $user;
         } else {
             return NULL;

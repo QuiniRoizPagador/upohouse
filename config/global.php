@@ -13,4 +13,19 @@ define("ACCION_DEFECTO", "index");
 
 // ficheros
 define("MAX_UPLOAD", 150000);
-define("IMAGE_FORMAT", array('image/gif', 'image/jpeg', 'image/png', 'image/jpg'));
+const IMAGE_FORMAT = array('image/gif', 'image/jpeg', 'image/png', 'image/jpg');
+// estados
+const STATES = array(
+    "NEUTRO" => 1,
+    "BLOQUEADO" => 2,
+    "ELIMINADO" => 3,
+    "ACEPTADO" => 4,
+    "DESCARTADO" => 5,
+);
+
+const ROLES = array(
+    "ADMIN" => 0,
+    "USER" => 1,
+    0 => "ADMIN",
+    1 => "USER",
+);

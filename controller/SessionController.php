@@ -1,6 +1,7 @@
 <?php
 
 use core\AbstractController;
+use core\RegularUtils;
 
 class SessionController extends AbstractController {
 
@@ -33,13 +34,13 @@ class SessionController extends AbstractController {
                 $errors['password'] = "Campo Requerido";
             }
             if (!isset($errors)) {
-                $filtrado = $this->userModel->sanearStrings(array("name", "password"));
+                $filtrado = RegularUtils::sanearStrings(array("name", "password"));
                 $user = $this->userModel->verify($filtrado['name'], $filtrado['password']);
-                if (isset($user['nombre'])) {
+                if (isset($user->name)) {
                     session_start();
-                    $_SESSION['name'] = $user['nombre'];
-                    $_SESSION['uuid'] = $user['uuid'];
-                    $_SESSION['user_role'] = $user['user_role'];
+                    $_SESSION['name'] = $user->name;
+                    $_SESSION['uuid'] = $user->uuid;
+                    $_SESSION['user_role'] = $user->user_role;
                     $this->redirect("User", "index");
                 } else {
                     $errors['login'] = "Usuario o contraseña erróneos";

@@ -16,6 +16,8 @@ class WebServiceController extends AbstractController {
         if (filter_has_var(INPUT_POST, "nombre")) {
             $nombre = $this->userModel->sanearStrings(array('nombre'))['nombre'];
             echo json_encode(array($this->userModel->search("nombre", $nombre)));
+        }else{
+            $this->redirect();
         }
     }
 

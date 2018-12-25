@@ -8,11 +8,21 @@ class User {
     private $surname;
     private $email;
     private $password;
-    private $image;
-    private $role;
+    private $login;
+    private $user_role;
+    private $timestamp;
+    private $state;
 
     public function __construct() {
         
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setid($id) {
+        $this->id = $id;
     }
 
     public function getUuid() {
@@ -23,27 +33,19 @@ class User {
         $this->uuid = $uuid;
     }
 
-    public function getId() {
-        return $this->id;
-    }
-
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    function getName() {
+    public function getName() {
         return $this->name;
     }
 
-    function getSurname() {
-        return $this->surname;
-    }
-
-    function setName($name) {
+    public function setName($name) {
         $this->name = $name;
     }
 
-    function setSurname($surname) {
+    public function getSurname() {
+        return $this->surname;
+    }
+
+    public function setSurname($surname) {
         $this->surname = $surname;
     }
 
@@ -63,20 +65,28 @@ class User {
         $this->password = $password;
     }
 
-    public function getImage() {
-        return $this->image;
+    public function getLogin() {
+        return $this->login;
     }
 
-    public function setImage($image) {
-        $this->image = $image;
+    public function setLogin($login) {
+        $this->login = $login;
     }
 
-    public function setRole($role) {
-        $this->role = $role;
+    public function getUserRole() {
+        return $this->user_role;
     }
 
-    public function getRole() {
-        return $this->role;
+    public function setUserRole($user_role) {
+        $this->user_role = $user_role;
+    }
+
+    public function getState() {
+        return $this->state;
+    }
+
+    public function setState($state) {
+        $this->state = $state;
     }
 
 }
