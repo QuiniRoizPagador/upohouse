@@ -10,7 +10,7 @@ class Conect {
     private $con;
 
     static public function getInstance() {
-        if (!self::$instance) {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
         return self::$instance;
