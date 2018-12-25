@@ -81,4 +81,15 @@ abstract class AbstractModel {
         return filter_input_array(INPUT_POST, $filtro);
     }
 
+    public function isPhone($phone) {
+        return preg_match("/^\d{9}$/", $phone);
+    }
+    
+    public function isMobile($mobile) {
+        return preg_match("/^\6\d{8}$/", $mobile);
+    }
+    public function containsString($what, $in){
+        return preg_match("/$what/", $in);
+    }
+
 }

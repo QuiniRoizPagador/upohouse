@@ -1,8 +1,5 @@
 <?php
 
-define("MAX_UPLOAD", 150000);
-define("IMAGE_FORMAT", array('image/gif', 'image/jpeg', 'image/png', 'image/jpg'));
-
 function moverImagen($nombre) {
     $fich = $_FILES[$nombre];
     if ($fich['error'] > 0) {

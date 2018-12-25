@@ -71,8 +71,8 @@ INSERT INTO `user_roles` (`id`, `user_role`) VALUES
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `nombre`, `apellido`, `email`, `password`, `image`, `user_role`) VALUES
-(11, 'admin', 'admin', 'admin@admin.admin', '$2y$10$0Z4wWIuRYLsuEfmwLIP8v.0Eh0PLDnxBzYFAjxr2b9c3D9bWMK44a', 'images/1544294465Captura de pantalla de 2018-11-20 13-18-07.png', 1);
+INSERT INTO `users` (`id`, `nombre`, `apellido`, `email`, `password`, `image`, `user_role`,`uuid`) VALUES
+(11, 'admin', 'admin', 'admin@admin.admin', '$2y$10$0Z4wWIuRYLsuEfmwLIP8v.0Eh0PLDnxBzYFAjxr2b9c3D9bWMK44a', 'images/1544294465Captura de pantalla de 2018-11-20 13-18-07.png', 1,'4b3403665fea6');
 
 
 

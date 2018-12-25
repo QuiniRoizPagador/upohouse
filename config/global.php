@@ -10,3 +10,7 @@ const ACTIONS = array(
 define("CONTROLADOR_DEFECTO", "User");
 // action por defecto
 define("ACCION_DEFECTO", "index");
+
+// ficheros
+define("MAX_UPLOAD", 150000);
+define("IMAGE_FORMAT", array('image/gif', 'image/jpeg', 'image/png', 'image/jpg'));

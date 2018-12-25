@@ -38,7 +38,9 @@ abstract class AbstractDao {
         $data = array('i', "id" => $id);
 
         $resultSet = $this->preparedStatement($query, $data);
-        $res = mysqli_fetch_assoc($resultSet);
+        while ($obj = $resultSet->fetch_object()) {
+            $res[] = $obj;
+        }
         mysqli_free_result($resultSet);
         if ($close) {
             $this->closeConnection();
@@ -46,16 +48,25 @@ abstract class AbstractDao {
         return $res;
     }
 
-    public function search($column, $value, $close = True) {
-        $query = "SELECT * FROM $this->table WHERE $column = ?";
+    public function search($column, $value, $close = True, $limit = FALSE) {
+        $query = "SELECT * FROM $this->table WHERE $column = ? ";
+        if ($limit !== FALSE) {
+            $query .= "LIMIT $limit";
+        }
         $data = array("s", $column => $value);
         $resultSet = $this->preparedStatement($query, $data);
-        $datos = mysqli_fetch_assoc($resultSet);
+        if ($limit !== FALSE) {
+            $res = $resultSet->fetch_object();
+        } else {
+            while ($obj = $resultSet->fetch_object()) {
+                $res[] = $obj;
+            }
+        }
         mysqli_free_result($resultSet);
         if ($close) {
             $this->closeConnection();
         }
-        return $datos;
+        return $res;
     }
 
     public function delete($id, $close = True) {

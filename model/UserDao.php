@@ -34,15 +34,15 @@ class UserDao extends AbstractDao {
                 . "WHERE LOWER(nombre) = LOWER(?) OR LOWER(email) = LOWER(?) ";
         $data = array("ss", "nombre" => $login, "email" => $login);
         $resultSet = $this->preparedStatement($query, $data);
-        $datos = mysqli_fetch_assoc($resultSet);
+        $user = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
         $this->closeConnection();
-        return $datos;
+        return $user;
     }
 
     public function create($obj) {
         $res = $this->search("email", $obj->getEmail(), FALSE);
-        if (isset($res['id'])) {
+        if (isset($res->id)) {
             $this->closeConnection();
             return 0;
         } else {
@@ -60,13 +60,13 @@ class UserDao extends AbstractDao {
     public function update($obj) {
         $prev = $this->search("uuid", $obj->getUuid(), FALSE);
         if (trim($obj->getName()) == '') {
-            $obj->setName($prev['nombre']);
+            $obj->setName($prev->nombre);
         }
         if (trim($obj->getSurname()) == '') {
-            $obj->setSurname($prev['apellido']);
+            $obj->setSurname($prev->apellido);
         }
         if (trim($obj->getPassword()) == '') {
-            $obj->setPassword($prev['password']);
+            $obj->setPassword($prev->password);
         } else {
             $obj->setPassword(password_hash($obj->getPassword(), PASSWORD_DEFAULT));
         }
@@ -79,13 +79,13 @@ class UserDao extends AbstractDao {
     }
 
     public function deleteUser($id) {
-        $user = $this->search("uuid", $id, FALSE);
-        if (!isset($user['uuid'])) {
+        $user = $this->search("uuid", $id, FALSE, 1);
+        if (!isset($user->id)) {
             $this->closeConnection();
             return 0;
         } else {
-            $lineas = $this->delete($user['id']);
-            if ($lineas == 1 && trim($user["image"]) != "") {
+            $lineas = $this->delete($user->id);
+            if ($lineas == 1 && trim($user->image) != "") {
                 require_once 'core/GestionFicheros.php';
                 eliminarImagen($user['image']);
             }
