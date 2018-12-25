@@ -81,7 +81,7 @@ CREATE TABLE Ads(
     rooms INT UNSIGNED NOT NULL,
     m_2 INT UNSIGNED NOT NULL,
     bath INT UNSIGNED NOT NULL,
-    desciption TEXT,
+    description TEXT,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     housing_type INT(11) UNSIGNED NOT NULL,
     operation_type INT(11) UNSIGNED NOT NULL,
