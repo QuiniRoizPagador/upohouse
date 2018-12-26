@@ -1,5 +1,7 @@
 <?php
 
+namespace model\dao\dto;
+
 class Ad {
 
     private $id;

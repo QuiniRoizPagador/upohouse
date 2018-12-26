@@ -1,5 +1,7 @@
 <?php
 
+namespace model\dao\dto;
+
 class Score {
 
     private $id;
@@ -51,7 +53,5 @@ class Score {
     public function setScore($score) {
         $this->score = $score;
     }
-
-
 
 }

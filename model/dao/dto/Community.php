@@ -1,11 +1,12 @@
 <?php
 
-class Province {
+namespace model\dao\dto;
+
+class Community {
 
     private $id;
     private $slug;
-    private $province;
-    private $community_id;
+    private $community;
     private $capital_id;
 
     public function __construct() {
@@ -28,20 +29,12 @@ class Province {
         $this->slug = $slug;
     }
 
-    public function getProvince() {
-        return $this->province;
+    public function getCommunity() {
+        return $this->community;
     }
 
-    public function setProvince($province) {
-        $this->province = $province;
-    }
-
-    public function getCommunity_id() {
-        return $this->community_id;
-    }
-
-    public function setCommunity_id($community_id) {
-        $this->community_id = $community_id;
+    public function setCommunity($community) {
+        $this->community = $community;
     }
 
     public function getCapital_id() {

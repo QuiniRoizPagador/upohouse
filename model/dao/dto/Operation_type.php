@@ -1,6 +1,8 @@
 <?php
 
-class Housing_type {
+namespace model\dao\dto;
+
+class Operation_type {
 
     private $id;
     private $uuid;
@@ -18,7 +20,7 @@ class Housing_type {
         $this->id = $id;
     }
 
-       public function getUuid() {
+    public function getUuid() {
         return $this->uuid;
     }
 

@@ -1,9 +1,11 @@
 <?php
 
 require_once 'core/RegularUtils.php';
+require_once 'model/dao/dto/User.php';
 
 use core\AbstractController;
 use core\RegularUtils;
+use model\dao\dto\User;
 
 class UserController extends AbstractController {
 

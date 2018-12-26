@@ -1,5 +1,7 @@
 <?php
 
+namespace model\dao\dto;
+
 class Municipality {
 
     private $province_id;

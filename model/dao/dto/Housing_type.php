@@ -1,11 +1,12 @@
 <?php
 
-class Image {
+namespace model\dao\dto;
+
+class Housing_type {
 
     private $id;
     private $uuid;
-    private $ad_id;
-    private $image;
+    private $name;
 
     public function __construct() {
         
@@ -27,20 +28,12 @@ class Image {
         $this->uuid = $uuid;
     }
 
-    public function getAd_id() {
-        return $this->ad_id;
+    public function getName() {
+        return $this->name;
     }
 
-    public function setAd_id($ad_id) {
-        $this->ad_id = $ad_id;
-    }
-
-    public function getImage() {
-        return $this->image;
-    }
-
-    public function setImage($image) {
-        $this->image = $image;
+    public function setName($name) {
+        $this->name = $name;
     }
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'core/RegularUtils.php';
+
 use core\AbstractController;
 use core\RegularUtils;
 

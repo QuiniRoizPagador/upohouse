@@ -1,5 +1,7 @@
 <?php
 
+namespace model\dao\dto;
+
 class Request {
 
     private $id;

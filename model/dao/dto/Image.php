@@ -1,10 +1,13 @@
 <?php
 
-class State_type {
+namespace model\dao\dto;
+
+class Image {
 
     private $id;
     private $uuid;
-    private $state;
+    private $ad_id;
+    private $image;
 
     public function __construct() {
         
@@ -26,12 +29,20 @@ class State_type {
         $this->uuid = $uuid;
     }
 
-    public function getState() {
-        return $this->state;
+    public function getAd_id() {
+        return $this->ad_id;
     }
 
-    public function setState($state) {
-        $this->state = $state;
+    public function setAd_id($ad_id) {
+        $this->ad_id = $ad_id;
+    }
+
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setImage($image) {
+        $this->image = $image;
     }
 
 }

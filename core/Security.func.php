@@ -20,7 +20,7 @@ function verifyIsAdmin() {
 }
 
 function verifyIsLogin() {
-    return isset($_GET["action"]) && $_GET["action"] == 'login';
+    return isset($_GET["controller"]) && $_GET["controller"] == 'Session';
 }
 
 function secureSession() {
