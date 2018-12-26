@@ -1,0 +1,23 @@
+\subsection{CU101 Iniciar Sesi\'{o}n.}
+\subsubsection{Descripci\'{o}n.}
+El sistema identifica un usuario y guarda sus datos en la memoria para reconocerlo posteriormente.
+\subsubsection{Actores.}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Poscondici\'{o}n.}
+Se identific\'{o} un usuario en el sistema.
+\subsubsection{Escenario Principal.}
+\begin{enumerate}
+\item El usuario inicia la opci\'{o}n de inicio de sesi\'{o}n.
+\item El sistema solicita nombre de usuario y contrase\~{n}a.
+\item El usuario introduce usuario y contrase\~{n}a.
+\item El sistema valida los datos, archiva al usuario en la memoria e informa.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item El sistema informa del error.
+\item Se regresa a l\'{i}nea 2.
+\end{enumerate}

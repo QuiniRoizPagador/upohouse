@@ -1,0 +1,14 @@
+\BOOKMARK [0][-]{Doc-Start}{Resumen}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Descripci\363n del Problema}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Soluci\363n Propuesta}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Casos de Uso}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Sesi\363n y Chats}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{CU101 Iniciar Sesi\363n.}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{CU102 Cerrar Sesi\363n.}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.3}{CU103 Consultar Chat.}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.4}{CU104 Listar Chats.}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.5}{CU105 Enviar Chat.}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.6}{CU106 Consultar Privado.}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.7}{CU107 Listar Privados.}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.8}{CU108 Enviar Privado.}{section.2.1}% 14

@@ -1,0 +1,60 @@
+\newpage{\pagestyle{empty}\cleardoublepage}
+\chapter{Test}
+
+\section{Descripci\'{o}n de las pruebas realizadas}
+
+La implementaci\'{o}n de testeo ha sido llevada a cabo con la herramienta que nos proporciona el IDE Netbeans, 'JUnit'.\\
+
+Para esta aplicaci\'{o}n se ha realizado un testeo b\'{a}sico, contemplando flujos b\'{a}sicos y/o alternativos en cada uno de los m\'{e}todos p\'{u}blicos de la clase controlador, los diferentes modelos y la clase repositorio que contiene los datos del sistema.\\
+
+Habiendo llegado al acuerdo anteriormente comentado con el cliente, se ha contemplado un 100\% de los m\'{e}todos a testear, o bien en su caso del flujo normal o en su caso de flujo alternativo.\\
+
+
+\section{Datos de Prueba}
+
+\subsubsection{Clientes}
+\begin{figure}[h]
+\begin{center}
+\begin{tabular}{l*{4}{l}l}
+Dni & Nombre & Direcci\'{o}n & Tel\'{e}fono \\
+\hline
+123456 & Alquien & Su Casa & 123456   \\
+112112 & Paco & Piso 1 & 231245  \\
+123123 & Pepe & S\'{o}tano 1 & 213123 \\
+\end{tabular}
+\end{center}
+\end{figure}
+\subsubsection{Modelos}
+\begin{figure}[h]
+\begin{center}
+\begin{tabular}{l*{4}{l}l}
+Nombre & Descripci\'{o}n & Stock & Precio \\
+\hline
+M1 & Descripcion M1 & 1 & 10   \\
+M2 & Descripcion M2 & 2 & 15  \\
+\end{tabular}
+\end{center}
+\end{figure}
+\subsubsection{Maquinaria}
+\begin{figure}[h]
+\begin{center}
+\begin{tabular}{l*{3}{l}l}
+Id & Modelo & Estado \\
+\hline
+1 & M1 & LIBRE  \\
+2 & M2 & LIBRE  \\
+3 & M1 & ALQUILADA  \\
+\end{tabular}
+\end{center}
+\end{figure}
+
+\subsubsection{Alquileres}
+\begin{figure}[h]
+\begin{center}
+\begin{tabular}{l*{7}{l}l}
+Id & Cliente & Maquinaria & Dias & Estado & Subtotal & FechaHora\\
+\hline
+1 & 123456 & 3 & 2 & PENDIENTE & 20 & Actual  \\
+\end{tabular}
+\end{center}
+\end{figure}

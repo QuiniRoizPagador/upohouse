@@ -1,0 +1,34 @@
+\newpage{\pagestyle{empty}\cleardoublepage}
+\newpage{\pagestyle{empty}\cleardoublepage}
+\newpage
+\vspace*{\fill}
+    \begin{center}
+      \thispagestyle{empty} \vspace*{0cm} \textbf{\huge
+Introducci\'{o}n}
+    \end{center}
+    \vspace*{\fill}
+\newpage{\pagestyle{empty}\cleardoublepage}
+\chapter{Introducci\'{o}n}
+\section{Descripci\'{o}n del Problema}
+
+
+TODO
+
+\section{Soluci\'{o}n Propuesta}
+A continuaci\'{o}n se listar\'{a}n los siguientes cap\'{i}tulos de esta documentaci\'{o}n, en los cuales se recoger\'{a}n las diferentes subsoluciones, adentr\'{a}ndose en diferentes capas o niveles pertenecientes al an\'{a}lisis, dise\~{n}o e implementaci\'{o}n.
+\begin{enumerate}
+\item An\'{a}lisis
+\begin{enumerate}
+\item Diagrama de Casos de Uso
+\item Descripci\'{o}n de los Casos de Uso.
+\item Diagrama del Modelo de Dominio.
+\item Diagramas de Secuencia del Sistema y Contratos.
+\end{enumerate}
+\item Dise\~{n}o
+\begin{enumerate}
+\item Diagramas de Secuencia.
+\item Diagrama de Clase.
+\item Test.
+\end{enumerate}
+
+\end{enumerate}

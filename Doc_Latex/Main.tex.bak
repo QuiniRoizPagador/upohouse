@@ -1,0 +1,86 @@
+\input{EncabezadoTesisMSc}
+%\includeonly{Kap1/Kap1,Kap2/Kap2}
+\begin{document}
+\pagenumbering{roman}
+\include{HojaTitulo/HojaTituloMSc}
+
+\renewcommand{\tablename}{\textbf{Tabla}}
+\renewcommand{\figurename}{\textbf{Figura}}
+\renewcommand{\listtablename}{Lista de Tablas}
+\renewcommand{\listfigurename}{Lista de Figuras}
+\renewcommand{\contentsname}{Contenido}
+
+
+%\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\tableofcontents
+%\include{Tab_Simbolos/TabSimbolosMSc}
+%\include{Resumen}%\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\pagenumbering{arabic}
+%--- INTRO ---
+\include{Intro/Intro}
+%--- Análisis ---
+%--- Casos de Uso ----
+\include{CasosDeUso/SesionChats/DCU01}
+\include{CasosDeUso/SesionChats/CU101}
+\include{CasosDeUso/SesionChats/CU102}
+\include{CasosDeUso/SesionChats/CU103}
+\include{CasosDeUso/SesionChats/CU104}
+\include{CasosDeUso/SesionChats/CU105}
+\include{CasosDeUso/SesionChats/CU106}
+\include{CasosDeUso/SesionChats/CU107}
+\include{CasosDeUso/SesionChats/CU108}
+\include{CasosDeUso/Encuestas/DCU02}
+\include{CasosDeUso/Encuestas/CU201}
+\include{CasosDeUso/Encuestas/CU202}
+\include{CasosDeUso/Encuestas/CU203}
+\include{CasosDeUso/Encuestas/CU204}
+\include{CasosDeUso/Gestion/DCU03}
+\include{CasosDeUso/Gestion/CU301}
+\include{CasosDeUso/Gestion/CU302}
+\include{CasosDeUso/Gestion/CU303}
+\include{CasosDeUso/Gestion/CU304}
+\include{CasosDeUso/Gestion/CU305}
+\include{CasosDeUso/Gestion/CU306}
+\include{CasosDeUso/Gestion/CU307}
+\include{CasosDeUso/Gestion/CU308}
+\include{CasosDeUso/Gestion/CU309}
+\include{CasosDeUso/Gestion/CU310}
+\include{CasosDeUso/Gestion/CU311}
+\include{CasosDeUso/Gestion/CU312}
+\include{CasosDeUso/Gestion/CU313}
+\include{CasosDeUso/Gestion/CU314}
+\include{CasosDeUso/Gestion/CU315}
+
+%--- Modelo de Dominio ---
+\include{ModeloDominio/ModeloDominio}
+%--- Diagramas de Secuencia del Sistema y Contratos ---
+\include{DSSyC/SesionChats/DSS101}
+\include{DSSyC/SesionChats/DSS102}
+\include{DSSyC/SesionChats/DSS103}
+\include{DSSyC/SesionChats/DSS104}
+\include{DSSyC/SesionChats/DSS105}
+%\include{DSSyC/GestionUsuariosLogin/Login}
+%\include{DSSyC/GestionUsuariosLogin/Logout}
+
+%--- Disenyo ---
+%--- Interfaz ---
+%\include{Interfaz/Interfaz}
+%--- Diagramas de Secuencia ---
+%\include{DiagramaSecuencia/Clientes}
+
+%--- Diagrama de Clase ---
+%\include{DiagramaClase/DC}
+
+%--- Test y Datos Iniciales ---
+%\include{Test/Test}
+
+%\newpage{\pagestyle{empty}\cleardoublepage}
+
+
+%\include{Anexos/Anexos}
+%\addcontentsline{toc}{chapter}{\numberline{}Bibliograf\'{\i}a}
+%\nocite{alphagalileo,thesai,berkeleyAll,cscmu}
+%\bibliographystyle{ieeetr}
+%\bibliography{BibliMSc} 
+\end{document}
+
