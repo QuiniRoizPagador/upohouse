@@ -1,7 +1,7 @@
 <?php
 
 require_once "core/AbstractModel.php";
-require_once "model/dao/MunipipalityDao.php";
+require_once "model/dao/MunicipalityDao.php";
 
 use core\AbstractModel;
 
