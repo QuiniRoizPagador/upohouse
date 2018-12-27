@@ -1,0 +1,40 @@
+\subsection{CU104 Modificar Usuario}
+\subsubsection{Descripci\'{o}n}
+El sistema permite que se modifiquen los datos de un usuario.
+\subsubsection{Actores}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Consultar usuario (CU103 Consultar usuario).
+\end{itemize}
+\subsubsection{Poscondici\'{o}n}
+Se modificaron los datos de un usuario del sistema.
+\subsubsection{Escenario Principal}
+\begin{enumerate}
+\item El actor acciona la opci\'{o}n para modificar los datos de un usuario.
+\item El sistema solicita los datos a modificar.
+\item El actor actualiza los campos y acepta.
+\item El sistema valida los datos e informa.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item El sistema informa.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item El sistema informa.
+\item Se regresa a l\'{i}nea 2.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item No se actualizar\'{a}n los datos en blanco.
+\item Finaliza el caso de uso.
+\end{enumerate}

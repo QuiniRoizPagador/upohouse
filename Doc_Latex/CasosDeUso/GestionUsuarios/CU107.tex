@@ -1,0 +1,28 @@
+\subsection{CU107 Crear Usuario}
+\subsubsection{Descripci\'{o}n}
+El sistema permite que se de de alta un usuario nuevo.
+\subsubsection{Actores}
+\begin{itemize}
+\item Administrador.
+\item GUEST.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item El usuario es Administrador o no est\'{a} registrado en el sistema (Registro)
+\end{itemize}
+\subsubsection{Poscondici\'{o}n}
+Se dio de alta un usuario nuevo en el sistema.
+\subsubsection{Escenario Principal}
+\begin{enumerate}
+\item El actor acciona la opci\'{o}n para dar de alta un usuario.
+\item El sistema solicita datos del usuario.
+\item El actor introduce los datos personales y acepta.
+\item El sistema valida los datos e informa.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos incorrectos o usuario ya existente.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item El sistema informa.
+\item Se vuelve al paso 2.
+\end{enumerate}

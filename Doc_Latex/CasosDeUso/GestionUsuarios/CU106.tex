@@ -1,0 +1,27 @@
+\subsection{CU106 Reportar Usuario}
+\subsubsection{Descripci\'{o}n}
+El sistema permite que se denuncie a un usuario para que el administrador del sistema tome medidas.
+\subsubsection{Actores}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Consultar Usuario (CU103 Consultar Usuario).
+\end{itemize}
+\subsubsection{Poscondici\'{o}n}
+Se cre\'{o} un reporte o denuncia asociado a un usuario del el sistema.
+\subsubsection{Escenario Principal}
+\begin{enumerate}
+\item El actor acciona la opci\'{o}n para denunciar un usuario.
+\item El sistema solicita descripci\'{o}n del reporte.
+\item El actor introduce los descripci\'{o}n del reporte y acepta el env\'{i}o.
+\item El sistema valida los datos y registra la denuncia en el sistema.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Finaliza el caso de uso.
+\end{enumerate}
