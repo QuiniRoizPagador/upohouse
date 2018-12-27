@@ -17360,7 +17360,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "CU703 Listar Tipos Vivienda",
+											"text": "CU603 Listar Tipos Vivienda",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -17819,7 +17819,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "CU704 Listar Tipos Operaciones",
+											"text": "CU604 Listar Tipos Operaciones",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -37448,7 +37448,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFiV9W/dfDcNCM="
 					},
-					"name": "DCU07 Gestión Tipos ",
+					"name": "DCU06 Gestión Tipos ",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [
