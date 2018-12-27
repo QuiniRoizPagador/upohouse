@@ -14,4 +14,12 @@ class ReportModel extends AbstractModel {
         parent::__construct($this->reportDao);
     }
 
+    public function reportUser($report) {
+        $id = $this->reportDao->read($report->getUser_reported(), FALSE);
+        
+        $report->setUser_reported($id);
+        
+        return $this->create($report);
+    }
+
 }

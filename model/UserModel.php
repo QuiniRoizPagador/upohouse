@@ -22,5 +22,9 @@ class UserModel extends AbstractModel {
             return NULL;
         }
     }
+    
+    public function block($uuid){
+        return $this->userDao->block($uuid);
+    }
 
 }

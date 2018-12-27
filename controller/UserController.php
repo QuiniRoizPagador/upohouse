@@ -77,6 +77,23 @@ class UserController extends AbstractController {
         }
     }
 
+    public function readUser() {
+        if (filter_has_var(INPUT_POST, "uuid")) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $user = $this->userModel->read($id);
+            if (!isset($user->id)) {
+                $this->redirect("User", "index");
+            } else {
+                $this->view("perfil", array(
+                    'title' => "Perfil $user->name",
+                    "user" => $user
+                ));
+            }
+        } else {
+            $this->redirect("User", "index");
+        }
+    }
+
     /**
      * Registro desde la propia aplicación
      */
@@ -152,6 +169,17 @@ class UserController extends AbstractController {
                 "errors" => $errors
             ));
         }
+    }
+
+    public function blockUser() {
+        if (filter_has_var(INPUT_POST, "uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->userModel->block($id);
+            if ($rem == 0) {
+                die("Error al bloquear usuario");
+            }
+        }
+        $this->redirect("User", "index");
     }
 
     public function remove() {

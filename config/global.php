@@ -2,7 +2,7 @@
 
 // constante que tomará los valores de los actions que necesitan ser verificados 
 const ACTIONS = array(
-    "USER" => array("create", "update", "remove"),
+    "USER" => array("create", "update", "remove", "readUser"),
     "GUEST" => array("index", "login", "register"),
     "ADMIN" => array('create', 'remove'),
 );
