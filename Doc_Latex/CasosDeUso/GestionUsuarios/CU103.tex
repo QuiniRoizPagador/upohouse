@@ -1,6 +1,6 @@
 \subsection{CU03 Consultar Usuario}
 \subsubsection{Descripci\'{o}n}
-El sistema permite que se consulten los datos de un usuario.
+El sistema muestra los datos vinculados a un usuario, el cual debe de haber sido previamente seleccionado de una lista si se quiere consultar como administrador.
 \subsubsection{Actores}
 \begin{itemize}
 \item Usuario.
@@ -9,23 +9,11 @@ El sistema permite que se consulten los datos de un usuario.
 \begin{itemize}
 \item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
 \end{itemize}
-\subsubsection{Dependencias.}
-\begin{itemize}
-\item CU108 Listar Usuarios.
-\end{itemize}
-\subsubsection{Puntos de Extensi\'{o}n.}
-\begin{itemize}
-\item El administrador selecciona consultar los datos de un usuario en CU108 Listar Usuarios.
-\end{itemize}
-\subsubsection{Activa.}
-\begin{itemize}
-\item El administrador selecciona consultar los datos de un usuario en CU108 Listar Usuarios.
-\end{itemize}
-\subsubsection{Poscondici\'{o}n}
+\subsubsection{Postcondici\'{o}n}
 Se mostraron los datos de un usuario del sistema.
 \subsubsection{Escenario Principal}
 \begin{enumerate}
 \item El actor acciona la opci\'{o}n para consultar datos de un usuario.
 \item El sistema muestra los datos del usuario escogido.
-\item Finaliza el caso de uso.
 \end{enumerate}
+Finaliza el caso de uso.
