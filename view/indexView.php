@@ -6,19 +6,12 @@ require_once 'core/templates/head.php';
     <div id="top">
         <!-- .navbar -->
 
-        <?php require_once 'core/templates/header.php' ?>    
+        <?php require_once 'core/templates/nav.php' ?>    
         <?php //require_once 'core/templates/nav.php' ?>
     </div>
     <main role="main">
         <?php
-        if (!verifyIsAdmin()) {
-            require_once 'main.php';
-        } else {
-            require_once 'dashboard.php';
-        }
-        if (isset($errors['query'])) {
-            error($errors['query']);
-        }
+        require_once 'main.php';
         ?>
     </main>
 </div>

@@ -4,7 +4,7 @@
 const ACTIONS = array(
     "USER" => array("create", "update", "remove", "readUser"),
     "GUEST" => array("index", "login", "register"),
-    "ADMIN" => array('create', 'remove'),
+    "ADMIN" => array('create', 'remove', "dashboard"),
 );
 // controlador por defecto
 define("CONTROLADOR_DEFECTO", "User");

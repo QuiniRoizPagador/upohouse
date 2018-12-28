@@ -25,7 +25,7 @@ function verifyIsLogin() {
 
 function secureSession() {
     // primero verificar la seguridad interna
-    if (in_array($_GET["action"], ACTIONS['USER'])) {
+    if (in_array($_GET["action"], ACTIONS['USER']) || in_array($_GET["action"], ACTIONS['ADMIN'])) {
         return verifySession();
         // en este caso estamos dentro y no debemos salir sin sentido            
     } else if (in_array($_GET["action"], ACTIONS['GUEST'])) {

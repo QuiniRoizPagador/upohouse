@@ -45,13 +45,13 @@
             </div>
         </div>
     </footer>
-    <?php } else{ ?>
+<?php } else { ?>
 
-   
+
     <!-- /#wrap -->
     <footer class="Footer bg-dark dker">
         <p>Footer</p>
     </footer>
-    <?php } ?>
+<?php } ?>
 </body>
 </html>
