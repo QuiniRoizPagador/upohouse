@@ -11,9 +11,12 @@ class UserDao extends AbstractDao {
     }
 
     public function searchUser($login) {
-        $query = "SELECT * FROM users "
-                . "WHERE LOWER(name) = LOWER(?) OR LOWER(email) = LOWER(?) ";
-        $data = array("ss", "name" => $login, "email" => $login);
+       $query = "SELECT u.id, u.uuid, u.name, u.surname, "
+                . "u.email,u.password, u.uuid, u.login, u.user_role, "
+                . "s.state FROM Users as u JOIN State_Types as s "
+                . "ON u.state = s.id "
+                . "WHERE (LOWER(u.login) = LOWER(?) OR LOWER(u.email) = LOWER(?)) AND u.state != ?";
+        $data = array("ssi", "u.login" => $login, "u.email" => $login, "u.state" => STATES['ELIMINADO']);
         $resultSet = $this->preparedStatement($query, $data);
         $user = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);

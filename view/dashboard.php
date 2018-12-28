@@ -8,7 +8,7 @@
                 Login: <input type="text" name="login" <?php echo isset($_POST['login']) ? "value='" . $_POST['login'] . "'" : "" ?> class="form-control"/><?= isset($errors['login']) ? "<p class='alert alert-danger'>Requerido</p>" : "" ?> <br />
                 Email: <input type="text" name="email" <?php echo isset($_POST['email']) ? "value='" . $_POST['email'] . "'" : "" ?> class="form-control"/><?= isset($errors['email']) ? "<p class='alert alert-danger'>Requerido</p>" : "" ?> <br />
                 Contraseña: <input type="password" name="password" class="form-control"/><?= isset($errors['password']) ? "<p class='alert alert-danger'>Requerido</p> <br />" : "" ?> <br />
-                
+
                 <button type="submit" class="btn btn-success">Enviar</button>
             </form>
         </div>
@@ -29,11 +29,12 @@
                         <th>Fecha Registro </th>
                         <th>Remove </th>
                         <th>Edit </th>
+                        <th>Block</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($allusers as $user) { //recorremos el array de objetos y obtenemos el valor de las propiedades   ?>
-                        <tr class="active">
+                        <tr class="active <?=$user->state==STATES['BLOQUEADO']?'alert-danger':""?>">
                             <td><?= $user->id; ?> </td>
                             <td>
                                 <?= $user->uuid; ?>
@@ -59,16 +60,16 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                    <div class="modal-body">    
-                                                        &iquest;Estás Seguro?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <form method="post" action="<?= $helper->url("user", "remove"); ?>">
-                                                            <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
-                                                            <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Borrar</button>
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        </form>
-                                                    </div>
+                                                <div class="modal-body">    
+                                                    &iquest;Estás Seguro?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form method="post" action="<?= $helper->url("user", "remove"); ?>">
+                                                        <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Borrar</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    </form>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -106,9 +107,41 @@
                                         </div>
                                     </div>
                             </td>
+                            <td>
+                                <?php if ($user->state == STATES['BLOQUEADO']) { ?>
+                                <label>BLOQUEADO</label>
+                                    <?php } else{ ?>
+                                    <button type="button" data-toggle="modal" data-target="#block<?= $user->uuid ?>" class="btn btn-danger"><i class="fa fa-ban"></i></button> 
+                                    <div role="dialog" aria-labelledby="<?= $user->name ?>" aria-hidden="true" tabindex="-1" id="block<?= $user->uuid ?>" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Bloquear usuario <?= $user->name ?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">    
+                                                        &iquest;Estás Seguro?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="<?= $helper->url("user", "blockUser"); ?>">
+                                                            <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                            <button type="submit" class="btn btn-danger"> <i class="fa fa-database"></i> Bloquear</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
 
-                        </tr>
-                    <?php } ?>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                </td>
+
+                            </tr>
+                        <?php } ?>
                 </tbody>
             </table>
         </div>
