@@ -27,7 +27,7 @@ class SessionController extends AbstractController {
         unset($_SESSION['id']);
         unset($_SESSION['email']);
         unset($_SESSION['uuid']);
-        unset($_SESSION['uuid']);
+        unset($_SESSION['user_role']);
         $this->redirect();
     }
 
