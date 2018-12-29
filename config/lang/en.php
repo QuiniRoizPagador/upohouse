@@ -37,6 +37,11 @@ $lang = array(
     "cerrar sesion" => "Logout",
     "mensajes" => "Messages",
     "registro" => "Sign Up",
-    "buscar" => "Search"
+    "buscar" => "Search",
+    "anuncios" => "Ads",
+    "comentarios" => "Comments",
+    "tipos" => "Types",
+    "incidencias" => "Incidents",
+    "denuncias" => "Denounces",
 );
 

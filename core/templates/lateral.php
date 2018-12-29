@@ -10,30 +10,30 @@
             <li class="nav-item">
                 <a class="nav-link <?=isset($isUsers)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=users">
                     <i class="fa fa-users"></i>
-                    Usuarios 
+                    <?= $lang['usuarios'] ?>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?=isset($isAnuncios)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=anuncios">
                     <i class="fa fa-address-book"></i>
-                    Anuncios 
+                    <?= $lang['anuncios'] ?>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?=isset($iscomentarios)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=comentarios">
                     <i class="fa fa-comment"></i>
-                    Comentarios 
+                    <?= $lang['comentarios'] ?>
                 </a>
             </li>
              <li class="nav-item">
                 <a class="nav-link <?=isset($isTipos)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=tipos">
                     <i class="fa fa-list"></i>
-                    Tipos 
+                    <?= $lang['tipos'] ?>
                 </a>
             </li>
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Incidencias</span>
+            <span><?= $lang['incidencias'] ?></span>
             <a class="d-flex align-items-center text-muted" href="#">
                 <span data-feather="plus-circle"></span>
             </a>
@@ -42,7 +42,7 @@
             <li class="nav-item">
                 <a class="nav-link <?=isset($isDenuncias)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=denuncias">
                     <i class="fa fa-asterisk"></i>
-                    Denuncias 
+                    <?= $lang['denuncias'] ?>
                 </a>
             </li>
         </ul>
