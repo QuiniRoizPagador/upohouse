@@ -1,0 +1,33 @@
+\subsection{CU304 Denunciar Petici\'{o}n}
+\subsubsection{Descripci\'{o}n}
+El sistema permite que se denuncie una petici\'{o}n para que el administrador del sistema tome medidas.
+\subsubsection{Actores}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Consultar Petici\'{o}n (CU302 Consultar Petici\'{o}n).
+\end{itemize}
+\subsubsection{Postcondici\'{o}n}
+Se cre\'{o} un reporte o denuncia asociado a una petici\'{o}n.
+\subsubsection{Escenario Principal}
+\begin{enumerate}
+\item El actor acciona la opci\'{o}n para denunciar una petici\'{o}n.
+\item El sistema solicita descripci\'{o}n y el titulo del reporte.
+\item El actor introduce la descripci\'{o}n y el titulo del reporte y acepta el env\'{i}o.
+\item El sistema valida los datos y registra la denuncia en el sistema.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos incorrectos.}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item El sistema informa del error.
+\item Se regresa a la l\'{i}nea 3.
+\end{enumerate}

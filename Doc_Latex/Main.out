@@ -13,7 +13,33 @@
 \BOOKMARK [2][-]{subsection.2.1.7}{CU107 Crear Usuario}{section.2.1}% 13
 \BOOKMARK [2][-]{subsection.2.1.8}{CU108 Listar Usuarios}{section.2.1}% 14
 \BOOKMARK [2][-]{subsection.2.1.9}{CU109 Bloquear Usuario}{section.2.1}% 15
-\BOOKMARK [1][-]{section.2.2}{Gesti\363n de Usuarios}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.1}{CU501 Listar Comentarios.}{section.2.2}% 17
-\BOOKMARK [2][-]{subsection.2.2.2}{CU502 Denunciar Comentario}{section.2.2}% 18
-\BOOKMARK [2][-]{subsection.2.2.3}{CU503 Eliminar Comentario}{section.2.2}% 19
+\BOOKMARK [1][-]{section.2.2}{Gesti\363n de Anuncios}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{CU201 Crear Anuncio.}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.2}{CU202 Consultar Anuncio.}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.3}{CU203 Listar anuncios.}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.4}{CU204 Modificar Anuncio.}{section.2.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.5}{CU205 Eliminar Anuncio.}{section.2.2}% 21
+\BOOKMARK [2][-]{subsection.2.2.6}{CU206 Comentar Anuncio.}{section.2.2}% 22
+\BOOKMARK [2][-]{subsection.2.2.7}{CU207 Valorar Anuncio.}{section.2.2}% 23
+\BOOKMARK [2][-]{subsection.2.2.8}{CU208 Denunciar Anuncio.}{section.2.2}% 24
+\BOOKMARK [1][-]{section.2.3}{Gesti\363n de Peticiones}{chapter.2}% 25
+\BOOKMARK [2][-]{subsection.2.3.1}{CU301 Crear Petici\363n.}{section.2.3}% 26
+\BOOKMARK [2][-]{subsection.2.3.2}{CU302 Consultar Petici\363n}{section.2.3}% 27
+\BOOKMARK [2][-]{subsection.2.3.3}{CU303 Aceptar Petici\363n}{section.2.3}% 28
+\BOOKMARK [2][-]{subsection.2.3.4}{CU304 Denunciar Petici\363n}{section.2.3}% 29
+\BOOKMARK [2][-]{subsection.2.3.5}{CU305 Listar Peticiones}{section.2.3}% 30
+\BOOKMARK [2][-]{subsection.2.3.6}{CU306 Descartar Petici\363n}{section.2.3}% 31
+\BOOKMARK [2][-]{subsection.2.3.7}{CU307 Eliminar Petici\363n}{section.2.3}% 32
+\BOOKMARK [1][-]{section.2.4}{Gesti\363n de Usuarios}{chapter.2}% 33
+\BOOKMARK [2][-]{subsection.2.4.1}{CU501 Listar Comentarios.}{section.2.4}% 34
+\BOOKMARK [2][-]{subsection.2.4.2}{CU502 Denunciar Comentario}{section.2.4}% 35
+\BOOKMARK [2][-]{subsection.2.4.3}{CU503 Eliminar Comentario}{section.2.4}% 36
+\BOOKMARK [1][-]{section.2.5}{Gesti\363n de Tipos}{chapter.2}% 37
+\BOOKMARK [2][-]{subsection.2.5.1}{CU601 Crear Tipo Vivienda.}{section.2.5}% 38
+\BOOKMARK [2][-]{subsection.2.5.2}{CU602 Crear Tipo Operaci\363n.}{section.2.5}% 39
+\BOOKMARK [2][-]{subsection.2.5.3}{CU603 Listar Tipos Vivienda}{section.2.5}% 40
+\BOOKMARK [2][-]{subsection.2.5.4}{CU604 Listar Tipos Operaciones}{section.2.5}% 41
+\BOOKMARK [2][-]{subsection.2.5.5}{CU605 Modificar Tipo Vivienda}{section.2.5}% 42
+\BOOKMARK [2][-]{subsection.2.5.6}{CU606 Modificar Tipo Operaci\363n}{section.2.5}% 43
+\BOOKMARK [2][-]{subsection.2.5.7}{CU607 Eliminar Tipo Vivienda}{section.2.5}% 44
+\BOOKMARK [2][-]{subsection.2.5.8}{CU608 Eliminar Tipo Operaci\363n}{section.2.5}% 45

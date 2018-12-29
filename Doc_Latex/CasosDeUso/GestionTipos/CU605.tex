@@ -1,0 +1,34 @@
+\subsection{CU605 Modificar Tipo Vivienda}
+\subsubsection{Descripci\'{o}n}
+El sistema permite que se modifiquen los datos de un tipo de vivienda.
+\subsubsection{Actores}
+\begin{itemize}
+\item Administrador.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Listar Tipos Vivienda (CU603 Listar Tipos Vivienda).
+\end{itemize}
+\subsubsection{Postcondici\'{o}n}
+Se modificaron los datos de un tipo de vivienda.
+\subsubsection{Escenario Principal}
+\begin{enumerate}
+\item El actor acciona la opci\'{o}n para modificar los datos de un tipo de vivienda.
+\item El sistema solicita los datos a modificar.
+\item El actor actualiza el nombre y acepta.
+\item El sistema valida los datos e informa.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item El sistema informa.
+\item Finaliza el caso de uso.
+\end{enumerate}
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item El sistema informa.
+\item Se regresa a l\'{i}nea 2.
+\end{enumerate}
