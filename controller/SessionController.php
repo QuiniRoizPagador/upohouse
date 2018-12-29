@@ -21,9 +21,13 @@ class SessionController extends AbstractController {
     }
 
     public function logout() {
-        session_start();
-        session_unset();
-        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['name']);
+        unset($_SESSION['surname']);
+        unset($_SESSION['id']);
+        unset($_SESSION['email']);
+        unset($_SESSION['uuid']);
+        unset($_SESSION['uuid']);
         $this->redirect();
     }
 

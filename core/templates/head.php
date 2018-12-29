@@ -5,6 +5,24 @@ function error($text) {
     . "<strong>Error!</strong> $text"
     . "</div>";
 }
+
+if (isset($_GET['lang'])) {
+    $lang = $_GET['lang'];
+    if (!empty($lang)) {
+        $_SESSION['lang'] = $lang;
+    }
+}
+
+if (isset($_SESSION['lang'])) {
+    $lang = $_SESSION['lang'];
+    if (is_file("config/lang/$lang.php") && file_exists("config/lang/$lang.php")) {
+        require_once "config/lang/$lang.php";
+    } else {
+        require_once 'config/lang/es.php';
+    }
+} else {
+    require_once 'config/lang/es.php';
+}
 ?>
 
 
@@ -48,11 +66,11 @@ function error($text) {
 
 
         <?php } ?>
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-         <script src="view/assets/js/charts.js"></script>
+        <script src="view/assets/js/charts.js"></script>
         <style>
             .jumbotron{
                 background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fsavannahrealestate.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fhome.jpg&f=1');

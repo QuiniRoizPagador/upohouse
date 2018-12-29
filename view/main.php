@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="jumbotron-heading">Ventor House</h1>
         <p class="lead text-muted text-center">
-            <input type="text" class='form-control searcher' name="search" placeholder="Buscar" /> 
+            <input type="text" class='form-control searcher' name="search" placeholder="<?= $lang['buscar'] ?>" /> 
         <ul class="list-group" id="searchList" style="z-index: 1; position: absolute;">
         </ul>
         </p>
