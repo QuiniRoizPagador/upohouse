@@ -11,7 +11,7 @@ class UserDao extends AbstractDao {
     }
 
     public function searchUser($login) {
-       $query = "SELECT u.id, u.uuid, u.name, u.surname, "
+        $query = "SELECT u.id, u.uuid, u.name, u.surname, "
                 . "u.email,u.password, u.uuid, u.login, u.user_role, "
                 . "s.state FROM Users as u JOIN State_Types as s "
                 . "ON u.state = s.id "
@@ -68,6 +68,30 @@ class UserDao extends AbstractDao {
         $res = parent::preparedStatement($query, $data, FALSE);
         $this->closeConnection();
         return $res;
+    }
+
+    public function getAllPaginated($pag) {
+        $query = $this->mysqli->query("SELECT * FROM $this->table ORDER BY id DESC LIMIT 10 OFFSET $pag");
+        //Devolvemos el resultset en forma de array de objetos
+        
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+        mysqli_close($this->mysqli);
+
+        return $resultSet;
+    }
+
+    public function countUsers($close = TRUE) {
+        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table");
+        $row = $query->fetch_object();
+        mysqli_free_result($query);
+        if ($close) {
+            mysqli_close($this->mysqli);
+        }
+        return $row->count;
     }
 
 }

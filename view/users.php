@@ -73,7 +73,7 @@
                             <td><?= $user->surname; ?> </td>
                             <td><?= $user->email; ?> </td>
                             <td><?= ROLES[$user->user_role]; ?> </td>
-                            <td><?= $user->timestamp; ?> </td>
+                            <td><?= date('d-m-y', strtotime($user->timestamp)) ?> </td>
                             <td>
                                 <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" class="btn btn-danger"><i class="fa fa-database"></i>  <?= $lang['borrar'] ?></button>
                                 <div role="dialog" aria-labelledby="<?= $user->name ?>" aria-hidden="true" tabindex="-1" id="remove<?= $user->uuid ?>" class="modal fade" role="dialog">
@@ -126,7 +126,7 @@
                                                         <!--Imagen Perfil: <input type="file" name="image" /><br />-->
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-success"><?= $lang['enciar'] ?></button>
+                                                        <button type="submit" class="btn btn-success"><?= $lang['enviar'] ?></button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -171,5 +171,26 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <!--<li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>-->
+                    <?php
+                    for ($i = 0; $i < $numUsers / 10; $i++) {
+                        ?>
+                        <li class="page-item"><div class="page-link pagUser"><?= $i ?></div></li>
+                        <?php }
+                        ?>
+                    <!--<li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>-->
+                </ul>
+            </nav>
+
         </div>
 </div>

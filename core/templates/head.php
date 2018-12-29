@@ -71,11 +71,12 @@ if (isset($_SESSION['lang'])) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
         <script src="view/assets/js/charts.js"></script>
+
         <style>
             .jumbotron{
-                background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fsavannahrealestate.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fhome.jpg&f=1');
+                background-image: url('view/images/jumbotron.jpg');
                 background-repeat: no-repeat;
-                background-size: 100%;
+                background-size: cover;
                 padding: 10rem 2rem;
                 margin:0;
             }
@@ -97,6 +98,9 @@ if (isset($_SESSION['lang'])) {
             }
         </style>
         <script type="text/javascript">
+            var base = "<?=$_SERVER['REQUEST_URI']?>";
+            
+            
             (function ($) {
                 $(document).ready(function () {
                     $('.list-inline li > a').click(function () {
@@ -144,6 +148,6 @@ foreach ($allusers as $user) {
             var lb = [<?= '"' . implode('","', $labels) . '"' ?>]
             var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
         </script>
-
+        <script src="view/assets/js/pagination.js"></script>
     </head>
     <body class="<?= $title ?>">

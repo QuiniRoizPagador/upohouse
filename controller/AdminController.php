@@ -23,12 +23,14 @@ class AdminController extends AbstractController {
         //TODO: según el usuario se mostrará la dashboard del admin 
         // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
-        $allusers = $this->userModel->getAll();
+        $numUsers = $this->userModel->countUsers(FALSE);
+        $allusers = $this->userModel->getAllPaginated(0);
 
         //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
             'title' => "P&aacute;gina de Gesti&oacutte;n",
-            "allusers" => $allusers
+            "allusers" => $allusers,
+            "numUsers" => $numUsers
         ));
     }
 
