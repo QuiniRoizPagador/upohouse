@@ -28,7 +28,7 @@ class AdminController extends AbstractController {
 
         //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
-            'title' => "P&aacute;gina de Gesti&oacutte;n",
+            'title' => "P&aacute;gina de Gesti&oacute;n",
             "allusers" => $allusers,
             "numUsers" => $numUsers
         ));
