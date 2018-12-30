@@ -22,16 +22,16 @@ class UserModel extends AbstractModel {
             return NULL;
         }
     }
-    
-    public function block($uuid){
+
+    public function block($uuid) {
         return $this->userDao->block($uuid);
     }
 
-    public function getAllPaginated($pag) {
+    public function getAllPaginated($pag = 0) {
         return $this->userDao->getAllPaginated($pag);
     }
 
-    public function countUsers($close=TRUE) {
+    public function countUsers($close = TRUE) {
         return $this->userDao->countUsers($close);
     }
 

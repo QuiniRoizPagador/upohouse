@@ -70,10 +70,10 @@ class UserDao extends AbstractDao {
         return $res;
     }
 
-    public function getAllPaginated($pag) {
-        $query = $this->mysqli->query("SELECT * FROM $this->table ORDER BY id DESC LIMIT 10 OFFSET $pag");
+    public function getAllPaginated($pag = 0) {
+        $query = $this->mysqli->query("SELECT * FROM $this->table ORDER BY id DESC LIMIT 10 OFFSET " . $pag * 10);
         //Devolvemos el resultset en forma de array de objetos
-        
+
         $resultSet = array();
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;

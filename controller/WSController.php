@@ -2,7 +2,7 @@
 
 use core\AbstractController;
 
-class WebServiceController extends AbstractController {
+class WSController extends AbstractController {
 
     private $userModel;
 
@@ -22,16 +22,13 @@ class WebServiceController extends AbstractController {
     }
 
     public function paginateUsers() {
-        if (filter_has_var(INPUT_GET, "userPag")) {
-            $num = filter_var($_GET['userPag'], FILTER_SANITIZE_NUMBER_INT);
+        if (filter_has_var(INPUT_POST, "userPag")) {
+            $num = filter_var($_POST['userPag'], FILTER_SANITIZE_NUMBER_INT);
+            $allusers = $this->userModel->getAllPaginated($num);
+            echo json_encode($allusers);
         } else {
-            $num = 0;
+            $this->redirect();
         }
-        $allusers = $this->userModel->getAllPaginated($num * 10);
-        foreach ($allusers as $user) {
-            $users[] = utf8_encode(print_r($user)) . "<br/>";
-        }
-        echo json_encode($users);
     }
 
 }

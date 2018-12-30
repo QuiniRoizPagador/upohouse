@@ -98,9 +98,9 @@ if (isset($_SESSION['lang'])) {
             }
         </style>
         <script type="text/javascript">
-            var base = "<?=$_SERVER['REQUEST_URI']?>";
-            
-            
+            var base = "<?= $_SERVER['REQUEST_URI'] ?>";
+
+
             (function ($) {
                 $(document).ready(function () {
                     $('.list-inline li > a').click(function () {
@@ -151,3 +151,14 @@ foreach ($allusers as $user) {
         <script src="view/assets/js/pagination.js"></script>
     </head>
     <body class="<?= $title ?>">
+        <div data-backdrop="static" class="modal" id="lockModal" tabindex="-1" role="dialog" aria-labelledby="lockModalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+

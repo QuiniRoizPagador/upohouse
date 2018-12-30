@@ -3,12 +3,10 @@
 function cargarControlador($controller) {
     $controlador = ucwords($controller) . 'Controller';
     $strFileController = 'controller/' . $controlador . '.php';
-
     if (!is_file($strFileController) || !file_exists($strFileController)) {
         $controlador = ucwords(CONTROLADOR_DEFECTO) . 'Controller';
         $strFileController = 'controller/' . ucwords(CONTROLADOR_DEFECTO) . 'Controller.php';
     }
-
     require_once $strFileController;
     $controllerObj = new $controlador();
     return $controllerObj;

@@ -59,7 +59,7 @@
                         <th><?= $lang['bloquear'] ?></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="cuerpo">
                     <?php foreach ($allusers as $user) { //recorremos el array de objetos y obtenemos el valor de las propiedades    ?>
                         <tr class="<?= $user->state == STATES['BLOQUEADO'] ? 'alert-danger' : "" ?>">
                             <td><?= $user->id; ?> </td>
@@ -171,8 +171,8 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
+            <div class="text-xs-center">
+                <ul class="pagination" style="justify-content: center">
                     <!--<li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
@@ -181,7 +181,9 @@
                     <?php
                     for ($i = 0; $i < $numUsers / 10; $i++) {
                         ?>
-                        <li class="page-item"><div class="page-link pagUser"><?= $i ?></div></li>
+                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                            <a class="page-link pagUser"><?= $i ?></a>
+                        </li>
                         <?php }
                         ?>
                     <!--<li class="page-item">
@@ -190,7 +192,7 @@
                         </a>
                     </li>-->
                 </ul>
-            </nav>
+            </div>
 
         </div>
 </div>
