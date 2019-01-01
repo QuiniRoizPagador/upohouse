@@ -10,27 +10,28 @@ abstract class AbstractModel {
         $this->dao = $dao;
     }
 
-    public function getAll() {
-        return $this->dao->getAll();
+    public function getAll($close = TRUE) {
+        return $this->dao->getAll($close);
     }
 
-    public function delete($id) {
-        return $this->dao->delete($id);
+    public function delete($id, $close = TRUE) {
+        return $this->dao->delete($id, $close);
     }
 
-    public function read($id) {
-        return $this->dao->read($id);
+    public function read($id, $close = TRUE) {
+        return $this->dao->read($id, $close);
     }
 
-    public function search($key, $value) {
-        return $this->dao->search($key, $value);
+    public function search($key, $value, $close = TRUE, $limit = FALSE) {
+        return $this->dao->search($key, $value, $close, $limit);
     }
 
-    public function create($obj) {
-        return $this->dao->create($obj);
+    public function create($obj, $close = TRUE) {
+        return $this->dao->create($obj, $close);
     }
 
-    public function update($obj) {
-        return $this->dao->update($obj);
+    public function update($obj, $close = TRUE) {
+        return $this->dao->update($obj, $close);
     }
+
 }
