@@ -2,6 +2,7 @@
 
 $lang = array(
     "añadir usuario" => "Add User",
+    "añadir anuncio" => "Add Ad",
     "nombre" => "Name",
     "apellido" => "Surname",
     "login" => "Login",
@@ -50,5 +51,17 @@ $lang = array(
     "usuario_bloqueado" => "The user is blocked",
     "user_pass_error" => "Invalid username or password",
     "user_pass_required"=> "Username and password Required",
+    "tipoCasa" => "Housing Type",
+    "tipoOperacion" => "Operation Type",
+    "precio" => "Prize(€)",
+    "habitaciones" => "Rooms",
+    "m2" => "M<sup>2</sup>",
+    "m2Texto" => "Square Meters",
+    "imagenes" => "Images",
+    "descripcion" => "Description",
+    "comunidad" => "Community",
+    "provincia" => "Province",
+    "localidad" => "Municipality",
+    "imagenesTextoAyuda" => "Choose all images you want to upload.",
 );
 

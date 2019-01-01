@@ -5,7 +5,7 @@ require_once "model/dao/AdsDao.php";
 
 use core\AbstractModel;
 
-class AdsModel extends AbstractModel {
+class AdModel extends AbstractModel {
 
     private $adsDao;
 
