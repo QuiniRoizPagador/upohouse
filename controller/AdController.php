@@ -24,14 +24,13 @@ class AdController extends AbstractController {
      * Página para crear anuncio.
      */
     public function createView() {
-        $allHousingTypes = $this->housingTypeModel->getAll();
-        /*$allOperationTypes = $this->operationTypeModel->getAll();*/
-        $allOperationTypes = array();
+        $allHousingTypes = $this->housingTypeModel->getAll(FALSE);
+        $allOperationTypes = $this->operationTypeModel->getAll();
         //Cargamos la vista adView y le pasamos valores
         $this->view("createAd", array(
             'title' => "Crear un anuncio",
             'allHousingTypes' => $allHousingTypes,
-            'allOperationTypes' => $allHousingTypes
+            'allOperationTypes' => $allOperationTypes
         ));
     }
 

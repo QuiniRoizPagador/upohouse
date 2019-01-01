@@ -8,15 +8,15 @@
                 <label for="housingType"><?= $lang["tipoCasa"] ?></label>
                 <select class="form-control" id="housingType" name="housingType">
                     <?php foreach ($allHousingTypes as $housingType) { ?>
-                        <option value="<?= $housingType['uuid']; ?>"><?= $housingType['name']; ?></option>
+                        <option value="<?= $housingType->uuid; ?>"><?= $housingType->name; ?></option>
                     <?php } ?>
                 </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="operationType"><?= $lang["tipoOperacion"] ?></label>
                 <select class="form-control" id="operationType" name="operationType">
-                    <?php foreach ($allHousingTypes as $housingType) { ?>
-                        <option value="<?= $operationType['uuid']; ?>"><?= $operationType['name']; ?></option>
+                    <?php foreach ($allOperationTypes as $operationType) { ?>
+                        <option value="<?= $operationType->uuid; ?>"><?= $operationType->name; ?></option>
                     <?php } ?>
                 </select>
             </div>
