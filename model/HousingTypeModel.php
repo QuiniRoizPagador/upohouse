@@ -5,7 +5,7 @@ require_once "model/dao/HousingTypeDao.php";
 
 use core\AbstractModel;
 
-class HousingTypeModel {
+class HousingTypeModel extends AbstractModel {
 
     private $housingTypeDao;
 
