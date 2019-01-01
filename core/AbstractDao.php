@@ -26,7 +26,6 @@ abstract class AbstractDao {
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
         }
-
         mysqli_free_result($query);
         if ($close) {
             mysqli_close($this->mysqli);

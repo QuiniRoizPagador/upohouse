@@ -7,21 +7,17 @@
             <div class="form-group col-md-6">
                 <label for="housingType"><?= $lang["tipoCasa"] ?></label>
                 <select class="form-control" id="housingType" name="housingType">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <?php foreach ($allHousingTypes as $housingType) { ?>
+                        <option value="<?= $housingType['uuid']; ?>"><?= $housingType['name']; ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="operationType"><?= $lang["tipoOperacion"] ?></label>
                 <select class="form-control" id="operationType" name="operationType">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <?php foreach ($allHousingTypes as $housingType) { ?>
+                        <option value="<?= $operationType['uuid']; ?>"><?= $operationType['name']; ?></option>
+                    <?php } ?>
                 </select>
             </div>
         </div>

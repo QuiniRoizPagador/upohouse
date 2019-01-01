@@ -10,19 +10,28 @@ use model\dao\dto\Ad;
 class AdController extends AbstractController {
 
     private $adModel;
+    private $housingTypeModel;
+    private $operationTypeModel;
 
     public function __construct() {
         parent::__construct();
         $this->adModel = new AdModel();
+        $this->housingTypeModel = new HousingTypeModel();
+        $this->operationTypeModel = new OperationTypeModel();
     }
 
     /**
      * Página para crear anuncio.
      */
     public function createView() {
+        $allHousingTypes = $this->housingTypeModel->getAll();
+        /*$allOperationTypes = $this->operationTypeModel->getAll();*/
+        $allOperationTypes = array();
         //Cargamos la vista adView y le pasamos valores
         $this->view("createAd", array(
-            'title' => "Crear un anuncio"
+            'title' => "Crear un anuncio",
+            'allHousingTypes' => $allHousingTypes,
+            'allOperationTypes' => $allHousingTypes
         ));
     }
 
