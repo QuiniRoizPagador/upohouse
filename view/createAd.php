@@ -50,11 +50,10 @@
             <div class="form-group col-md-4">
                 <label for="community"><?= $lang["comunidad"] ?></label>
                 <select class="form-control" id="community" name="community">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option selected="selected"><?= $lang["eligeComunidad"]?></option>
+                    <?php foreach ($allCommunities as $community) { ?>
+                        <option value="<?= $community->id; ?>"><?= $community->community; ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group col-md-4">

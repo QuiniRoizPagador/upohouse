@@ -13,8 +13,6 @@ class AdController extends AbstractController {
     private $housingTypeModel;
     private $operationTypeModel;
     private $communityModel;
-    private $provinceModel;
-    private $municipalityModel;
 
     public function __construct() {
         parent::__construct();
@@ -22,8 +20,6 @@ class AdController extends AbstractController {
         $this->housingTypeModel = new HousingTypeModel();
         $this->operationTypeModel = new OperationTypeModel();
         $this->communityModel = new CommunityModel();
-        $this->provinceModel = new ProvinceModel();
-        $this->municipalityModel = new MunicipalityModel();
     }
 
     /**
@@ -31,12 +27,14 @@ class AdController extends AbstractController {
      */
     public function createView() {
         $allHousingTypes = $this->housingTypeModel->getAll(FALSE);
-        $allOperationTypes = $this->operationTypeModel->getAll();
+        $allOperationTypes = $this->operationTypeModel->getAll(FALSE);
+        $allCommunities = $this->communityModel->getAll();        
         //Cargamos la vista adView y le pasamos valores
         $this->view("createAd", array(
             'title' => "Crear un anuncio",
             'allHousingTypes' => $allHousingTypes,
-            'allOperationTypes' => $allOperationTypes
+            'allOperationTypes' => $allOperationTypes,
+            'allCommunities' => $allCommunities
         ));
     }
 

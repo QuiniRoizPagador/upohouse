@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS `upohouse`;
 DROP USER IF EXISTS `upohouse`;
 
 #:::Crea la base de datos:::
-CREATE DATABASE upohouse CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+CREATE DATABASE upohouse CHARACTER SET utf8 COLLATE utf_unicode_ci;
 USE upohouse;
 
 #:::DDL:::
