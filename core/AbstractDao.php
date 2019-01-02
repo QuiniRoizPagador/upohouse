@@ -15,6 +15,7 @@ abstract class AbstractDao {
         $this->table = (string) $table;
         $this->db = Conect::getInstance();
         $this->mysqli = $this->db->getConnection();
+        $this->mysqli->set_charset('utf8');
     }
 
     public function getAll($close = True) {
