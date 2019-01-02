@@ -21,6 +21,9 @@ class AdController extends AbstractController {
         $this->adModel = new AdModel();
         $this->housingTypeModel = new HousingTypeModel();
         $this->operationTypeModel = new OperationTypeModel();
+        $this->communityModel = new CommunityModel();
+        $this->provinceModel = new ProvinceModel();
+        $this->municipalityModel = new MunicipalityModel();
     }
 
     /**
