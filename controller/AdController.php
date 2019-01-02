@@ -12,6 +12,9 @@ class AdController extends AbstractController {
     private $adModel;
     private $housingTypeModel;
     private $operationTypeModel;
+    private $communityModel;
+    private $provinceModel;
+    private $municipalityModel;
 
     public function __construct() {
         parent::__construct();
