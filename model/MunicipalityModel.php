@@ -5,7 +5,7 @@ require_once "model/dao/MunicipalityDao.php";
 
 use core\AbstractModel;
 
-class Municipality extends AbstractModel {
+class MunicipalityModel extends AbstractModel {
 
     private $municipalityDao;
 
