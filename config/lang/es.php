@@ -63,6 +63,8 @@ $lang = array(
     "provincia" => "Provincia",
     "localidad" => "Localidad",
     "imagenesTextoAyuda" => "Seleccione todas las imágenes que desee subir.",
-    "eligeComunidad" => "Elige una comunidad"
+    "eligeComunidad" => "Elige una comunidad",
+    "eligeProvincia" => "Elige una provincia",
+    "eligeMunicipio" => "Elige un municipio"
 );
 

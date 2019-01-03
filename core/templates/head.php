@@ -158,8 +158,10 @@ if (isset($countRegistrations)) {
                 var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
 <?php }
 ?>
+
         </script>
         <script src="view/assets/js/pagination.js"></script>
+        <script src="view/assets/js/localization.js"></script>
         <script src="view/assets/js/validations.js"></script>
     </head>
     <body class="<?= $title ?>">

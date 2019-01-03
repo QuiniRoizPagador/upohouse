@@ -58,22 +58,14 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="province"><?= $lang["provincia"] ?></label>
-                <select class="form-control" id="province" name="province">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" id="province" name="province" disabled="disabled">
+                    <option selected="selected"><?= $lang["eligeProvincia"]?></option>
                 </select>
             </div>
             <div class="form-group col-md-4">
                 <label for="municipality"><?= $lang["localidad"] ?></label>
-                <select class="form-control" id="municipality" name="municipality">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" id="municipality" name="municipality" disabled="disabled">
+                    <option selected="selected"><?= $lang["eligeMunicipio"]?></option>
                 </select>
             </div>
         </div>
