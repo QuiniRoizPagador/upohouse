@@ -102,12 +102,11 @@
 
 
 $(document).ready(function () {
-    $(".formUser").checkMatch();
+    $(".formUser, .formUpdateUser").checkMatch();
     $(".formUser").validate();
     $(".formUser").matchPasswords();
     $(".formUpdateUser").validate({empty: true});
     $(".formUpdateUser").matchPasswords({empty: true});
-    $(".formUpdateUser").checkMatch();
 });
 
 
