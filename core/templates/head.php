@@ -33,6 +33,7 @@ if (isset($_SESSION['lang'])) {
         <title><?php echo $title ?></title>
         <link rel = "stylesheet" href = "view/assets/lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='view/assets/js/global.js'></script>
         <script src="view/assets/lib/jquery/jquery.min.js"></script>
         <?php if (!verifyIsLogin()) { ?>
             <!--Bootstrap -->
@@ -63,7 +64,14 @@ if (isset($_SESSION['lang'])) {
                 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
 
-
+            <style>
+                .Footer p{
+                    padding-top: 1.2rem;
+                    padding-right: 0px;
+                    padding-bottom: 0;
+                    padding-left: 0px;
+                }
+            </style>
 
         <?php } ?>
 
@@ -99,8 +107,13 @@ if (isset($_SESSION['lang'])) {
         </style>
         <script type="text/javascript">
             var base = "<?= $_SERVER['REQUEST_URI'] ?>";
-
-
+<?php
+$list = "";
+foreach ($lang as $key => $value) {
+    $list .= '\'' . $key . '\':\'' . $value . '\',' . "\n";
+}
+?>
+            const LANG = {<?= $list ?>};
             (function ($) {
                 $(document).ready(function () {
                     $('.list-inline li > a').click(function () {
@@ -128,8 +141,8 @@ if (isset($_SESSION['lang'])) {
                     $.post("<?= $helper->url("WebService", "prueba"); ?>", {nombre: $(".searcher").val()}).done(function (data) {
                         if (data !== "" && data !== null) {
                             $.map($.parseJSON(data), function (k, v) {
-                                lista.append("<li class='list-group-item' style='width:50em; text-align:left;'> "
-                                        + "<a href='<?php echo $helper->url("User", "index"); ?>' class='text-muted'>"
+                                lista.append("<li class='list-group-item' style='width:50em;text-align:left;'> "
+                                        + "<a href='<?php echo $helper->url("User", "index"); ?>' class='text - muted'>"
                                         + k.id + "-" + k.nombre +
                                         "</a></li>");
                             });
@@ -140,25 +153,30 @@ if (isset($_SESSION['lang'])) {
         </script>
         <script type="text/javascript">
 <?php
-foreach ($allusers as $user) {
-    $labels[] = $user->login;
-    $datasets[] = date('ms', strtotime($user->timestamp));
-}
+if (isset($countRegistrations)) {
+    foreach ($countRegistrations as $c) {
+        $labels[] = $c->month . "/" . $c->year;
+        $datasets[] = $c->count;
+    }
+    ?>
+                var lb = [<?= '"' . implode('","', $labels) . '"' ?>]
+                var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
+<?php }
 ?>
-            var lb = [<?= '"' . implode('","', $labels) . '"' ?>]
-            var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
         </script>
         <script src="view/assets/js/pagination.js"></script>
+        <script src="view/assets/js/validations.js"></script>
     </head>
     <body class="<?= $title ?>">
-        <div data-backdrop="static" class="modal" id="lockModal" tabindex="-1" role="dialog" aria-labelledby="lockModalModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-                    </div>
+        <?php if (!verifyIsLogin()) { ?>
+            <div data-backdrop="static" class="modal" id="lockModal" tabindex="-1" role="dialog" aria-labelledby="lockModalModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-
+        <?php } ?>

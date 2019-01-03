@@ -11,7 +11,7 @@ class WSController extends AbstractController {
         $this->userModel = new UserModel();
     }
 
-    public function prueba() {
+    /*public function prueba() {
         // TODO: controlar encapsulando solo los atributos necesarios por seguridad
         if (filter_has_var(INPUT_POST, "nombre")) {
             $nombre = $this->userModel->sanearStrings(array('nombre'))['nombre'];
@@ -19,7 +19,7 @@ class WSController extends AbstractController {
         } else {
             $this->redirect();
         }
-    }
+    }*/
 
     public function paginateUsers() {
         if (filter_has_var(INPUT_POST, "userPag")) {

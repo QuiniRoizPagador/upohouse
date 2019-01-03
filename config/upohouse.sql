@@ -182,7 +182,7 @@ INSERT INTO `state_types` (`uuid`, `state`) VALUES
 
 #LOAD USERS
 INSERT INTO `users` (`uuid`, `name`, `email`, `password`, `login`, `user_role`) VALUES
-('4b3403665fea6', 'admin', 'admin@admin.admin', '$2y$10$ygpegVTo.1VYirRkIfmxEeCHiTMlRzbXyaNmVRStr7B8M4PAqtxeS', 'admin', 0);
+('4b3403665fea6', 'admin', 'admin@admin.admin', '$2y$10$ygpegVTo.1VYirRkIfmxEeCHiTMlRzbXyaNmVRStr7B8M4PAqtxeS', 'admin', 1);
 
 #LOAD COMMUNITIES
 INSERT INTO `Communities` (`id`, `slug`, `community`, `capital_id`) VALUES

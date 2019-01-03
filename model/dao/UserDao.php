@@ -7,7 +7,7 @@ use core\AbstractDao;
 class UserDao extends AbstractDao {
 
     public function __construct() {
-        parent::__construct("users");
+        parent::__construct("Users");
     }
 
     public function searchUser($login) {
@@ -25,38 +25,56 @@ class UserDao extends AbstractDao {
     }
 
     public function create($obj) {
-        $res = $this->search("email", $obj->getEmail(), FALSE);
-        if (isset($res->id)) {
-            $this->closeConnection();
-            return 0;
+        $query = "SELECT count(*) as count FROM $this->table WHERE login = ? OR email = ?";
+        $data = array("ss", "login" => $obj->getLogin(), "email" => $obj->getEmail());
+        $resultSet = parent::preparedStatement($query, $data, TRUE);
+        $count = mysqli_fetch_object($resultSet);
+        mysqli_free_result($resultSet);
+        if ($count->count > 0) {
+            return "duplicate_user";
         } else {
-            $query = "INSERT INTO $this->table (`uuid`, `name`, `surname`,`email`, `password`, `login`, `user_role`)
-                VALUES(?, ?, ?, ?, ?, ?, ?)";
-            $data = array("ssssssi", "uuid" => $obj->getUuid(), "name" => $obj->getName(), "surname" => $obj->getSurname(),
+            $query = "INSERT INTO $this->table (`uuid`, `name`, `surname`,`email`, `password`, `login`, `user_role`, `phone`)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            $data = array("ssssssis", "uuid" => $obj->getUuid(), "name" => $obj->getName(), "surname" => $obj->getSurname(),
                 "email" => $obj->getEmail(), "password" => password_hash($obj->getPassword(), PASSWORD_DEFAULT)
-                , "login" => $obj->getLogin(), 'user_role' => $obj->getUserRole());
+                , "login" => $obj->getLogin(), 'user_role' => $obj->getUserRole(), 'phone' => $obj->getPhone());
             $res = parent::preparedStatement($query, $data, FALSE);
             $this->closeConnection();
             return $res;
         }
     }
 
-    public function update($obj) {
-        $prev = $this->search("uuid", $obj->getUuid(), FALSE);
+    public function delete($id, $close = True) {
+        $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        if ($close) {
+            $this->closeConnection();
+        }
+        return $res;
+    }
+
+    public function update($obj, $close = True) {
+        $prev = $this->search("uuid", $obj->getUuid(), FALSE, 1);
         if (trim($obj->getName()) == '') {
             $obj->setName($prev->name);
         }
         if (trim($obj->getSurname()) == '') {
             $obj->setSurname($prev->surname);
         }
+        if (trim($obj->getPhone()) == '') {
+            $obj->setPhone($prev->phone);
+        }
         if (trim($obj->getPassword()) == '') {
             $obj->setPassword($prev->password);
         } else {
             $obj->setPassword(password_hash($obj->getPassword(), PASSWORD_DEFAULT));
         }
-        $query = "UPDATE $this->table SET name = ?, surname = ?, password = ? WHERE uuid = ?";
-        $data = array("ssss", "name" => $obj->getName(), "surname" => $obj->getSurname(),
-            "password" => $obj->getPassword(), "uuid" => $obj->getUuid());
+        $query = "UPDATE $this->table SET name = ?, surname = ?, password = ?, "
+                . "user_role = ?, phone = ? WHERE uuid = ?";
+        $data = array("sssiss", "name" => $obj->getName(), "surname" => $obj->getSurname(),
+            "password" => $obj->getPassword(), "user_role" => $obj->getUserRole(),
+            "phone" => $obj->getPhone(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
         $this->closeConnection();
         return $res;
@@ -70,8 +88,10 @@ class UserDao extends AbstractDao {
         return $res;
     }
 
-    public function getAllPaginated($pag = 0) {
-        $query = $this->mysqli->query("SELECT * FROM $this->table ORDER BY id DESC LIMIT 10 OFFSET " . $pag * 10);
+    public function getAllPaginated($pag = 0, $close = TRUE) {
+        $query = $this->mysqli->query("SELECT * FROM $this->table "
+                . "WHERE state != " . STATES['ELIMINADO'] . " "
+                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
         //Devolvemos el resultset en forma de array de objetos
 
         $resultSet = array();
@@ -79,13 +99,32 @@ class UserDao extends AbstractDao {
             $resultSet[] = $row;
         }
         mysqli_free_result($query);
-        mysqli_close($this->mysqli);
+        if ($close) {
+            mysqli_close($this->mysqli);
+        }
 
         return $resultSet;
     }
 
+    public function countRegistrations($close = TRUE) {
+        $query = $this->mysqli->query("select COUNT(*) as count, MONTH(`timestamp`) as month,"
+                . "YEAR(`timestamp`) as year from $this->table "
+                . "GROUP BY MONTH(`timestamp`),YEAR(`timestamp`) "
+                . "ORDER BY year(`timestamp`) DESC");
+
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+        if ($close) {
+            mysqli_close($this->mysqli);
+        }
+        return $resultSet;
+    }
+
     public function countUsers($close = TRUE) {
-        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table");
+        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         if ($close) {

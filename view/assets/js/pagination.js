@@ -8,27 +8,19 @@
                 var num = $(this).text();
                 $.post(url,
                         {
-                            'userPag': num
+                            'userPag': num - 1
                         },
                         function (data, status) {
-                            var users = $.parseJSON(data);
-                            $("#cuerpo").empty();
-                            for (var i = 0; i < users.length; i++) {
-                                var lock = users[i].state == '2';
-                                $("#cuerpo").append("<tr" + (lock ? " class='alert alert-danger'>" : ">")
-                                        + "<td>" + users[i].id + "</td>"
-                                        + "<td>" + users[i].uuid + "</td>"
-                                        + "<td>" + users[i].login + "</td>"
-                                        + "<td>" + users[i].name + "</td>"
-                                        + "<td>" + users[i].surname + "</td>"
-                                        + "<td>" + users[i].email + "</td>"
-                                        + "<td>" + users[i].user_role + "</td>"
-                                        + "<td>" + users[i].timestamp + "</td>"
-                                        + "<td><button type='button' data-toggle='modal' data-target='#remove" + users[i].uuid + "' class='btn btn-danger'><i class='fa fa-database'></i></button></td>"
-                                        + "<td><button type='button' data-toggle='modal' data-target='#edit" + users[i].uuid + "' class='btn btn-warning'><i class='fa fa-user'></i></button></td>"
-                                        + "<td><button type='button' data-toggle='modal' data-target='#block" + users[i].uuid + "' class='btn btn-danger'><i class='fa fa-ban'></i></button></td>"
-                                        + "</tr>");
+                            try {
+                                $("#cuerpo").empty();
+                                var users = $.parseJSON(data);
+                                for (var i = 0; i < users.length; i++) {
+                                    $("#cuerpo").append(cargarUsuario(users[i]));
+                                }
+                            } catch (Exception) {
+
                             }
+
                             $("#lockModal").modal("hide");
                         }
                 );
@@ -37,11 +29,203 @@
         });
     };
 })(jQuery);
-
 $(document).ready(function () {
-    $(".pagUser").paginate();
+    $(".pagUser").paginate()
+            ;
+    $('[data-toggle="tooltip"]').tooltip()
 });
+function cargarUsuario(user) {
+    var clase = "";
+    if (user.state == '2') {
+        clase = "table-warning";
+    }
+    var tr = $("<tr/>");
+    tr.append(create("td", user.id, clase));
+    tr.append(create("td", user.name, clase));
+    tr.append(create("td", user.surname, clase));
+    tr.append(create("td", user.email, clase));
+    tr.append(create("td", ROLES[user.user_role], clase));
+    tr.append(create("td", user.timestamp, clase));
+
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#search" + user.uuid + "' class='btn btn-info btn-sm' />");
+    button.append($("<span class='fa fa-eye'/>"));
+    td.append(button);
+
+    var modal = create("div id='search" + user.uuid + "' tabindex='-1'", "", "modal fade");
+    var modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", user.name, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+    var modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+    var tabla = create("table", "", "table table-striped");
+
+    var tbody = $("<tbody/>");
+
+    var tbody = $("<tbody />");
+    tbody.append(createTR("ID", user.id));
+    tbody.append(createTR("UUID", user.uuid));
+    tbody.append(createTR(LANG['nombre'], user.name));
+    tbody.append(createTR(LANG['apellido'], user.surname));
+    tbody.append(createTR(LANG['email'], user.email));
+    tbody.append(createTR(LANG['phone'], user.phone));
+    tbody.append(createTR(LANG['fecha registro'], user.timestamp));
+    tbody.append(createTR(LANG['rol'], ROLES[user.user_role]));
+
+    tabla.append(tbody);
+    modal_body.append(tabla);
+    modal_body.append($("<br />"));
+
+    var buttons = create("div", "", "text-center");
+    modal_body.append(buttons);
+    td.append(modal);
+    if (user.user_role != ROLES['ADMIN']) {
+        if (user.state == STATES['BLOQUEADO']) {
+            buttons.append("<div class='alert alert-warning' role='alert'>" + LANG['BLOQUEADO'] + "</div>");
+        } else {
+            var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['bloquear'] + "'>");
+            span.append("<button type='button' data-toggle='modal' data-target='#block" + user.uuid + "' data-dismiss='modal' class='btn btn-warning'><i class='fa fa-ban'></i></button></span>");
+            buttons.append(span);
+        }
+        var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['eliminar'] + "'>");
+        span.append("<button type='button' data-toggle='modal' data-target='#remove" + user.uuid + "' data-dismiss='modal' class='btn btn-danger'><i class='fa fa-remove'></i></button> </span>");
+        buttons.append(span);
+    }
+    var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['editar'] + "'>");
+    span.append("<button type='button' data-toggle='modal' data-target='#edit" + user.uuid + "' data-dismiss='modal' class='btn btn-success'><i class='fa fa-pencil'></i></button></span>");
+    buttons.append(span);
+
+    var form, modal_footer;
+
+    if (user.user_role !== ROLES['ADMIN']) {
+        if (user.state !== STATES['BLOQUEADO']) {
+            modal = create("div id='block" + user.uuid + "' tabindex='-1'", "", "modal fade");
+            td.append(modal);
+            modal_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
+            modal.append(modal_dialog);
+            modal_card = $("<div class='modal-content card' />");
+            modal_dialog.append(modal_card);
+            modal_header = $("<div class='card-header modal-header' />");
+            modal_header.append(create("h5", "Bloquear usuario " + user.name, "modal-title"));
+            modal_header.append($("<button type='button' data-dismiss='modal'  data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+            modal_card.append(modal_header);
+            modal_body = $("<div class='card-body modal-body' />");
+            modal_body.text("¿Estás seguro?");
+            modal_card.append(modal_body);
+            modal_footer = create("div", "", "modal-footer");
+            form = $("<form method='post' action='index.php?controller=admin&action=blockUser' />");
+            form.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
+            form.append($("<button type='submit' class='btn btn-warning'><i class='fa fa-ban'></i>" + LANG['bloquear'] + "</button>"));
+            form.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+            modal_footer.append(form);
+            modal_card.append(modal_footer);
+        }
+        modal = create("div id='remove" + user.uuid + "' tabindex='-1'", "", "modal fade");
+        td.append(modal);
+        modal_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
+        modal.append(modal_dialog);
+        modal_card = $("<div class='modal-content card' />");
+        modal_dialog.append(modal_card);
+        modal_header = $("<div class='card-header modal-header' />");
+        modal_header.append(create("h5", "Eliminar Registro de " + user.name, "modal-title"));
+        modal_header.append($("<button type='button' data-dismiss='modal'  data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+        modal_card.append(modal_header);
+        modal_body = $("<div class='card-body modal-body' />");
+        modal_body.text("¿Estás seguro?");
+        modal_card.append(modal_body);
+        var modal_footer = create("div", "", "modal-footer");
+        var form = $("<form method='post' action='index.php?controller=Admin&action=removeUser' />");
+        form.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
+        form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+        form.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+        modal_footer.append(form);
+        modal_card.append(modal_footer);
+    }
+
+    modal = create("div id='edit" + user.uuid + "' tabindex='-1'", "", "modal fade");
+    td.append(modal);
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
+    modal.append(modal_dialog);
+    modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", "Editar datos de " + user.name, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+    form = $("<form method='post' action='index.php?controller=Admin&action=updateUser' class='formUpdateUser' />");
+    modal_card.append(form);
+    modal_body = $("<div class='card-body modal-body' />");
+    form.append(modal_body);
+    var row = $("<div class='row' />");
+    modal_body.append(row);
+
+    var form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
+    form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"),"","");
+    form_control.append(create("label for='name'", LANG['nombre'], ""));
+    form_control.append(create("input type='text' id='name' name='name' value='" + user.name + "'", "", "form-control"));
+    form_control.append(create("div", "Formato Incorrecto", "invalid-feedback"));
+
+
+    form_control.append(create("label for='surname'", LANG['apellido'], ""));
+    form_control.append(create("input type='text' id='surname' name='surname' value='" + user.surname + "'", "", "form-control"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
 
+    form_control.append(create("label for='phone'", LANG['phone'], ""));
+    form_control.append(create("input type='tel' id='phone' name='phone' value='" + user.phone + "'", "", "form-control"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
+    row.append(form_control);
 
+    form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
+    form_control.append(create("label for='password'", LANG['contraseña'], ""));
+    form_control.append(create("input type='password' id='password' name='password'", "", "form-control"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
+
+
+    form_control.append(create("label for='password'", LANG['contraseña'], ""));
+    form_control.append(create("input type='password' id='password2' name='password2'", "", "form-control"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
+
+
+    form_control.append(create("label for='user_role'", LANG['rol'], ""));
+    var select = create("select name='user_role'", "", "form-control");
+    select.append(create("option value='0'", "USER", ""));
+    select.append(create("option value='1'", "ADMIN", ""));
+    form_control.append(select);
+    row.append(form_control);
+    
+
+    var modal_footer = create("div", "", "modal-footer");
+
+    modal_footer.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
+    modal_footer.append($("<button type='submit' class='btn btn-success'>Enviar</button>"));
+    modal_footer.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>Cancelar</button>"));
+    
+    form.append(modal_footer);
+
+    tr.append(td);
+
+    return tr;
+}
+
+function create(type, data, clase) {
+    var td = $("<" + type + " />");
+    if (clase !== "") {
+        td.addClass(clase);
+    }
+    td.append(data);
+    return td;
+}
+
+function createTR(title, content) {
+    var tr = $("<tr />");
+    tr.append(create("th", title, ""));
+    tr.append(create("td", content, ""));
+    return tr;
+}

@@ -24,6 +24,7 @@ class Conect {
         $this->pass = $db_cfg["pass"];
         $this->database = $db_cfg["database"];
         $this->con = mysqli_connect($this->host, $this->user, $this->pass, $this->database);
+        $this->con->set_charset('utf8');
         if (!$this->con) {
             die('Error en la conexión sql.');
         }

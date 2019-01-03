@@ -43,5 +43,12 @@ $lang = array(
     "tipos" => "Types",
     "incidencias" => "Incidents",
     "denuncias" => "Denounces",
+    "phone" => "Phone",
+    "formato_incorrecto" => "Incorrect Format",
+    "no_match" => "No Match",
+    "duplicate_user" => "Duplicate User",
+    "usuario_bloqueado" => "The user is blocked",
+    "user_pass_error" => "Invalid username or password",
+    "user_pass_required"=> "Username and password Required",
 );
 

@@ -34,17 +34,17 @@ class SessionController extends AbstractController {
     public function verify() {
         if (filter_has_var(INPUT_POST, "name") && filter_has_var(INPUT_POST, "password")) {
             if (trim($_POST['name']) == "") {
-                $errors['name'] = "Campo Requerido";
+                $errors['name'] = "formato_incorrecto";
             }
             if (trim($_POST['password']) == "") {
-                $errors['password'] = "Campo Requerido";
+                $errors['password'] = "formato_incorrecto";
             }
             if (!isset($errors)) {
                 $filtrado = RegularUtils::sanearStrings(array("name", "password"));
                 $user = $this->userModel->verify($filtrado['name'], $filtrado['password']);
                 if (isset($user->name)) {
                     if ($user->state == 'BLOQUEADO') {
-                        $errors['login'] = "Usuario Bloqueado en el sistema";
+                        $errors['login'] = "usuario_bloqueado";
                     } else {
                         session_start();
                         $_SESSION['login'] = $user->login;
@@ -57,11 +57,11 @@ class SessionController extends AbstractController {
                         $this->redirect("User", "index");
                     }
                 } else {
-                    $errors['login'] = "Usuario o contraseña erróneos";
+                    $errors['login'] = "user_pass_error";
                 }
             }
         } else {
-            $errors['login'] = "Requerido usuario y contraseña";
+            $errors['login'] = "user_pass_required";
         }
 
         $this->view("login", array(

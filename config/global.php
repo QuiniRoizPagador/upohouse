@@ -2,9 +2,9 @@
 
 // constante que tomará los valores de los actions que necesitan ser verificados 
 const ACTIONS = array(
-    "USER" => array("create", "update", "remove", "readUser"),
+    "USER" => array("remove", "readUser", "reportUser"),
     "GUEST" => array("index", "login", "register"),
-    "ADMIN" => array('create', 'remove', "dashboard"),
+    "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers"),
 );
 // controlador por defecto
 define("CONTROLADOR_DEFECTO", "User");
@@ -24,8 +24,8 @@ const STATES = array(
 );
 
 const ROLES = array(
-    "ADMIN" => 0,
-    "USER" => 1,
-    0 => "ADMIN",
-    1 => "USER",
+    "ADMIN" => 1,
+    "USER" => 0,
+    1 => "ADMIN",
+    0 => "USER",
 );

@@ -9,6 +9,7 @@ class User {
     private $name;
     private $surname;
     private $email;
+    private $phone;
     private $password;
     private $login;
     private $user_role;
@@ -53,6 +54,14 @@ class User {
 
     public function getEmail() {
         return $this->email;
+    }
+
+    public function setPhone($phone) {
+        $this->phone = $phone;
+    }
+    
+    public function getPhone() {
+        return $this->phone;
     }
 
     public function setEmail($email) {

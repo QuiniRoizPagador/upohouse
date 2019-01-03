@@ -1,4 +1,4 @@
-<nav class="col-md-2 d-none d-md-block sidebar">
+<nav class="col-md-2 d-none d-md-block sidebar bg-light">
     <div class="sidebar-sticky">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Gesti&oacute;n</span>
