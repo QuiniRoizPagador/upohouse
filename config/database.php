@@ -5,6 +5,6 @@ return array(
     "user" => "root",
     "pass" => "",
     "database" => "upohouse",
-    "chartset" => "utf8"
+    "charset" => "utf8"
 );
 
