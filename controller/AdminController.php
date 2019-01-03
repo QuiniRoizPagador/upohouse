@@ -42,7 +42,7 @@ class AdminController extends AbstractController {
     public function createUser() {
         $values = array("name" => "text", "login" => "text", "surname" => "text",
             "email" => "email", "password" => "text", "password2" => "text",
-            "user_role" => "text", "phone" => "phone", "user_role" => 'number');
+            "phone" => "phone", "user_role" => 'number');
         $errors = RegularUtils::filtrarPorTipo($values, "createUser");
         if ($_POST['password'] != $_POST['password2']) {
             $errors["createUser"]["password"] = $errors["createUser"]["password2"] = "no_match";

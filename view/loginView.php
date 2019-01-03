@@ -1,34 +1,34 @@
 <?php
 require_once 'core/templates/head.php';
-require_once 'core/templates/nav.php'
+require_once 'core/templates/nav.php';
 ?>
 <ul class="nav nav-tabs"  role="tablist">
-    <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" aria-selected="true"><?= $lang['iniciar sesion'] ?></a></li>
-    <li class="nav-item"><a class="nav-link" href="#signup" data-toggle="tab" aria-selected="false"><?= $lang['registro'] ?></a></li>
+    <li class="nav-item"><a class="nav-link <?= !isset($errors['createUser']) ? "active" : "" ?>" href="#login" data-toggle="tab" aria-selected="true"><?= $lang['iniciar sesion'] ?></a></li>
+    <li class="nav-item"><a class="nav-link <?= isset($errors['createUser']) ? "active" : "" ?>" href="#signup" data-toggle="tab" aria-selected="false"><?= $lang['registro'] ?></a></li>
 </ul>
 <div class="tab-content">
-    <div id="login" class="tab-pane fade show form-signin has-success active">
+    <div id="login" class="tab-pane col-md-2 fade has-success <?= !isset($errors['createUser']) ? "show active" : "" ?> content-center">
         <form action="<?= $helper->url("Session", "verify") ?>" method="post" class="formUser">
-            <p class="text-muted text-center">
+            <h3 class="text-muted text-center">
                 <?= $lang['iniciar sesion'] ?>
-            </p><br />
-            <input type="text" name="name" placeholder="<?= $lang['login'] ?>" class="form-control top <?= isset($errors['name']) ? " is-invalid" : "" ?>">
+            </h3><br />
+            <input type="text" name="name" placeholder="<?= $lang['login'] ?>" class="form-control top <?= isset($errors['login']['name']) ? " is-invalid" : "" ?>">
             <div class="invalid-feedback">
-                <?= isset($errors['name']) ? $lang[$errors['name']] : $lang['formato_incorrecto'] ?>
+                <?= isset($errors['name']) ? $lang[$errors['login']['name']] : $lang['formato_incorrecto'] ?>
             </div>
             <br />
-            <input type="password" name="password" placeholder="<?= $lang['contraseña'] ?>" class="form-control bottom <?= isset($errors['password']) ? " is-invalid" : "" ?>">
+            <input type="password" name="password" placeholder="<?= $lang['contraseña'] ?>" class="form-control bottom <?= isset($errors['login']['password']) ? " is-invalid" : "" ?>">
             <div class="invalid-feedback">
-                <?= isset($errors['password']) ? $lang[$errors['password']] : $lang['formato_incorrecto'] ?>
+                <?= isset($errors['password']) ? $lang[$errors['login']['password']] : $lang['formato_incorrecto'] ?>
             </div>
             <br/>
             <button class="btn btn-lg btn-primary btn-block" type="submit"><?= $lang['enviar'] ?></button>
         </form>
     </div>
-    <div id="signup" class="tab-pane fade col-md-4" style="margin:0 auto;">
-        <p class="">
-            <?= $lang['registro'] ?>
-        </p><br />
+    <div id="signup" class="tab-pane fade col-md-4 <?= isset($errors['createUser']) ? "show active" : "" ?> content-center">
+        <h3 class="text-muted text-center">
+           <?= $lang['registro'] ?>
+        </h3><br />
         <form action="<?= $helper->url("User", "register") ?>" method="post" class="formUser col-lg-12"><br />
             <div class="form-row has-success"> 
                 <div class="col-md-6 mb-2">
@@ -91,11 +91,11 @@ require_once 'core/templates/nav.php'
 </div>
 
 <?php
-if (isset($errors['login'])) {
+if (isset($errors['verify'])) {
     ?>
     <br />
     <?php
-    echo error($lang[$errors['login']]);
+    echo error($lang[$errors['verify']]);
     ?>
 <?php }
 ?>

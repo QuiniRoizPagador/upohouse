@@ -32,36 +32,28 @@ class SessionController extends AbstractController {
     }
 
     public function verify() {
-        if (filter_has_var(INPUT_POST, "name") && filter_has_var(INPUT_POST, "password")) {
-            if (trim($_POST['name']) == "") {
-                $errors['name'] = "formato_incorrecto";
-            }
-            if (trim($_POST['password']) == "") {
-                $errors['password'] = "formato_incorrecto";
-            }
-            if (!isset($errors)) {
-                $filtrado = RegularUtils::sanearStrings(array("name", "password"));
-                $user = $this->userModel->verify($filtrado['name'], $filtrado['password']);
-                if (isset($user->name)) {
-                    if ($user->state == 'BLOQUEADO') {
-                        $errors['login'] = "usuario_bloqueado";
-                    } else {
-                        session_start();
-                        $_SESSION['login'] = $user->login;
-                        $_SESSION['name'] = $user->name;
-                        $_SESSION['surname'] = $user->surname;
-                        $_SESSION['id'] = $user->id;
-                        $_SESSION['email'] = $user->email;
-                        $_SESSION['uuid'] = $user->uuid;
-                        $_SESSION['user_role'] = $user->user_role;
-                        $this->redirect("User", "index");
-                    }
+        $values = array("name" => "text", "password" => "text");
+        $errors = RegularUtils::filtrarPorTipo($values, "login");
+        if (!isset($errors["login"])) {
+            $filtrado = RegularUtils::sanearStrings(array("name", "password"));
+            $user = $this->userModel->verify($filtrado['name'], $filtrado['password']);
+            if (isset($user->name)) {
+                if ($user->state == 'BLOQUEADO') {
+                    $errors['verify'] = "usuario_bloqueado";
                 } else {
-                    $errors['login'] = "user_pass_error";
+                    session_start();
+                    $_SESSION['login'] = $user->login;
+                    $_SESSION['name'] = $user->name;
+                    $_SESSION['surname'] = $user->surname;
+                    $_SESSION['id'] = $user->id;
+                    $_SESSION['email'] = $user->email;
+                    $_SESSION['uuid'] = $user->uuid;
+                    $_SESSION['user_role'] = $user->user_role;
+                    $this->redirect("User", "index");
                 }
+            } else {
+                $errors['verify'] = "user_pass_error";
             }
-        } else {
-            $errors['login'] = "user_pass_required";
         }
 
         $this->view("login", array(

@@ -1,11 +1,4 @@
 <?php
-
-function error($text) {
-    echo "<div class='alert alert-danger'>"
-    . "<strong>Error!</strong> $text"
-    . "</div>";
-}
-
 if (isset($_GET['lang'])) {
     $lang = $_GET['lang'];
     if (!empty($lang)) {
@@ -23,6 +16,15 @@ if (isset($_SESSION['lang'])) {
 } else {
     require_once 'config/lang/es.php';
 }
+
+function error($text) {
+    echo "<div class='alert alert-danger alert-dismissible fade show col-md-2 content-center' role='alert'>
+  <strong>Error!</strong> " . $text .
+    "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+  </button>
+</div>";
+}
 ?>
 
 
@@ -35,45 +37,38 @@ if (isset($_SESSION['lang'])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src='view/assets/js/global.js'></script>
         <script src="view/assets/lib/jquery/jquery.min.js"></script>
-        <?php if (!verifyIsLogin()) { ?>
-            <!--Bootstrap -->
 
-            <link rel = "stylesheet" href = "view/assets/css/product.css">
+        <link rel = "stylesheet" href = "view/assets/css/product.css">
 
 
 
-        <?php } else { ?>
-            <!-- Font Awesome -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-            <!-- Metis core stylesheet -->
-            <link rel="stylesheet" href="view/assets/css/main.rtl.css">
-
-            <!-- metisMenu stylesheet -->
-            <link rel="stylesheet" href="view/assets/lib/metismenu/metisMenu.css">
-
-            <!-- onoffcanvas stylesheet -->
-            <link rel="stylesheet" href="view/assets/lib/onoffcanvas/onoffcanvas.min.css">
-
-            <!-- animate.css stylesheet -->
-            <link rel="stylesheet" href="view/assets/lib/animate.css/animate.min.css">
-
-            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-            <!--[if lt IE 9]>
-                <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-
-            <style>
-                .Footer p{
-                    padding-top: 1.2rem;
-                    padding-right: 0px;
-                    padding-bottom: 0;
-                    padding-left: 0px;
+        <style>
+            .content-center{
+                margin:0 auto;
+            }
+            .footer-absolute{
+                position: absolute;
+            }
+            .footer{
+                bottom: 0;
+                width: 100%;
+                padding: 2%;
+            }
+            @media (max-width: 575.98px){
+                .footer-absolute{
+                    position: relative;
                 }
-            </style>
+            }
 
-        <?php } ?>
+        </style>
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

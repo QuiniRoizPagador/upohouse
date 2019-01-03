@@ -50,31 +50,44 @@ class UserController extends AbstractController {
      * Registro desde la propia aplicación
      */
     public function register() {
-        //TODO: mostrar errores
-        $values = array("name", "surname", "mail", "password");
-        $errors = RegularUtils::filtrarVariable($values);
-        if ($errors == null) {
+        $values = array("name" => "text", "login" => "text", "surname" => "text",
+            "email" => "email", "password" => "text", "password2" => "text",
+            "phone" => "phone");
+        $errors = RegularUtils::filtrarPorTipo($values, "createUser");
+        if ($_POST['password'] != $_POST['password2']) {
+            $errors["createUser"]["password"] = $errors["createUser"]["password2"] = "no_match";
+        }
+        if (!isset($errors["createUser"]) && $_POST['password'] == $_POST['password2']) {
+            $values = array("name", "login", "surname",
+                "email", "password", "phone");
             $filtrado = RegularUtils::sanearStrings($values);
             //Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
             $usuario->setSurname($filtrado["surname"]);
-            $usuario->setEmail($filtrado["mail"]);
+            $usuario->setPhone($filtrado["phone"]);
+            $usuario->setEmail($filtrado["email"]);
+            $usuario->setLogiN($filtrado['login']);
             $usuario->setPassword($filtrado["password"]);
             $usuario->setUuid(RegularUtils::uuid());
-            $usuario->setRole(0);
-            try {
-                $save = $this->userModel->create($usuario);
-                if ($save == 0) {
-                    die("Error al insertar usuario");
-                }
-            } catch (UnexpectedValueException $e) {
-                die("Error al insertar usuario");
-            } catch (Exception $ex) {
-                die("Error al insertar usuario");
+            $usuario->setUserRole(ROLES['USER']);
+
+            $save = $this->userModel->create($usuario);
+            if ($save !== 1) {
+                $errors['createUser']['query'] = $save;
+            } else {
+                // si todo ha ido correcto, nos vamos a la web principal
+                $this->redirect("Session", "login");
             }
         }
-        $this->redirect("Session", "login");
+        if (isset($errors["createUser"])) {
+            //Conseguimos todos los usuarios
+            //Cargamos la vista index y le pasamos valores
+            $this->view("login", array(
+                "title" => "login",
+                "errors" => $errors
+            ));
+        }
     }
 
 }
