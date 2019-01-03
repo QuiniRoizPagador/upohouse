@@ -13,6 +13,9 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
+            <a href="index.php?controller=Ad&action=createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
