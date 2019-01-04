@@ -136,29 +136,29 @@ function cargarUsuario(user) {
     var form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
     form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
-    form_control.append(create("input type='text' id='name' name='name' value='" + user.name + "'", "", "form-control"));
+    form_control.append(create("input type='text' name='name' value='" + user.name + "'", "", "form-control"));
     form_control.append(create("div", "Formato Incorrecto", "invalid-feedback"));
 
 
     form_control.append(create("label for='surname'", LANG['apellido'], ""));
-    form_control.append(create("input type='text' id='surname' name='surname' value='" + user.surname + "'", "", "form-control"));
+    form_control.append(create("input type='text' name='surname' value='" + user.surname + "'", "", "form-control"));
     form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
 
     form_control.append(create("label for='phone'", LANG['phone'], ""));
-    form_control.append(create("input type='tel' id='phone' name='phone' value='" + user.phone + "'", "", "form-control"));
+    form_control.append(create("input type='tel' name='phone' value='" + user.phone + "'", "", "form-control"));
     form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
     row.append(form_control);
 
     form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
     form_control.append(create("label for='password'", LANG['contraseña'], ""));
-    form_control.append(create("input type='password' id='password' name='password'", "", "form-control"));
+    form_control.append(create("input type='password' name='password'", "", "form-control"));
     form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
     form_control.append(create("label for='password'", LANG['contraseña'], ""));
-    form_control.append(create("input type='password' id='password2' name='password2'", "", "form-control"));
+    form_control.append(create("input type='password' name='password2'", "", "form-control"));
     form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
