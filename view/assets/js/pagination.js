@@ -1,39 +1,42 @@
-(function ($) {
-    $.fn.paginate = function () {
-        this.each(function () {
-            $(this).click(function () {
-                $(".pagUser").parent().removeClass("active");
-                $("#lockModal").modal('show');
-                var url = "index.php?controller=WS&action=paginateUsers";
-                var num = $(this).text();
-                $.post(url,
-                        {
-                            'userPag': num - 1
-                        },
-                        function (data, status) {
-                            try {
-                                $("#cuerpo").empty();
-                                var users = $.parseJSON(data);
-                                for (var i = 0; i < users.length; i++) {
-                                    $("#cuerpo").append(cargarUsuario(users[i]));
-                                }
-                            } catch (Exception) {
+function create(type, data, clase) {
+    var td = $("<" + type + " />");
+    if (clase !== "") {
+        td.addClass(clase);
+    }
+    td.append(data);
+    return td;
+}
 
-                            }
+function createTR(title, content) {
+    var tr = $("<tr />");
+    tr.append(create("th", title, ""));
+    tr.append(create("td", content, ""));
+    return tr;
+}
 
-                            $("#lockModal").modal("hide");
-                        }
-                );
-                $(this).parent().addClass("active");
-            });
-        });
-    };
-})(jQuery);
-$(document).ready(function () {
-    $(".pagUser").paginate()
-            ;
-    $('[data-toggle="tooltip"]').tooltip()
-});
+function createModal(id, uuid, title, button, action, content) {
+    var modal = create("div id='" + id + "' tabindex='-1'", "", "modal fade");
+    var dialog = $("<div class='modal-dialog modal-dialog-centered' />");
+    modal.append(dialog);
+    var card = $("<div class='modal-content card' />");
+    dialog.append(card);
+    var header = $("<div class='card-header modal-header' />");
+    header.append(create("h5", title, "modal-title"));
+    header.append($("<button type='button' data-dismiss='modal'  data-toggle='modal' data-target='#search" + uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    card.append(header);
+    var body = $("<div class='card-body modal-body' />");
+    body.append(content);
+    card.append(body);
+    var footer = create("div", "", "modal-footer");
+    var form = $("<form method='post' action='" + action + "' />");
+    form.append($("<input type='hidden' value='" + uuid + "' name='uuid' />"));
+    form.append(button);
+    form.append($("<button type='button' class='btn btn-secondary' data-target='#search" + uuid + "' data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    footer.append(form);
+    card.append(footer);
+    return modal;
+}
+
 function cargarUsuario(user) {
     var clase = "";
     if (user.state == '2') {
@@ -104,47 +107,13 @@ function cargarUsuario(user) {
 
     if (user.user_role !== ROLES['ADMIN']) {
         if (user.state !== STATES['BLOQUEADO']) {
-            modal = create("div id='block" + user.uuid + "' tabindex='-1'", "", "modal fade");
+            button = $("<button type='submit' class='btn btn-warning'><i class='fa fa-ban'></i>" + LANG['bloquear'] + "</button>");
+            modal = createModal("block" + user.uuid, user.uuid, LANG['bloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=blockUser", "¿Estás seguro?");
             td.append(modal);
-            modal_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
-            modal.append(modal_dialog);
-            modal_card = $("<div class='modal-content card' />");
-            modal_dialog.append(modal_card);
-            modal_header = $("<div class='card-header modal-header' />");
-            modal_header.append(create("h5", "Bloquear usuario " + user.name, "modal-title"));
-            modal_header.append($("<button type='button' data-dismiss='modal'  data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
-            modal_card.append(modal_header);
-            modal_body = $("<div class='card-body modal-body' />");
-            modal_body.text("¿Estás seguro?");
-            modal_card.append(modal_body);
-            modal_footer = create("div", "", "modal-footer");
-            form = $("<form method='post' action='index.php?controller=admin&action=blockUser' />");
-            form.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
-            form.append($("<button type='submit' class='btn btn-warning'><i class='fa fa-ban'></i>" + LANG['bloquear'] + "</button>"));
-            form.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
-            modal_footer.append(form);
-            modal_card.append(modal_footer);
         }
-        modal = create("div id='remove" + user.uuid + "' tabindex='-1'", "", "modal fade");
+        button = $("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>");
+        modal = createModal("remove" + user.uuid, user.uuid, LANG['eliminar registro de'] + user.name, button, "index.php?controller=Admin&action=removeUser", "¿Estás seguro?");
         td.append(modal);
-        modal_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
-        modal.append(modal_dialog);
-        modal_card = $("<div class='modal-content card' />");
-        modal_dialog.append(modal_card);
-        modal_header = $("<div class='card-header modal-header' />");
-        modal_header.append(create("h5", "Eliminar Registro de " + user.name, "modal-title"));
-        modal_header.append($("<button type='button' data-dismiss='modal'  data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
-        modal_card.append(modal_header);
-        modal_body = $("<div class='card-body modal-body' />");
-        modal_body.text("¿Estás seguro?");
-        modal_card.append(modal_body);
-        var modal_footer = create("div", "", "modal-footer");
-        var form = $("<form method='post' action='index.php?controller=Admin&action=removeUser' />");
-        form.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
-        form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
-        form.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
-        modal_footer.append(form);
-        modal_card.append(modal_footer);
     }
 
     modal = create("div id='edit" + user.uuid + "' tabindex='-1'", "", "modal fade");
@@ -154,7 +123,7 @@ function cargarUsuario(user) {
     modal_card = $("<div class='modal-content card' />");
     modal_dialog.append(modal_card);
     modal_header = $("<div class='card-header modal-header' />");
-    modal_header.append(create("h5", "Editar datos de " + user.name, "modal-title"));
+    modal_header.append(create("h5", LANG['editar datos de'] + user.name, "modal-title"));
     modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
     modal_card.append(modal_header);
     form = $("<form method='post' action='index.php?controller=Admin&action=updateUser' class='formUpdateUser' />");
@@ -165,7 +134,7 @@ function cargarUsuario(user) {
     modal_body.append(row);
 
     var form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
-    form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"),"","");
+    form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
     form_control.append(create("input type='text' id='name' name='name' value='" + user.name + "'", "", "form-control"));
     form_control.append(create("div", "Formato Incorrecto", "invalid-feedback"));
@@ -199,14 +168,14 @@ function cargarUsuario(user) {
     select.append(create("option value='1'", "ADMIN", ""));
     form_control.append(select);
     row.append(form_control);
-    
+
 
     var modal_footer = create("div", "", "modal-footer");
 
     modal_footer.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
     modal_footer.append($("<button type='submit' class='btn btn-success'>Enviar</button>"));
     modal_footer.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>Cancelar</button>"));
-    
+
     form.append(modal_footer);
 
     tr.append(td);
@@ -214,18 +183,39 @@ function cargarUsuario(user) {
     return tr;
 }
 
-function create(type, data, clase) {
-    var td = $("<" + type + " />");
-    if (clase !== "") {
-        td.addClass(clase);
-    }
-    td.append(data);
-    return td;
-}
+(function ($) {
+    $.fn.paginateUsers = function () {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagUser").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateUsers";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'userPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo").empty();
+                                var users = $.parseJSON(data);
+                                for (var i = 0; i < users.length; i++) {
+                                    $("#cuerpo").append(cargarUsuario(users[i]));
+                                }
+                            } catch (Exception) {
 
-function createTR(title, content) {
-    var tr = $("<tr />");
-    tr.append(create("th", title, ""));
-    tr.append(create("td", content, ""));
-    return tr;
-}
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
+})(jQuery);
+
+$(document).ready(function () {
+    $(".pagUser").paginateUsers();
+    $('[data-toggle="tooltip"]').tooltip();
+});

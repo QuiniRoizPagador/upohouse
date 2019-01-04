@@ -50,6 +50,11 @@ function error($text) {
         <![endif]-->
 
         <style>
+            body{
+                min-height: 100vh;
+                position: relative;
+                margin: 0;
+            }
             .content-center{
                 margin:0 auto;
             }

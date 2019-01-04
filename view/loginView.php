@@ -83,7 +83,7 @@ require_once 'core/templates/nav.php';
                     </div>
                 </div>
                 <div class="col-md-6 mb-2">
-                    <label for="submit" class="col-sm-2 col-form-label"><?= $lang['registro'] ?></label>
+                    <label for="submit" class="ol-form-label"><?= $lang['registro'] ?></label>
                     <button class="btn btn-lg btn-success btn-block" type="submit"><?= $lang['registro'] ?></button>
                 </div>
         </form>

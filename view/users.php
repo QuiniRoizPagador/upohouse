@@ -2,7 +2,7 @@
     <?php
     require_once 'core/templates/lateral.php';
     ?>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 bg-light">
+    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4 bg-light">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2"><?= $lang['usuarios'] ?></h1>
             <div class="btn-toolbar mb-2 mb-md-0">
@@ -309,31 +309,31 @@
                                                         <div class="form-control has-success col-md-6 ml-auto"> 
                                                             <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                             <label for="name"><?= $lang['nombre'] ?></label>
-                                                            <input type="text" id="name" name="name" value="<?= $user->name ?>" class="form-control <?= isset($errors[$user->uuid]['name']) ? " is-invalid" : "" ?>"/>
+                                                            <input type="text" name="name" value="<?= $user->name ?>" class="form-control <?= isset($errors[$user->uuid]['name']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['name']) ? $lang[$errors[$user->uuid]['name']] : $lang['formato_incorrecto'] ?>
                                                             </div>
 
                                                             <label for="surname"><?= $lang['apellido'] ?></label>
-                                                            <input type="text" id="surname" name="surname" value="<?= $user->surname ?>" class="form-control  <?= isset($errors[$user->uuid]['surname']) ? " is-invalid" : "" ?>"/>
+                                                            <input type="text" name="surname" value="<?= $user->surname ?>" class="form-control  <?= isset($errors[$user->uuid]['surname']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['surname']) ? $lang[$errors[$user->uuid]['surname']] : $lang['formato_incorrecto'] ?>
                                                             </div>
 
                                                             <label for="phone"><?= $lang['phone'] ?></label>
-                                                            <input type="tel" id="phone" name="phone" value="<?= $user->phone ?>" class="form-control <?= isset($errors[$user->uuid]['phone']) ? " is-invalid" : "" ?>"/>
+                                                            <input type="tel" name="phone" value="<?= $user->phone ?>" class="form-control <?= isset($errors[$user->uuid]['phone']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['phone']) ? $lang[$errors[$user->uuid]['phone']] : $lang['formato_incorrecto'] ?>
                                                             </div>
                                                         </div>
                                                         <div class="form-control has-success col-md-6 ml-auto">
                                                             <label for="password"><?= $lang['contraseña'] ?></label>
-                                                            <input type="password" id="password" name="password" class="form-control password <?= isset($errors[$user->uuid]['password']) ? " is-invalid" : "" ?>"/>
+                                                            <input type="password" name="password" class="form-control password <?= isset($errors[$user->uuid]['password']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['password']) ? $lang[$errors[$user->uuid]['password']] : $lang['formato_incorrecto'] ?>
                                                             </div>
                                                             <label for="password2"><?= $lang['contraseña'] ?></label>
-                                                            <input type="password" id="password2" name="password2" class="form-control password2 <?= isset($errors[$user->uuid]['password2']) ? " is-invalid" : "" ?>"/>
+                                                            <input type="password" name="password2" class="form-control password2 <?= isset($errors[$user->uuid]['password2']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['password2']) ? $lang[$errors[$user->uuid]['password2']] : $lang['formato_incorrecto'] ?>
                                                             </div>
