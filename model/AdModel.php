@@ -14,4 +14,12 @@ class AdModel extends AbstractModel {
         parent::__construct($this->adDao);
     }
 
+    public function getAllPaginated($pag = 0) {
+        return $this->adDao->getAllPaginated($pag);
+    }
+
+    public function countAds() {
+        return $this->adDao->countAds();
+    }
+
 }

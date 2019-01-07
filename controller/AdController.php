@@ -73,6 +73,7 @@ class AdController extends AbstractController {
             $ad->setCommunity_id($filtrado["community"]);
             $ad->setProvince_id($filtrado["province"]);
             $ad->setMunicipality_id($filtrado["municipality"]);
+            $ad->setState(1);
             $save = $this->adModel->create($ad);
             if ($save != 1) {
                 $errors['create']['query'] = $save;

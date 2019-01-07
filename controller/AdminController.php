@@ -14,12 +14,44 @@ class AdminController extends AbstractController {
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
+        $this->adModel = new AdModel();
     }
 
     /**
      * Página principal del usuario
      */
     public function dashboard($errors = NULL) {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        switch ($show) {
+            case "ads":
+                $this->ads($errors, $show);
+                break;
+            case "users":
+            default:
+                $this->users($errors, $show);
+        }
+    }
+
+    private function ads($errors, $show) {
+        //TODO: según el usuario se mostrará la dashboard del admin 
+        // por defecto o su página de administración básica
+        //Conseguimos todos los anuncios.
+        $numAds = $this->adModel->countAds();
+        $allAds = $this->adModel->getAllPaginated();
+        //Cargamos la vista index y le pasamos valores
+        $this->view("dashboard", array(
+            'title' => "P&aacute;gina de Gesti&oacute;n",
+            "allAds" => $allAds,
+            "numAds" => $numAds,
+            "errors" => $errors,
+            "show" => $show
+        ));
+    }
+
+    private function users($errors, $show) {
         //TODO: según el usuario se mostrará la dashboard del admin 
         // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
@@ -33,12 +65,10 @@ class AdminController extends AbstractController {
             "numUsers" => $numUsers,
             "errors" => $errors,
             "countRegistrations" => $countRegistrations,
+            "show" => $show
         ));
     }
 
-    /**
-     * Creación de un usuario por parte del admin
-     */
     public function createUser() {
         $values = array("name" => "text", "login" => "text", "surname" => "text",
             "email" => "email", "password" => "text", "password2" => "text",

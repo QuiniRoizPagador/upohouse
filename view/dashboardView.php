@@ -8,19 +8,16 @@ require_once 'core/templates/head.php';
     </div>
     <div class="container-fluid">
         <?php
-        if (isset($_GET['show'])) {
-            switch ($_GET['show']) {
-                case "users":
-                default:
-                    $isUsers = TRUE;
-                    require_once 'users.php';
-                    break;
-            }
-        } else {
-            require_once 'users.php';
+        switch ($show) {
+            case "ads":
+                $isAds = TRUE;
+                require_once 'ads.php';
+                break;
+            case "users":
+            default:
+                $isUsers = TRUE;
+                require_once 'users.php';
         }
-
-
         if (isset($errors['query'])) {
             error($errors['query']);
         }
