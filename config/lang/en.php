@@ -57,6 +57,7 @@ $lang = array(
     "habitaciones" => "Rooms",
     "m2" => "M<sup>2</sup>",
     "m2Texto" => "Square Meters",
+    "baño" => "Bath",
     "imagenes" => "Images",
     "descripcion" => "Description",
     "comunidad" => "Community",
@@ -67,5 +68,6 @@ $lang = array(
     "eligeProvincia" => "Choose a province",
     "eligeMunicipio" => "Choose a municipality",
     "user" => "User",
+    "anuncioCreado" => "Ad has been created successfully" 
 );
 

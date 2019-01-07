@@ -14,6 +14,7 @@ define("ACCION_DEFECTO", "index");
 // ficheros
 define("MAX_UPLOAD", 150000);
 const IMAGE_FORMAT = array('image/gif', 'image/jpeg', 'image/png', 'image/jpg');
+define("IMAGE_AD_URI", "view/images/ads");
 // estados
 const STATES = array(
     "NEUTRO" => 1,

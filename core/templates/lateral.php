@@ -14,13 +14,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?=isset($isAnuncios)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=anuncios">
+                <a class="nav-link <?=isset($isAds)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=ads">
                     <i class="fa fa-address-book"></i>
                     <?= $lang['anuncios'] ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?=isset($iscomentarios)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=comentarios">
+                <a class="nav-link <?=isset($isComentarios)?"active":""?>" href="<?php echo $helper->url("Admin", "dashboard"); ?>&show=comentarios">
                     <i class="fa fa-comment"></i>
                     <?= $lang['comentarios'] ?>
                 </a>

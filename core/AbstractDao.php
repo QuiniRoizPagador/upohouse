@@ -27,7 +27,7 @@ abstract class AbstractDao {
         }
         mysqli_free_result($query);
         if ($close) {
-            mysqli_close($this->mysqli);
+            $this->closeConnection();
         }
         return $resultSet;
     }
@@ -115,10 +115,10 @@ abstract class AbstractDao {
     }
 
     public function closeConnection() {
-        if (isset($this->stmt)) {
+        /*if (isset($this->stmt)) {
             mysqli_stmt_close($this->stmt);
         }
-        mysqli_close($this->mysqli);
+        mysqli_close($this->mysqli);*/
     }
 
 }

@@ -57,6 +57,7 @@ $lang = array(
     "habitaciones" => "Habitaciones",
     "m2" => "M<sup>2</sup>",
     "m2Texto" => "Metros cuadrados",
+    "baño" => "Baño",
     "imagenes" => "Im&aacute;genes",
     "descripcion" => "Descripción",
     "comunidad" => "Comunidad",
@@ -67,5 +68,6 @@ $lang = array(
     "eligeProvincia" => "Elige una provincia",
     "eligeMunicipio" => "Elige un municipio",
     "user" => "Usuario",
+    "anuncioCreado" => "Anuncio creado con éxito" 
 );
 

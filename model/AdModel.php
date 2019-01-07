@@ -1,17 +1,25 @@
 <?php
 
 require_once "core/AbstractModel.php";
-require_once "model/dao/AdsDao.php";
+require_once "model/dao/AdDao.php";
 
 use core\AbstractModel;
 
 class AdModel extends AbstractModel {
 
-    private $adsDao;
+    private $adDao;
 
     public function __construct() {
-        $this->adsDao = new AdsDao();
-        parent::__construct($this->adsDao);
+        $this->adDao = new AdDao();
+        parent::__construct($this->adDao);
+    }
+
+    public function getAllPaginated($pag = 0) {
+        return $this->adDao->getAllPaginated($pag);
+    }
+
+    public function countAds() {
+        return $this->adDao->countAds();
     }
 
 }
