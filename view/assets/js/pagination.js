@@ -137,7 +137,7 @@ function cargarUsuario(user) {
     form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
     form_control.append(create("input type='text' name='name' value='" + user.name + "'", "", "form-control"));
-    form_control.append(create("div", "Formato Incorrecto", "invalid-feedback"));
+    form_control.append(create("div", LANG['formato_incorrecto'] , "invalid-feedback"));
 
 
     form_control.append(create("label for='surname'", LANG['apellido'], ""));
