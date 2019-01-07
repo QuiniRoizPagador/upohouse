@@ -57,6 +57,7 @@ $lang = array(
     "habitaciones" => "Habitaciones",
     "m2" => "M<sup>2</sup>",
     "m2Texto" => "Metros cuadrados",
+    "baño" => "Baño",
     "imagenes" => "Im&aacute;genes",
     "descripcion" => "Descripción",
     "comunidad" => "Comunidad",
@@ -65,6 +66,7 @@ $lang = array(
     "imagenesTextoAyuda" => "Seleccione todas las imágenes que desee subir.",
     "eligeComunidad" => "Elige una comunidad",
     "eligeProvincia" => "Elige una provincia",
-    "eligeMunicipio" => "Elige un municipio"
+    "eligeMunicipio" => "Elige un municipio",
+    "anuncioCreado" => "Anuncio creado con éxito" 
 );
 

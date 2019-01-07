@@ -2,10 +2,12 @@
 
 require_once 'core/RegularUtils.php';
 require_once 'model/dao/dto/Ad.php';
+require_once 'model/dao/dto/Image.php';
 
 use core\AbstractController;
 use core\RegularUtils;
 use model\dao\dto\Ad;
+use model\dao\dto\Image;
 
 class AdController extends AbstractController {
 
@@ -13,6 +15,7 @@ class AdController extends AbstractController {
     private $housingTypeModel;
     private $operationTypeModel;
     private $communityModel;
+    private $imageModel;
 
     public function __construct() {
         parent::__construct();
@@ -20,15 +23,16 @@ class AdController extends AbstractController {
         $this->housingTypeModel = new HousingTypeModel();
         $this->operationTypeModel = new OperationTypeModel();
         $this->communityModel = new CommunityModel();
+        $this->imageModel = new ImageModel();
     }
 
     /**
      * Página para crear anuncio.
      */
     public function createView() {
-        $allHousingTypes = $this->housingTypeModel->getAll(FALSE);
-        $allOperationTypes = $this->operationTypeModel->getAll(FALSE);
-        $allCommunities = $this->communityModel->getAll();        
+        $allHousingTypes = $this->housingTypeModel->getAll();
+        $allOperationTypes = $this->operationTypeModel->getAll();
+        $allCommunities = $this->communityModel->getAll();
         //Cargamos la vista adView y le pasamos valores
         $this->view("createAd", array(
             'title' => "Crear un anuncio",
@@ -36,6 +40,72 @@ class AdController extends AbstractController {
             'allOperationTypes' => $allOperationTypes,
             'allCommunities' => $allCommunities
         ));
+    }
+
+    public function create() {
+        $allHousingTypes = $this->housingTypeModel->getAll(FALSE);
+        $allOperationTypes = $this->operationTypeModel->getAll(FALSE);
+        $allCommunities = $this->communityModel->getAll(FALSE);
+        $values = array("housingType" => "text", "operationType" => "text", "price" => "float",
+            "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "text", "community" => "number",
+            "province" => "number", "municipality" => "number");
+        $errors = RegularUtils::filtrarPorTipo($values, "create");
+        if (!isset($errors["create"])) {
+            $strValues = array("housingType", "operationType", "description");
+            $intValues = array("rooms", "m2", "bath", "community", "province", "municipality");
+            $fltValues = array("price");
+            $strFiltrado = RegularUtils::sanearStrings($strValues);
+            $intFiltrado = RegularUtils::sanearIntegers($intValues);
+            $fltFiltrado = RegularUtils::sanearFloats($fltValues);
+            $filtrado = array_merge($strFiltrado, $intFiltrado, $fltFiltrado);
+                    
+            //Creamos un anuncio
+            $ad = new Ad();
+            $ad->setUuid(RegularUtils::uuid());
+            $ad->setUser_id($_SESSION["id"]);
+            $ad->setHousing_type($this->housingTypeModel->read($filtrado["housingType"], FALSE)[0]->id);
+            $ad->setOperation_type($this->operationTypeModel->read($filtrado["operationType"], FALSE)[0]->id);
+            $ad->setPrice($filtrado["price"]);
+            $ad->setRooms($filtrado["rooms"]);
+            $ad->setM_2($filtrado["m2"]);
+            $ad->setBath($filtrado["bath"]);
+            $ad->setDescription($filtrado['description']);
+            $ad->setCommunity_id($filtrado["community"]);
+            $ad->setProvince_id($filtrado["province"]);
+            $ad->setMunicipality_id($filtrado["municipality"]);
+            $save = $this->adModel->create($ad);
+            if ($save != 1) {
+                $errors['create']['query'] = $save;
+            } else {
+                $id = $this->adModel->read($ad->getUuid())[0]->id;
+                $images = RegularUtils::saveAdImages("images", $id);
+                foreach ($images as $image) {
+                    $imgObj = new Image();
+                    $imgObj->setUuid(RegularUtils::uuid());
+                    $imgObj->setImage($image);
+                    $imgObj->setAd_id($id);
+                    $this->imageModel->create($imgObj);
+                }
+                // si todo ha ido correcto, nos vamos a la web principal
+                $this->view("createAd", array(
+                    'title' => "Crear un anuncio",
+                    'allHousingTypes' => $allHousingTypes,
+                    'allOperationTypes' => $allOperationTypes,
+                    'allCommunities' => $allCommunities,
+                    'success' => TRUE
+                ));
+            }
+        }
+        if (isset($errors["create"])) {
+            //Cargamos la vista adView y le pasamos valores
+            $this->view("createAd", array(
+                'title' => "Crear un anuncio",
+                'allHousingTypes' => $allHousingTypes,
+                'allOperationTypes' => $allOperationTypes,
+                'allCommunities' => $allCommunities,
+                'errors' => $errors
+            ));
+        }
     }
 
     /**
