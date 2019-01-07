@@ -43,9 +43,9 @@ class AdController extends AbstractController {
     }
 
     public function create() {
-        $allHousingTypes = $this->housingTypeModel->getAll(FALSE);
-        $allOperationTypes = $this->operationTypeModel->getAll(FALSE);
-        $allCommunities = $this->communityModel->getAll(FALSE);
+        $allHousingTypes = $this->housingTypeModel->getAll();
+        $allOperationTypes = $this->operationTypeModel->getAll();
+        $allCommunities = $this->communityModel->getAll();
         $values = array("housingType" => "text", "operationType" => "text", "price" => "float",
             "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "text", "community" => "number",
             "province" => "number", "municipality" => "number");

@@ -16,7 +16,6 @@ class CommentDao extends AbstractDao {
         $data = array("siisi", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(), "user_id" => $obj->getUser_id(),
             "content" => $obj->getContent(), "state" => $obj->getState());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 

@@ -16,7 +16,6 @@ class ScoreDao extends AbstractDao {
         $data = array("siii", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(),
             "user_id" => $obj->getUser_id(), "score" => $obj->getScore());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
@@ -28,7 +27,6 @@ class ScoreDao extends AbstractDao {
         $query = "UPDATE $this->table SET score = ? WHERE uuid = ?";
         $data = array("is", "score" => $obj->getScore(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 

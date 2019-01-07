@@ -17,7 +17,7 @@ abstract class AbstractDao {
         $this->mysqli = $this->db->getConnection();
     }
 
-    public function getAll($close = True) {
+    public function getAll() {
         $query = $this->mysqli->query("SELECT * FROM $this->table ORDER BY id DESC;");
 
         //Devolvemos el resultset en forma de array de objetos
@@ -26,13 +26,10 @@ abstract class AbstractDao {
             $resultSet[] = $row;
         }
         mysqli_free_result($query);
-        if ($close) {
-            $this->closeConnection();
-        }
         return $resultSet;
     }
 
-    public function read($id, $close = True) {
+    public function read($id) {
         $query = "SELECT * FROM $this->table WHERE id = ?  OR uuid = ? LIMIT 1";
         $data = array('ss', "id" => $id, "uuid" => $id);
 
@@ -41,13 +38,10 @@ abstract class AbstractDao {
             $res[] = $obj;
         }
         mysqli_free_result($resultSet);
-        if ($close) {
-            $this->closeConnection();
-        }
         return $res;
     }
 
-    public function search($column, $value, $close = True, $limit = FALSE) {
+    public function search($column, $value, $limit = FALSE) {
         $query = "SELECT * FROM $this->table WHERE $column = ? ";
         if ($limit !== FALSE) {
             $query .= "LIMIT $limit";
@@ -63,19 +57,13 @@ abstract class AbstractDao {
             }
         }
         mysqli_free_result($resultSet);
-        if ($close) {
-            $this->closeConnection();
-        }
         return $res;
     }
 
-    public function delete($id, $close = True) {
+    public function delete($id) {
         $query = "DELETE FROM $this->table WHERE id = ? OR uuid = ? LIMIT 1";
         $data = array('ss', "id" => $id, "uuid" => $id);
         $res = $this::preparedStatement($query, $data, FALSE);
-        if ($close) {
-            $this->closeConnection();
-        }
         return $res;
     }
 
@@ -113,12 +101,4 @@ abstract class AbstractDao {
         }
         return $bind;
     }
-
-    public function closeConnection() {
-        /*if (isset($this->stmt)) {
-            mysqli_stmt_close($this->stmt);
-        }
-        mysqli_close($this->mysqli);*/
-    }
-
 }

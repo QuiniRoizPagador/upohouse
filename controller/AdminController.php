@@ -55,8 +55,8 @@ class AdminController extends AbstractController {
         //TODO: según el usuario se mostrará la dashboard del admin 
         // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
-        $numUsers = $this->userModel->countUsers(FALSE);
-        $allusers = $this->userModel->getAllPaginated(0, FALSE);
+        $numUsers = $this->userModel->countUsers();
+        $allusers = $this->userModel->getAllPaginated(0);
         $countRegistrations = $this->userModel->countRegistrations();
         //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
@@ -103,7 +103,7 @@ class AdminController extends AbstractController {
         }
         if (isset($errors["createUser"])) {
             //Conseguimos todos los usuarios
-            $numUsers = $this->userModel->countUsers(FALSE);
+            $numUsers = $this->userModel->countUsers();
             $allusers = $this->userModel->getAllPaginated(0);
 
             //Cargamos la vista index y le pasamos valores

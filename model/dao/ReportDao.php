@@ -19,7 +19,6 @@ class ReportDao extends AbstractDao {
             "user_reported" => $obj->getUser_reported(), "comment_reported" => $obj->getComment_reported(),
             "request_reported" => $obj->getRequest_reported(), "ad_reported" => $obj->getAd_reported());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 

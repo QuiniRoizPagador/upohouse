@@ -15,7 +15,6 @@ class ImageDao extends AbstractDao {
                 VALUES(?, ?, ?)";
         $data = array("sis", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(), "image" => $obj->getImage());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
@@ -27,7 +26,6 @@ class ImageDao extends AbstractDao {
         $query = "UPDATE $this->table SET image = ? WHERE uuid = ?";
         $data = array("ss", "image" => $obj->getImage(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 

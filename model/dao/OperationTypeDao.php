@@ -15,7 +15,6 @@ class OperationTypeDao extends AbstractDao {
                 VALUES(?, ?)";
         $data = array("ss", "uuid" => $obj->getUuid(), "name" => $obj->getName());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
@@ -27,7 +26,6 @@ class OperationTypeDao extends AbstractDao {
         $query = "UPDATE $this->table SET name = ? WHERE uuid = ?";
         $data = array("ss", "name" => $obj->getName(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 

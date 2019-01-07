@@ -27,16 +27,16 @@ class UserModel extends AbstractModel {
         return $this->userDao->block($uuid);
     }
 
-    public function getAllPaginated($pag = 0, $close = TRUE) {
-        return $this->userDao->getAllPaginated($pag, $close);
+    public function getAllPaginated($pag = 0) {
+        return $this->userDao->getAllPaginated($pag);
     }
 
-    public function countUsers($close = TRUE) {
-        return $this->userDao->countUsers($close);
+    public function countUsers() {
+        return $this->userDao->countUsers();
     }
 
-    public function countRegistrations($close = TRUE) {
-        return $this->userDao->countRegistrations($close);
+    public function countRegistrations() {
+        return $this->userDao->countRegistrations();
     }
 
 }

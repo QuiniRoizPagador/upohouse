@@ -20,7 +20,6 @@ class UserDao extends AbstractDao {
         $resultSet = $this->preparedStatement($query, $data);
         $user = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
-        $this->closeConnection();
         return $user;
     }
 
@@ -39,22 +38,18 @@ class UserDao extends AbstractDao {
                 "email" => $obj->getEmail(), "password" => password_hash($obj->getPassword(), PASSWORD_DEFAULT)
                 , "login" => $obj->getLogin(), 'user_role' => $obj->getUserRole(), 'phone' => $obj->getPhone());
             $res = parent::preparedStatement($query, $data, FALSE);
-            $this->closeConnection();
             return $res;
         }
     }
 
-    public function delete($id, $close = True) {
+    public function delete($id) {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);
         $res = parent::preparedStatement($query, $data, FALSE);
-        if ($close) {
-            $this->closeConnection();
-        }
         return $res;
     }
 
-    public function update($obj, $close = True) {
+    public function update($obj) {
         $prev = $this->search("uuid", $obj->getUuid(), FALSE, 1);
         if (trim($obj->getName()) == '') {
             $obj->setName($prev->name);
@@ -76,7 +71,6 @@ class UserDao extends AbstractDao {
             "password" => $obj->getPassword(), "user_role" => $obj->getUserRole(),
             "phone" => $obj->getPhone(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
@@ -84,11 +78,10 @@ class UserDao extends AbstractDao {
         $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES["BLOQUEADO"], "uuid" => $uuid);
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
-    public function getAllPaginated($pag = 0, $close = TRUE) {
+    public function getAllPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT * FROM $this->table "
                 . "WHERE state != " . STATES['ELIMINADO'] . " "
                 . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
@@ -99,14 +92,10 @@ class UserDao extends AbstractDao {
             $resultSet[] = $row;
         }
         mysqli_free_result($query);
-        if ($close) {
-            mysqli_close($this->mysqli);
-        }
-
         return $resultSet;
     }
 
-    public function countRegistrations($close = TRUE) {
+    public function countRegistrations() {
         $query = $this->mysqli->query("select COUNT(*) as count, MONTH(`timestamp`) as month,"
                 . "YEAR(`timestamp`) as year from $this->table "
                 . "GROUP BY MONTH(`timestamp`),YEAR(`timestamp`) "
@@ -117,19 +106,13 @@ class UserDao extends AbstractDao {
             $resultSet[] = $row;
         }
         mysqli_free_result($query);
-        if ($close) {
-            mysqli_close($this->mysqli);
-        }
         return $resultSet;
     }
 
-    public function countUsers($close = TRUE) {
+    public function countUsers() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
-        if ($close) {
-            mysqli_close($this->mysqli);
-        }
         return $row->count;
     }
 

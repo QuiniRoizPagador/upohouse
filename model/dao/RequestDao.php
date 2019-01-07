@@ -16,7 +16,6 @@ class RequestDao extends AbstractDao {
         $data = array("ssiii", "uuid" => $obj->getUuid(), "content" => $obj->getContent(), "ad_id" => $obj->getAd_id(),
             "user_id" => $obj->getUser_id(), "state" => $obj->getState());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
@@ -28,7 +27,6 @@ class RequestDao extends AbstractDao {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
         $data = array("ssss", "name" => $obj->getState(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 

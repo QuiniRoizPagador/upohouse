@@ -20,7 +20,6 @@ class AdDao extends AbstractDao {
             "operation_type" => $obj->getOperation_type(), "community_id" => $obj->getCommunity_id(),
             "province_id" => $obj->getProvince_id(), "municipality_id" => $obj->getMunicipality_id(), "state" => $obj->getState());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
