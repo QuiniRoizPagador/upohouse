@@ -30,16 +30,21 @@
 \BOOKMARK [2][-]{subsection.2.3.5}{CU305 Listar Peticiones}{section.2.3}% 30
 \BOOKMARK [2][-]{subsection.2.3.6}{CU306 Descartar Petici\363n}{section.2.3}% 31
 \BOOKMARK [2][-]{subsection.2.3.7}{CU307 Eliminar Petici\363n}{section.2.3}% 32
-\BOOKMARK [1][-]{section.2.4}{Gesti\363n de Usuarios}{chapter.2}% 33
-\BOOKMARK [2][-]{subsection.2.4.1}{CU501 Listar Comentarios.}{section.2.4}% 34
-\BOOKMARK [2][-]{subsection.2.4.2}{CU502 Denunciar Comentario}{section.2.4}% 35
-\BOOKMARK [2][-]{subsection.2.4.3}{CU503 Eliminar Comentario}{section.2.4}% 36
-\BOOKMARK [1][-]{section.2.5}{Gesti\363n de Tipos}{chapter.2}% 37
-\BOOKMARK [2][-]{subsection.2.5.1}{CU601 Crear Tipo Vivienda.}{section.2.5}% 38
-\BOOKMARK [2][-]{subsection.2.5.2}{CU602 Crear Tipo Operaci\363n.}{section.2.5}% 39
-\BOOKMARK [2][-]{subsection.2.5.3}{CU603 Listar Tipos Vivienda}{section.2.5}% 40
-\BOOKMARK [2][-]{subsection.2.5.4}{CU604 Listar Tipos Operaciones}{section.2.5}% 41
-\BOOKMARK [2][-]{subsection.2.5.5}{CU605 Modificar Tipo Vivienda}{section.2.5}% 42
-\BOOKMARK [2][-]{subsection.2.5.6}{CU606 Modificar Tipo Operaci\363n}{section.2.5}% 43
-\BOOKMARK [2][-]{subsection.2.5.7}{CU607 Eliminar Tipo Vivienda}{section.2.5}% 44
-\BOOKMARK [2][-]{subsection.2.5.8}{CU608 Eliminar Tipo Operaci\363n}{section.2.5}% 45
+\BOOKMARK [1][-]{section.2.4}{Gesti\363n de Denuncias}{chapter.2}% 33
+\BOOKMARK [2][-]{subsection.2.4.1}{CU401 Listar denuncias.}{section.2.4}% 34
+\BOOKMARK [2][-]{subsection.2.4.2}{CU402 Consultar denuncia.}{section.2.4}% 35
+\BOOKMARK [2][-]{subsection.2.4.3}{CU403 Aceptar denuncia.}{section.2.4}% 36
+\BOOKMARK [2][-]{subsection.2.4.4}{CU404 Rechazar denuncia.}{section.2.4}% 37
+\BOOKMARK [1][-]{section.2.5}{Gesti\363n de Usuarios}{chapter.2}% 38
+\BOOKMARK [2][-]{subsection.2.5.1}{CU501 Listar Comentarios.}{section.2.5}% 39
+\BOOKMARK [2][-]{subsection.2.5.2}{CU502 Denunciar Comentario}{section.2.5}% 40
+\BOOKMARK [2][-]{subsection.2.5.3}{CU503 Eliminar Comentario}{section.2.5}% 41
+\BOOKMARK [1][-]{section.2.6}{Gesti\363n de Tipos}{chapter.2}% 42
+\BOOKMARK [2][-]{subsection.2.6.1}{CU601 Crear Tipo Vivienda.}{section.2.6}% 43
+\BOOKMARK [2][-]{subsection.2.6.2}{CU602 Crear Tipo Operaci\363n.}{section.2.6}% 44
+\BOOKMARK [2][-]{subsection.2.6.3}{CU603 Listar Tipos Vivienda}{section.2.6}% 45
+\BOOKMARK [2][-]{subsection.2.6.4}{CU604 Listar Tipos Operaciones}{section.2.6}% 46
+\BOOKMARK [2][-]{subsection.2.6.5}{CU605 Modificar Tipo Vivienda}{section.2.6}% 47
+\BOOKMARK [2][-]{subsection.2.6.6}{CU606 Modificar Tipo Operaci\363n}{section.2.6}% 48
+\BOOKMARK [2][-]{subsection.2.6.7}{CU607 Eliminar Tipo Vivienda}{section.2.6}% 49
+\BOOKMARK [2][-]{subsection.2.6.8}{CU608 Eliminar Tipo Operaci\363n}{section.2.6}% 50
