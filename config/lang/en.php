@@ -50,7 +50,7 @@ $lang = array(
     "duplicate_user" => "Duplicate User",
     "usuario_bloqueado" => "The user is blocked",
     "user_pass_error" => "Invalid username or password",
-    "user_pass_required"=> "Username and password Required",
+    "user_pass_required" => "Username and password Required",
     "tipoCasa" => "Housing Type",
     "tipoOperacion" => "Operation Type",
     "precio" => "Prize(€)",
@@ -68,6 +68,7 @@ $lang = array(
     "eligeProvincia" => "Choose a province",
     "eligeMunicipio" => "Choose a municipality",
     "user" => "User",
-    "anuncioCreado" => "Ad has been created successfully" 
+    "anuncioCreado" => "Ad has been created successfully",
+    "desbloquear" => "Unlock",
 );
 

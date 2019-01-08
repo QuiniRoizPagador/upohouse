@@ -214,6 +214,9 @@
                                                         <div class="alert alert-warning" role="alert">
                                                             <?= $lang['BLOQUEADO'] ?>
                                                         </div>
+                                                        <span class="btn" data-toggle="tooltip" title="<?= $lang['desbloquear'] ?>">
+                                                            <button type="button" data-toggle="modal" data-target="#unlock<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                                        </span>
                                                         <?php
                                                     } else {
                                                         ?>
@@ -247,7 +250,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Bloquear usuario <?= $user->name ?></h5>
+                                                        <h5 class="modal-title"><?= $lang['bloquear'] . " " . $lang['user'] . " " . $user->name ?></h5>
                                                         <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#search<?= $user->uuid ?>" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -259,6 +262,31 @@
                                                         <form method="post" action="<?= $helper->url("admin", "blockUser"); ?>">
                                                             <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                             <button type="submit" class="btn btn-warning"><i class="fa fa-ban"></i><?= $lang['bloquear'] ?></button>
+                                                            <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <div tabindex="-1" id="unlock<?= $user->uuid ?>" class="modal fade" >
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"><?= $lang['desbloquear'] . " " . $user->name ?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#search<?= $user->uuid ?>" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <?= $lang['estas seguro'] ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="<?= $helper->url("admin", "unlockUser"); ?>">
+                                                            <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i><?= $lang['desbloquear'] ?></button>
                                                             <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                         </form>
                                                     </div>

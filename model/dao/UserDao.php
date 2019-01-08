@@ -116,4 +116,11 @@ class UserDao extends AbstractDao {
         return $row->count;
     }
 
+    public function unlock($uuid) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES["NEUTRO"], "uuid" => $uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
 }

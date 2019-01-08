@@ -68,6 +68,7 @@ $lang = array(
     "eligeProvincia" => "Elige una provincia",
     "eligeMunicipio" => "Elige un municipio",
     "user" => "Usuario",
-    "anuncioCreado" => "Anuncio creado con éxito" 
+    "anuncioCreado" => "Anuncio creado con éxito",
+    "desbloquear" => "Desbloquear",
 );
 

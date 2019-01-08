@@ -198,6 +198,17 @@ class AdminController extends AbstractController {
         }
         $this->redirect("Admin", "dashboard");
     }
+    
+    public function unlockUser() {
+        if (filter_has_var(INPUT_POST, "uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->userModel->unlock($id);
+            if ($rem == 0) {
+                die("Error al bloquear usuario");
+            }
+        }
+        $this->redirect("Admin", "dashboard");
+    }
 
     public function removeUser() {
         if (filter_has_var(INPUT_POST, "uuid")) {

@@ -90,6 +90,9 @@ function cargarUsuario(user) {
     if (user.user_role != ROLES['ADMIN']) {
         if (user.state == STATES['BLOQUEADO']) {
             buttons.append("<div class='alert alert-warning' role='alert'>" + LANG['BLOQUEADO'] + "</div>");
+            var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['desbloquear'] + "'>");
+            span.append("<button type='button' data-toggle='modal' data-target='#unlock" + user.uuid + "' data-dismiss='modal' class='btn btn-success'><i class='fa fa-check'></i></button></span>");
+            buttons.append(span);
         } else {
             var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['bloquear'] + "'>");
             span.append("<button type='button' data-toggle='modal' data-target='#block" + user.uuid + "' data-dismiss='modal' class='btn btn-warning'><i class='fa fa-ban'></i></button></span>");
@@ -108,11 +111,15 @@ function cargarUsuario(user) {
     if (user.user_role !== ROLES['ADMIN']) {
         if (user.state !== STATES['BLOQUEADO']) {
             button = $("<button type='submit' class='btn btn-warning'><i class='fa fa-ban'></i>" + LANG['bloquear'] + "</button>");
-            modal = createModal("block" + user.uuid, user.uuid, LANG['bloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=blockUser", "¿Estás seguro?");
+            modal = createModal("block" + user.uuid, user.uuid, LANG['bloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=blockUser", LANG['estas seguro']);
+            td.append(modal);
+        } else {
+            button = $("<button type='submit' class='btn btn-success'><i class='fa fa-check'></i>" + LANG['desbloquear'] + "</button>");
+            modal = createModal("unlock" + user.uuid, user.uuid, LANG['desbloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=unlockUser", LANG['estas seguro']);
             td.append(modal);
         }
         button = $("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>");
-        modal = createModal("remove" + user.uuid, user.uuid, LANG['eliminar registro de'] + user.name, button, "index.php?controller=Admin&action=removeUser", "¿Estás seguro?");
+        modal = createModal("remove" + user.uuid, user.uuid, LANG['eliminar registro de'] + user.name, button, "index.php?controller=Admin&action=removeUser", LANG['estas seguro']);
         td.append(modal);
     }
 
@@ -137,7 +144,7 @@ function cargarUsuario(user) {
     form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
     form_control.append(create("input type='text' name='name' value='" + user.name + "'", "", "form-control"));
-    form_control.append(create("div", LANG['formato_incorrecto'] , "invalid-feedback"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
     form_control.append(create("label for='surname'", LANG['apellido'], ""));
@@ -173,8 +180,8 @@ function cargarUsuario(user) {
     var modal_footer = create("div", "", "modal-footer");
 
     modal_footer.append($("<input type='hidden' value='" + user.uuid + "' name='uuid' />"));
-    modal_footer.append($("<button type='submit' class='btn btn-success'>Enviar</button>"));
-    modal_footer.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>Cancelar</button>"));
+    modal_footer.append($("<button type='submit' class='btn btn-success'>" + LANG['enviar'] + "</button>"));
+    modal_footer.append($("<button type='button' class='btn btn-secondary' data-target='#search" + user.uuid + "' data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
 
     form.append(modal_footer);
 

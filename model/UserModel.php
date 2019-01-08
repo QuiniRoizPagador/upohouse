@@ -39,4 +39,8 @@ class UserModel extends AbstractModel {
         return $this->userDao->countRegistrations();
     }
 
+    public function unlock($uuid) {
+        return $this->userDao->unlock($uuid);
+    }
+
 }
