@@ -49,7 +49,9 @@ class AdController extends AbstractController {
         $values = array("housingType" => "text", "operationType" => "text", "price" => "float",
             "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "text", "community" => "number",
             "province" => "number", "municipality" => "number");
+        $noRequired = array("images", "description");
         $errors = RegularUtils::filtrarPorTipo($values, "create");
+        $errors = RegularUtils::camposNoRequeridos($errors, "create", $noRequired);
         if (!isset($errors["create"])) {
             $strValues = array("housingType", "operationType", "description");
             $intValues = array("rooms", "m2", "bath", "community", "province", "municipality");

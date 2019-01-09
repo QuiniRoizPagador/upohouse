@@ -137,7 +137,7 @@ function cargarUsuario(user) {
     form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
     form_control.append(create("input type='text' name='name' value='" + user.name + "'", "", "form-control"));
-    form_control.append(create("div", LANG['formato_incorrecto'] , "invalid-feedback"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
     form_control.append(create("label for='surname'", LANG['apellido'], ""));
@@ -183,6 +183,28 @@ function cargarUsuario(user) {
     return tr;
 }
 
+function cargarAnuncio(ad) {
+    var clase = "";
+    if (ad.state == '2') {
+        clase = "table-warning";
+    }
+    var tr = $("<tr>");
+    var td = $("<td>");
+    var a = $("<a>");
+    var span = $("<span>");
+    a.attr('href', '#');
+    a.addClass('btn btn-info btn-sm');
+    span.addClass('fa fa-eye');
+    a.append(span);
+    td.append(a);
+    tr.append(create("td", ad.id, clase));
+    tr.append(create("td", ad.uuid, clase));
+    tr.append(create("td", ad.price, clase));
+    tr.append(create("td", ad.timestamp, clase));
+    tr.append(td);
+    return tr;
+}
+
 (function ($) {
     $.fn.paginateUsers = function () {
         this.each(function () {
@@ -213,9 +235,40 @@ function cargarUsuario(user) {
             });
         });
     };
+    $.fn.paginateAds = function () {
+        this.each(function () {
+            $(this).click(function () {
+                $('.pagAd').parent().removeClass('active');
+                $("#lockModal").modal('show');
+                var url = 'index.php?controller=WS&action=paginateAds';
+                var num = $(this).text();
+                console.log(num);
+                $.post(url,
+                        {
+                            'adPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo").empty();
+                                var ads = $.parseJSON(data);
+                                console.log(ads);
+                                for (var i = 0; i < ads.length; i++) {
+                                    $("#cuerpo").append(cargarAnuncio(ads[i]));
+                                }
+                            } catch (Exception) {
+
+                            }
+                            ;
+                            $("#lockModal").modal("hide");
+                        });
+                $(this).parent().addClass("active");
+            });
+        });
+    };
 })(jQuery);
 
 $(document).ready(function () {
     $(".pagUser").paginateUsers();
+    $(".pagAd").paginateAds();
     $('[data-toggle="tooltip"]').tooltip();
 });

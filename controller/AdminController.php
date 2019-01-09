@@ -70,6 +70,10 @@ class AdminController extends AbstractController {
     }
 
     public function createUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
         $values = array("name" => "text", "login" => "text", "surname" => "text",
             "email" => "email", "password" => "text", "password2" => "text",
             "phone" => "phone", "user_role" => 'number');
@@ -94,11 +98,11 @@ class AdminController extends AbstractController {
             $usuario->setUserRole($filtrado["user_role"]);
 
             $save = $this->userModel->create($usuario);
-            if ($save !== 1) {
+            if ($save != 1) {
                 $errors['createUser']['query'] = $save;
             } else {
                 // si todo ha ido correcto, nos vamos a la web principal
-                $this->redirect("Admin", "dashboard");
+                $this->redirect("Admin", "dashboard", array("show" => "$show"));
             }
         }
         if (isset($errors["createUser"])) {
@@ -111,7 +115,8 @@ class AdminController extends AbstractController {
                 'title' => "P&aacute;gina de Gesti&oacute;n",
                 "allusers" => $allusers,
                 "numUsers" => $numUsers,
-                "errors" => $errors
+                "errors" => $errors,
+                "show" => $show
             ));
         }
     }
@@ -120,6 +125,10 @@ class AdminController extends AbstractController {
      * Actualización de usuario 
      */
     public function updateUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
         $values = array("uuid" => "text", "user_role" => "number");
         $errors = RegularUtils::filtrarPorTipo($values, "actualizar");
         if (!isset($errors['actualizar'])) {
@@ -181,7 +190,7 @@ class AdminController extends AbstractController {
             if ($save == 0) {
                 die("Error al insertar usuario");
             } else {
-                $this->redirect("Admin", "dashboard");
+                $this->redirect("Admin", "dashboard", array("show" => "$show"));
             }
         } else {
             $this->dashboard($errors);
@@ -189,6 +198,10 @@ class AdminController extends AbstractController {
     }
 
     public function blockUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
         if (filter_has_var(INPUT_POST, "uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->block($id);
@@ -196,10 +209,14 @@ class AdminController extends AbstractController {
                 die("Error al bloquear usuario");
             }
         }
-        $this->redirect("Admin", "dashboard");
+        $this->redirect("Admin", "dashboard", array("show" => "$show"));
     }
 
     public function removeUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
         if (filter_has_var(INPUT_POST, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->delete($id);
@@ -207,7 +224,7 @@ class AdminController extends AbstractController {
                 die("Error al eliminar usuario");
             }
         }
-        $this->redirect("Admin", "dashboard");
+        $this->redirect("Admin", "dashboard", array("show" => "$show"));
     }
 
 }
