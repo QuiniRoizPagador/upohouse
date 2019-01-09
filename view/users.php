@@ -1,4 +1,3 @@
-<?php print_r($errors)?>
 <div class="row">
     <?php
     require_once 'core/templates/lateral.php';
@@ -100,17 +99,18 @@
             <span class="badge  badge-pill badge-warning"><?= $lang['BLOQUEADO'] ?></span>
         </div>
         <?php
-        if (isset($errors['actualizar'])) {
+        if (isset($errors['blockUser']) || isset($errors['removeUser'])) {
             ?>
             <div class='alert alert-danger col-md-3 float-lg-left text-left'>
                 <?php
-                if (isset($errors['actualizar']['user_role'])) {
+                if (isset($errors['blockUser']['uuid'])) {
                     ?>
-                    Rol: <?= $lang[$errors['actualizar']["user_role"]] ?>
+                    UUID: <?= $lang[$errors['blockUser']["uuid"]] ?>
                     <?php
-                } else if (isset($errors['actualizar']['uuid'])) {
+                }
+                if (isset($errors['removeUser']['uuid'])) {
                     ?>
-                    UUID: <?= $lang[$errors['actualizar']["uuid"]] ?>
+                    UUID: <?= $lang[$errors['removeUser']["uuid"]] ?>
                     <?php
                 }
                 ?>
@@ -334,45 +334,54 @@
                                             </div>
                                             <form action="<?php echo $helper->url("admin", "updateUser", array("show" => "user")); ?>" method="post" class="formUpdateUser">
                                                 <div class="modal-body">
+                                                    <?php
+                                                    if (isset($errors['updateUser'][$user->uuid]['query'])) {
+                                                        ?>
+                                                        <div class="alert alert-danger">
+                                                            <?= $lang[$errors['updateUser'][$user->uuid]['query']] ?>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                     <div class="row">
                                                         <div class="form-control has-success col-md-6 ml-auto"> 
                                                             <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                             <label for="name"><?= $lang['nombre'] ?></label>
                                                             <input type="text" name="name" value="<?= $user->name ?>" class="form-control <?= isset($errors[$user->uuid]['name']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['name']) ? $lang[$errors[$user->uuid]['name']] : $lang['formato_incorrecto'] ?>
+                                                                <?= isset($errors[$user->uuid]['updateUser']['name']) ? $lang[$errors[$user->uuid]['updateUser']['name']] : $lang['formato_incorrecto'] ?>
                                                             </div>
 
                                                             <label for="surname"><?= $lang['apellido'] ?></label>
                                                             <input type="text" name="surname" value="<?= $user->surname ?>" class="form-control  <?= isset($errors[$user->uuid]['surname']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['surname']) ? $lang[$errors[$user->uuid]['surname']] : $lang['formato_incorrecto'] ?>
+                                                                <?= isset($errors[$user->uuid]['updateUser']['surname']) ? $lang[$errors[$user->uuid]['updateUser']['surname']] : $lang['formato_incorrecto'] ?>
                                                             </div>
 
                                                             <label for="phone"><?= $lang['phone'] ?></label>
-                                                            <input type="tel" name="phone" value="<?= $user->phone ?>" class="form-control <?= isset($errors[$user->uuid]['phone']) ? " is-invalid" : "" ?>"/>
+                                                            <input type="tel" name="phone" value="<?= $user->phone ?>" class="form-control <?= isset($errors[$user->uuid]['updateUser']['phone']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['phone']) ? $lang[$errors[$user->uuid]['phone']] : $lang['formato_incorrecto'] ?>
+                                                                <?= isset($errors[$user->uuid]['updateUser']['phone']) ? $lang[$errors[$user->uuid]['updateUser']['phone']] : $lang['formato_incorrecto'] ?>
                                                             </div>
                                                         </div>
                                                         <div class="form-control has-success col-md-6 ml-auto">
                                                             <label for="password"><?= $lang['contraseña'] ?></label>
                                                             <input type="password" name="password" class="form-control password <?= isset($errors[$user->uuid]['password']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['password']) ? $lang[$errors[$user->uuid]['password']] : $lang['formato_incorrecto'] ?>
+                                                                <?= isset($errors[$user->uuid]['updateUser']['password']) ? $lang[$errors[$user->uuid]['updateUser']['password']] : $lang['formato_incorrecto'] ?>
                                                             </div>
                                                             <label for="password2"><?= $lang['contraseña'] ?></label>
                                                             <input type="password" name="password2" class="form-control password2 <?= isset($errors[$user->uuid]['password2']) ? " is-invalid" : "" ?>"/>
                                                             <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['password2']) ? $lang[$errors[$user->uuid]['password2']] : $lang['formato_incorrecto'] ?>
+                                                                <?= isset($errors[$user->uuid]['updateUser']['password2']) ? $lang[$errors[$user->uuid]['updateUser']['password2']] : $lang['formato_incorrecto'] ?>
                                                             </div>
                                                             <label for="user_role"><?= $lang['rol'] ?></label>
-                                                            <select class="form-control <?= isset($errors[$user->uuid]['user_role']) ? " is-invalid" : "" ?>" name="user_role">
+                                                            <select class="form-control <?= isset($errors[$user->uuid]['updateUser']['user_role']) ? " is-invalid" : "" ?>" name="user_role">
                                                                 <option value="0">USER</option>
                                                                 <option value="1">ADMIN</option>
                                                             </select>
                                                             <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['user_role']) ? $lang[$errors[$user->uuid]['user_role']] : $lang['formato_incorrecto'] ?>
+                                                                <?= isset($errors[$user->uuid]['updateUser']['user_role']) ? $lang[$errors[$user->uuid]['updateUser']['user_role']] : $lang['formato_incorrecto'] ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -387,33 +396,30 @@
                                 </div>
                                 <!-- Fin Modal editar -->
                             </td>
-                            <?php if (isset($errors[$user->uuid])): ?>
+
+                            <?php if (isset($errors[$user->uuid])) { ?>
                         <script> $('#edit<?= $user->uuid ?>').modal('show');</script>
-                    <?php endif; ?>
+                    <?php
+                    }
+                    if (isset($errors['blockUser'][$user->uuid]) || isset($errors['unlockUser'][$user->uuid]) || isset($errors['removeUser'][$user->uuid])) {
+                        ?>
+                        <script> $('#show<?= $user->uuid ?>').modal('show');</script>
+                    <?php }
+                    ?>
                     </tr>
-                <?php } ?>
+<?php } ?>
                 </tbody>
             </table>
             <div class="text-xs-center">
-                <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
+                <ul class="pagination pagination-sm justify-content-center">
                     <?php
                     for ($i = 0; $i < $numUsers / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagUser"><?= $i + 1 ?></a>
                         </li>
                     <?php }
-                    ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
+                    ?> 
                 </ul>
             </div>
 

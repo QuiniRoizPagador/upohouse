@@ -20,7 +20,7 @@ class AdminController extends AbstractController {
     /**
      * Página principal del usuario
      */
-    public function dashboard($errors = NULL) {
+    public function dashboard($errors = NULL, $pag = NULL) {
         $show = null;
         if (isset($_GET["show"])) {
             $show = $_GET["show"];
@@ -31,7 +31,7 @@ class AdminController extends AbstractController {
                 break;
             case "users":
             default:
-                $this->users($errors, $show);
+                $this->users($errors, $show, $pag);
         }
     }
 
@@ -51,12 +51,15 @@ class AdminController extends AbstractController {
         ));
     }
 
-    private function users($errors, $show) {
+    private function users($errors, $show, $pag) {
         //TODO: según el usuario se mostrará la dashboard del admin 
         // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
+        if ($pag == NULL) {
+            $pag = 0;
+        }
         $numUsers = $this->userModel->countUsers();
-        $allusers = $this->userModel->getAllPaginated(0);
+        $allusers = $this->userModel->getAllPaginated($pag);
         $countRegistrations = $this->userModel->countRegistrations();
         //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
@@ -65,7 +68,8 @@ class AdminController extends AbstractController {
             "numUsers" => $numUsers,
             "errors" => $errors,
             "countRegistrations" => $countRegistrations,
-            "show" => $show
+            "show" => $show,
+            "pag" => $pag,
         ));
     }
 
@@ -129,45 +133,15 @@ class AdminController extends AbstractController {
         if (isset($_GET["show"])) {
             $show = $_GET["show"];
         }
-        $values = array("uuid" => "text", "user_role" => "number");
-        $errors = RegularUtils::filtrarPorTipo($values, "actualizar");
-        if (!isset($errors['actualizar'])) {
-            $errors = array();
-        }
-        if (!isset($errors["actualizar"]) && filter_var($_POST["user_role"], FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 1))) === false) {
+        $values = array("uuid" => "text", "user_role" => "number", "name" => "text", "surname" => "text",
+            "phone" => "phone", "password" => "text");
+        $errors[$_POST['uuid']] = RegularUtils::filtrarPorTipo($values, "updateUser");
+        $noRequired = array("name", "surname", "phone", "password");
+        $errors[$_POST['uuid']] = RegularUtils::camposNoRequeridos($errors[$_POST['uuid']], "updateUser", $noRequired);
+        if (!isset($errors["updateUser"]) && filter_var($_POST["user_role"], FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 1))) === false) {
             $errors = array_merge($errors, array($_POST['uuid'] => array("user_role" => "formato_incorrecto")));
         }
-        if (!isset($errors["actualizar"]) && !isset($errors[$_POST['uuid']])) {
-            $errors = array();
-            if (isset($_POST['name']) && $_POST['name'] != "") {
-                $nameErrors = RegularUtils::filtrarPorTipo(array("name" => "text"), $_POST['uuid']);
-                if (isset($nameErrors[$_POST['uuid']])) {
-                    $errors = array_merge($errors, $nameErrors);
-                }
-            }
-
-            if (isset($_POST['surname']) && $_POST['surname'] != "") {
-                $surnameErrors = RegularUtils::filtrarPorTipo(array("surname" => "text"), $_POST['uuid']);
-                if (isset($surnameErrors[$_POST['uuid']])) {
-                    $errors = array_merge($errors, $surnameErrors);
-                }
-            }
-
-            if (isset($_POST['phone']) && $_POST['phone'] != "") {
-                $phoneErrors = RegularUtils::filtrarPorTipo(array("phone" => "phone"), $_POST['uuid']);
-                if (isset($phoneErrors[$_POST['uuid']])) {
-                    $errors = array_merge($errors, $phoneErrors);
-                }
-            }
-
-            if (isset($_POST['password']) && $_POST['password'] != "") {
-                $passwordErrors = RegularUtils::filtrarPorTipo(array("password" => "text"), $_POST['uuid']);
-                if (isset($passwordErrors[$_POST['uuid']])) {
-                    $errors = array_merge($errors, $passwordErrors);
-                }
-            }
-        }
-        if (!isset($errors["actualizar"]) && !isset($errors[$_POST['uuid']])) {
+        if (!isset($errors[$_POST['uuid']])) {
             $values = array("name", "surname", "password", "uuid", "user_role", "phone");
             $filtrado = RegularUtils::sanearStrings($values);
             //Creamos un usuario
@@ -187,13 +161,13 @@ class AdminController extends AbstractController {
                 $usuario->setPassword($filtrado["password"]);
             }
             $save = $this->userModel->update($usuario);
-            if ($save == 0) {
-                die("Error al insertar usuario");
+            if ($save != 1) {
+                $errors['updateUser'][$_POST['uuid']]['query'] = "error_update_user";
             } else {
                 $this->redirect("Admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors);
+            $this->dashboard($errors, $_POST['pag']);
         }
     }
 
@@ -206,21 +180,37 @@ class AdminController extends AbstractController {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->block($id);
             if ($rem == 0) {
-                die("Error al bloquear usuario");
+                $errors['blockUser'][$_POST['uuid']]['query'] = "error_block_user";
             }
+        } else {
+            $errors['blockUser']['uuid'] = "requerido";
         }
-        $this->redirect("Admin", "dashboard", array("show" => "$show"));
+        if (isset($errors['blockUser'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+        }
     }
-    
+
     public function unlockUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
         if (filter_has_var(INPUT_POST, "uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->unlock($id);
             if ($rem == 0) {
-                die("Error al bloquear usuario");
+                $errors['unlockUser'][$_POST['uuid']]['query'] = "error_unlock_user";
             }
+        } else {
+            $errors['unlockUser']['uuid'] = "requerido";
         }
-        $this->redirect("Admin", "dashboard");
+        if (isset($errors['unlockUser'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("Admin", "dashboard" . array("show" => "$show"));
+        }
     }
 
     public function removeUser() {
@@ -232,10 +222,16 @@ class AdminController extends AbstractController {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->userModel->delete($id);
             if ($rem == 0) {
-                die("Error al eliminar usuario");
+                $errors['removeUser'][$_POST['uuid']]['query'] = "error_remove_user";
             }
+        } else {
+            $errors['removeUser']['uuid'] = "requerido";
         }
-        $this->redirect("Admin", "dashboard", array("show" => "$show"));
+        if (isset($errors['removeUser'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+        }
     }
 
 }

@@ -37,7 +37,7 @@ function createModal(id, uuid, title, button, action, content) {
     return modal;
 }
 
-function cargarUsuario(user) {
+function cargarUsuario(user, pag) {
     var clase = "";
     if (user.state == '2') {
         clase = "table-warning";
@@ -111,15 +111,15 @@ function cargarUsuario(user) {
     if (user.user_role !== ROLES['ADMIN']) {
         if (user.state !== STATES['BLOQUEADO']) {
             button = $("<button type='submit' class='btn btn-warning'><i class='fa fa-ban'></i>" + LANG['bloquear'] + "</button>");
-            modal = createModal("block" + user.uuid, user.uuid, LANG['bloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=blockUser", LANG['estas seguro']);
+            modal = createModal("block" + user.uuid, user.uuid, LANG['bloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=blockUser&show=users", LANG['estas seguro']);
             td.append(modal);
         } else {
             button = $("<button type='submit' class='btn btn-success'><i class='fa fa-check'></i>" + LANG['desbloquear'] + "</button>");
-            modal = createModal("unlock" + user.uuid, user.uuid, LANG['desbloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=unlockUser", LANG['estas seguro']);
+            modal = createModal("unlock" + user.uuid, user.uuid, LANG['desbloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=unlockUser&show=users", LANG['estas seguro']);
             td.append(modal);
         }
         button = $("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>");
-        modal = createModal("remove" + user.uuid, user.uuid, LANG['eliminar registro de'] + user.name, button, "index.php?controller=Admin&action=removeUser", LANG['estas seguro']);
+        modal = createModal("remove" + user.uuid, user.uuid, LANG['eliminar registro de'] + user.name, button, "index.php?controller=Admin&action=removeUser&show=users", LANG['estas seguro']);
         td.append(modal);
     }
 
@@ -133,14 +133,15 @@ function cargarUsuario(user) {
     modal_header.append(create("h5", LANG['editar datos de'] + user.name, "modal-title"));
     modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
     modal_card.append(modal_header);
-    form = $("<form method='post' action='index.php?controller=Admin&action=updateUser' class='formUpdateUser' />");
+    form = $("<form method='post' action='index.php?controller=Admin&action=updateUser&show=users' class='formUpdateUser' />");
     modal_card.append(form);
     modal_body = $("<div class='card-body modal-body' />");
     form.append(modal_body);
     var row = $("<div class='row' />");
     modal_body.append(row);
 
-    var form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
+    var form_control = $("<div class='form-control has-success col-md-6 ml-auto formUpdateUser' /;>");
+    form_control.append(create("input type='hidden' value='" + pag + "' name='pag'"), "", "");
     form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
     form_control.append(create("input type='text' name='name' value='" + user.name + "'", "", "form-control"));
@@ -160,12 +161,12 @@ function cargarUsuario(user) {
 
     form_control = $("<div class='form-control has-success col-md-6 ml-auto' /;>");
     form_control.append(create("label for='password'", LANG['contraseña'], ""));
-    form_control.append(create("input type='password' name='password'", "", "form-control"));
+    form_control.append(create("input type='password' name='password'", "", "form-control password"));
     form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
     form_control.append(create("label for='password'", LANG['contraseña'], ""));
-    form_control.append(create("input type='password' name='password2'", "", "form-control"));
+    form_control.append(create("input type='password' name='password2'", "", "form-control password2"));
     form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
 
 
@@ -218,7 +219,7 @@ function cargarAnuncio(ad) {
             $(this).click(function () {
                 $(".pagUser").parent().removeClass("active");
                 $("#lockModal").modal('show');
-                var url = "index.php?controller=WS&action=paginateUsers";
+                var url = "index.php?controller=WS&action=paginateUsers&show=users";
                 var num = $(this).text();
                 $.post(url,
                         {
@@ -229,8 +230,11 @@ function cargarAnuncio(ad) {
                                 $("#cuerpo").empty();
                                 var users = $.parseJSON(data);
                                 for (var i = 0; i < users.length; i++) {
-                                    $("#cuerpo").append(cargarUsuario(users[i]));
+                                    $("#cuerpo").append(cargarUsuario(users[i], num - 1));
                                 }
+                                $(".formUpdateUser").checkMatch();
+                                $(".formUpdateUser").validate({empty: true});
+                                $(".formUpdateUser").matchPasswords({empty: true});
                             } catch (Exception) {
 
                             }
@@ -247,7 +251,7 @@ function cargarAnuncio(ad) {
             $(this).click(function () {
                 $('.pagAd').parent().removeClass('active');
                 $("#lockModal").modal('show');
-                var url = 'index.php?controller=WS&action=paginateAds';
+                var url = 'index.php?controller=WS&action=paginateAds&show=ads';
                 var num = $(this).text();
                 console.log(num);
                 $.post(url,

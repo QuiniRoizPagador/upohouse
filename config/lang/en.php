@@ -70,5 +70,6 @@ $lang = array(
     "user" => "User",
     "anuncioCreado" => "Ad has been created successfully",
     "desbloquear" => "Unlock",
+    "error_update_user" => "Error al updating user",
 );
 

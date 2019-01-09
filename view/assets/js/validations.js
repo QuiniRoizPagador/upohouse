@@ -43,7 +43,7 @@
     $.fn.checkMatch = function () {
         this.each(function () {
             var form = this;
-            $((".password", form), (".password2", form)).keyup(function () {
+            $(":password", form).keyup(function () {
                 if ($(".password", form).val() === $(".password2", form).val()) {
                     $(".password", form).removeClass("is-invalid");
                     $(".password", form).addClass("is-valid");
