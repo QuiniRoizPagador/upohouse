@@ -4,8 +4,9 @@
             empty: false
         }, options);
         this.each(function () {
+            var form = this;
             $(this).submit(function () {
-                var error = false;
+                var error = false, errorPassw = 0;
                 $(':input:not(:submit)', this).each(function () {
                     var regex;
                     var val = $.trim($(this).val());
@@ -19,81 +20,71 @@
                         case "text":
                             regex = /[a-zA-Z_]{1,255}$/;
                             break;
+                        case "select-one":
+                            regex = /[0-9]/;
+                            break;
                         default:
                             regex = /[a-zA-Z0-9_]{1,255}/;
                     }
-
-                    if (settings.empty && val !== "" && !val.match(regex)) {
+                    if (!settings.empty && !val.match(regex)) {
+                        if ($(this)[0].type === "password") {
+                            errorPassw++;
+                        }
                         $(this).removeClass("is-valid");
                         $(this).addClass("is-invalid");
-                        error = true;
-                    } else if (!settings.empty && !val.match(regex)) {
-                        $(this).removeClass("is-valid");
-                        $(this).addClass("is-invalid");
+                        if (!settings.empty && $.trim(val) === "") {
+                            $(this).next().text(LANG['requerido']);
+                        } else {
+                            $(this).next().text(LANG['formato_incorrecto']);
+                        }
                         error = true;
                     } else {
                         $(this).removeClass("is-invalid");
                         $(this).addClass("is-valid");
                     }
                 });
+
+                var match = $(".password", form).val() === $(".password2", form).val();
+                var vacias = true;
+                if (!settings.empty) {
+                    vacias = $(".password", form).val() !== "" && $(".password2", form).val() !== "";
+                }
+                if (vacias && match) {
+                    $(":password", form).removeClass("is-invalid");
+                    $(":password", form).addClass("is-valid");
+                } else {
+                    $(":password", form).removeClass("is-valid");
+                    $(":password", form).addClass("is-invalid");
+                    if (!match) {
+                        $(":password", form).next().text(LANG['no_match']);
+                    }
+                    error = true;
+                }
                 return !error;
             });
-        });
-    };
-    $.fn.checkMatch = function () {
-        this.each(function () {
-            var form = this;
-            $(":password", form).keyup(function () {
-                if ($(".password", form).val() === $(".password2", form).val()) {
-                    $(".password", form).removeClass("is-invalid");
-                    $(".password", form).addClass("is-valid");
-                    $(".password2", form).removeClass("is-invalid");
-                    $(".password2", form).addClass("is-valid");
-                } else {
-                    $(".password", form).removeClass("is-valid");
-                    $(".password", form).addClass("is-invalid");
-                    $(".password2", form).removeClass("is-valid");
-                    $(".password2", form).addClass("is-invalid");
-                }
-            });
-        });
-    };
-    $.fn.matchPasswords = function (options) {
-        var settings = $.extend({
-            empty: false
-        }, options);
-        this.each(function () {
-            $(this).submit(function () {
-                var prev = null;
-                var error = false;
-                $(':input[type=password]', this).each(function () {
-                    if (prev === null) {
-                        prev = $(this);
+
+            $(":password", form).each(function () {
+                $(this).keyup(function () {
+                    var vacioOk = true;
+                    if (!settings.empty) {
+                        vacioOk = $.trim($(this).val()) !== "" && $.trim($(this).val() !== "");
+                    }
+                    if (!vacioOk) {
+                        $(this).next().text(LANG['requerido']);
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                    } else if ($(".password", form).val() !== $(".password2", form).val()) {
+                        $(":password", form).next().text(LANG['no_match']);
+                        $(":password", form).removeClass("is-valid");
+                        $(":password", form).addClass("is-invalid");
+                    } else if ($(".password", form).val() === $(".password2", form).val()) {
+                        $(":password", form).removeClass("is-invalid");
+                        $(":password", form).addClass("is-valid");
                     } else {
-                        if (settings.empty && ($.trim(prev.val()) !== "" || $.trim($(this).val()) !== "")
-                                && $.trim(prev.val()) !== $.trim($(this).val())) {
-                            $(this).removeClass("is-valid");
-                            $(this).addClass("is-invalid");
-                            prev.removeClass("is-valid");
-                            prev.addClass("is-invalid");
-                            error = true;
-
-                        } else if ($.trim(prev.val()) !== $.trim($(this).val())) {
-                            $(this).removeClass("is-valid");
-                            $(this).addClass("is-invalid");
-                            prev.removeClass("is-valid");
-                            prev.addClass("is-invalid");
-                            error = true;
-                        } else {
-                            $(this).removeClass("is-invalid");
-                            $(this).addClass("is-valid");
-                            prev.removeClass("is-invalid");
-                            prev.addClass("is-valid");
-
-                        }
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
                     }
                 });
-                return !error;
             });
         });
     };
@@ -102,11 +93,8 @@
 
 
 $(document).ready(function () {
-    $(".formUser, .formUpdateUser").checkMatch();
     $(".formUser").validate();
-    $(".formUser").matchPasswords();
     $(".formUpdateUser").validate({empty: true});
-    $(".formUpdateUser").matchPasswords({empty: true});
 });
 
 

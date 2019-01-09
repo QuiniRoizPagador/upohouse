@@ -285,7 +285,7 @@
                                                         <?= $lang['estas seguro'] ?>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form method="post" action="<?= $helper->url("admin", "unlockUser"); ?>">
+                                                        <form method="post" action="<?= $helper->url("admin", "unlockUser", array("show" => "user")); ?>">
                                                             <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                             <button type="submit" class="btn btn-success"><i class="fa fa-check"></i><?= $lang['desbloquear'] ?></button>
                                                             <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>

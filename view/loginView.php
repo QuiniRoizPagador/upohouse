@@ -27,7 +27,7 @@ require_once 'core/templates/nav.php';
     </div>
     <div id="signup" class="tab-pane fade col-md-4 <?= isset($errors['createUser']) ? "show active" : "" ?> content-center">
         <h3 class="text-muted text-center">
-           <?= $lang['registro'] ?>
+            <?= $lang['registro'] ?>
         </h3><br />
         <form action="<?= $helper->url("User", "register") ?>" method="post" class="formUser col-lg-12"><br />
             <div class="form-row has-success"> 
@@ -91,11 +91,15 @@ require_once 'core/templates/nav.php';
 </div>
 
 <?php
-if (isset($errors['verify'])) {
+if (isset($errors['verify']) || isset($errors['createUser'])) {
     ?>
     <br />
     <?php
-    echo error($lang[$errors['verify']]);
+    if (isset($errors['verify'])) {
+        echo error($lang[$errors['verify']]);
+    } else if (isset($errors['createUser'])) {
+        echo error($lang[$errors['createUser']['query']]);
+    }
     ?>
 <?php }
 ?>

@@ -209,7 +209,7 @@ class AdminController extends AbstractController {
         if (isset($errors['unlockUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard" . array("show" => "$show"));
+            $this->redirect("Admin", "dashboard", array("show" => "$show"));
         }
     }
 

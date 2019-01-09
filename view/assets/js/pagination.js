@@ -219,7 +219,7 @@ function cargarAnuncio(ad) {
             $(this).click(function () {
                 $(".pagUser").parent().removeClass("active");
                 $("#lockModal").modal('show');
-                var url = "index.php?controller=WS&action=paginateUsers&show=users";
+                var url = "index.php?controller=WS&action=paginateUsers";
                 var num = $(this).text();
                 $.post(url,
                         {
@@ -232,9 +232,7 @@ function cargarAnuncio(ad) {
                                 for (var i = 0; i < users.length; i++) {
                                     $("#cuerpo").append(cargarUsuario(users[i], num - 1));
                                 }
-                                $(".formUpdateUser").checkMatch();
                                 $(".formUpdateUser").validate({empty: true});
-                                $(".formUpdateUser").matchPasswords({empty: true});
                             } catch (Exception) {
 
                             }
@@ -251,7 +249,7 @@ function cargarAnuncio(ad) {
             $(this).click(function () {
                 $('.pagAd').parent().removeClass('active');
                 $("#lockModal").modal('show');
-                var url = 'index.php?controller=WS&action=paginateAds&show=ads';
+                var url = 'index.php?controller=WS&action=paginateAds';
                 var num = $(this).text();
                 console.log(num);
                 $.post(url,
