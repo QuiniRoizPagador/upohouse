@@ -1,3 +1,4 @@
+<?php print_r($errors)?>
 <div class="row">
     <?php
     require_once 'core/templates/lateral.php';
@@ -17,7 +18,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?php echo $helper->url("admin", "createUser"); ?>" method="post" class="formUser">
+                            <form action="<?php echo $helper->url("admin", "createUser", array("show" => "user")); ?>" method="post" class="formUser">
                                 <div class="modal-body">
                                     <?php
                                     if (isset($errors['createUser']['query'])) {
@@ -259,7 +260,7 @@
                                                         <?= $lang['estas seguro'] ?>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form method="post" action="<?= $helper->url("admin", "blockUser"); ?>">
+                                                        <form method="post" action="<?= $helper->url("admin", "blockUser", array("show" => "user")); ?>">
                                                             <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                             <button type="submit" class="btn btn-warning"><i class="fa fa-ban"></i><?= $lang['bloquear'] ?></button>
                                                             <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
@@ -310,7 +311,7 @@
                                                     <?= $lang['estas seguro'] ?>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form method="post" action="<?= $helper->url("admin", "removeUser"); ?>">
+                                                    <form method="post" action="<?= $helper->url("admin", "removeUser", array("show" => "user")); ?>">
                                                         <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                                         <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
                                                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
@@ -331,7 +332,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="<?php echo $helper->url("admin", "updateUser"); ?>" method="post" class="formUpdateUser">
+                                            <form action="<?php echo $helper->url("admin", "updateUser", array("show" => "user")); ?>" method="post" class="formUpdateUser">
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="form-control has-success col-md-6 ml-auto"> 

@@ -75,13 +75,15 @@
         </div>
         <div class="form-group">
             <label for="images"><?= $lang["imagenes"] ?></label>
-            <input id="images" type="file" multiple class="form-control-file <?= isset($errors['create']['images']) ? " is-invalid" : "" ?>" name="images[]">
+            <input id="images" type="file" multiple class="form-control-file" name="images[]">
             <small id="imagesHelpBlock" class="form-text text-muted">
                 <?= $lang["imagenesTextoAyuda"] ?>
             </small>
-            <div class="invalid-feedback">
-                <?= isset($errors["create"]["images"]) ? $lang[$errors['create']['images']] : $lang['formato_incorrecto'] ?>
-            </div>
+            <?php if (isset($errors['create']['images'])) { ?>
+                <div style="color:#dc3545;font-size:80%">
+                    <?= isset($errors["create"]["images"]) ? $lang[$errors['create']['images']] : $lang['formato_incorrecto'] ?>
+                </div>
+            <?php } ?>
         </div>
         <div class="form-group">
             <label for="description"><?= $lang["descripcion"] ?></label>

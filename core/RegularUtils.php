@@ -99,6 +99,22 @@ class RegularUtils {
         }
     }
 
+    public static function camposNoRequeridos($errors, $name, $fields) {
+        if ($errors != null) {
+            foreach ($fields as $field) {
+                if (isset($errors[$name][$field])) {
+                    if ($errors[$name][$field] === 'requerido') {
+                        unset($errors[$name][$field]);
+                    }
+                }
+            }
+            if (count($errors[$name]) == 0) {
+                $errors = null;
+            }
+        }
+        return $errors;
+    }
+
     static public function sanearStrings($values) {
         foreach ($values as $v) {
             $filtro[$v] = FILTER_SANITIZE_STRING;

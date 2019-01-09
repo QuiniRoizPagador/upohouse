@@ -15,6 +15,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>UUID</th>
                         <th><?= $lang['precio'] ?> </th>
                         <th><?= $lang['fecha registro'] ?></th>
                         <th>Ver</th>
@@ -30,6 +31,7 @@
                         ?>
                         <tr>
                             <td class="<?= $class ?>"><?= $ad->id; ?> </td>
+                            <td class="<?= $class ?>"><?= $ad->uuid; ?> </td>
                             <td class="<?= $class ?>"><?= $ad->price; ?> </td>
                             <td class="<?= $class ?>"><?= $ad->timestamp; ?> </td>
                             <td class="<?= $class ?>">
@@ -52,7 +54,7 @@
                     for ($i = 0; $i < $numAds / 10; $i++) {
                         ?>
                         <li class="page-item <?= $i == 0 ? "active" : "" ?>">
-                            <a class="page-link pagUser"><?= $i + 1 ?></a>
+                            <a class="page-link pagAd"><?= $i + 1 ?></a>
                         </li>
                     <?php }
                     ?>       
