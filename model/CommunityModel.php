@@ -13,5 +13,9 @@ class CommunityModel extends AbstractModel {
         $this->communityDao = new CommunityDao();
         parent::__construct($this->communityDao);
     }
+    
+    public function readId($id) {
+        return $this->communityDao->readId($id);
+    }
 
 }

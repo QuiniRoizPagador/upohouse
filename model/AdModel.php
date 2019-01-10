@@ -22,4 +22,8 @@ class AdModel extends AbstractModel {
         return $this->adDao->countAds();
     }
 
+    public function block($uuid) {
+        return $this->adDao->block($uuid);
+    }
+
 }

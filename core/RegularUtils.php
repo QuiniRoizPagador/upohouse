@@ -23,6 +23,17 @@ class RegularUtils {
         return $images;
     }
 
+    static public function removeAdImages($adId) {
+        $url = IMAGE_AD_URI . "/" . $adId;
+        $files = scandir($url);
+        foreach ($files as $file) {
+            if ($file != '.' && $file != '..') {
+                unlink($url . '/' . $file);
+            }
+        }
+        rmdir($url);
+    }
+
     static public function filtrarVariable(&$values) {
         foreach ($values as $v) {
             if (!filter_has_var(INPUT_POST, $v) || trim($_POST[$v]) == "") {
@@ -115,11 +126,19 @@ class RegularUtils {
         return $errors;
     }
 
-    static public function sanearStrings($values) {
+    static public function sanearStrings($values, $method = 'POST') {
+        switch ($method) {
+            case 'GET':
+                $method = INPUT_GET;
+                break;
+            case 'POST':
+            default:
+                $method = INPUT_POST;
+        }
         foreach ($values as $v) {
             $filtro[$v] = FILTER_SANITIZE_STRING;
         }
-        return filter_input_array(INPUT_POST, $filtro);
+        return filter_input_array($method, $filtro);
     }
 
     static public function sanearIntegers($values) {

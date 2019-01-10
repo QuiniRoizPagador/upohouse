@@ -3,6 +3,7 @@
 $lang = array(
     "añadir usuario" => "A&ntilde;adir Usuario",
     "añadir anuncio" => "A&ntilde;adir Anuncio",
+    "anuncio" => "Anuncio",
     "nombre" => "Nombre",
     "apellido" => "Apellido",
     "login" => "Login",
@@ -70,5 +71,6 @@ $lang = array(
     "user" => "Usuario",
     "anuncioCreado" => "Anuncio creado con éxito",
     "desbloquear" => "Desbloquear",
+    "sinDescripcion" => "Sin descripción"
 );
 

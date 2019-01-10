@@ -3,6 +3,7 @@
 $lang = array(
     "añadir usuario" => "Add User",
     "añadir anuncio" => "Add Ad",
+    "anuncio" => "Anuncio",
     "nombre" => "Name",
     "apellido" => "Surname",
     "login" => "Login",
@@ -70,5 +71,6 @@ $lang = array(
     "user" => "User",
     "anuncioCreado" => "Ad has been created successfully",
     "desbloquear" => "Unlock",
+    "sinDescripcion" => "No description"
 );
 

@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS `upohouse`;
 DROP USER IF EXISTS `upohouse`;
 
 #:::Crea la base de datos:::
-CREATE DATABASE upohouse CHARACTER SET utf8 COLLATE utf_unicode_ci;
+CREATE DATABASE upohouse CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE upohouse;
 
 #:::DDL:::
@@ -162,7 +162,7 @@ CREATE TABLE Images(
 	ad_id INT(11) UNSIGNED NOT NULL,
     image VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY(id),
-    FOREIGN KEY (ad_id) REFERENCES Ads(id));
+    FOREIGN KEY (ad_id) REFERENCES Ads(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 ALTER TABLE Ads ADD FOREIGN KEY (accepted_request) REFERENCES Requests(id);
 
@@ -179,6 +179,16 @@ INSERT INTO `state_types` (`uuid`, `state`) VALUES
 ('d1ec59d0-506b-4081-a44d-8fd9e433808f', 'ELIMINADO'),
 ('733aed23-8cec-45e7-b977-4e42fdd36a4f', 'ACEPTADO'),
 ('6e115d7d-b6ec-4909-80aa-7506d3dbdb4c', 'DESCARTADO');
+
+#LOAD HOUSINGTYPES
+INSERT INTO `housing_types` (`uuid`, `name`) VALUES
+('62ffc28b-049f-4733-9c8c-3c800a7d906f', 'Casa'),
+('62ffc28b-049f-4733-9c8c-5c800b7d906f', 'Piso');
+
+#LOAD OPERATIONTYPES
+INSERT INTO `operation_types` (`uuid`, `name`) VALUES
+('62ffc28b-049f-4735-9e8c-3c800a7d906f', 'Comprar'),
+('62eec28b-049f-4733-9c8c-5c800b7d906f', 'Alquilar');
 
 #LOAD USERS
 INSERT INTO `users` (`uuid`, `name`, `email`, `password`, `login`, `user_role`) VALUES

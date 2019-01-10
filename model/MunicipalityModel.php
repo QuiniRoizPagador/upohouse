@@ -14,4 +14,8 @@ class MunicipalityModel extends AbstractModel {
         parent::__construct($this->municipalityDao);
     }
 
+    public function readId($id) {
+        return $this->municipalityDao->readId($id);
+    }
+
 }
