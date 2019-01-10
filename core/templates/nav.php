@@ -1,3 +1,5 @@
+<?php
+?>
 <header>
     <nav class="site-header sticky-top py-1 bg-dark">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -34,8 +36,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="<?=$_SERVER['REQUEST_URI']?>&lang=es"><?= $lang['español'] ?></a></li>
-                        <li><a href="<?=$_SERVER['REQUEST_URI']?>&lang=en"><?= $lang['ingles'] ?></a></li>
+                        <li><a href="<?=$helper->url($_GET['controller'], $_GET['action'], array("lang"=> "es"))?>"><?= $lang['español'] ?></a></li>
+                        <li><a href="<?=$helper->url($_GET['controller'], $_GET['action'], array("lang"=> "en"))?>"><?= $lang['ingles'] ?></a></li>
                     </ul>
                 </li>
             </ul>
