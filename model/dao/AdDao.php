@@ -48,4 +48,11 @@ class AdDao extends AbstractDao {
         return $row->count;
     }
 
+    public function block($uuid) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES["BLOQUEADO"], "uuid" => $uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
 }

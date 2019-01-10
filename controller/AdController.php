@@ -15,6 +15,8 @@ class AdController extends AbstractController {
     private $housingTypeModel;
     private $operationTypeModel;
     private $communityModel;
+    private $provinceModel;
+    private $municipalityModel;
     private $imageModel;
 
     public function __construct() {
@@ -23,6 +25,8 @@ class AdController extends AbstractController {
         $this->housingTypeModel = new HousingTypeModel();
         $this->operationTypeModel = new OperationTypeModel();
         $this->communityModel = new CommunityModel();
+        $this->provinceModel = new ProvinceModel();
+        $this->municipalityModel = new MunicipalityModel();
         $this->imageModel = new ImageModel();
     }
 
@@ -60,7 +64,7 @@ class AdController extends AbstractController {
             $intFiltrado = RegularUtils::sanearIntegers($intValues);
             $fltFiltrado = RegularUtils::sanearFloats($fltValues);
             $filtrado = array_merge($strFiltrado, $intFiltrado, $fltFiltrado);
-                    
+
             //Creamos un anuncio
             $ad = new Ad();
             $ad->setUuid(RegularUtils::uuid());
@@ -81,7 +85,7 @@ class AdController extends AbstractController {
                 $errors['create']['query'] = $save;
             } else {
                 $id = $this->adModel->read($ad->getUuid())[0]->id;
-                $images = RegularUtils::saveAdImages("images", $id);
+                $images = RegularUtils::saveAdImages("images", $ad->getUuid());
                 foreach ($images as $image) {
                     $imgObj = new Image();
                     $imgObj->setUuid(RegularUtils::uuid());
@@ -109,6 +113,57 @@ class AdController extends AbstractController {
                 'errors' => $errors
             ));
         }
+    }
+
+    public function read() {
+        if (filter_has_var(INPUT_GET, "uuid")) {
+            $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
+            $ad = $this->adModel->read($uuid)[0];
+            if (!isset($ad->uuid)) {
+                $this->redirect("User", "index");
+            } else {
+                $housingType = $this->housingTypeModel->read($ad->housing_type)[0];
+                $operationType = $this->operationTypeModel->read($ad->operation_type)[0];
+                $community = $this->communityModel->readId($ad->community_id)[0];
+                $province = $this->provinceModel->readId($ad->province_id)[0];
+                $municipality = $this->municipalityModel->readId($ad->municipality_id)[0];
+                $this->view("readAd", array(
+                    'title' => "Anuncio",
+                    "ad" => $ad,
+                    "housingType" => $housingType,
+                    "operationType" => $operationType,
+                    "community" => $community,
+                    "province" => $province,
+                    "municipality" => $municipality,
+                ));
+            }
+        } else {
+            $this->redirect("User", "index");
+        }
+    }
+
+    public function block() {
+        if (filter_has_var(INPUT_GET, "uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
+            $rem = $this->adModel->block($id);
+            if ($rem == 0) {
+                die("Error al bloquear usuario");
+            }
+        }
+        $this->redirect("Admin", "dashboard", array("show" => "ads"));
+    }
+
+    public function remove() {
+        if (filter_has_var(INPUT_GET, "uuid")) {
+            $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
+            $rem = $this->adModel->delete($id);
+            if ($rem == 0) {
+                die("Error al eliminar usuario");
+            } else {
+                RegularUtils::removeAdImages($id);
+            }
+        }
+        $this->redirect("Admin", "dashboard", array("show" => "ads"));
     }
 
     /**

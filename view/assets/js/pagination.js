@@ -200,7 +200,7 @@ function cargarAnuncio(ad) {
     var td = $("<td>");
     var a = $("<a>");
     var span = $("<span>");
-    a.attr('href', '#');
+    a.attr('href', 'index.php?controller=Ad&action=read&uuid=' + ad.uuid);
     a.addClass('btn btn-info btn-sm');
     span.addClass('fa fa-eye');
     a.append(span);

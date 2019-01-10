@@ -35,7 +35,7 @@
                             <td class="<?= $class ?>"><?= $ad->price; ?> </td>
                             <td class="<?= $class ?>"><?= $ad->timestamp; ?> </td>
                             <td class="<?= $class ?>">
-                                <a href="#" class="btn btn-info btn-sm">
+                                <a href="<?php echo $helper->url("ad", "read", array("uuid" => "$ad->uuid")); ?>" class="btn btn-info btn-sm">
                                     <span class="fa fa-eye"></span>
                                 </a>                  
                             </td>

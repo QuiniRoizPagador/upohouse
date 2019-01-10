@@ -14,4 +14,8 @@ class ProvinceModel extends AbstractModel {
         parent::__construct($this->provinceDao);
     }
 
+    public function readId($id) {
+        return $this->provinceDao->readId($id);
+    }
+
 }

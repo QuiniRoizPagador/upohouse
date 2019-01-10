@@ -3,6 +3,7 @@
 $lang = array(
     "añadir usuario" => "Add User",
     "añadir anuncio" => "Add Ad",
+    "anuncio" => "Anuncio",
     "nombre" => "Name",
     "apellido" => "Surname",
     "login" => "Login",
@@ -86,5 +87,6 @@ $lang = array(
     "comentario_reported" => "Reported comment",
     "tipos operacion"=>"Operation Types",
     "añadir tipo de operacion" => "Add Operation Type",
+    "sinDescripcion" => "No description"
 );
 
