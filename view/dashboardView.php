@@ -9,6 +9,18 @@ require_once 'core/templates/head.php';
     <div class="container-fluid">
         <?php
         switch ($show) {
+            case "comentarios":
+                $isComentarios = TRUE;
+                require_once 'comentarios.php';
+                break;
+            case "tipos":
+                $isTipos = TRUE;
+                require_once 'tipos.php';
+                break;
+            case "denuncias":
+                $isDenuncias = TRUE;
+                require_once 'denuncias.php';
+                break;
             case "ads":
                 $isAds = TRUE;
                 require_once 'ads.php';

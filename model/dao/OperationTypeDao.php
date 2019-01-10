@@ -10,6 +10,7 @@ class OperationTypeDao extends AbstractDao {
         parent::__construct("Operation_Types");
     }
 
+
     public function create($obj) {
         $query = "INSERT INTO $this->table (`uuid`, `name`)
                 VALUES(?, ?)";
@@ -28,5 +29,27 @@ class OperationTypeDao extends AbstractDao {
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
+
+    public function countOperationTypes($close = TRUE) {
+        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table ORDER BY id DESC LIMIT 1");
+        $row = $query->fetch_object();
+        mysqli_free_result($query);
+        return $row->count;
+    }
+
+    public function getAllPaginated($pag = 0, $close = TRUE) {
+        $query = $this->mysqli->query("SELECT * FROM $this->table "
+                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+        //Devolvemos el resultset en forma de array de objetos
+
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+
+        return $resultSet;
+    }
+
 
 }

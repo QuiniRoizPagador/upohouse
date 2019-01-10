@@ -2,19 +2,33 @@
 
 require_once 'core/RegularUtils.php';
 require_once 'model/dao/dto/User.php';
+require_once 'model/dao/dto/Housing_type.php';
+require_once 'model/dao/dto/Operation_type.php';
+require_once 'model/dao/dto/Report.php';
 
 use core\AbstractController;
 use core\RegularUtils;
 use model\dao\dto\User;
+use model\dao\dto\Housing_type;
+use model\dao\dto\Operation_type;
+use model\dao\dto\Report;
 
 class AdminController extends AbstractController {
 
     private $userModel;
+    private $commentModel;
+    private $housingTypeModel;
+    private $reportModel;
+    private $operationTypeModel;
 
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
         $this->adModel = new AdModel();
+        $this->commentModel = new CommentModel();
+        $this->housingTypeModel = new HousingTypeModel();
+        $this->reportModel = new ReportModel();
+        $this->operationTypeModel = new OperationTypeModel();
     }
 
     /**
@@ -26,6 +40,13 @@ class AdminController extends AbstractController {
             $show = $_GET["show"];
         }
         switch ($show) {
+            case "comentarios":
+                $this->comments($errors, $show, $pag);
+                break;
+            case "tipos":
+                $this->types($errors, $show, $pag);
+
+                break;
             case "ads":
                 $this->ads($errors, $show);
                 break;
@@ -36,12 +57,12 @@ class AdminController extends AbstractController {
     }
 
     private function ads($errors, $show) {
-        //TODO: según el usuario se mostrará la dashboard del admin 
-        // por defecto o su página de administración básica
-        //Conseguimos todos los anuncios.
+//TODO: según el usuario se mostrará la dashboard del admin 
+// por defecto o su página de administración básica
+//Conseguimos todos los anuncios.
         $numAds = $this->adModel->countAds();
         $allAds = $this->adModel->getAllPaginated();
-        //Cargamos la vista index y le pasamos valores
+//Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
             'title' => "P&aacute;gina de Gesti&oacute;n",
             "allAds" => $allAds,
@@ -52,16 +73,16 @@ class AdminController extends AbstractController {
     }
 
     private function users($errors, $show, $pag) {
-        //TODO: según el usuario se mostrará la dashboard del admin 
-        // por defecto o su página de administración básica
-        //Conseguimos todos los usuarios
+//TODO: según el usuario se mostrará la dashboard del admin 
+// por defecto o su página de administración básica
+//Conseguimos todos los usuarios
         if ($pag == NULL) {
             $pag = 0;
         }
         $numUsers = $this->userModel->countUsers();
         $allusers = $this->userModel->getAllPaginated($pag);
         $countRegistrations = $this->userModel->countRegistrations();
-        //Cargamos la vista index y le pasamos valores
+//Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
             'title' => "P&aacute;gina de Gesti&oacute;n",
             "allusers" => $allusers,
@@ -90,7 +111,7 @@ class AdminController extends AbstractController {
                 "email", "password",
                 "user_role", "phone");
             $filtrado = RegularUtils::sanearStrings($values);
-            //Creamos un usuario
+//Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
             $usuario->setSurname($filtrado["surname"]);
@@ -105,16 +126,16 @@ class AdminController extends AbstractController {
             if ($save != 1) {
                 $errors['createUser']['query'] = $save;
             } else {
-                // si todo ha ido correcto, nos vamos a la web principal
-                $this->redirect("Admin", "dashboard", array("show" => "$show"));
+// si todo ha ido correcto, nos vamos a la web principal
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         }
         if (isset($errors["createUser"])) {
-            //Conseguimos todos los usuarios
+//Conseguimos todos los usuarios
             $numUsers = $this->userModel->countUsers();
             $allusers = $this->userModel->getAllPaginated(0);
 
-            //Cargamos la vista index y le pasamos valores
+//Cargamos la vista index y le pasamos valores
             $this->view("dashboard", array(
                 'title' => "P&aacute;gina de Gesti&oacute;n",
                 "allusers" => $allusers,
@@ -144,7 +165,7 @@ class AdminController extends AbstractController {
         if (!isset($errors[$_POST['uuid']])) {
             $values = array("name", "surname", "password", "uuid", "user_role", "phone");
             $filtrado = RegularUtils::sanearStrings($values);
-            //Creamos un usuario
+//Creamos un usuario
             $usuario = new User();
             $usuario->setUuid($filtrado['uuid']);
             $usuario->setUserRole($filtrado['user_role']);
@@ -164,7 +185,7 @@ class AdminController extends AbstractController {
             if ($save != 1) {
                 $errors['updateUser'][$_POST['uuid']]['query'] = "error_update_user";
             } else {
-                $this->redirect("Admin", "dashboard", array("show" => "$show"));
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
             $this->dashboard($errors, $_POST['pag']);
@@ -188,7 +209,7 @@ class AdminController extends AbstractController {
         if (isset($errors['blockUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
 
@@ -209,7 +230,7 @@ class AdminController extends AbstractController {
         if (isset($errors['unlockUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
 
@@ -230,8 +251,251 @@ class AdminController extends AbstractController {
         if (isset($errors['removeUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
+    }
+
+    public function removeComment() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid")) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->commentModel->delete($id);
+            if ($rem == 0) {
+                $errors['removeComment']['uuid'] = "requerido";
+            }
+        } else {
+            $errors['removeComment']['uuid'] = "requerido";
+        }
+        if (isset($errors['removeComment'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
+    }
+
+    public function createHousingTypes() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        $values = array("name" => "text");
+        $errors = RegularUtils::filtrarPorTipo($values, "createHousingTypes");
+        if (!isset($errors["createHousingTypes"])) {
+            $values = array("name");
+            $filtrado = RegularUtils::sanearStrings($values);
+
+//Creamos un tipo de vivienda
+            $housingType = new Housing_type();
+            $housingType->setName($filtrado["name"]);
+            $housingType->setUuid(RegularUtils::uuid());
+
+            $save = $this->housingTypeModel->create($housingType);
+            if ($save != 1) {
+                $errors['createHousingTypes']['query'] = $save;
+            } else {
+// si todo ha ido correcto, nos vamos a la web principal
+
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+
+            if (isset($errors["createHousingTypes"])) {
+//Conseguimos todos los tipos de vivienda
+                $numHousingTypes = $this->housingTypeModel->countHousingTypes(FALSE);
+                $allHousingTypes = $this->housingTypeModel->getAllPaginated(0);
+//Cargamos la vista index y le pasamos valores
+                $this->view("dashboard", array(
+                    'title' => "P&aacute;gina de Gesti&oacute;n",
+                    "allHousingTypes" => $allHousingTypes,
+                    "numHousingTypes" => $numHousingTypes,
+                    "errors" => $errors,
+                    "show" => $show
+                ));
+            }
+        }
+    }
+
+    public function createOperationTypes() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        $values = array("name" => "text");
+        $errors = RegularUtils::filtrarPorTipo($values, "createOperationTypes");
+        if (!isset($errors["createOperationTypes"])) {
+            $values = array("name");
+            $filtrado = RegularUtils::sanearStrings($values);
+
+//Creamos un tipo de vivienda
+            $operationType = new Housing_type();
+            $operationType->setName($filtrado["name"]);
+            $operationType->setUuid(RegularUtils::uuid());
+
+            $save = $this->operationTypeModel->create($operationType);
+            if ($save != 1) {
+                $errors['createOperationTypes']['query'] = $save;
+            } else {
+// si todo ha ido correcto, nos vamos a la web principal
+
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+
+            if (isset($errors["createOperationTypes"])) {
+//Conseguimos todos los tipos de vivienda
+        $numOperationTypes = $this->operationTypeModel->countOperationTypes(FALSE);
+        $allOperationTypes = $this->operationTypeModel->getAllPaginated(0, FALSE);
+//Cargamos la vista index y le pasamos valores
+                $this->view("dashboard", array(
+                    'title' => "P&aacute;gina de Gesti&oacute;n",
+                    "allOperationTypes" => $allOperationTypes,
+                    "numOperationTypes" => $numOperationTypes,
+                    "errors" => $errors,
+                    "show" => $show
+                ));
+            }
+        }
+    }
+
+    public function removeHousingType() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid")) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->housingTypeModel->delete($id);
+            if ($rem == 0) {
+                $errors['removeHousingType']['uuid'] = "requerido";
+            }
+        } else {
+            $errors['removeHousingType']['uuid'] = "requerido";
+        }
+        if (isset($errors['removeHousingType'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
+    }
+
+    public function removeOperationType() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid")) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->operationTypeModel->delete($id);
+            if ($rem == 0) {
+                $errors['removeOperationType']['uuid'] = "requerido";
+            }
+        } else {
+            $errors['removeOperationType']['uuid'] = "requerido";
+        }
+        if (isset($errors['removeOperationType'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
+    }
+
+    public function updateHousingTypes() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        $values = array("uuid" => "text", "name" => "text");
+        $errors[$_POST['uuid']] = RegularUtils::filtrarPorTipo($values, "updateHousingTypes");
+
+        if (!isset($errors[$_POST['uuid']])) {
+            $values = array("name", "uuid");
+            $filtrado = RegularUtils::sanearStrings($values);
+
+            //Creamos un tipo de vivienda
+            $housingType = new Housing_type();
+            $housingType->setUuid($filtrado['uuid']);
+            if (isset($filtrado["name"]) && trim($filtrado["name"]) != "") {
+                $housingType->setName($filtrado['name']);
+            }
+            $save = $this->housingTypeModel->update($housingType);
+
+            if ($save != 1) {
+                $errors['updateHousingTypes'][$_POST['uuid']]['query'] = "error_update_housingType";
+            } else {
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+        } else {
+            $this->dashboard($errors, $_POST['pag']);
+        }
+    }
+
+    public function updateOperationTypes() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        $values = array("uuid" => "text", "name" => "text");
+        $errors[$_POST['uuid']] = RegularUtils::filtrarPorTipo($values, "updateOperationTypes");
+
+        if (!isset($errors[$_POST['uuid']])) {
+            $values = array("name", "uuid");
+            $filtrado = RegularUtils::sanearStrings($values);
+
+            //Creamos un tipo de vivienda
+            $operationType = new Operation_type();
+            $operationType->setUuid($filtrado['uuid']);
+            if (isset($filtrado["name"]) && trim($filtrado["name"]) != "") {
+                $operationType->setName($filtrado['name']);
+            }
+            $save = $this->operationTypeModel->update($operationType);
+
+            if ($save != 1) {
+                $errors['updateOperationTypes'][$_POST['uuid']]['query'] = "error_update_operationType";
+            } else {
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+        } else {
+            $this->dashboard($errors, $_POST['pag']);
+        }
+    }
+
+    private function comments($errors, $show, $pag) {
+        if ($pag == NULL) {
+            $pag = 0;
+        }
+
+        $numComments = $this->commentModel->countComments(FALSE);
+        $allComments = $this->commentModel->getAllPaginated(0, FALSE);
+        $countComments = $this->commentModel->countRegistrationComments(FALSE);
+
+        $this->view("dashboard", array(
+            'title' => "P&aacute;gina de Gesti&oacute;n",
+            "allComments" => $allComments,
+            "numComments" => $numComments,
+            "countComments" => $countComments,
+            "show" => $show,
+            "pag" => $pag,
+        ));
+    }
+
+    private function types($errors, $show, $pag) {
+        if ($pag == NULL) {
+            $pag = 0;
+        }
+        $numHousingTypes = $this->housingTypeModel->countHousingTypes(FALSE);
+        $allHousingTypes = $this->housingTypeModel->getAllPaginated(0, FALSE);
+        $numOperationTypes = $this->operationTypeModel->countOperationTypes(FALSE);
+        $allOperationTypes = $this->operationTypeModel->getAllPaginated(0, FALSE);
+        $this->view("dashboard", array(
+            'title' => "P&aacute;gina de Gesti&oacute;n",
+            "numHousingTypes" => $numHousingTypes,
+            "allHousingTypes" => $allHousingTypes,
+            "numOperationTypes" => $numOperationTypes,
+            "allOperationTypes" => $allOperationTypes,
+            "show" => $show,
+            "pag" => $pag,
+        ));
     }
 
 }

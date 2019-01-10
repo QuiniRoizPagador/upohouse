@@ -14,4 +14,14 @@ class OperationTypeModel extends AbstractModel {
         parent::__construct($this->operationTypeDao);
     }
 
+
+    public function countOperationTypes($close = TRUE) {
+        return $this->operationTypeDao->countOperationTypes($close);
+    }
+
+
+    public function getAllPaginated($pag = 0, $close = TRUE) {
+        return $this->operationTypeDao->getAllPaginated($pag, $close);
+    }
+
 }

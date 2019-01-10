@@ -213,6 +213,212 @@ function cargarAnuncio(ad) {
     return tr;
 }
 
+function cargarComentario(comment) {
+
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", comment.id, clase));
+    tr.append(create("td", comment.ad_id, clase));
+    tr.append(create("td", comment.user_id, clase));
+    tr.append(create("td", comment.content, clase));
+    tr.append(create("td", comment.timestamp, clase));
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#remove" + comment.uuid + "' class='btn btn-danger' />");
+    button.append($("<i class='fa fa-remove'/>"));
+    td.append(button);
+
+    var modal = create("div id='remove" + comment.uuid + "' tabindex='-1'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", LANG['eliminar anuncio con id'] + " " + comment.id, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+    var form = $("<form method='post' action='index.php?controller=Admin&action=removeComment&show=comentarios' />");
+    modal_card.append(form);
+    var modal_body = $("<div class='card-body modal-body'/>");
+    form.append(modal_body);
+    var row = $("<div class='row' />");
+    modal_body.append(row);
+
+    modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+
+    var form_control = $("<div class='form-control has-success col-md-12 ml-auto'>" + LANG['estas seguro'] + "</div>");
+    row.append(form_control);
+    var modal_footer = create("div", "", "modal-footer");
+
+
+    var form2 = $("<form method='post' action='index.php?controller=Admin&action=removeComment&show=comentarios' />");
+    modal_footer.append($("<input type='hidden' value='" + comment.uuid + "' name='uuid' />"));
+    modal_footer.append($("<button type='subbmit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+    modal_footer.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    modal_footer.append(form2);
+    form.append(modal_footer);
+    td.append(modal);
+
+
+
+    tr.append(td);
+    console.log(tr);
+    return tr;
+}
+
+
+function cargarHousingType(housingType) {
+
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", housingType.id, clase));
+    tr.append(create("td", housingType.name, clase));
+
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#edit" + housingType.uuid + "' class='btn btn-success' />");
+    button.append($("<i class='fa fa-pencil'/>"));
+    td.append(button);
+
+    var modal = create("div id='edit" + housingType.uuid + "' tabindex='-1'", "", "modal fade");
+    var modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", LANG['editar registro de'] + " " + housingType.name, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+    form = $("<form method='post' action='index.php?controller=Admin&action=updateHousingTypes&show=tipos' class='formUpdateHousingTypes' />");
+    modal_card.append(form);
+    var modal_body = $("<div class='card-body modal-body' />");
+    form.append(modal_body);
+    var row = $("<div class='row' />");
+    modal_body.append(row);
+    modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+
+    var form_control = $("<div class='form-control has-success col-md-12 ml-auto' /;>");
+    form_control.append(create("input type='hidden' value='" + housingType.uuid + "' name='uuid'"), "", "");
+    form_control.append(create("label for='name'", LANG['nombre'], ""));
+    form_control.append(create("input type='text' name='name' value=''", "", "form-control"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
+    row.append(form_control);
+    var modal_footer = create("div", "", "modal-footer");
+    modal_footer.append($("<input type='hidden' value='" + housingType.uuid + "' name='uuid' />"));
+    modal_footer.append($("<button type='submit' class='btn btn-success'>Enviar</button>"));
+    modal_footer.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    form.append(modal_footer);
+    td.append(modal);
+    tr.append(td);
+
+    td = create("td", "", clase);
+    button = $("<button data-toggle='modal' data-target='#remove" + housingType.uuid + "' class='btn btn-danger' />");
+    button.append($("<i class='fa fa-remove'/>"));
+    td.append(button);
+
+    modal = create("div id='remove" + housingType.uuid + "' tabindex='-1'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", LANG['eliminar registro de'] + " " + housingType.name, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"));
+    modal_card.append(modal_header);
+    modal_body = $("<div class='card-body modal-body'>" + LANG['estas seguro'] + "</div>");
+    modal_card.append(modal_body);
+    modal_footer = create("div", "", "modal-footer");
+    modal_card.append(modal_footer);
+
+    form = $("<form method='post' action='index.php?controller=Admin&action=removeHousingType&show=tipos' />");
+    form.append($("<input type='hidden' value='" + housingType.uuid + "' name='uuid' />"));
+    form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+    form.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    modal_footer.append(form);
+
+    td.append(modal);
+    tr.append(td);
+
+
+    return tr;
+}
+
+function cargarOperationType(operationType) {
+
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", operationType.id, clase));
+    tr.append(create("td", operationType.name, clase));
+
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#edit2" + operationType.uuid + "' class='btn btn-success' />");
+    button.append($("<i class='fa fa-pencil'/>"));
+    td.append(button);
+
+    var modal = create("div id='edit2" + operationType.uuid + "' tabindex='-1'", "", "modal fade");
+    var modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", LANG['editar tipo operacion'] + " " + operationType.name, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+    form = $("<form method='post' action='index.php?controller=Admin&action=updateOperationTypes&show=tipos' class='formUpdateOperationTypes' />");
+    modal_card.append(form);
+    var modal_body = $("<div class='card-body modal-body' />");
+    form.append(modal_body);
+    var row = $("<div class='row' />");
+    modal_body.append(row);
+    modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+
+    var form_control = $("<div class='form-control has-success col-md-12 ml-auto' /;>");
+    form_control.append(create("input type='hidden' value='" + operationType.uuid + "' name='uuid'"), "", "");
+    form_control.append(create("label for='name'", LANG['nombre'], ""));
+    form_control.append(create("input type='text' name='name' value=''", "", "form-control"));
+    form_control.append(create("div", LANG['formato_incorrecto'], "invalid-feedback"));
+    row.append(form_control);
+    var modal_footer = create("div", "", "modal-footer");
+    modal_footer.append($("<input type='hidden' value='" + operationType.uuid + "' name='uuid' />"));
+    modal_footer.append($("<button type='submit' class='btn btn-success'>Enviar</button>"));
+    modal_footer.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    form.append(modal_footer);
+    td.append(modal);
+    tr.append(td);
+
+    td = create("td", "", clase);
+    button = $("<button data-toggle='modal' data-target='#remove2" + operationType.uuid + "' class='btn btn-danger' />");
+    button.append($("<i class='fa fa-remove'/>"));
+    td.append(button);
+
+    modal = create("div id='remove2" + operationType.uuid + "' tabindex='-1'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", LANG['eliminar registro de'] + " " + operationType.name, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"));
+    modal_card.append(modal_header);
+    modal_body = $("<div class='card-body modal-body'>" + LANG['estas seguro'] + "</div>");
+    modal_card.append(modal_body);
+    modal_footer = create("div", "", "modal-footer");
+    modal_card.append(modal_footer);
+
+    form = $("<form method='post' action='index.php?controller=Admin&action=removeOperationType&show=tipos' />");
+    form.append($("<input type='hidden' value='" + operationType.uuid + "' name='uuid' />"));
+    form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+    form.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    modal_footer.append(form);
+
+    td.append(modal);
+    tr.append(td);
+
+
+    return tr;
+}
+
 (function ($) {
     $.fn.paginateUsers = function () {
         this.each(function () {
@@ -274,10 +480,103 @@ function cargarAnuncio(ad) {
             });
         });
     };
+
+    $.fn.paginateComments = function () {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagComment").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateComments";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'commentPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo").empty();
+                                var comments = $.parseJSON(data);
+                                for (var i = 0; i < comments.length; i++) {
+                                    $("#cuerpo").append(cargarComentario(comments[i]));
+                                }
+                            } catch (Exception) {
+
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
+
+    $.fn.paginateHousingTypes = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagHousingTypes").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateHousingTypes";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'housingTypePag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo").empty();
+                                var housingTypes = $.parseJSON(data);
+                                for (var i = 0; i < housingTypes.length; i++) {
+                                    $("#cuerpo").append(cargarHousingType(housingTypes[i]));
+                                }
+                            } catch (Exception) {
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
+
+    $.fn.paginateOperationTypes = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagOperationTypes").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateOperationTypes";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'operationTypePag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo2").empty();
+                                var operationTypes = $.parseJSON(data);
+                                for (var i = 0; i < operationTypes.length; i++) {
+                                    $("#cuerpo2").append(cargarOperationType(operationTypes[i]));
+                                }
+                            } catch (Exception) {
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
 })(jQuery);
 
 $(document).ready(function () {
     $(".pagUser").paginateUsers();
     $(".pagAd").paginateAds();
+    $(".pagComment").paginateComments();
+    $(".pagHousingTypes").paginateHousingTypes();
+    $(".pagOperationTypes").paginateOperationTypes();
     $('[data-toggle="tooltip"]').tooltip();
 });

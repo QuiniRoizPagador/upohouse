@@ -161,17 +161,27 @@ foreach ($lang as $key => $value) {
         </script>
         <script>
 <?php
-if (isset($countRegistrations)) {
-    foreach ($countRegistrations as $c) {
+if (isset($_GET['show'])) {
+    switch ($_GET['show']) {
+        case "comentarios":
+            $count = $countComments;
+            break;
+        case "users":
+        default:
+            $count = $countRegistrations;
+            break;
+    }
+} else {
+    $count = $countRegistrations;
+}
+
+    foreach ($count as $c) {
         $labels[] = $c->month . "/" . $c->year;
         $datasets[] = $c->count;
     }
     ?>
                 var lb = [<?= '"' . implode('","', $labels) . '"' ?>]
                 var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
-<?php }
-?>
-
         </script>
         <script src="view/assets/js/pagination.js"></script>
         <script src="view/assets/js/localization.js"></script>
