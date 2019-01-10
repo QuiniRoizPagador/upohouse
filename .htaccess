@@ -1,0 +1,13 @@
+
+# HTID:8167361: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 0
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:8167361:
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d  
+RewriteCond %{SCRIPT_FILENAME} !-f  
+
+RewriteRule ^index/$ index.php
+
+RewriteRule ^index/(.*)/(.*)$ index.php?controller=$1&action=$2 [L,NC]

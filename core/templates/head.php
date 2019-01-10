@@ -31,7 +31,14 @@ function error($text) {
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
-        <base href="//<?=$_SERVER['HTTP_HOST']?>">
+        <!-- PRUEBAS -->
+        <base href="//<?= $_SERVER['HTTP_HOST'] ?>/CorePHPMVC/">
+
+        <?php /*
+         * <!-- PRODUCCIÓN -->
+         * <base href="//<?=$_SERVER['HTTP_HOST']?>/CorePHPMVC/"> 
+         * 
+         */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title><?php echo $title ?></title>
         <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.min.css">

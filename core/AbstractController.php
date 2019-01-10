@@ -22,7 +22,7 @@ class AbstractController {
     }
 
     public function redirect($controlador = CONTROLADOR_DEFECTO, $accion = ACCION_DEFECTO, $params = array()) {
-        $urlString = "index.php?controller=" . $controlador . "&action=" . $accion;
+        $urlString = "index/" . $controlador . "/" . $accion;
         foreach ($params as $key => $value) {
             $urlString .= "&$key=$value";
         }
