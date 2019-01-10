@@ -11,7 +11,8 @@ function verifySession() {
 }
 
 function verifyIsSame() {
-    return $_SESSION['uuid'] === $_POST['uuid'];
+    return (filter_has_var(INPUT_POST, "uuid") && $_SESSION['uuid'] === $_POST['uuid']) ||
+            (filter_has_var(INPUT_GET, "uuid") && $_SESSION['uuid'] === $_GET['uuid']);
 }
 
 function verifyIsAdmin() {

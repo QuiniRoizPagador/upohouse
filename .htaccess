@@ -1,6 +1,6 @@
 
 # HTID:8167361: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
-php_value display_errors 0
+php_value display_errors 1
 # DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:8167361:
 Options +FollowSymLinks
 RewriteEngine On

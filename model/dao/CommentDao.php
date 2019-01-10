@@ -23,7 +23,7 @@ class CommentDao extends AbstractDao {
         // TODO
     }
 
-    public function countComments($close = TRUE) {
+    public function countComments() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
@@ -31,7 +31,7 @@ class CommentDao extends AbstractDao {
     }
 
 //$sql = "SELECT c.id,c.uuid,c.ad_id,a.uuid AS \'ad_uuid\',u.login,u.uuid AS \'user_uuid\',c.content,c.timestamp,c.state FROM comments c, ads a , users u WHERE c.ad_id=a.id AND c.user_id=u.id";
-    public function getAllPaginated($pag = 0, $close = TRUE) {
+    public function getAllPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT * FROM $this->table "
                 . "WHERE state != " . STATES['ELIMINADO'] . " "
                 . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
@@ -46,7 +46,7 @@ class CommentDao extends AbstractDao {
         return $resultSet;
     }
 
-    public function countRegistrationComments($close = TRUE) {
+    public function countRegistrationComments() {
         $query = $this->mysqli->query("select COUNT(*) as count, MONTH(`timestamp`) as month,"
                 . "YEAR(`timestamp`) as year from $this->table "
                 . "GROUP BY MONTH(`timestamp`),YEAR(`timestamp`) "
@@ -65,6 +65,15 @@ class CommentDao extends AbstractDao {
         $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
+    }
+
+    public function countUserComments($id) {
+        $query = "SELECT COUNT(*) as comments from $this->table WHERE user_id = ?";
+        $data = array("i","user_id" => $id);
+        $resultSet = $this->preparedStatement($query, $data);
+        $res = mysqli_fetch_object($resultSet);
+        mysqli_free_result($resultSet);
+        return $res->comments;
     }
 
 }

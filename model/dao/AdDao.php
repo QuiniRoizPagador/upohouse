@@ -55,4 +55,13 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    public function countUserAds($id) {
+        $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ?";
+        $data = array("i","user_id" => $id);
+        $resultSet = $this->preparedStatement($query, $data);
+        $res = mysqli_fetch_object($resultSet);
+        mysqli_free_result($resultSet);
+        return $res->ads;
+    }
+
 }

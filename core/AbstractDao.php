@@ -34,9 +34,7 @@ abstract class AbstractDao {
         $data = array('ss', "id" => $id, "uuid" => $id);
 
         $resultSet = $this->preparedStatement($query, $data);
-        while ($obj = $resultSet->fetch_object()) {
-            $res[] = $obj;
-        }
+        $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
         return $res;
     }
@@ -101,4 +99,5 @@ abstract class AbstractDao {
         }
         return $bind;
     }
+
 }

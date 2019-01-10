@@ -65,6 +65,9 @@ class UserDao extends AbstractDao {
         } else {
             $obj->setPassword(password_hash($obj->getPassword(), PASSWORD_DEFAULT));
         }
+        if(trim($obj->getUserRole()) == ''){
+            $obj->setUserRole($prev->user_role);
+        }
         $query = "UPDATE $this->table SET name = ?, surname = ?, password = ?, "
                 . "user_role = ?, phone = ? WHERE uuid = ?";
         $data = array("sssiss", "name" => $obj->getName(), "surname" => $obj->getSurname(),

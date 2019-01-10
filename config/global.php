@@ -2,9 +2,11 @@
 
 // constante que tomará los valores de los actions que necesitan ser verificados 
 const ACTIONS = array(
-    "USER" => array("remove", "readUser", "reportUser"),
+    "USER" => array("remove", "readUser", "reportUser", "updateProfile"),
     "GUEST" => array("index", "login", "register"),
-    "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers","paginateComments","createHousingTypes","updateHousingTypes","paginateHousingTypes","removeHousingTypes","updateOperationTypes","removeOperationType","createOperationTypes","paginateOperationTypes"),
+    "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
+        "paginateComments","createHousingTypes","updateHousingTypes","paginateHousingTypes","removeHousingTypes",
+        "updateOperationTypes","removeOperationType","createOperationTypes","paginateOperationTypes"),
 );
 // controlador por defecto
 define("CONTROLADOR_DEFECTO", "user");

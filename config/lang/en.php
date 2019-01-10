@@ -85,8 +85,12 @@ $lang = array(
     "usuario_reported" => "Reported user",
     "anuncio_reported" => "Reported ad",
     "comentario_reported" => "Reported comment",
-    "tipos operacion"=>"Operation Types",
+    "tipos operacion" => "Operation Types",
     "añadir tipo de operacion" => "Add Operation Type",
-    "sinDescripcion" => "No description"
+    "sinDescripcion" => "No description",
+    "update" => "Update",
+    "profile" => "Profile",
+    "solicitudes" => "Requests",
+    "comments" => "Comments"
 );
 

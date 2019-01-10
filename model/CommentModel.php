@@ -14,15 +14,18 @@ class CommentModel extends AbstractModel {
         parent::__construct($this->commentDao);
     }
 
-    public function countComments($close = TRUE) {
+    public function countComments() {
         return $this->commentDao->countComments($close);
     }
-    public function countRegistrationComments($close = TRUE) {
-        return $this->commentDao->countRegistrationComments($close);
+    public function countRegistrationComments() {
+        return $this->commentDao->countRegistrationComments();
     }
-    public function getAllPaginated($pag = 0, $close = TRUE) {
-        return $this->commentDao->getAllPaginated($pag, $close);
+    public function getAllPaginated($pag = 0) {
+        return $this->commentDao->getAllPaginated($pag);
     }
 
+    public function countUserComments($id) {
+        return $this->commentDao->countUserComments($id);
+    }
 
 }

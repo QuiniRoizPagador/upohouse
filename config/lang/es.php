@@ -88,6 +88,10 @@ $lang = array(
     "tipos operacion" => "Tipos Operaci&oacute;n",
     "añadir tipo de operacion" => "A&ntilde;adir tipo operaci&oacute;n",
     "editar tipo operacion" => "Editar tipo de  operaci&oacute;n",
-    "sinDescripcion" => "Sin descripción"
+    "sinDescripcion" => "Sin descripci&oacute;n",
+    "update" => "Actualizar",
+    "profile" => "Perfil",
+    "solicitudes" => "Solicitudes",
+    "comments" => "Comentarios"
 );
 

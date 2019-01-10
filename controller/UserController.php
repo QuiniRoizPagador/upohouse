@@ -10,10 +10,14 @@ use model\dao\dto\User;
 class UserController extends AbstractController {
 
     private $userModel;
+    private $adModel;
+    private $commentModel;
 
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
+        $this->adModel = new AdModel();
+        $this->commentModel = new CommentModel();
     }
 
     /**
@@ -30,15 +34,19 @@ class UserController extends AbstractController {
     }
 
     public function readUser() {
-        if (filter_has_var(INPUT_POST, "uuid")) {
-            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+        if (filter_has_var(INPUT_GET, "uuid")) {
+            $id = RegularUtils::sanearStrings(array('uuid'), "GET")['uuid'];
             $user = $this->userModel->read($id);
+            $userAds = $this->adModel->countUserAds($user->id);
+            $userComments = $this->commentModel->countUserComments($user->id);
             if (!isset($user->id)) {
                 $this->redirect("user", "index");
             } else {
-                $this->view("perfil", array(
+                $this->view("profile", array(
                     'title' => "Perfil $user->name",
-                    "user" => $user
+                    "user" => $user,
+                    "userAds" => $userAds,
+                    "userComments" => $userComments
                 ));
             }
         } else {
@@ -87,6 +95,44 @@ class UserController extends AbstractController {
                 "title" => "login",
                 "errors" => $errors
             ));
+        }
+    }
+
+    /**
+     * Actualización de usuario 
+     */
+    public function updateProfile() {
+        $values = array("uuid" => "text", "name" => "text", "surname" => "text",
+            "phone" => "phone", "password" => "text");
+        $errors[$_POST['uuid']] = RegularUtils::filtrarPorTipo($values, "updateUser");
+        $noRequired = array("name", "surname", "phone", "password");
+        $errors[$_POST['uuid']] = RegularUtils::camposNoRequeridos($errors[$_POST['uuid']], "updateUser", $noRequired);
+        if (!isset($errors[$_POST['uuid']])) {
+            $values = array("name", "surname", "password", "uuid", "user_role", "phone");
+            $filtrado = RegularUtils::sanearStrings($values);
+//Creamos un usuario
+            $usuario = new User();
+            $usuario->setUuid($filtrado['uuid']);
+            if (isset($filtrado["name"]) && trim($filtrado["name"]) != "") {
+                $usuario->setName($filtrado['name']);
+            }
+            if (isset($filtrado["surname"]) && trim($filtrado["name"]) != "") {
+                $usuario->setSurname($filtrado["surname"]);
+            }
+            if (isset($filtrado["phone"]) && trim($filtrado["phone"]) != "") {
+                $usuario->setPhone($filtrado["phone"]);
+            }
+            if (isset($filtrado["password"]) && trim($filtrado["name"]) != "") {
+                $usuario->setPassword($filtrado["password"]);
+            }
+            $save = $this->userModel->update($usuario);
+            if ($save != 1) {
+                $errors['updateUser'][$_POST['uuid']]['query'] = "error_update_user";
+            } else {
+                $this->redirect("user", "readUser", array("uuid" => $_POST['uuid']));
+            }
+        } else {
+            $this->redirect("user", "readUser", array("uuid" => $_POST['uuid'], "errors" => $errors));
         }
     }
 
