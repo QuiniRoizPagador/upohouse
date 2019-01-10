@@ -106,7 +106,7 @@ class AdminController extends AbstractController {
                 $errors['createUser']['query'] = $save;
             } else {
                 // si todo ha ido correcto, nos vamos a la web principal
-                $this->redirect("Admin", "dashboard", array("show" => "$show"));
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         }
         if (isset($errors["createUser"])) {
@@ -164,7 +164,7 @@ class AdminController extends AbstractController {
             if ($save != 1) {
                 $errors['updateUser'][$_POST['uuid']]['query'] = "error_update_user";
             } else {
-                $this->redirect("Admin", "dashboard", array("show" => "$show"));
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
             $this->dashboard($errors, $_POST['pag']);
@@ -188,7 +188,7 @@ class AdminController extends AbstractController {
         if (isset($errors['blockUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
 
@@ -209,7 +209,7 @@ class AdminController extends AbstractController {
         if (isset($errors['unlockUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
 
@@ -230,7 +230,7 @@ class AdminController extends AbstractController {
         if (isset($errors['removeUser'])) {
             $this->dashboard($errors);
         } else {
-            $this->redirect("Admin", "dashboard", array("show" => "$show"));
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
 

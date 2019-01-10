@@ -34,7 +34,7 @@ class UserController extends AbstractController {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $user = $this->userModel->read($id);
             if (!isset($user->id)) {
-                $this->redirect("User", "index");
+                $this->redirect("user", "index");
             } else {
                 $this->view("perfil", array(
                     'title' => "Perfil $user->name",
@@ -42,7 +42,7 @@ class UserController extends AbstractController {
                 ));
             }
         } else {
-            $this->redirect("User", "index");
+            $this->redirect("user", "index");
         }
     }
 
@@ -77,7 +77,7 @@ class UserController extends AbstractController {
                 $errors['createUser']['query'] = $save;
             } else {
                 // si todo ha ido correcto, nos vamos a la web principal
-                $this->redirect("Session", "login");
+                $this->redirect("session", "login");
             }
         }
         if (isset($errors["createUser"])) {

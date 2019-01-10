@@ -36,7 +36,7 @@ function error($text) {
 
         <?php /*
          * <!-- PRODUCCIÓN -->
-         * <base href="//<?=$_SERVER['HTTP_HOST']?>/CorePHPMVC/"> 
+         * <base href="//<?=$_SERVER['HTTP_HOST']?>"> 
          * 
          */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">

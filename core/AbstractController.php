@@ -22,11 +22,13 @@ class AbstractController {
     }
 
     public function redirect($controlador = CONTROLADOR_DEFECTO, $accion = ACCION_DEFECTO, $params = array()) {
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $urlString = "index/" . $controlador . "/" . $accion;
         foreach ($params as $key => $value) {
             $urlString .= "&$key=$value";
         }
-        header("Location:$urlString");
+        header("Location://$host$uri/$urlString");
     }
 
 }

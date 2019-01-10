@@ -7,7 +7,7 @@ const ACTIONS = array(
     "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers"),
 );
 // controlador por defecto
-define("CONTROLADOR_DEFECTO", "User");
+define("CONTROLADOR_DEFECTO", "user");
 // action por defecto
 define("ACCION_DEFECTO", "index");
 
