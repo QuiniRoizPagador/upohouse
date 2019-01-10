@@ -23,4 +23,48 @@ class CommentDao extends AbstractDao {
         // TODO
     }
 
+    public function countComments($close = TRUE) {
+        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
+        $row = $query->fetch_object();
+        mysqli_free_result($query);
+        return $row->count;
+    }
+
+//$sql = "SELECT c.id,c.uuid,c.ad_id,a.uuid AS \'ad_uuid\',u.login,u.uuid AS \'user_uuid\',c.content,c.timestamp,c.state FROM comments c, ads a , users u WHERE c.ad_id=a.id AND c.user_id=u.id";
+    public function getAllPaginated($pag = 0, $close = TRUE) {
+        $query = $this->mysqli->query("SELECT * FROM $this->table "
+                . "WHERE state != " . STATES['ELIMINADO'] . " "
+                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+        //Devolvemos el resultset en forma de array de objetos
+
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+
+        return $resultSet;
+    }
+
+    public function countRegistrationComments($close = TRUE) {
+        $query = $this->mysqli->query("select COUNT(*) as count, MONTH(`timestamp`) as month,"
+                . "YEAR(`timestamp`) as year from $this->table "
+                . "GROUP BY MONTH(`timestamp`),YEAR(`timestamp`) "
+                . "ORDER BY year(`timestamp`) DESC");
+
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+        return $resultSet;
+    }
+
+    public function delete($id) {
+        $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
 }

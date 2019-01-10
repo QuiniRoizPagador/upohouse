@@ -14,4 +14,13 @@ class HousingTypeModel extends AbstractModel {
         parent::__construct($this->housingTypeDao);
     }
 
+    public function countHousingTypes($close = TRUE) {
+        return $this->housingTypeDao->countHousingTypes($close);
+    }
+
+
+    public function getAllPaginated($pag = 0, $close = TRUE) {
+        return $this->housingTypeDao->getAllPaginated($pag, $close);
+    }
+
 }
