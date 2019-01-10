@@ -7,7 +7,7 @@ CREATE DATABASE upohouse CHARACTER SET utf8 COLLATE utf_unicode_ci;
 USE upohouse;
 
 #:::DDL:::
-CREATE TABLE `Communities` (
+CREATE TABLE IF NOT EXISTS `Communities` (
   `id` int(10) unsigned NOT NULL,
   `slug` varchar(50) NOT NULL,
   `community` varchar(255) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `Communities` (
   UNIQUE KEY `IDX_cominidad` (`community`),
   UNIQUE KEY `slug` (`slug`));
 
-CREATE TABLE `Provinces` (
+CREATE TABLE IF NOT EXISTS `Provinces` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `slug` varchar(50) NOT NULL,
   `province` varchar(255) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `Provinces` (
   KEY `FK_provincias` (`community_id`)
 ) CHECKSUM=1 DELAY_KEY_WRITE=1 AUTO_INCREMENT=53;
 
-CREATE TABLE `Municipalities` (
+CREATE TABLE IF NOT EXISTS `Municipalities` (
   `province_id` int(10) unsigned NOT NULL,
   `municipality` varchar(255) NOT NULL,
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -40,25 +40,25 @@ CREATE TABLE `Municipalities` (
   UNIQUE KEY `slug` (`slug`)
 ) CHECKSUM=1 DELAY_KEY_WRITE=1 AUTO_INCREMENT=8117;
 
-CREATE TABLE State_Types(
+CREATE TABLE IF NOT EXISTS State_Types(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
 	state VARCHAR(255) NOT NULL,
     PRIMARY KEY(id));
 
-CREATE TABLE Operation_Types(
+CREATE TABLE IF NOT EXISTS Operation_Types(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
 	name VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY(id));
     
-CREATE TABLE Housing_Types(
+CREATE TABLE IF NOT EXISTS Housing_Types(
 	id INT(11) UNSIGNED AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
 	name VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY(id));
 
-CREATE TABLE Users(
+CREATE TABLE IF NOT EXISTS Users(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(255) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Users(
     PRIMARY KEY(id),
 	FOREIGN KEY (state) REFERENCES State_Types(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE Ads(
+CREATE TABLE IF NOT EXISTS Ads(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
     user_id INT(11) UNSIGNED NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE Ads(
     FOREIGN KEY (municipality_id) REFERENCES Municipalities(id));
     #Se agrega FK REQUESTS al final.
 
-CREATE TABLE Requests(
+CREATE TABLE IF NOT EXISTS Requests(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
     content TEXT,
@@ -112,7 +112,7 @@ CREATE TABLE Requests(
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (ad_id) REFERENCES Ads(id));
 
-CREATE TABLE Scores(
+CREATE TABLE IF NOT EXISTS Scores(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
     score TINYINT UNSIGNED NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE Scores(
     FOREIGN KEY (ad_id) REFERENCES Ads(id),
     FOREIGN KEY (user_id) REFERENCES Users(id));
     
-CREATE TABLE Comments(
+CREATE TABLE IF NOT EXISTS Comments(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
     ad_id INT(11) UNSIGNED NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE Comments(
     FOREIGN KEY (ad_id) REFERENCES Ads(id),
     FOREIGN KEY (user_id) REFERENCES Users(id));
 
-CREATE TABLE Reports(
+CREATE TABLE IF NOT EXISTS Reports(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
     title VARCHAR(255) NOT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE Reports(
     FOREIGN KEY (ad_reported) REFERENCES Ads(id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (request_reported) REFERENCES Requests(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE Images(
+CREATE TABLE IF NOT EXISTS Images(
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     uuid VARCHAR(50) NOT NULL UNIQUE,
 	ad_id INT(11) UNSIGNED NOT NULL,
@@ -173,7 +173,7 @@ GRANT ALL PRIVILEGES ON upohouse.* TO 'upohouse';
 #:::DML:::
 
 #LOAD STATES
-INSERT INTO `state_types` (`uuid`, `state`) VALUES
+INSERT INTO `State_Types` (`uuid`, `state`) VALUES
 ('62ffc28b-049f-4733-9c8c-3c800a7c906e', 'NEUTRO'),
 ('a0e1ecca-7e3a-44bb-bd06-fbcf7e3d935b', 'BLOQUEADO'),
 ('d1ec59d0-506b-4081-a44d-8fd9e433808f', 'ELIMINADO'),
@@ -181,7 +181,7 @@ INSERT INTO `state_types` (`uuid`, `state`) VALUES
 ('6e115d7d-b6ec-4909-80aa-7506d3dbdb4c', 'DESCARTADO');
 
 #LOAD USERS
-INSERT INTO `users` (`uuid`, `name`, `email`, `password`, `login`, `user_role`) VALUES
+INSERT INTO `Users` (`uuid`, `name`, `email`, `password`, `login`, `user_role`) VALUES
 ('4b3403665fea6', 'admin', 'admin@admin.admin', '$2y$10$ygpegVTo.1VYirRkIfmxEeCHiTMlRzbXyaNmVRStr7B8M4PAqtxeS', 'admin', 1);
 
 #LOAD COMMUNITIES
@@ -262,7 +262,7 @@ INSERT INTO `Provinces` (`id`, `slug`, `province`, `community_id`, `capital_id`)
 (52, 'melilla', 'Melilla', 19, 8116);
 
 #LOAD MUNICIPALITY
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (1, 'Alegría-Dulantzi', 1, 'alegra-dulantzi', 42.841492, -2.5135074),
 (1, 'Amurrio', 2, 'amurrio', 43.0526489, -3.0010217),
 (1, 'Añana', 3, 'aana', 42.802352, -2.982607),
@@ -1044,7 +1044,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (6, 'Valverde de Mérida', 779, 'valverde-de-mrida', 38.9117614, -6.2216049),
 (6, 'Villafranca de los Barros', 780, 'villafranca-de-los-barros', 38.5623014, -6.3378315),
 (6, 'Villagarcía de la Torre', 781, 'villagarca-de-la-torre', 38.2938724, -6.0805687);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (6, 'Villagonzalo', 782, 'villagonzalo', 38.8630855, -6.1969412),
 (6, 'Villalba de los Barros', 783, 'villalba-de-los-barros', 38.6129134, -6.509777),
 (6, 'Villanueva de la Serena', 784, 'villanueva-de-la-serena', 38.9739883, -5.8003017),
@@ -1780,7 +1780,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (9, 'Villamayor de Treviño', 1514, 'villamayor-de-trevio', 42.4595034, -4.119967),
 (9, 'Villambistia', 1515, 'villambistia', 42.4063123, -3.2621684),
 (9, 'Villamedianilla', 1516, 'villamedianilla', 42.1606322, -4.1463624);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (9, 'Villamiel de la Sierra', 1517, 'villamiel-de-la-sierra', 42.1916422, -3.4175903),
 (9, 'Villangómez', 1518, 'villangmez', 42.1788155, -3.7762082),
 (9, 'Villanueva de Argaño', 1519, 'villanueva-de-argao', 42.3798981, -3.9329704),
@@ -2534,7 +2534,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (16, 'Carrascosa', 2267, 'carrascosa', 40.5906917, -2.1629889),
 (16, 'Carrascosa de Haro', 2268, 'carrascosa-de-haro', 39.5982336, -2.5430773),
 (16, 'Casas de Benítez', 2269, 'casas-de-bentez', 39.3613267, -2.1309316);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (16, 'Casas de Fernando Alonso', 2270, 'casas-de-fernando-alonso', 39.3505341, -2.3293368),
 (16, 'Casas de Garcimolina', 2271, 'casas-de-garcimolina', 39.9968409, -1.4173509),
 (16, 'Casas de Guijarro', 2272, 'casas-de-guijarro', 39.3444863, -2.1628124),
@@ -3308,7 +3308,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (19, 'Riba de Saelices', 3040, 'riba-de-saelices', 40.9121669, -2.2971114),
 (19, 'Rillo de Gallo', 3041, 'rillo-de-gallo', 40.8662534, -1.937551),
 (19, 'Riofrío del Llano', 3042, 'riofro-del-llano', 41.1378158, -2.8246483);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (19, 'Robledillo de Mohernando', 3043, 'robledillo-de-mohernando', 40.8539985, -3.2347475),
 (19, 'Robledo de Corpes', 3044, 'robledo-de-corpes', 41.1181471, -2.9504815),
 (19, 'Romanillos de Atienza', 3045, 'romanillos-de-atienza', 41.2749213, -2.8959309),
@@ -4074,7 +4074,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (24, 'Zotes del Páramo', 3805, 'zotes-del-pramo', 42.2720215, -5.7359581),
 (25, 'Abella de la Conca', 3806, 'abella-de-la-conca', 42.1610657, 1.0897641),
 (25, 'Àger', 3807, '3807-ger', 42.0028246, 0.7643949);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (25, 'Agramunt', 3808, 'agramunt', 41.7861117, 1.0988114),
 (25, 'Aitona', 3809, 'aitona', 41.4957636, 0.4597391),
 (25, 'Alamús, Els', 3810, 'alams-els', 41.6160974, 0.7375647),
@@ -4844,7 +4844,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (30, 'Cartagena', 4574, 'cartagena', 37.6153948, -0.7435246),
 (30, 'Cehegín', 4575, 'cehegn', 38.104229, -1.866195),
 (30, 'Ceutí', 4576, 'ceut', 38.1317422, -1.3256601);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (30, 'Cieza', 4577, 'cieza', 38.2332202, -1.4115797),
 (30, 'Fortuna', 4578, 'fortuna', 38.1808694, -1.1216112),
 (30, 'Fuente Álamo de Murcia', 4579, 'fuente-lamo-de-murcia', 37.8833504, -1.140374),
@@ -5628,7 +5628,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (37, 'Aldehuela de Yeltes', 5357, 'aldehuela-de-yeltes', 40.6634711, -6.2438986),
 (37, 'Almenara de Tormes', 5358, 'almenara-de-tormes', 41.0640963, -5.8233447),
 (37, 'Almendra', 5359, 'almendra', 41.2297206, -6.341033);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (37, 'Anaya de Alba', 5360, 'anaya-de-alba', 40.7285475, -5.4923489),
 (37, 'Añover de Tormes', 5361, 'aover-de-tormes', 41.1361608, -5.914971),
 (37, 'Arabayona de Mógica', 5362, 'arabayona-de-mgica', 41.0470963, -5.3862158),
@@ -6351,7 +6351,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (41, 'Camas', 6079, 'camas', 37.4008725, -6.0329114),
 (41, 'Campana, La', 6080, 'campana-la', 37.3927385, -5.9951075),
 (41, 'Cantillana', 6081, 'cantillana', 37.6086734, -5.8258263);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (41, 'Cañada Rosal', 6082, 'caada-rosal', 37.5989433, -5.2103582),
 (41, 'Carmona', 6083, 'carmona', 37.4710235, -5.6423284),
 (41, 'Carrión de los Céspedes', 6084, 'carrin-de-los-cspedes', 37.368469, -6.3289577),
@@ -7113,7 +7113,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (45, 'Hontanar', 6840, 'hontanar', 39.6121992, -4.4983396),
 (45, 'Hormigos', 6841, 'hormigos', 40.0983616, -4.4451416),
 (45, 'Huecas', 6842, 'huecas', 40.0118377, -4.1958084);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (45, 'Huerta de Valdecarábanos', 6843, 'huerta-de-valdecarbanos', 39.8643299, -3.6119176),
 (45, 'Iglesuela, La', 6844, 'iglesuela-la', 40.2334196, -4.7503364),
 (45, 'Illán de Vacas', 6845, 'illn-de-vacas', 39.9704783, -4.5564592),
@@ -7873,7 +7873,7 @@ INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `lati
 (49, 'Brime de Sog', 7599, 'brime-de-sog', 42.0612633, -6.0474146),
 (49, 'Brime de Urz', 7600, 'brime-de-urz', 42.0379096, -5.8732659),
 (49, 'Burganes de Valverde', 7601, 'burganes-de-valverde', 41.9207795, -5.7810864);
-INSERT INTO `municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
+INSERT INTO `Municipalities` (`province_id`, `municipality`, `id`, `slug`, `latitude`, `longitude`) VALUES
 (49, 'Bustillo del Oro', 7602, 'bustillo-del-oro', 41.6745589, -5.461473),
 (49, 'Cabañas de Sayago', 7603, 'cabaas-de-sayago', 41.3330753, -5.7907063),
 (49, 'Calzadilla de Tera', 7604, 'calzadilla-de-tera', 41.9800263, -6.0824639),

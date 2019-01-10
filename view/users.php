@@ -2,12 +2,12 @@
     <?php
     require_once 'core/templates/lateral.php';
     ?>
-    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4 bg-light">
+    <main class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4 bg-light">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2"><?= $lang['usuarios'] ?></h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <button data-toggle="modal" data-target="#addUser" class="btn btn-primary btn-sm float-lg-right"><i class="fa fa-plus"></i></button>
-                <div role="dialog" aria-labelledby="A&ntilde;adir Usuario" aria-hidden="true" tabindex="-1" id="addUser" class="modal fade" role="dialog">
+                <div role="dialog" aria-labelledby="addUser" aria-hidden="true" tabindex="-1" id="addUser" class="modal fade">
                     <!-- Modal content-->
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
@@ -71,7 +71,7 @@
                                                 <div class="invalid-feedback">
                                                     <?= isset($errors['createUser']['password2']) ? $lang[$errors['createUser']['password2']] : $lang['formato_incorrecto'] ?>
                                                 </div>
-                                                <label for="user_role" class="col-sm-2 col-form-label <?= isset($errors['user_role']) ? " is-invalid" : "" ?>"><?= $lang['rol'] ?></label>
+                                                <label class="col-sm-2 col-form-label <?= isset($errors['user_role']) ? " is-invalid" : "" ?>"><?= $lang['rol'] ?></label>
                                                 <select class="form-control" name="user_role">
                                                     <option value="0">USER</option>
                                                     <option value="1">ADMIN</option>
@@ -160,7 +160,7 @@
                                         <div class="modal-content card">
                                             <div class="card bg-light text-muted">
                                                 <div class="card-header modal-header">
-                                                    <h5 class="modal-title" id="myModalLabel"><?= $user->name ?>
+                                                    <h5 class="modal-title"><?= $user->name ?>
                                                         <?= $user->surname ?></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -375,7 +375,7 @@
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['updateUser']['password2']) ? $lang[$errors[$user->uuid]['updateUser']['password2']] : $lang['formato_incorrecto'] ?>
                                                             </div>
-                                                            <label for="user_role"><?= $lang['rol'] ?></label>
+                                                            <label><?= $lang['rol'] ?></label>
                                                             <select class="form-control <?= isset($errors[$user->uuid]['updateUser']['user_role']) ? " is-invalid" : "" ?>" name="user_role">
                                                                 <option value="0">USER</option>
                                                                 <option value="1">ADMIN</option>
