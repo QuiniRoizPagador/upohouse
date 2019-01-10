@@ -41,11 +41,12 @@ function error($text) {
          */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title><?php echo $title ?></title>
+        <link rel="icon" href="view/images/house.ico">
         <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src='view/assets/js/global.js'></script>
         <script src="view/assets/lib/jquery/jquery.min.js"></script>
-
+        
         <link rel="stylesheet" href="view/assets/css/product.css">
 
 
