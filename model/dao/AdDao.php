@@ -57,11 +57,41 @@ class AdDao extends AbstractDao {
 
     public function countUserAds($id) {
         $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ?";
-        $data = array("i","user_id" => $id);
+        $data = array("i", "user_id" => $id);
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
         return $res->ads;
+    }
+
+    public function globalSearch($param) {
+        $query = "SELECT
+            a.uuid,
+            a.description,
+            c.community,
+            p.province,
+            m.municipality
+        FROM
+            ads AS a
+        JOIN communities AS c
+        ON
+            a.community_id = c.id
+        JOIN provinces AS p
+        ON
+            c.id = p.community_id
+        RIGHT JOIN municipalities as m
+        ON
+            p.id = m.province_id
+        WHERE
+            a.description LIKE '%?%' OR c.community LIKE '%?%' OR p.province LIKE '%?%' OR m.municipality LIKE '%a%'
+        GROUP BY
+            a.uuid 
+        LIMIT 10";
+        $data = array("ssss", "a.description" => $param,"c.community" => $param,"p.province" => $param,"m.municipality" => $param);
+        $resultSet = $this->preparedStatement($query, $data);
+        $res = mysqli_fetch_object($resultSet);
+        mysqli_free_result($resultSet);
+        return $res->comments;
     }
 
 }
