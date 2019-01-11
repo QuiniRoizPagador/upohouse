@@ -118,7 +118,7 @@ class AdController extends AbstractController {
     public function read() {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
-            $ad = $this->adModel->read($uuid)[0];
+            $ad = $this->adModel->read($uuid);
             if (!isset($ad->uuid)) {
                 $this->redirect("User", "index");
             } else {
