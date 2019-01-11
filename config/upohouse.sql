@@ -166,6 +166,13 @@ CREATE TABLE IF NOT EXISTS Images(
 
 ALTER TABLE Ads ADD FOREIGN KEY (accepted_request) REFERENCES Requests(id);
 
+CREATE FULLTEXT INDEX ads_full_text ON Ads(description);
+CREATE FULLTEXT INDEX community_full_text ON Communities(community);
+CREATE FULLTEXT INDEX province_full_text ON Provinces(province);
+CREATE FULLTEXT INDEX municipality_full_text ON Municipalities(municipality);
+CREATE FULLTEXT INDEX housing_type_full_text ON Housing_Types(name);
+CREATE FULLTEXT INDEX operation_type_full_text ON Operation_Types(name);
+
 #:::DCL:::
 CREATE USER 'upohouse'@'%' IDENTIFIED BY 'upohouse';
 GRANT ALL PRIVILEGES ON upohouse.* TO 'upohouse';

@@ -64,45 +64,64 @@ class AdDao extends AbstractDao {
         return $res->ads;
     }
 
-    public function globalSearch($param) {
+    public function globalSearch($str) {
+        $param = "+" . $str;
+        $param = str_replace(" ", "* +", $param);
+        $param .= "*";
         $query = "SELECT
             a.uuid,
             a.description,
-            o.name as operation,
-            h.name as housing,
+            o.name AS operation,
+            h.name AS housing,
             c.community,
             p.province,
             m.municipality
         FROM
-            ads AS a
+            Ads AS a
         JOIN Communities AS c
         ON
             a.community_id = c.id
         JOIN Provinces AS p
         ON
             a.province_id = p.id
-        JOIN Municipalities as m
+        JOIN Municipalities AS m
         ON
             a.municipality_id = m.id
-        JOIN Housing_Types as h
+        JOIN Housing_Types AS h
         ON
-        	a.housing_type = h.id
-        JOIN Operation_Types as o
+            a.housing_type = h.id
+        JOIN Operation_Types AS o
         ON
-        	a.operation_type = o.id
+            a.operation_type = o.id
         WHERE
-            a.description LIKE '%?%' OR c.community LIKE '%?%' OR p.province LIKE '%?%' 
-            OR m.municipality LIKE '%?%' OR h.name LIKE '%?%' OR o.name LIKE '%?%'
+            MATCH(a.description) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(c.community) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(p.province) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(m.municipality) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(o.name) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(h.name) AGAINST(
+                ? IN BOOLEAN MODE
+            )
         GROUP BY
-            a.uuid 
+            a.uuid
+        ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name    
         LIMIT 10";
-        $data = array("ssss", "a.description" => $param, "c.community" => $param, 
-            "p.province" => $param, "m.municipality" => $param, "h.name" => $param, 
-            "o.name" => $param);
+        $data = array("ssssss", $param, $param, $param, $param, $param,
+            $param);
         $resultSet = $this->preparedStatement($query, $data);
-        $res = mysqli_fetch_object($resultSet);
+
+        $res = array();
+        while ($row = $resultSet->fetch_object()) {
+            $res[] = $row;
+        }
+
         mysqli_free_result($resultSet);
-        return $res->comments;
+        return $res;
     }
 
 }

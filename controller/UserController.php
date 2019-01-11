@@ -37,11 +37,12 @@ class UserController extends AbstractController {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'), "GET")['uuid'];
             $user = $this->userModel->read($id);
-            $userAds = $this->adModel->countUserAds($user->id);
-            $userComments = $this->commentModel->countUserComments($user->id);
-            if (!isset($user->id)) {
+
+            if (!isset($user->id) || $user->state == STATES['ELIMINADO']) {
                 $this->redirect("user", "index");
             } else {
+                $userAds = $this->adModel->countUserAds($user->id);
+                $userComments = $this->commentModel->countUserComments($user->id);
                 $this->view("profile", array(
                     'title' => "Perfil $user->name",
                     "user" => $user,
@@ -81,7 +82,7 @@ class UserController extends AbstractController {
             $usuario->setUserRole(ROLES['USER']);
 
             $save = $this->userModel->create($usuario);
-            if ($save !== 1) {
+            if ($save != 1) {
                 $errors['createUser']['query'] = $save;
             } else {
                 // si todo ha ido correcto, nos vamos a la web principal

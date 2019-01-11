@@ -1,10 +1,12 @@
-<section class="jumbotron text-center">
+<section class="jumbotron text-center"  style="z-index: 1;">
     <div class="container">
         <h1 class="jumbotron-heading">Ventor House</h1>
         <br/>
         <div class="row" style="display:flex;align-items: center;justify-content: center;">
             <input  type="text" class='form-control searcher' name="search" placeholder="<?= $lang['buscar'] ?>" /> 
-            <ul class="list-group" id="searchList" style="z-index: 1; position: absolute;">
+            <div class="row">
+                <ul class="list-group" id="searchList" style="z-index: 1; position: relative;">
+            </div>
             </ul>
         </div>
     </div>

@@ -30,4 +30,8 @@ class AdModel extends AbstractModel {
         return $this->adDao->block($uuid);
     }
 
+    public function globalSearch($str) {
+        return $this->adDao->globalSearch($str);
+    }
+
 }

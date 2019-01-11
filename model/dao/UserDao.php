@@ -50,7 +50,7 @@ class UserDao extends AbstractDao {
     }
 
     public function update($obj) {
-        $prev = $this->search("uuid", $obj->getUuid());
+        $prev = $this->search("uuid", $obj->getUuid(), 1);
         if (trim($obj->getName()) == '') {
             $obj->setName($prev->name);
         }
@@ -65,7 +65,7 @@ class UserDao extends AbstractDao {
         } else {
             $obj->setPassword(password_hash($obj->getPassword(), PASSWORD_DEFAULT));
         }
-        if(trim($obj->getUserRole()) == ''){
+        if (trim($obj->getUserRole()) == '') {
             $obj->setUserRole($prev->user_role);
         }
         $query = "UPDATE $this->table SET name = ?, surname = ?, password = ?, "

@@ -23,15 +23,16 @@ class WSController extends AbstractController {
         $this->operationTypeModel = new OperationTypeModel();
     }
 
-    /* public function prueba() {
-      // TODO: controlar encapsulando solo los atributos necesarios por seguridad
-      if (filter_has_var(INPUT_POST, "nombre")) {
-      $nombre = $this->userModel->sanearStrings(array('nombre'))['nombre'];
-      echo json_encode(array($this->userModel->search("nombre", $nombre)));
-      } else {
-      $this->redirect();
-      }
-      } */
+    public function prueba() {
+        // TODO: controlar encapsulando solo los atributos necesarios por seguridad
+        if (filter_has_var(INPUT_POST, "str")) {
+            $str = filter_var($_POST['str'], FILTER_SANITIZE_STRING);
+            $list = $this->adModel->globalSearch($str);
+            echo json_encode($list);
+        } else {
+            $this->redirect();
+        }
+    }
 
     public function paginateUsers() {
         if (filter_has_var(INPUT_POST, "userPag")) {

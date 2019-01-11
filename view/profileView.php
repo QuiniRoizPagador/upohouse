@@ -88,8 +88,8 @@ require_once 'core/templates/head.php';
                                             <?= isset($errors['updateUser']['password2']) ? $lang[$errors['updateUser']['password2']] : $lang['formato_incorrecto'] ?>
                                         </div>
                                         <div class="col-md-6 mb-2">
-                                            <label for="submit" class="ol-form-label"><?= $lang['update'] ?></label>
-                                            <button class="btn btn-lg btn-success btn-block" type="submit"><?= $lang['update'] ?></button>
+                                            <label for="submit" class="ol-form-label"><?= $lang['update'] ?></label><br />
+                                            <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-check"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -110,7 +110,102 @@ require_once 'core/templates/head.php';
                                         <p class="form-control" id="name"><?= $user->login ?></p>
                                     </div>
                                 </div>
-                            <?php } ?>
+                                <?php
+                            }
+
+
+                            if ($user->user_role != ROLES['ADMIN'] && verifyIsAdmin()) {
+                                ?>
+                                <div class="col-md-12 text-center">
+                                    <?php
+                                    if ($user->state == STATES['BLOQUEADO']) {
+                                        ?>
+                                        <div class="alert alert-warning" role="alert"><?= $lang['BLOQUEADO'] ?></div>
+                                        <span class="btn" data-toggle="tooltip" title="<?= $lang['desbloquear'] ?>">
+                                            <button type="button" data-toggle="modal" data-target="#unlock<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                        </span>
+                                        <div tabindex="-1" id="unlock<?= $user->uuid ?>" class="modal fade" >
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"><?= $lang['desbloquear'] . " " . $user->name ?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#search<?= $user->uuid ?>" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <?= $lang['estas seguro'] ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="<?= $helper->url("admin", "unlockUser", array("show" => "user")); ?>">
+                                                            <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i><?= $lang['desbloquear'] ?></button>
+                                                            <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <span class="btn" data-toggle="tooltip" title="<?= $lang['bloquear'] ?>">
+                                            <button type="button" data-toggle="modal" data-target="#block<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-warning"><i class="fa fa-ban"></i></button>
+                                        </span>
+                                        <div tabindex="-1" id="block<?= $user->uuid ?>" class="modal fade" >
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"><?= $lang['bloquear'] . " " . $lang['user'] . " " . $user->name ?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#search<?= $user->uuid ?>" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <?= $lang['estas seguro'] ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="<?= $helper->url("admin", "blockUser", array("show" => "user")); ?>">
+                                                            <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                            <button type="submit" class="btn btn-warning"><i class="fa fa-ban"></i><?= $lang['bloquear'] ?></button>
+                                                            <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['eliminar'] ?>">
+                                        <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                    </span>
+                                    <div tabindex="-1" id="remove<?= $user->uuid ?>" class="modal fade">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"><?= $lang['eliminar registro de'] ?> <?= $user->name ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#search<?= $user->uuid ?>" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <?= $lang['estas seguro'] ?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form method="post" action="<?= $helper->url("admin", "removeUser", array("show" => "user")); ?>">
+                                                        <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
+                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <hr>
 
                         </div><!--/tab-pane-->
