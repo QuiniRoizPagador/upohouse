@@ -68,26 +68,37 @@ class AdDao extends AbstractDao {
         $query = "SELECT
             a.uuid,
             a.description,
+            o.name as operation,
+            h.name as housing,
             c.community,
             p.province,
             m.municipality
         FROM
             ads AS a
-        JOIN communities AS c
+        JOIN Communities AS c
         ON
             a.community_id = c.id
-        JOIN provinces AS p
+        JOIN Provinces AS p
         ON
-            c.id = p.community_id
-        RIGHT JOIN municipalities as m
+            a.province_id = p.id
+        JOIN Municipalities as m
         ON
-            p.id = m.province_id
+            a.municipality_id = m.id
+        JOIN Housing_Types as h
+        ON
+        	a.housing_type = h.id
+        JOIN Operation_Types as o
+        ON
+        	a.operation_type = o.id
         WHERE
-            a.description LIKE '%?%' OR c.community LIKE '%?%' OR p.province LIKE '%?%' OR m.municipality LIKE '%a%'
+            a.description LIKE '%?%' OR c.community LIKE '%?%' OR p.province LIKE '%?%' 
+            OR m.municipality LIKE '%?%' OR h.name LIKE '%?%' OR o.name LIKE '%?%'
         GROUP BY
             a.uuid 
         LIMIT 10";
-        $data = array("ssss", "a.description" => $param,"c.community" => $param,"p.province" => $param,"m.municipality" => $param);
+        $data = array("ssss", "a.description" => $param, "c.community" => $param, 
+            "p.province" => $param, "m.municipality" => $param, "h.name" => $param, 
+            "o.name" => $param);
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);

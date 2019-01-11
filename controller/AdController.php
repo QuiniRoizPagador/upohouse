@@ -69,8 +69,8 @@ class AdController extends AbstractController {
             $ad = new Ad();
             $ad->setUuid(RegularUtils::uuid());
             $ad->setUser_id($_SESSION["id"]);
-            $ad->setHousing_type($this->housingTypeModel->read($filtrado["housingType"], FALSE)[0]->id);
-            $ad->setOperation_type($this->operationTypeModel->read($filtrado["operationType"], FALSE)[0]->id);
+            $ad->setHousing_type($this->housingTypeModel->read($filtrado["housingType"], FALSE)->id);
+            $ad->setOperation_type($this->operationTypeModel->read($filtrado["operationType"], FALSE)->id);
             $ad->setPrice($filtrado["price"]);
             $ad->setRooms($filtrado["rooms"]);
             $ad->setM_2($filtrado["m2"]);
@@ -84,7 +84,7 @@ class AdController extends AbstractController {
             if ($save != 1) {
                 $errors['create']['query'] = $save;
             } else {
-                $id = $this->adModel->read($ad->getUuid())[0]->id;
+                $id = $this->adModel->read($ad->getUuid())->id;
                 $images = RegularUtils::saveAdImages("images", $ad->getUuid());
                 foreach ($images as $image) {
                     $imgObj = new Image();
