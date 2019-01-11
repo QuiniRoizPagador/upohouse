@@ -122,11 +122,11 @@ class AdController extends AbstractController {
             if (!isset($ad->uuid)) {
                 $this->redirect("User", "index");
             } else {
-                $housingType = $this->housingTypeModel->read($ad->housing_type)[0];
-                $operationType = $this->operationTypeModel->read($ad->operation_type)[0];
-                $community = $this->communityModel->readId($ad->community_id)[0];
-                $province = $this->provinceModel->readId($ad->province_id)[0];
-                $municipality = $this->municipalityModel->readId($ad->municipality_id)[0];
+                $housingType = $this->housingTypeModel->read($ad->housing_type);
+                $operationType = $this->operationTypeModel->read($ad->operation_type);
+                $community = $this->communityModel->readId($ad->community_id);
+                $province = $this->provinceModel->readId($ad->province_id);
+                $municipality = $this->municipalityModel->readId($ad->municipality_id);
                 $this->view("readAd", array(
                     'title' => "Anuncio",
                     "ad" => $ad,

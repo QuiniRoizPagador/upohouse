@@ -15,9 +15,7 @@ class MunicipalityDao extends AbstractDao {
         $data = array('s', "id" => $id);
 
         $resultSet = $this->preparedStatement($query, $data);
-        while ($obj = $resultSet->fetch_object()) {
-            $res[] = $obj;
-        }
+        $res = $resultSet->fetch_object();
         mysqli_free_result($resultSet);
         return $res;
     }
