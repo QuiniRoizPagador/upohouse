@@ -108,7 +108,7 @@ class UserController extends AbstractController {
         $noRequired = array("name", "surname", "phone", "password");
         $errors[$_POST['uuid']] = RegularUtils::camposNoRequeridos($errors[$_POST['uuid']], "updateUser", $noRequired);
         if (!isset($errors[$_POST['uuid']])) {
-            $values = array("name", "surname", "password", "uuid", "user_role", "phone");
+            $values = array("name", "surname", "password", "uuid", "phone");
             $filtrado = RegularUtils::sanearStrings($values);
 //Creamos un usuario
             $usuario = new User();
@@ -122,7 +122,7 @@ class UserController extends AbstractController {
             if (isset($filtrado["phone"]) && trim($filtrado["phone"]) != "") {
                 $usuario->setPhone($filtrado["phone"]);
             }
-            if (isset($filtrado["password"]) && trim($filtrado["name"]) != "") {
+            if (isset($filtrado["password"]) && trim($filtrado["password"]) != "") {
                 $usuario->setPassword($filtrado["password"]);
             }
             $save = $this->userModel->update($usuario);

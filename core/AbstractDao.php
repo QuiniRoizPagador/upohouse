@@ -46,7 +46,7 @@ abstract class AbstractDao {
         }
         $data = array("s", $column => $value);
         $resultSet = $this->preparedStatement($query, $data);
-        if ($limit !== FALSE) {
+        if ($limit === FALSE || $limit === 1) {
             $res = $resultSet->fetch_object();
         } else {
             $res = array();

@@ -179,7 +179,7 @@ class AdminController extends AbstractController {
             if (isset($filtrado["phone"]) && trim($filtrado["phone"]) != "") {
                 $usuario->setPhone($filtrado["phone"]);
             }
-            if (isset($filtrado["password"]) && trim($filtrado["name"]) != "") {
+            if (isset($filtrado["password"]) && trim($filtrado["password"]) != "") {
                 $usuario->setPassword($filtrado["password"]);
             }
             $save = $this->userModel->update($usuario);

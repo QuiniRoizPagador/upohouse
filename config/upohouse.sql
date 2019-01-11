@@ -181,12 +181,12 @@ INSERT INTO `State_Types` (`uuid`, `state`) VALUES
 ('6e115d7d-b6ec-4909-80aa-7506d3dbdb4c', 'DESCARTADO');
 
 #LOAD HOUSINGTYPES
-INSERT INTO `housing_types` (`uuid`, `name`) VALUES
+INSERT INTO `Housing_Types` (`uuid`, `name`) VALUES
 ('62ffc28b-049f-4733-9c8c-3c800a7d906f', 'Casa'),
 ('62ffc28b-049f-4733-9c8c-5c800b7d906f', 'Piso');
 
 #LOAD OPERATIONTYPES
-INSERT INTO `operation_types` (`uuid`, `name`) VALUES
+INSERT INTO `Operation_Types` (`uuid`, `name`) VALUES
 ('62ffc28b-049f-4735-9e8c-3c800a7d906f', 'Comprar'),
 ('62eec28b-049f-4733-9c8c-5c800b7d906f', 'Alquilar');
 
