@@ -23,9 +23,9 @@ class WSController extends AbstractController {
         $this->operationTypeModel = new OperationTypeModel();
     }
 
-    public function prueba() {
+    public function globalSearch() {
         // TODO: controlar encapsulando solo los atributos necesarios por seguridad
-        if (filter_has_var(INPUT_POST, "str")) {
+        if (filter_has_var(INPUT_POST, "str") && trim($_POST['str']) != "") {
             $str = filter_var($_POST['str'], FILTER_SANITIZE_STRING);
             $list = $this->adModel->globalSearch($str);
             echo json_encode($list);
@@ -35,7 +35,7 @@ class WSController extends AbstractController {
     }
 
     public function paginateUsers() {
-        if (filter_has_var(INPUT_POST, "userPag")) {
+        if (filter_has_var(INPUT_POST, "userPag") && trim($_POST['userPag']) != "") {
             $num = filter_var($_POST['userPag'], FILTER_SANITIZE_NUMBER_INT);
             $allusers = $this->userModel->getAllPaginated($num);
             echo json_encode($allusers);

@@ -40,16 +40,14 @@ function error($text) {
          * 
          */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $title ?></title>
         <link rel="icon" href="view/images/house.ico">
         <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="view/assets/css/product.css">
         <script src='view/assets/js/global.js'></script>
         <script src="view/assets/lib/jquery/jquery.min.js"></script>
-
-        <link rel="stylesheet" href="view/assets/css/product.css">
-
-
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,6 +78,19 @@ function error($text) {
                     position: relative;
                 }
             }
+            .resultado{
+                text-decoration: none;  
+                white-space: normal;
+            }
+            #searchList{
+                display: none;
+                width: 100%; 
+            }
+            #divSearch{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
 
         </style>
 
@@ -88,7 +99,7 @@ function error($text) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
         <script src="view/assets/js/charts.js"></script>
-
+        <script src="view/assets/js/searcher.js"></script>
         <style>
             .jumbotron{
                 background-image: url('view/images/jumbotron.jpg');
@@ -137,39 +148,7 @@ foreach ($lang as $key => $value) {
                 });
             })(jQuery);
         </script>
-        <script>
-            $(document).ready(function () {
-                /*$(".searcher").blur(function () {
-                 $(".searcher").val("");
-                 var lista = $("#searchList");
-                 lista.empty();
-                 });*/
-                $(".searcher").keyup(function () {
-                    var lista = $("#searchList");
-                    lista.empty();
-                    $.post("index.php?controller=WS&action=prueba",
-                            {
-                                'str': $(".searcher").val()
-                            },
-                            function (data, status) {
-                                if (data !== "" && data !== null) {
-                                    $.map($.parseJSON(data), function (k, v) {
-                                        var li = "<li class='list-group-item' style='width:50em;text-align:left;'> "
-                                                + "<a href='<?php echo $helper->url("ad", "read") ?>&uuid=" + k.uuid + "' class='text-muted'>"
-                                                + LANG['descripcion'] + ": " + k.description + " - " + LANG['comunidad'] + ": " + k.community +
-                                                " - " + LANG['provincia'] + ": " + k.province + " - " + LANG['localidad'] + ": " + k.municipality +
-                                                "</a></li>";
-                                        $($(".searcher").val().split(" ")).each(function () {
-                                            $(li).html().replace($('#search').val(), "<span class='highlight'>" + $('#search').val() + "</span>");
-                                        });
-                                        lista.append(li);
-                                    });
-                                }
-                            }
-                    );
-                });
-            });
-        </script>
+
         <script>
 <?php
 if (isset($_GET['show'])) {
@@ -183,16 +162,21 @@ if (isset($_GET['show'])) {
             break;
     }
 } else {
-    $count = $countRegistrations;
+    if (isset($countRegistrations)) {
+        $count = $countRegistrations;
+    }
 }
-
-foreach ($count as $c) {
-    $labels[] = $c->month . "/" . $c->year;
-    $datasets[] = $c->count;
-}
+if (isset($count)) {
+    foreach ($count as $c) {
+        $labels[] = $c->month . "/" . $c->year;
+        $datasets[] = $c->count;
+    }
+    ?>
+                var lb = [<?= '"' . implode('","', $labels) . '"' ?>]
+                var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
+<?php }
 ?>
-            var lb = [<?= '"' . implode('","', $labels) . '"' ?>]
-            var ds = [<?= '"' . implode('","', $datasets) . '"' ?>]
+
         </script>
         <script src="view/assets/js/pagination.js"></script>
         <script src="view/assets/js/localization.js"></script>

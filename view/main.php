@@ -1,13 +1,11 @@
 <section class="jumbotron text-center"  style="z-index: 1;">
-    <div class="container">
+    <div class="container dropdown">
         <h1 class="jumbotron-heading">Ventor House</h1>
         <br/>
-        <div class="row" style="display:flex;align-items: center;justify-content: center;">
-            <input  type="text" class='form-control searcher' name="search" placeholder="<?= $lang['buscar'] ?>" /> 
-            <div class="row">
-                <ul class="list-group" id="searchList" style="z-index: 1; position: relative;">
+        <div class="row dropdown" id="divSearch">
+            <input type="text" class='form-control searcher' name="search" placeholder="<?= $lang['buscar'] ?>" /> 
+            <div class="dropdown-menu" id="searchList">
             </div>
-            </ul>
         </div>
     </div>
 </section>
