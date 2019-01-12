@@ -1,5 +1,4 @@
-<?php
-?>
+<?php ?>
 <header>
     <nav class="site-header sticky-top py-1 bg-dark">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -24,7 +23,7 @@
                 <div class="py-2 d-none d-md-inline-block text-white"> 
                     <?= $lang['bienvenido'] ?>, <?= $_SESSION['name'] ?>
                 </div>
-            <?php
+                <?php
             }
             if (verifyIsAdmin()) {
                 ?>
@@ -36,8 +35,16 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="<?=$helper->url($_GET['controller'], $_GET['action'], array("lang"=> "es"))?>"><?= $lang['español'] ?></a></li>
-                        <li><a href="<?=$helper->url($_GET['controller'], $_GET['action'], array("lang"=> "en"))?>"><?= $lang['ingles'] ?></a></li>
+                        <?php
+                        $url = array_merge($_GET, array("lang" => "es"));
+                        unset($url['controller']);
+                        unset($url['action']);
+                        ?>
+                        <li><a href="<?= $helper->url($_GET['controller'], $_GET['action'], $url) ?>"><?= $lang['español'] ?></a></li>
+                        <?php
+                        $url['lang'] = 'en';
+                        ?>
+                        <li><a href="<?= $helper->url($_GET['controller'], $_GET['action'], $url) ?>"><?= $lang['ingles'] ?></a></li>
                     </ul>
                 </li>
             </ul>

@@ -15,13 +15,13 @@ class OperationTypeModel extends AbstractModel {
     }
 
 
-    public function countOperationTypes($close = TRUE) {
-        return $this->operationTypeDao->countOperationTypes($close);
+    public function countOperationTypes() {
+        return $this->operationTypeDao->countOperationTypes();
     }
 
 
-    public function getAllPaginated($pag = 0, $close = TRUE) {
-        return $this->operationTypeDao->getAllPaginated($pag, $close);
+    public function getAllPaginated($pag = 0) {
+        return $this->operationTypeDao->getAllPaginated($pag);
     }
 
 }

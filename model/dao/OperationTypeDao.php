@@ -30,14 +30,14 @@ class OperationTypeDao extends AbstractDao {
         return $res;
     }
 
-    public function countOperationTypes($close = TRUE) {
+    public function countOperationTypes() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
     }
 
-    public function getAllPaginated($pag = 0, $close = TRUE) {
+    public function getAllPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT * FROM $this->table "
                 . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
         //Devolvemos el resultset en forma de array de objetos
