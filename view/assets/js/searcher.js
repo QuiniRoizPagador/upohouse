@@ -3,7 +3,7 @@
         this.each(function () {
             $(this).keypress(function (event) {
                 if (event.which == 13) {
-                    alert("intro pusado");
+                    window.location = "index/Ad/paginate&query=" + $.trim($(".searcher").val());
                 }
             });
             $(this).blur(function () {
@@ -24,7 +24,7 @@
                 lista.hide();
                 lista.empty();
                 if ($.trim($(".searcher").val()) != "") {
-                    $.post("index.php?controller=WS&action=globalSearch",
+                    $.queue($.post("index.php?controller=WS&action=globalSearch",
                             {
                                 'str': $(".searcher").val()
                             },
@@ -48,7 +48,7 @@
                                     }
                                 }
                             }
-                    );
+                    ));
                 } else {
                     $(".searcher").val("");
                 }

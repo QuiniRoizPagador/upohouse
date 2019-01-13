@@ -86,6 +86,7 @@ require_once 'core/templates/nav.php';
                     <label for="submit" class="ol-form-label"><?= $lang['registro'] ?></label>
                     <button class="btn btn-lg btn-success btn-block" type="submit"><?= $lang['registro'] ?></button>
                 </div>
+            </div>
         </form>
     </div>
 </div>

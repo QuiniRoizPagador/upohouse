@@ -64,12 +64,17 @@ class AdDao extends AbstractDao {
         return $res->ads;
     }
 
-    public function globalSearch($str) {
-        $param = "+" . $str;
-        $param = str_replace(" ", "* +", $param);
+    public function globalSearch($str, $pag) {
+        $param = "*" . $str;
+        $param = str_replace(" ", "* *", trim($param));
         $param .= "*";
         $query = "SELECT
             a.uuid,
+            a.price,
+            a.rooms,
+            a.m_2,
+            a.timestamp,
+            a.bath,
             a.description,
             o.name AS operation,
             h.name AS housing,
@@ -106,13 +111,12 @@ class AdDao extends AbstractDao {
                 ? IN BOOLEAN MODE
             ) OR MATCH(h.name) AGAINST(
                 ? IN BOOLEAN MODE
-            )
-        GROUP BY
-            a.uuid
+            ) AND state = " . STATES['NEUTRO'] .
+                " GROUP BY a.uuid
         ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name    
-        LIMIT 10";
-        $data = array("ssssss", $param, $param, $param, $param, $param,
-            $param);
+        LIMIT 9 OFFSET $pag";
+
+        $data = array("ssssss", $param, $param, $param, $param, $param, $param);
         $resultSet = $this->preparedStatement($query, $data);
 
         $res = array();
@@ -122,6 +126,54 @@ class AdDao extends AbstractDao {
 
         mysqli_free_result($resultSet);
         return $res;
+    }
+
+    function countGlobalSearch($str = "") {
+        $param = "*" . $str;
+        $param = str_replace(" ", "* *", trim($param));
+        $param .= "*";
+        $query = "SELECT
+            COUNT(*) AS count
+        FROM
+            Ads AS a
+        JOIN Communities AS c
+        ON
+            a.community_id = c.id
+        JOIN Provinces AS p
+        ON
+            a.province_id = p.id
+        JOIN Municipalities AS m
+        ON
+            a.municipality_id = m.id
+        JOIN Housing_Types AS h
+        ON
+            a.housing_type = h.id
+        JOIN Operation_Types AS o
+        ON
+            a.operation_type = o.id
+        WHERE
+            MATCH(a.description) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(c.community) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(p.province) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(m.municipality) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(o.name) AGAINST(
+                ? IN BOOLEAN MODE
+            ) OR MATCH(h.name) AGAINST(
+                ? IN BOOLEAN MODE
+            ) AND state = " . STATES['NEUTRO'] .
+                " GROUP BY a.uuid";
+
+        $data = array("ssssss", $param, $param, $param, $param, $param, $param);
+        $resultSet = $this->preparedStatement($query, $data);
+
+        $res = $resultSet->fetch_object();
+
+        mysqli_free_result($resultSet);
+        return $res->count;
     }
 
 }

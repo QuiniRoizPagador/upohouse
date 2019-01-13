@@ -166,6 +166,31 @@ class AdController extends AbstractController {
         $this->redirect("Admin", "dashboard", array("show" => "ads"));
     }
 
+    public function paginate() {
+        if (filter_has_var(INPUT_GET, 'query') && trim($_GET['query']) != "") {
+            if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
+                $pag = $_GET['pag'];
+            } else {
+                $pag = 0;
+            }
+            $str = filter_var($_GET['query'], FILTER_SANITIZE_STRING);
+            $list = array();
+            $countList = $this->adModel->globalCount($str);
+            if ($countList > 0) {
+                $list = $this->adModel->globalSearch($str);
+            }
+            $this->view("searchAds", array(
+                'title' => "Resultados Obtenidos",
+                "results" => $list,
+                "countList" => $countList,
+                "pag" => $pag,
+                "query" => $_GET['query']
+            ));
+        } else {
+            $this->redirect();
+        }
+    }
+
     /**
      * Creación de un usuario por parte del admin
      */
