@@ -119,6 +119,18 @@ function error($text) {
                 align-items: center;
                 justify-content: center;
             }
+            @media (min-width:992px) {
+                .navbar-nav.navbar-center {
+                    position: absolute;
+                    left: 50%;
+                    transform: translatex(-50%);
+                }
+                .navbar-nav.navbar-right {
+                    position: absolute;
+                    right: 0%;
+                    transform: translatex(-50%);
+                }
+            }
 
         </style>
 
