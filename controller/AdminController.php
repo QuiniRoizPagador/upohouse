@@ -45,7 +45,9 @@ class AdminController extends AbstractController {
                 break;
             case "tipos":
                 $this->types($errors, $show, $pag);
-
+                break;
+            case "denuncias":
+                $this->reports($errors, $show, $pag);
                 break;
             case "ads":
                 $this->ads($errors, $show);
@@ -494,6 +496,35 @@ class AdminController extends AbstractController {
             "allHousingTypes" => $allHousingTypes,
             "numOperationTypes" => $numOperationTypes,
             "allOperationTypes" => $allOperationTypes,
+            "show" => $show,
+            "pag" => $pag,
+        ));
+    }
+
+    private function reports($errors, $show, $pag) {
+        if ($pag == NULL) {
+            $pag = 0;
+        }
+
+        $allReportsUsers = $this->reportModel->getAllReportUserPaginated(0, FALSE);
+        $numReportsUsers = $this->reportModel->countReportUsers(FALSE);
+        $allReportsAds = $this->reportModel->getAllReportAdPaginated(0, FALSE);
+        $numReportsAds = $this->reportModel->countReportAds(FALSE);
+        $allReportsComments = $this->reportModel->getAllReportCommentPaginated(0, FALSE);
+        $numReportsCommets = $this->reportModel->countReportComments(FALSE);
+        $allReportsRequests = $this->reportModel->getAllReportRequestPaginated(0, FALSE);
+        $numReportsRequests = $this->reportModel->countReportRequests(FALSE);
+
+        $this->view("dashboard", array(
+            'title' => "P&aacute;gina de Gesti&oacute;n",
+            "numReportsUsers" => $numReportsUsers,
+            "allReportsUsers" => $allReportsUsers,
+            "numReportsAds" => $numReportsAds,
+            "allReportsAds" => $allReportsAds,          
+            "numReportsCommets" => $numReportsCommets,
+            "allReportsComments" => $allReportsComments,
+            "numReportsRequests" => $numReportsRequests,
+            "allReportsRequests" => $allReportsRequests,
             "show" => $show,
             "pag" => $pag,
         ));
