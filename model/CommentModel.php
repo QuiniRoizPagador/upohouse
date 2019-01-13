@@ -15,7 +15,7 @@ class CommentModel extends AbstractModel {
     }
 
     public function countComments() {
-        return $this->commentDao->countComments($close);
+        return $this->commentDao->countComments();
     }
     public function countRegistrationComments() {
         return $this->commentDao->countRegistrationComments();
