@@ -5,6 +5,7 @@ require_once 'model/dao/dto/User.php';
 require_once 'model/dao/dto/Housing_type.php';
 require_once 'model/dao/dto/Operation_type.php';
 require_once 'model/dao/dto/Report.php';
+require_once 'model/dao/dto/Request.php';
 
 use core\AbstractController;
 use core\RegularUtils;
@@ -12,6 +13,7 @@ use model\dao\dto\User;
 use model\dao\dto\Housing_type;
 use model\dao\dto\Operation_type;
 use model\dao\dto\Report;
+use model\dao\dto\Request;
 
 class AdminController extends AbstractController {
 
@@ -20,6 +22,7 @@ class AdminController extends AbstractController {
     private $housingTypeModel;
     private $reportModel;
     private $operationTypeModel;
+    private $requestModel;
 
     public function __construct() {
         parent::__construct();
@@ -29,6 +32,7 @@ class AdminController extends AbstractController {
         $this->housingTypeModel = new HousingTypeModel();
         $this->reportModel = new ReportModel();
         $this->operationTypeModel = new OperationTypeModel();
+        $this->requestModel = new RequestModel();
     }
 
     /**
@@ -511,7 +515,7 @@ class AdminController extends AbstractController {
         $allReportsAds = $this->reportModel->getAllReportAdPaginated(0, FALSE);
         $numReportsAds = $this->reportModel->countReportAds(FALSE);
         $allReportsComments = $this->reportModel->getAllReportCommentPaginated(0, FALSE);
-        $numReportsCommets = $this->reportModel->countReportComments(FALSE);
+        $numReportsComments = $this->reportModel->countReportComments(FALSE);
         $allReportsRequests = $this->reportModel->getAllReportRequestPaginated(0, FALSE);
         $numReportsRequests = $this->reportModel->countReportRequests(FALSE);
 
@@ -520,14 +524,202 @@ class AdminController extends AbstractController {
             "numReportsUsers" => $numReportsUsers,
             "allReportsUsers" => $allReportsUsers,
             "numReportsAds" => $numReportsAds,
-            "allReportsAds" => $allReportsAds,          
-            "numReportsCommets" => $numReportsCommets,
+            "allReportsAds" => $allReportsAds,
+            "numReportsComments" => $numReportsComments,
             "allReportsComments" => $allReportsComments,
             "numReportsRequests" => $numReportsRequests,
             "allReportsRequests" => $allReportsRequests,
             "show" => $show,
             "pag" => $pag,
         ));
+    }
+
+    public function acceptReportComment() {
+
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "comment_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Aceptar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportComment'][$_POST['uuid']]['query'] = "error_accept_report";
+            }
+        }
+        if (isset($errors['acceptReportComment'])) {
+            $this->dashboard($errors);
+        } else {
+            $id = RegularUtils::sanearStrings(array('comment_uuid'))['comment_uuid'];
+            $rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportComment'][$_POST['comment_uuid']]['query'] = "error_block_comment";
+                $this->dashboard($errors);
+            } else {
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+        }
+    }
+
+    public function denyReportComment() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "comment_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Denegar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['denyReportComment'][$_POST['uuid']]['query'] = "error_deny_report";
+            }
+        }
+        if (isset($errors['denyReportComment'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
+    }
+
+    public function acceptReportRequest() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "request_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Aceptar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportRequest'][$_POST['uuid']]['query'] = "error_accept_report";
+            }
+        }
+        if (isset($errors['acceptReportRequest'])) {
+            $this->dashboard($errors);
+        } else {
+            $id = RegularUtils::sanearStrings(array('request_uuid'))['request_uuid'];
+            $rem = $this->requestModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportRequest'][$_POST['request_uuid']]['query'] = "error_block_request";
+                $this->dashboard($errors);
+            } else {
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+        }
+    }
+
+    public function denyReportRequest() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "request_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Denegar");
+            if ($rem == 0) {
+                $errors['denyReportRequest'][$_POST['uuid']]['query'] = "error_deny_report";
+            }
+        }
+        if (isset($errors['denyReportRequest'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
+    }
+
+    public function acceptReportAd() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "ad_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Aceptar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportAd'][$_POST['uuid']]['query'] = "error_accept_report";
+            }
+        }
+        if (isset($errors['acceptReportAd'])) {
+            $this->dashboard($errors);
+        } else {
+            $id = RegularUtils::sanearStrings(array('ad_uuid'))['ad_uuid'];
+            $rem = $this->adModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportAd'][$_POST['ad_uuid']]['query'] = "error_block_ad";
+                $this->dashboard($errors);
+            } else {
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+        }
+    }
+
+    public function denyReportAd() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "ad_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Denegar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['denyReportAd'][$_POST['uuid']]['query'] = "error_deny_report";
+            }
+        }
+        if (isset($errors['denyReportAd'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
+    }
+
+    public function acceptReportUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "user_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Aceptar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportUser'][$_POST['uuid']]['query'] = "error_accept_report";
+            }
+        }
+        if (isset($errors['acceptReportUser'])) {
+            $this->dashboard($errors);
+        } else {
+            $id = RegularUtils::sanearStrings(array('user_uuid'))['user_uuid'];
+            $rem = $this->userModel->block($id);
+            if ($rem == 0) {
+                $errors['acceptReportUser'][$_POST['user_uuid']]['query'] = "error_block_user";
+                $this->dashboard($errors);
+            } else {
+                $this->redirect("admin", "dashboard", array("show" => "$show"));
+            }
+        }
+    }
+
+    public function denyReportUser() {
+        $show = null;
+        if (isset($_GET["show"])) {
+            $show = $_GET["show"];
+        }
+        if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "user_uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
+            $rem = $this->reportModel->modifyState($id, "Denegar");
+            //$rem = $this->commentModel->block($id);
+            if ($rem == 0) {
+                $errors['denyReportUser'][$_POST['uuid']]['query'] = "error_deny_report";
+            }
+        }
+        if (isset($errors['denyReportUser'])) {
+            $this->dashboard($errors);
+        } else {
+            $this->redirect("admin", "dashboard", array("show" => "$show"));
+        }
     }
 
 }

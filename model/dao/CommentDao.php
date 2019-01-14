@@ -69,11 +69,18 @@ class CommentDao extends AbstractDao {
 
     public function countUserComments($id) {
         $query = "SELECT COUNT(*) as comments from $this->table WHERE user_id = ?";
-        $data = array("i","user_id" => $id);
+        $data = array("i", "user_id" => $id);
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
         return $res->comments;
+    }
+
+    public function block($uuid) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES["BLOQUEADO"], "uuid" => $uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
     }
 
 }

@@ -97,5 +97,7 @@ $lang = array(
     "denuncias comentario" => "Reports Comments",
     "denuncias peticion" => "Reports Request",
     "request_reported" => "Reported request",
+    "accept" => "Accept",
+    "deny" => "Deny",
 );
 

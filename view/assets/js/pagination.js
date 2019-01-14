@@ -570,6 +570,36 @@ function cargarOperationType(operationType) {
             });
         });
     };
+    
+        $.fn.paginateReportsUsers = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagReportsUser").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateReportsUser";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'reportsUserPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo").empty();
+                                var usersReports = $.parseJSON(data);
+                                for (var i = 0; i < usersReports.length; i++) {
+                                    $("#cuerpo").append(cargarReportUser(usersReports[i]));
+                                }
+                            } catch (Exception) {
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
 })(jQuery);
 
 $(document).ready(function () {
@@ -578,5 +608,9 @@ $(document).ready(function () {
     $(".pagComment").paginateComments();
     $(".pagHousingTypes").paginateHousingTypes();
     $(".pagOperationTypes").paginateOperationTypes();
+    
+    $(".pagReportsUser").paginateReportsUsers();
+    
+    
     $('[data-toggle="tooltip"]').tooltip();
 });

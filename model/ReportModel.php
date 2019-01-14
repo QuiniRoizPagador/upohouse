@@ -21,6 +21,11 @@ class ReportModel extends AbstractModel {
 
         return $this->create($report);
     }
+    
+    public function modifyState($uuid,$state)
+    {
+        return $this->reportDao->modifyState($uuid,$state);
+    }
 
     public function countReportUsers() {
         return $this->reportDao->countReportUsers();

@@ -17,15 +17,21 @@ class CommentModel extends AbstractModel {
     public function countComments() {
         return $this->commentDao->countComments();
     }
+
     public function countRegistrationComments() {
         return $this->commentDao->countRegistrationComments();
     }
+
     public function getAllPaginated($pag = 0) {
         return $this->commentDao->getAllPaginated($pag);
     }
 
     public function countUserComments($id) {
         return $this->commentDao->countUserComments($id);
+    }
+
+    public function block($uuid) {
+        return $this->commentDao->block($uuid);
     }
 
 }

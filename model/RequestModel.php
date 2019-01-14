@@ -7,11 +7,15 @@ use core\AbstractModel;
 
 class RequestModel extends AbstractModel {
 
-    private $requestDaoDao;
+    private $requestDao;
 
     public function __construct() {
-        $this->requestDaoDao = new RequestDao();
-        parent::__construct($this->requestDaoDao);
+        $this->requestDao = new RequestDao();
+        parent::__construct($this->requestDao);
+    }
+
+    public function block($uuid) {
+        return $this->requestDao->block($uuid);
     }
 
 }
