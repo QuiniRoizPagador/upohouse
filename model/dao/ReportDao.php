@@ -34,10 +34,21 @@ class ReportDao extends AbstractDao {
         return $res;
     }
 
+    public function modifyState($uuid, $state) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        if ($state == "Aceptar") {
+            $data = array("is", "state" => STATES["ACEPTADO"], "uuid" => $uuid);
+        } else {
+            $data = array("is", "state" => STATES["DESCARTADO"], "uuid" => $uuid);
+        }
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
     public function countReportUsers() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `user_reported` is not null "
-                . "ORDER BY id DESC LIMIT 1");
+                . "WHERE `user_reported` is not null AND state=".STATES["NEUTRO"]
+                . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
@@ -49,10 +60,10 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN users AS u ON r.user_reported=u.id "
                 . "JOIN users AS u2 ON r.user_id=u2.id "
-                . "WHERE user_reported is not null "
-                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+                . "WHERE user_reported is not null AND r.state=".STATES["NEUTRO"]
+                . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
-        //Devolvemos el resultset en forma de array de objetos
+//Devolvemos el resultset en forma de array de objetos
         $resultSet = array();
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
@@ -64,8 +75,8 @@ class ReportDao extends AbstractDao {
 
     public function countReportAds() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `ad_reported` is not null "
-                . "ORDER BY id DESC LIMIT 1");
+                . "WHERE `ad_reported` is not null AND state=".STATES["NEUTRO"]
+                . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
@@ -77,10 +88,10 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN ads AS a ON r.ad_reported=a.id "
                 . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE ad_reported is not null "
-                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+                . "WHERE ad_reported is not null AND r.state=".STATES["NEUTRO"]
+                . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
-        //Devolvemos el resultset en forma de array de objetos
+//Devolvemos el resultset en forma de array de objetos
         $resultSet = array();
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
@@ -92,8 +103,8 @@ class ReportDao extends AbstractDao {
 
     public function countReportComments() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `comment_reported` is not null "
-                . "ORDER BY id DESC LIMIT 1");
+                . "WHERE `comment_reported` is not null AND state=".STATES["NEUTRO"]
+                . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
@@ -105,10 +116,10 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN comments AS c ON r.comment_reported=c.id "
                 . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE comment_reported is not null "
-                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+                . "WHERE comment_reported is not null AND r.state=".STATES["NEUTRO"]
+                . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
-        //Devolvemos el resultset en forma de array de objetos
+//Devolvemos el resultset en forma de array de objetos
         $resultSet = array();
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
@@ -120,8 +131,8 @@ class ReportDao extends AbstractDao {
 
     public function countReportRequests() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `request_reported` is not null "
-                . "ORDER BY id DESC LIMIT 1");
+                . "WHERE `request_reported` is not null AND state=".STATES["NEUTRO"]
+                . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
@@ -133,9 +144,9 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN requests AS re ON r.request_reported=re.id "
                 . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE request_reported is not null "
-                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
-        //Devolvemos el resultset en forma de array de objetos
+                . "WHERE request_reported is not null AND r.state=".STATES["NEUTRO"]
+                . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+//Devolvemos el resultset en forma de array de objetos
         $resultSet = array();
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
