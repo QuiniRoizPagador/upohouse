@@ -30,7 +30,7 @@
                             },
                             function (data, status) {
                                 if (data !== "" && data !== null) {
-                                    $.map($.parseJSON(data), function (k, v) {
+                                    $.map(data, function (k, v) {
                                         var li = "<a class='resultado dropdown-item' href='index.php?controller=Ad&action=read&uuid=" + k.uuid + "'>"
                                                 + LANG['descripcion'] + ": " + k.description + " - " + LANG['comunidad'] + ": " + k.community +
                                                 " - " + LANG['provincia'] + ": " + k.province + " - " + LANG['localidad'] + ": " + k.municipality +

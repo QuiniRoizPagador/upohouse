@@ -15,7 +15,7 @@ function getProvincesList(id) { //Devuelve lista de provincias en base a una com
         'communityId': id
     },
             function (data, status) {
-                var provinces = $.parseJSON(data);
+                var provinces = data;
                 $("#province").append("<option selected='selected'>" + LANG["eligeProvincia"] + "</option>'");
                 for (var i = 0; i < provinces.length; i++) {
                     $("#province").append("<option value='" + provinces[i].id + "'>" + provinces[i].province + "</option>");
@@ -29,7 +29,7 @@ function getMunicipalitiesList(id) { //Devuelve lista de municipios en base a un
         'provinceId': id
     },
             function (data, status) {
-                var municipalities = $.parseJSON(data);
+                var municipalities = data;
                 $("#municipality").append("<option selected='selected'>" + LANG["eligeMunicipio"] + "</option>'");
                 for (var i = 0; i < municipalities.length; i++) {
                     $("#municipality").append("<option value='" + municipalities[i].id + "'>" + municipalities[i].municipality + "</option>");

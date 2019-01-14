@@ -434,7 +434,7 @@ function cargarOperationType(operationType) {
                         function (data, status) {
                             try {
                                 $("#cuerpo").empty();
-                                var users = $.parseJSON(data);
+                                var users = data;
                                 for (var i = 0; i < users.length; i++) {
                                     $("#cuerpo").append(cargarUsuario(users[i], num - 1));
                                 }
@@ -465,7 +465,7 @@ function cargarOperationType(operationType) {
                         function (data, status) {
                             try {
                                 $("#cuerpo").empty();
-                                var ads = $.parseJSON(data);
+                                var ads = data;
                                 console.log(ads);
                                 for (var i = 0; i < ads.length; i++) {
                                     $("#cuerpo").append(cargarAnuncio(ads[i]));
@@ -495,7 +495,7 @@ function cargarOperationType(operationType) {
                         function (data, status) {
                             try {
                                 $("#cuerpo").empty();
-                                var comments = $.parseJSON(data);
+                                var comments = data;
                                 for (var i = 0; i < comments.length; i++) {
                                     $("#cuerpo").append(cargarComentario(comments[i]));
                                 }
@@ -526,7 +526,7 @@ function cargarOperationType(operationType) {
                         function (data, status) {
                             try {
                                 $("#cuerpo").empty();
-                                var housingTypes = $.parseJSON(data);
+                                var housingTypes = data;
                                 for (var i = 0; i < housingTypes.length; i++) {
                                     $("#cuerpo").append(cargarHousingType(housingTypes[i]));
                                 }
@@ -556,7 +556,7 @@ function cargarOperationType(operationType) {
                         function (data, status) {
                             try {
                                 $("#cuerpo2").empty();
-                                var operationTypes = $.parseJSON(data);
+                                var operationTypes = data;
                                 for (var i = 0; i < operationTypes.length; i++) {
                                     $("#cuerpo2").append(cargarOperationType(operationTypes[i]));
                                 }
