@@ -131,6 +131,9 @@ function error($text) {
                     transform: translatex(-50%);
                 }
             }
+            .table td{
+                vertical-align: middle;
+            }
 
         </style>
 

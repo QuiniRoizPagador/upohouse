@@ -206,7 +206,7 @@
                                                 </div>
                                             </div>
 
-                                            <br>
+                                            <br />
                                             <div class="text-center">
                                                 <?php
                                                 if ($user->user_role != ROLES['ADMIN']) {

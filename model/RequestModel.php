@@ -7,11 +7,20 @@ use core\AbstractModel;
 
 class RequestModel extends AbstractModel {
 
-    private $requestDaoDao;
+    private $requestDao;
 
     public function __construct() {
-        $this->requestDaoDao = new RequestDao();
-        parent::__construct($this->requestDaoDao);
+        $this->requestDao = new RequestDao();
+        parent::__construct($this->requestDao);
+    }
+
+    public function listUserRequest($user) {
+        $request = $this->requestDao->listUserRequest($user);
+        $ads = array();
+        foreach($request as $r){
+            $ads[$r->title][$r->request] = $r;
+        }
+        return $ads;
     }
 
 }

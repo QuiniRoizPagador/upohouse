@@ -12,12 +12,14 @@ class UserController extends AbstractController {
     private $userModel;
     private $adModel;
     private $commentModel;
+    private $requestModel;
 
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
         $this->adModel = new AdModel();
         $this->commentModel = new CommentModel();
+        $this->requestModel = new RequestModel();
     }
 
     /**
@@ -43,11 +45,13 @@ class UserController extends AbstractController {
             } else {
                 $userAds = $this->adModel->countUserAds($user->id);
                 $userComments = $this->commentModel->countUserComments($user->id);
+                $ads = $this->requestModel->listUserRequest($user);
                 $this->view("profile", array(
                     'title' => "Perfil $user->name",
                     "user" => $user,
                     "userAds" => $userAds,
-                    "userComments" => $userComments
+                    "userComments" => $userComments,
+                    "ads"=>$ads
                 ));
             }
         } else {

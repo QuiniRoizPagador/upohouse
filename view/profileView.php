@@ -28,7 +28,12 @@ require_once 'core/templates/head.php';
                         ?>
                         <ul class="nav nav-tabs"  role="tablist">
                             <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab" aria-selected="true"><?= $lang['profile'] ?></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#solicitudes" data-toggle="tab" aria-selected="false"><?= $lang['solicitudes'] ?></a></li>
+                            <?php
+                            if (verifyIsSame()) {
+                                ?>
+                                <li class="nav-item"><a class="nav-link" href="#solicitudes" data-toggle="tab" aria-selected="false"><?= $lang['solicitudes'] ?></a></li>
+                            <?php }
+                            ?>
                         </ul>
                         <?php
                     }
@@ -208,11 +213,91 @@ require_once 'core/templates/head.php';
                             ?>
                             <hr>
 
-                        </div><!--/tab-pane-->
-                        <div class="tab-pane" id="solicitudes">
-
-                        </div><!--/tab-pane-->
-
+                        </div>
+                        <?php
+                        if (verifyIsSame()) {
+                            ?>
+                            <div class="tab-pane" id="solicitudes">
+                                <div class="row">
+                                    <?php
+                                    foreach ($ads as $ad => $anuncios) {
+                                        ?>
+                                        <div class="col-md-6">
+                                            <h3><?= $ad ?></h3>
+                                            <table class="table table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <?= $lang['ver'] ?>
+                                                        </th>
+                                                        <th>
+                                                            <?= $lang['user'] ?>
+                                                        </th>
+                                                        <th>
+                                                            <?= $lang['when'] ?>
+                                                        </th>
+                                                        <th>
+                                                            <?= $lang['options'] ?>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    foreach ($anuncios as $solicitud) {
+                                                        ?>
+                                                        <tr>
+                                                            <td>
+                                                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $solicitud->ad ?>">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                <a href="<?= $helper->url("user", "readUser", array("uuid" => $solicitud->user_uuid)) ?>"><?= $solicitud->user ?></a>
+                                                            </td>
+                                                            <td>
+                                                                <?= to_time_ago(strtotime($solicitud->timestamp)) ?>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></button>
+                                                                    <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="show<?= $solicitud->ad ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content card">
+                                                                <div class="card bg-light text-muted">
+                                                                    <div class="card-header modal-header">
+                                                                        <h5 class="modal-title"><?= $lang['solicitud'] . " " . $solicitud->user ?></h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="card-body modal-body">
+                                                                        <p class="text-center">
+                                                                            <?= $solicitud->content ?>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div><!--/tab-pane-->
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div><!--/tab-content-->
 
                 </div><!--/col-9-->

@@ -92,6 +92,9 @@ $lang = array(
     "update" => "Actualizar",
     "profile" => "Perfil",
     "solicitudes" => "Solicitudes",
-    "comments" => "Comentarios"
+    "comments" => "Comentarios",
+    "when" => "Cu&aacute;ndo",
+    "options" => "Opciones",
+    "solicitud" => "Solicitud",
 );
 
