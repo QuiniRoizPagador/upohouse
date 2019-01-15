@@ -14,13 +14,12 @@ class RequestModel extends AbstractModel {
         parent::__construct($this->requestDao);
     }
 
-    public function listUserRequest($user) {
-        $request = $this->requestDao->listUserRequest($user);
-        $ads = array();
-        foreach($request as $r){
-            $ads[$r->title][$r->request] = $r;
-        }
-        return $ads;
+    public function listUserRequest($user, $pag = 0) {
+        return $this->requestDao->listUserRequest($user, $pag);
+    }
+
+    public function countUserRequests($id) {
+        return $this->requestDao->countUserRequests($id);
     }
 
 }

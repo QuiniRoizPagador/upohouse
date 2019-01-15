@@ -45,13 +45,15 @@ class UserController extends AbstractController {
             } else {
                 $userAds = $this->adModel->countUserAds($user->id);
                 $userComments = $this->commentModel->countUserComments($user->id);
-                $ads = $this->requestModel->listUserRequest($user);
+                $numRequests = $this->requestModel->countUserRequests($user->id);
+                $requests = $this->requestModel->listUserRequest($user);
                 $this->view("profile", array(
                     'title' => "Perfil $user->name",
                     "user" => $user,
                     "userAds" => $userAds,
                     "userComments" => $userComments,
-                    "ads"=>$ads
+                    "requests" => $requests,
+                    "numRequests" => $numRequests
                 ));
             }
         } else {

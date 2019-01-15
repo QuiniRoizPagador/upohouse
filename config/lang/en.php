@@ -95,5 +95,9 @@ $lang = array(
     "when" => "When",
     "options" => "Options",
     "solicitud" => "Request",
+    "contacto" => "Contact",
+    "date" => "Date",
+    "refuse" => "Refuse",
+    "accept" => "Accept"
 );
 

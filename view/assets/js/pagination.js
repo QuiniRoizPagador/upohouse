@@ -419,6 +419,68 @@ function cargarOperationType(operationType) {
     return tr;
 }
 
+
+function cargarRequests(request, pag) {
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", request.title, ""));
+    var link = $("<a href='index/user/readUser?uuid=" + request.user_uuid + "'>" + request.name + "</a>");
+    tr.append(create("td", link, ""));
+    tr.append(create("td", request.timestamp, ""));
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#show" + request.ad + "' class='btn btn-info btn-sm' />");
+    button.append($("<span class='fa fa-eye'/>"));
+    td.append(button);
+
+    var modal = create("div id='show" + request.ad + "' tabindex='-1'", "", "modal fade");
+    var modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", LANG['solicitud'] + " " + request.user, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+    var modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+
+    var reportButton = $("<button class='btn btn-warning btn-sm float-lg-right'><i class='fa fa-ban'></i></button>");
+    modal_body.append(reportButton);
+    var p = create("p", $("<strong>" + LANG['user'] + "</strong>: <a href='index/user/readUser?uuid=" + request.user_uuid + "'>" + request.name + "</a>"), "");
+    modal_body.append(p);
+    modal_body.append(create("h4", LANG['contacto'], ""));
+
+    p = create("p", $("<strong>" + LANG['phone'] + "</strong>"), "");
+    p.append(": " + request.phone)
+    modal_body.append(p);
+
+    p = create("p", $("<strong>" + LANG['email'] + "</strong>:<a href='mailto:" + request.mail + "Subject=" + request.ad + "'> " + request.mail + "</a>"), "");
+    modal_body.append(p);
+
+    modal_body.append($("<hr />"));
+
+    p = create("p", "<strong>" + LANG['contenido'] + ":</strong> <br />" + request.content, "");
+    modal_body.append(p);
+
+    var footer = create("div", "", "center-block float-lg-right");
+    modal_body.append(footer);
+    var btn_group = create("div", "", "btn-group");
+    footer.append(btn_group);
+
+
+    footer.append($("<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#refuse" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-remove'></i></button>"));
+    footer.append($("<button class='btn btn-success btn-sm' data-toggle='modal' data-target='#accept" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-check'></i></button>"));
+
+
+    td.append(modal);
+
+    tr.append(td);
+
+    return tr;
+}
+
+
+
 (function ($) {
     $.fn.paginateUsers = function () {
         this.each(function () {
@@ -570,6 +632,35 @@ function cargarOperationType(operationType) {
             });
         });
     };
+    $.fn.paginateRequests = function () {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagRequest").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateRequests";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'pag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo").empty();
+                                var requests = data;
+                                for (var i = 0; i < requests.length; i++) {
+                                    $("#cuerpo").append(cargarRequests(requests[i], num - 1));
+                                }
+                            } catch (Exception) {
+
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
 })(jQuery);
 
 $(document).ready(function () {
@@ -578,5 +669,6 @@ $(document).ready(function () {
     $(".pagComment").paginateComments();
     $(".pagHousingTypes").paginateHousingTypes();
     $(".pagOperationTypes").paginateOperationTypes();
+    $(".pagRequest").paginateRequests();
     $('[data-toggle="tooltip"]').tooltip();
 });

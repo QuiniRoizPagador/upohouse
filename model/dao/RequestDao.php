@@ -30,11 +30,12 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
-    public function listUserRequest($user) {
+    public function listUserRequest($user, $pag) {
         $query = "SELECT
             CONCAT(h.name,' - ',m.municipality) as title,
             a.uuid AS ad,
-            u.name AS user,
+            u.name as user,
+            CONCAT(u.name,' ',u.surname) AS name,
             u.uuid as user_uuid,
             u.phone as phone,
             u.email as mail,
@@ -66,7 +67,9 @@ class RequestDao extends AbstractDao {
             a.uuid,
             r.uuid
         ORDER BY
-            r.timestamp";
+            r.timestamp
+        LIMIT 10
+        OFFSET $pag";
         $data = array("i", "a.user_id" => $user->id);
         $resultSet = parent::preparedStatement($query, $data);
         $res = array();
@@ -75,6 +78,26 @@ class RequestDao extends AbstractDao {
         }
         mysqli_free_result($resultSet);
         return $res;
+    }
+
+    public function countUserRequests($id) {
+        $query = "SELECT 
+            COUNT(*) as count 
+        FROM 
+            $this->table AS r
+        JOIN Ads as a
+        ON 
+            r.ad_id = a.id
+        WHERE 
+            a.user_id = ?
+        AND
+            r.state = " .STATES['NEUTRO'];
+
+        $data = array("i", "a.user_id" => $id);
+        $resultSet = parent::preparedStatement($query, $data);
+        $count = mysqli_fetch_object($resultSet)->count;
+        mysqli_free_result($resultSet);
+        return $count;
     }
 
 }

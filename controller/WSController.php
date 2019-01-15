@@ -11,6 +11,7 @@ class WSController extends AbstractController {
     private $housingTypeModel;
     private $commentModel;
     private $operationTypeModel;
+    private $requestModel;
 
     public function __construct() {
         parent::__construct();
@@ -21,6 +22,7 @@ class WSController extends AbstractController {
         $this->commentModel = new CommentModel();
         $this->housingTypeModel = new HousingTypeModel();
         $this->operationTypeModel = new OperationTypeModel();
+        $this->requestModel = new RequestModel();
     }
 
     public function globalSearch() {
@@ -107,6 +109,18 @@ class WSController extends AbstractController {
             $allOperationTypes = $this->operationTypeModel->getAllPaginated($num);
             header('Content-type: application/json');
             echo json_encode($allOperationTypes);
+        } else {
+            $this->redirect();
+        }
+    }
+
+    public function paginateRequests() {
+        if (filter_has_var(INPUT_POST, 'pag')) {
+            $pag = filter_var($_POST['pag'], FILTER_SANITIZE_NUMBER_INT);
+            $user = $this->userModel->read($_SESSION['id']);
+            $requests = $this->requestModel->listUserRequest($user, $pag);
+            header('Content-type: application/json');
+            echo json_encode($requests);
         } else {
             $this->redirect();
         }

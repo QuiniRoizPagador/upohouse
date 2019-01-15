@@ -218,86 +218,162 @@ require_once 'core/templates/head.php';
                         if (verifyIsSame()) {
                             ?>
                             <div class="tab-pane" id="solicitudes">
-                                <div class="row">
-                                    <?php
-                                    foreach ($ads as $ad => $anuncios) {
-                                        ?>
-                                        <div class="col-md-6">
-                                            <h3><?= $ad ?></h3>
-                                            <table class="table table-responsive">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <?= $lang['ver'] ?>
-                                                        </th>
-                                                        <th>
-                                                            <?= $lang['user'] ?>
-                                                        </th>
-                                                        <th>
-                                                            <?= $lang['when'] ?>
-                                                        </th>
-                                                        <th>
-                                                            <?= $lang['options'] ?>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($anuncios as $solicitud) {
-                                                        ?>
-                                                        <tr>
-                                                            <td>
-                                                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $solicitud->ad ?>">
-                                                                    <i class="fa fa-eye"></i>
-                                                                </button>
-                                                            </td>
-                                                            <td>
-                                                                <a href="<?= $helper->url("user", "readUser", array("uuid" => $solicitud->user_uuid)) ?>"><?= $solicitud->user ?></a>
-                                                            </td>
-                                                            <td>
-                                                                <?= to_time_ago(strtotime($solicitud->timestamp)) ?>
-                                                            </td>
-                                                            <td>
-                                                                <div class="btn-group">
-                                                                    <button class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></button>
-                                                                    <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <!-- Modal -->
-                                                    <div class="modal fade" id="show<?= $solicitud->ad ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content card">
-                                                                <div class="card bg-light text-muted">
-                                                                    <div class="card-header modal-header">
-                                                                        <h5 class="modal-title"><?= $lang['solicitud'] . " " . $solicitud->user ?></h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="card-body modal-body">
-                                                                        <p class="text-center">
-                                                                            <?= $solicitud->content ?>
-                                                                        </p>
+                                <div class="table table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <?= $lang['anuncio'] ?>
+                                                </th>
+                                                <th>
+                                                    <?= $lang['user'] ?>
+                                                </th>
+                                                <th>
+                                                    <?= $lang['when'] ?>
+                                                </th>
+                                                <th>
+                                                    <?= $lang['ver'] ?>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="cuerpo">
+                                            <?php
+                                            foreach ($requests as $request) {
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <?= $request->title ?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="<?= $helper->url("user", "readUser", array("uuid" => $request->user_uuid)) ?>"><?= $request->name ?></a>
+                                                    </td>
+                                                    <td>
+                                                        <?= to_time_ago(strtotime($request->timestamp)) ?>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $request->ad ?>">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <div class="modal fade" id="show<?= $request->ad ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                                <div class="modal-content card">
+                                                                    <div class="card bg-light text-muted">
+                                                                        <div class="card-header modal-header">
+                                                                            <h5 class="modal-title"><?= $lang['solicitud'] . " " . $request->user ?></h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="card-body modal-body">
+                                                                            <button class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-ban"></i></button>
+                                                                            <p>
+                                                                                <strong><?= $lang['user'] ?></strong>:  <a href="<?= $helper->url("user", "readUser", array("uuid" => $request->user_uuid)) ?>"><?= $request->name ?></a>
+                                                                            </p>
+                                                                            <h4><?= $lang['contacto'] ?></h4>
+                                                                            <p>
+                                                                                <strong><?= $lang['phone'] ?></strong>: <?= $request->phone ?>
+                                                                            </p>
+                                                                            <p>
+                                                                                <strong><?= $lang['email'] ?></strong>:<a href="mailto:<?= $request->mail ?>?Subject=<?= $request->ad ?>"> <?= $request->mail ?></a>
+                                                                            </p>
+                                                                            <hr />
+                                                                            <p>
+                                                                                <strong><?= $lang['contenido'] ?>:</strong>
+                                                                                <br />
+                                                                                <?= $request->content ?>
+                                                                            </p>
+                                                                            <div class="center-block float-lg-right">
+                                                                                <div class="btn-group">
+                                                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#refuse<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-remove"></i></button>
+                                                                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#accept<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-check"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-foooter modal-footer">
+                                                                            <p>
+                                                                                <strong><?= $lang['date'] ?>:</strong>
+                                                                                <br />
+                                                                                <?= $request->timestamp ?>
+                                                                            </p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <?php
-                                                }
+                                                        <div tabindex="-1" id="refuse<?= $request->req_uuid ?>" class="modal fade" >
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><?= $lang['refuse'] ?></h5>
+                                                                        <button type="button" class="close" data-toggle='modal' data-target="#show<?= $request->ad ?>" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <?= $lang['estas seguro'] ?>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <form method="post" action="<?= $helper->url("request", "refuse") ?>">
+                                                                            <input type="hidden" value="<?php echo $request->req_uuid ?>" name="req_uuid" />
+                                                                            <input type="hidden" value="<?php echo $request->ad ?>" name="ad_uuid" />
+                                                                            <input type="hidden" value="<?php echo $request->user_uuid ?>" name="user_uuid" />
+                                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i><?= $lang['refuse'] ?></button>
+                                                                            <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#show<?= $request->ad ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div tabindex="-1" id="accept<?= $request->req_uuid ?>" class="modal fade" >
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><?= $lang['accept'] ?></h5>
+                                                                        <button type="button" class="close" data-toggle='modal' data-target="#show<?= $request->ad ?>" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <?= $lang['estas seguro'] ?>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <form method="post" action="<?= $helper->url("request", "accept") ?>">
+                                                                            <input type="hidden" value="<?php echo $request->req_uuid ?>" name="req_uuid" />
+                                                                            <input type="hidden" value="<?php echo $request->ad ?>" name="ad_uuid" />
+                                                                            <input type="hidden" value="<?php echo $request->user_uuid ?>" name="user_uuid" />
+                                                                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i><?= $lang['accept'] ?></button>
+                                                                            <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#show<?= $request->ad ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <div class="text-xs-center">
+                                        <ul class="pagination pagination-sm justify-content-center">
+                                            <?php
+                                            for ($i = 0; $i < $numRequests / 10; $i++) {
                                                 ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <?php
-                                    }
-                                    ?>
-                                </div><!--/tab-pane-->
-                                <?php
-                            }
-                            ?>
-                        </div>
+                                                <li class="page-item <?= $pag == $i ? "active" : "" ?>">
+                                                    <a class="page-link pagRequest"><?= $i + 1 ?></a>
+                                                </li>
+                                            <?php }
+                                            ?> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div><!--/tab-pane-->
+
+                            <?php
+                        }
+                        ?>
                     </div><!--/tab-content-->
 
                 </div><!--/col-9-->
