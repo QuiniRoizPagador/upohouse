@@ -25,7 +25,7 @@ class RequestDao extends AbstractDao {
             $obj->setState($prev->state);
         }
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
-        $data = array("ssss", "name" => $obj->getState(), "uuid" => $obj->getUuid());
+        $data = array("ssss", "state" => $obj->getState(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
@@ -91,13 +91,34 @@ class RequestDao extends AbstractDao {
         WHERE 
             a.user_id = ?
         AND
-            r.state = " .STATES['NEUTRO'];
+            r.state = " . STATES['NEUTRO'];
 
         $data = array("i", "a.user_id" => $id);
         $resultSet = parent::preparedStatement($query, $data);
         $count = mysqli_fetch_object($resultSet)->count;
         mysqli_free_result($resultSet);
         return $count;
+    }
+
+    public function accept($req_uuid) {
+        $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES['ACEPTADO'], "uuid" => $req_uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
+    public function refuseAll($ad_id, $req_id) {
+        $query = "UPDATE $this->table SET state = ? WHERE ad_id = ? AND id != ?";
+        $data = array("iss", "state" => STATES['DESCARTADO'], "ad_id" => $ad_id, "id" => $req_id);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
+    public function refuseRequest($req_uuid) {
+        $query = "UPDATE $this->table SET state = ? WHERE uuid = ? ";
+        $data = array("is", "state" => STATES['DESCARTADO'], "uuid" => $req_uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
     }
 
 }

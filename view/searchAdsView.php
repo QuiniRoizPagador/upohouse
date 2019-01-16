@@ -33,7 +33,7 @@ require_once 'core/templates/nav.php';
                                     <div class="btn-group">
                                         <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
                                     </div>
-                                    <small class="text-muted"><?= to_time_ago(strtotime($result->timestamp)) ?></small>
+                                    <small class="text-muted"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
                                 </div>
                             </div>
                         </div>

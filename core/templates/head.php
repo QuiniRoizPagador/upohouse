@@ -8,6 +8,7 @@ if (isset($_GET['lang'])) {
 
 if (isset($_SESSION['lang'])) {
     $lang = $_SESSION['lang'];
+    $GLOBALS['lang'] = $lang;
     if (is_file("config/lang/$lang.php") && file_exists("config/lang/$lang.php")) {
         require_once "config/lang/$lang.php";
     } else {
@@ -17,14 +18,14 @@ if (isset($_SESSION['lang'])) {
     require_once 'config/lang/es.php';
 }
 
-function to_time_ago($time) {
-
+function to_time_ago($time, &$lang) {
     $diff = time() - $time;
 
     if ($diff < 1) {
-        return 'less than 1 second ago';
+        return $lang['less than 1 second'];
     }
-
+    $prefix = $lang['prefix_ago'];
+    $suffix = $lang['suffix_ago'];
     $time_rules = array(
         12 * 30 * 24 * 60 * 60 => 'year',
         30 * 24 * 60 * 60 => 'month',
@@ -39,8 +40,8 @@ function to_time_ago($time) {
 
         if ($div >= 1) {
             $t = round($div);
-            return $t . ' ' . $str .
-                    ( $t > 1 ? 's' : '' ) . ' ago';
+            return $prefix . " " . $t . ' ' . $lang[$str .
+                    ( $t > 1 ? 's' : '' )] . $suffix;
         }
     }
 }
@@ -221,6 +222,7 @@ if (isset($count)) {
 ?>
 
         </script>
+        <script src="view/assets/js/timeago.js"></script>
         <script src="view/assets/js/pagination.js"></script>
         <script src="view/assets/js/localization.js"></script>
         <script src="view/assets/js/validations.js"></script>

@@ -32,3 +32,5 @@ const ROLES = array(
     1 => "ADMIN",
     0 => "USER",
 );
+
+global $lang;

@@ -99,7 +99,7 @@ class AdDao extends AbstractDao {
         ON
             a.operation_type = o.id
         WHERE
-            MATCH(a.description) AGAINST(
+            (MATCH(a.description) AGAINST(
                 ? IN BOOLEAN MODE
             ) OR MATCH(c.community) AGAINST(
                 ? IN BOOLEAN MODE
@@ -111,8 +111,10 @@ class AdDao extends AbstractDao {
                 ? IN BOOLEAN MODE
             ) OR MATCH(h.name) AGAINST(
                 ? IN BOOLEAN MODE
-            ) AND state = " . STATES['NEUTRO'] .
-                " GROUP BY a.uuid
+            )) AND (state = " . STATES['NEUTRO'] . "
+            AND 
+                a.accepted_request IS NULL)
+            GROUP BY a.uuid
         ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name    
         LIMIT 9 OFFSET $pag";
 
@@ -152,7 +154,7 @@ class AdDao extends AbstractDao {
         ON
             a.operation_type = o.id
         WHERE
-            MATCH(a.description) AGAINST(
+            (MATCH(a.description) AGAINST(
                 ? IN BOOLEAN MODE
             ) OR MATCH(c.community) AGAINST(
                 ? IN BOOLEAN MODE
@@ -164,8 +166,10 @@ class AdDao extends AbstractDao {
                 ? IN BOOLEAN MODE
             ) OR MATCH(h.name) AGAINST(
                 ? IN BOOLEAN MODE
-            ) AND state = " . STATES['NEUTRO'] .
-                " GROUP BY a.uuid";
+            )) AND (state = " . STATES['NEUTRO'] . "
+            AND 
+                a.accepted_request IS NULL)
+            GROUP BY a.uuid";
 
         $data = array("ssssss", $param, $param, $param, $param, $param, $param);
         $resultSet = $this->preparedStatement($query, $data);
@@ -174,6 +178,13 @@ class AdDao extends AbstractDao {
 
         mysqli_free_result($resultSet);
         return $res->count;
+    }
+
+    public function accept($ad_id, $req_id) {
+        $query = "UPDATE $this->table SET `accepted_request` = ? WHERE id = ?";
+        $data = array("ii", "accepted_request" => $req_id, "id" => $ad_id);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
     }
 
 }

@@ -120,7 +120,7 @@
         ?>
 
         <div class="table-responsive">
-            <table class="table table-responsive-sm">
+            <table class="table table-striped table-sm">
                 <thead>
                     <tr>
                         <th>Id </th>

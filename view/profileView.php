@@ -219,7 +219,7 @@ require_once 'core/templates/head.php';
                             ?>
                             <div class="tab-pane" id="solicitudes">
                                 <div class="table table-responsive">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped table-sm">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -242,13 +242,13 @@ require_once 'core/templates/head.php';
                                                 ?>
                                                 <tr>
                                                     <td>
-                                                        <?= $request->title ?>
+                                                        <a href="<?= $helper->url("ad", "read", array("uuid" => $request->ad)) ?>"><?= $request->title ?></a>
                                                     </td>
                                                     <td>
                                                         <a href="<?= $helper->url("user", "readUser", array("uuid" => $request->user_uuid)) ?>"><?= $request->name ?></a>
                                                     </td>
                                                     <td>
-                                                        <?= to_time_ago(strtotime($request->timestamp)) ?>
+                                                        <?= to_time_ago(strtotime($request->timestamp),$lang) ?>
                                                     </td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $request->ad ?>">

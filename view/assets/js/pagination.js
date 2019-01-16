@@ -423,10 +423,10 @@ function cargarOperationType(operationType) {
 function cargarRequests(request, pag) {
     var clase = "";
     var tr = $("<tr/>");
-    tr.append(create("td", request.title, ""));
+    tr.append(create("td", $("<a href='index/ad/read?uuid=" + request.ad + "'>" + request.title + "</a>"), ""));
     var link = $("<a href='index/user/readUser?uuid=" + request.user_uuid + "'>" + request.name + "</a>");
     tr.append(create("td", link, ""));
-    tr.append(create("td", request.timestamp, ""));
+    tr.append(create("td", time_ago(request.timestamp), ""));
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#show" + request.ad + "' class='btn btn-info btn-sm' />");
     button.append($("<span class='fa fa-eye'/>"));
@@ -468,8 +468,70 @@ function cargarRequests(request, pag) {
     footer.append(btn_group);
 
 
-    footer.append($("<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#refuse" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-remove'></i></button>"));
-    footer.append($("<button class='btn btn-success btn-sm' data-toggle='modal' data-target='#accept" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-check'></i></button>"));
+    btn_group.append($("<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#refuse" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-remove'></i></button>"));
+    btn_group.append($("<button class='btn btn-success btn-sm' data-toggle='modal' data-target='#accept" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-check'></i></button>"));
+
+
+    var modal_footer = $("<div class='card-foooter modal-footer'>")
+    p = $("<p />");
+    p.append($("<strong>" + LANG['date'] +  ": </strong>"));
+    p.append($("<br />"));
+    p.append(request.timestamp);
+    modal_footer.append(p);
+    modal_card.append(modal_footer);
+
+    var modal_refuse = create("div id='refuse" + request.req_uuid + "' tabindex='-1'", "", "modal fade");
+    var modal_refuse_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
+    modal_refuse.append(modal_refuse_dialog);
+    var modal_refuse_content = $("<div class='modal-content' />");
+    modal_refuse_dialog.append(modal_refuse_content);
+    var modal_refuse_header = $("<div class='modal-header' />");
+    modal_refuse_header.append(create("h5", LANG['refuse'], "modal-title"));
+    modal_refuse_header.append($("<button type='button' data-dismiss='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_refuse_content.append(modal_refuse_header);
+    var modal_refuse_body = $("<div class='modal-body' />");
+    modal_refuse_body.append(LANG['estas seguro']);
+    modal_refuse_content.append(modal_refuse_body);
+    var modal_refuse_footer = $(" <div class='modal-footer' />");
+    var refuse_form = $("<form method='post' action='index/request/refuse' />")
+    refuse_form.append($("<input type='hidden' value='" + request.req_uuid + "' name='req_uuid' />"));
+    refuse_form.append($("<input type='hidden' value='" + request.ad + "' name='ad_uuid' />"));
+    refuse_form.append($("<input type='hidden' value='" + request.user_uuid + "' name='user_uuid' />"));
+    refuse_form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['refuse'] + "</button>"));
+    refuse_form.append($("<button type='button' class='btn btn-secondary'  data-toggle='modal' data-target='#show" + request.ad + "' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    modal_refuse_footer.append(refuse_form);
+
+    modal_refuse_content.append(modal_refuse_footer);
+
+    td.append(modal_refuse);
+
+
+    var modal_accept = create("div id='accept" + request.req_uuid + "' tabindex='-1'", "", "modal fade");
+    var modal_accept_dialog = $("<div class='modal-dialog modal-dialog-centered' />");
+    modal_accept.append(modal_accept_dialog);
+    var modal_accept_content = $("<div class='modal-content' />");
+    modal_accept_dialog.append(modal_accept_content);
+    var modal_accept_header = $("<div class='modal-header' />");
+    modal_accept_header.append(create("h5", LANG['accept'], "modal-title"));
+    modal_accept_header.append($("<button type='button' data-dismiss='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_accept_content.append(modal_accept_header);
+    var modal_accept_body = $("<div class='modal-body' />");
+    modal_accept_body.append(LANG['estas seguro']);
+    modal_accept_content.append(modal_accept_body);
+    var modal_accept_footer = $(" <div class='modal-footer' />");
+    var accept_form = $("<form method='post' action='index/request/accept' />")
+    accept_form.append($("<input type='hidden' value='" + request.req_uuid + "' name='req_uuid' />"));
+    accept_form.append($("<input type='hidden' value='" + request.ad + "' name='ad_uuid' />"));
+    accept_form.append($("<input type='hidden' value='" + request.user_uuid + "' name='user_uuid' />"));
+    accept_form.append($("<button type='submit' class='btn btn-success'><i class='fa fa-check'></i>" + LANG['accept'] + "</button>"));
+    accept_form.append($("<button type='button' class='btn btn-secondary'  data-toggle='modal' data-target='#show" + request.ad + "' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
+    modal_accept_footer.append(accept_form);
+
+    modal_accept_content.append(modal_accept_footer);
+
+    td.append(modal_accept);
+
+
 
 
     td.append(modal);
@@ -487,7 +549,7 @@ function cargarRequests(request, pag) {
             $(this).click(function () {
                 $(".pagUser").parent().removeClass("active");
                 $("#lockModal").modal('show');
-                var url = "index.php?controller=WS&action=paginateUsers";
+                var url = "index/WS/paginateUsers";
                 var num = $(this).text();
                 $.post(url,
                         {
@@ -637,7 +699,7 @@ function cargarRequests(request, pag) {
             $(this).click(function () {
                 $(".pagRequest").parent().removeClass("active");
                 $("#lockModal").modal('show');
-                var url = "index.php?controller=WS&action=paginateRequests";
+                var url = "index/WS/paginateRequests";
                 var num = $(this).text();
                 $.post(url,
                         {
@@ -653,7 +715,6 @@ function cargarRequests(request, pag) {
                             } catch (Exception) {
 
                             }
-
                             $("#lockModal").modal("hide");
                         }
                 );

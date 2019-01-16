@@ -22,4 +22,16 @@ class RequestModel extends AbstractModel {
         return $this->requestDao->countUserRequests($id);
     }
 
+    public function accept($req_uuid) {
+        return $this->requestDao->accept($req_uuid);
+    }
+
+    public function refuseAll($ad_id, $req_id) {
+        return $this->requestDao->refuseAll($ad_id, $req_id);
+    }
+
+    public function refuse($req_uuid) {
+        return $this->requestDao->refuseRequest($req_uuid);
+    }
+
 }

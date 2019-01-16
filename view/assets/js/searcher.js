@@ -24,14 +24,14 @@
                 lista.hide();
                 lista.empty();
                 if ($.trim($(".searcher").val()) != "") {
-                    $.queue($.post("index.php?controller=WS&action=globalSearch",
+                    $.queue($.post("index/WS/globalSearch",
                             {
                                 'str': $(".searcher").val()
                             },
                             function (data, status) {
                                 if (data !== "" && data !== null) {
                                     $.map(data, function (k, v) {
-                                        var li = "<a class='resultado dropdown-item' href='index.php?controller=Ad&action=read&uuid=" + k.uuid + "'>"
+                                        var li = "<a class='resultado dropdown-item' href='index/Ad/read&uuid=" + k.uuid + "'>"
                                                 + LANG['descripcion'] + ": " + k.description + " - " + LANG['comunidad'] + ": " + k.community +
                                                 " - " + LANG['provincia'] + ": " + k.province + " - " + LANG['localidad'] + ": " + k.municipality +
                                                 "</a>";
