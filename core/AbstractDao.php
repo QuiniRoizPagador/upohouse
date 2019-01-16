@@ -30,9 +30,13 @@ abstract class AbstractDao {
     }
 
     public function read($id) {
-        $query = "SELECT * FROM $this->table WHERE id = ?  OR uuid = ? LIMIT 1";
-        $data = array('ss', "id" => $id, "uuid" => $id);
-
+        if (is_numeric($id)) {
+            $query = "SELECT * FROM $this->table WHERE id = ? LIMIT 1";
+            $data = array('i', "id" => $id);
+        } else {
+            $query = "SELECT * FROM $this->table WHERE uuid = ?  LIMIT 1";
+            $data = array('s', "uuid" => $id);
+        }
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
