@@ -41,6 +41,52 @@ class AdDao extends AbstractDao {
         return $resultSet;
     }
 
+    public function getTop() {
+        $query = $this->mysqli->query("SELECT
+            a.uuid,
+            a.price,
+            a.rooms,
+            a.m_2,
+            a.timestamp,
+            a.bath,
+            o.name AS operation,
+            h.name AS housing,
+            c.community,
+            p.province,
+            m.municipality
+        FROM
+            Ads AS a
+        JOIN Communities AS c
+        ON
+            a.community_id = c.id
+        JOIN Provinces AS p
+        ON
+            a.province_id = p.id
+        JOIN Municipalities AS m
+        ON
+            a.municipality_id = m.id
+        JOIN Housing_Types AS h
+        ON
+            a.housing_type = h.id
+        JOIN Operation_Types AS o
+        ON
+            a.operation_type = o.id 
+        WHERE 
+            state = " . STATES['NEUTRO'] . "
+        AND 
+            a.accepted_request IS NULL
+        ORDER BY 
+                a.timestamp DESC LIMIT 9");
+        //Devolvemos el resultset en forma de array de objetos
+
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+        return $resultSet;
+    }
+
     public function countAds() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();

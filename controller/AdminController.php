@@ -72,7 +72,7 @@ class AdminController extends AbstractController {
         ));
     }
 
-    private function users($errors, $show, $pag) {
+    private function users($errors, $show, $pag = NULL) {
 //TODO: según el usuario se mostrará la dashboard del admin 
 // por defecto o su página de administración básica
 //Conseguimos todos los usuarios
@@ -189,7 +189,12 @@ class AdminController extends AbstractController {
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors, $_POST['pag']);
+            if (isset($_POST['pag'])) {
+                $pag = $_POST['pag'];
+            } else {
+                $pag = NULL;
+            }
+            $this->dashboard($errors, $pag);
         }
     }
 
@@ -427,7 +432,12 @@ class AdminController extends AbstractController {
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors, $_POST['pag']);
+            if (isset($_POST['pag'])) {
+                $pag = $_POST['pag'];
+            } else {
+                $pag = NULL;
+            }
+            $this->dashboard($errors, $pag);
         }
     }
 
@@ -457,7 +467,12 @@ class AdminController extends AbstractController {
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors, $_POST['pag']);
+            if (isset($_POST['pag'])) {
+                $pag = $_POST['pag'];
+            } else {
+                $pag = NULL;
+            }
+            $this->dashboard($errors, $pag);
         }
     }
 

@@ -30,8 +30,10 @@ class UserController extends AbstractController {
         // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
         //Cargamos la vista index y le pasamos valores
+        $ads = $this->adModel->getTop();
         $this->view("index", array(
-            'title' => "P&aacute;gina principal"
+            'title' => "P&aacute;gina principal",
+            'ads' => $ads
         ));
     }
 

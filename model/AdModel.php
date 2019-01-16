@@ -42,4 +42,8 @@ class AdModel extends AbstractModel {
         return $this->adDao->accept($ad_id, $req_id);
     }
 
+    public function getTop() {
+        return $this->adDao->getTop();
+    }
+
 }
