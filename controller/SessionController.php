@@ -41,7 +41,6 @@ class SessionController extends AbstractController {
                 if ($user->state == 'BLOQUEADO') {
                     $errors['verify'] = "usuario_bloqueado";
                 } else {
-                    session_start();
                     $_SESSION['login'] = $user->login;
                     $_SESSION['name'] = $user->name;
                     $_SESSION['surname'] = $user->surname;
@@ -49,7 +48,7 @@ class SessionController extends AbstractController {
                     $_SESSION['email'] = $user->email;
                     $_SESSION['uuid'] = $user->uuid;
                     $_SESSION['user_role'] = $user->user_role;
-                    $this->redirect("User", "index");
+                    $this->redirect("user", "index");
                 }
             } else {
                 $errors['verify'] = "user_pass_error";

@@ -21,8 +21,6 @@
             });
             $(this).keyup(function () {
                 var lista = $("#searchList");
-                lista.hide();
-                lista.empty();
                 if ($.trim($(".searcher").val()) != "") {
                     $.queue($.post("index/WS/globalSearch",
                             {
@@ -30,6 +28,8 @@
                             },
                             function (data, status) {
                                 if (data !== "" && data !== null) {
+                                    lista.hide();
+                                    lista.empty();
                                     $.map(data, function (k, v) {
                                         var li = "<a class='resultado dropdown-item' href='index/Ad/read&uuid=" + k.uuid + "'>"
                                                 + LANG['descripcion'] + ": " + k.description + " - " + LANG['comunidad'] + ": " + k.community +

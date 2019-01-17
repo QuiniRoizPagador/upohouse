@@ -235,7 +235,10 @@ class AdDao extends AbstractDao {
         $res = $resultSet->fetch_object();
 
         mysqli_free_result($resultSet);
-        return $res->count;
+        if (isset($res->count)) {
+            return $res->count;
+        }
+        return 0;
     }
 
     public function accept($ad_id, $req_id) {
