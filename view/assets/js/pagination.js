@@ -423,7 +423,7 @@ function cargarOperationType(operationType) {
 function cargarRequests(request, pag) {
     var clase = "";
     var tr = $("<tr/>");
-    tr.append(create("td", $("<a href='index/ad/read?uuid=" + request.ad + "'>" + request.title + "</a>"), ""));
+    tr.append(create("td", $("<a href='index/ad/read&uuid=" + request.ad + "'>" + request.title + "</a>"), ""));
     var link = $("<a href='index/user/readUser?uuid=" + request.user_uuid + "'>" + request.name + "</a>");
     tr.append(create("td", link, ""));
     tr.append(create("td", time_ago(request.timestamp), ""));

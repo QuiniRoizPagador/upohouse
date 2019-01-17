@@ -49,11 +49,13 @@ class AdDao extends AbstractDao {
             a.m_2,
             a.timestamp,
             a.bath,
+            a.description,
             o.name AS operation,
             h.name AS housing,
             c.community,
             p.province,
-            m.municipality
+            m.municipality,
+            i.image
         FROM
             Ads AS a
         JOIN Communities AS c
@@ -70,13 +72,18 @@ class AdDao extends AbstractDao {
             a.housing_type = h.id
         JOIN Operation_Types AS o
         ON
-            a.operation_type = o.id 
+            a.operation_type = o.id
+        LEFT OUTER JOIN Images AS i
+        ON 
+            a.id = i.ad_id
         WHERE 
             state = " . STATES['NEUTRO'] . "
         AND 
             a.accepted_request IS NULL
+        GROUP BY
+            a.uuid
         ORDER BY 
-                a.timestamp DESC LIMIT 9");
+            a.timestamp DESC LIMIT 9");
         //Devolvemos el resultset en forma de array de objetos
 
         $resultSet = array();
@@ -126,7 +133,8 @@ class AdDao extends AbstractDao {
             h.name AS housing,
             c.community,
             p.province,
-            m.municipality
+            m.municipality,
+            i.image
         FROM
             Ads AS a
         JOIN Communities AS c
@@ -144,6 +152,9 @@ class AdDao extends AbstractDao {
         JOIN Operation_Types AS o
         ON
             a.operation_type = o.id
+        LEFT OUTER JOIN Images AS i
+        ON 
+                a.id = i.ad_id
         WHERE
             (MATCH(a.description) AGAINST(
                 ? IN BOOLEAN MODE
@@ -158,9 +169,10 @@ class AdDao extends AbstractDao {
             ) OR MATCH(h.name) AGAINST(
                 ? IN BOOLEAN MODE
             )) AND (state = " . STATES['NEUTRO'] . "
-            AND 
-                a.accepted_request IS NULL)
-            GROUP BY a.uuid
+        AND 
+            a.accepted_request IS NULL)
+        GROUP BY 
+            a.uuid
         ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name    
         LIMIT 9 OFFSET $pag";
 
