@@ -30,7 +30,7 @@
                             <td><?= $comment->timestamp; ?> </td>
                             <td>
                                 <button data-toggle="modal" data-target="#remove<?= $comment->uuid ?>"
-                                        class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                        class="btn btn-danger"><i class="fa fa-window-close"></i></button>
 
 
 
@@ -49,7 +49,7 @@
                                                 <div class="modal-footer">
                                                     <form method="post" action="<?= $helper->url("admin", "removeComment", array("show" => "comentarios")); ?>">
                                                         <input type="hidden" value="<?php echo $comment->uuid; ?>" name="uuid" />
-                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                     </form>
                                                 </div>

@@ -56,7 +56,7 @@
                                             <div class="modal-footer">
                                                 <form method="post" action="<?= $helper->url("admin", "removeComment"); ?>">
                                                     <input type="hidden" value="<?php echo $comment->uuid; ?>" name="uuid" />
-                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                 </form>
                                             </div>

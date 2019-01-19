@@ -183,7 +183,7 @@ require_once 'core/templates/head.php';
                                     }
                                     ?>
                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['eliminar'] ?>">
-                                        <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                        <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
                                     </span>
                                     <div tabindex="-1" id="remove<?= $user->uuid ?>" class="modal fade">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -200,7 +200,7 @@ require_once 'core/templates/head.php';
                                                 <div class="modal-footer">
                                                     <form method="post" action="<?= $helper->url("admin", "removeUser", array("show" => "user")); ?>">
                                                         <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
-                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                     </form>
                                                 </div>
@@ -284,7 +284,7 @@ require_once 'core/templates/head.php';
                                                                             </p>
                                                                             <div class="center-block float-lg-right">
                                                                                 <div class="btn-group">
-                                                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#refuse<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-remove"></i></button>
+                                                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#refuse<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-window-close"></i></button>
                                                                                     <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#accept<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-check"></i></button>
                                                                                 </div>
                                                                             </div>
@@ -317,7 +317,7 @@ require_once 'core/templates/head.php';
                                                                             <input type="hidden" value="<?php echo $request->req_uuid ?>" name="req_uuid" />
                                                                             <input type="hidden" value="<?php echo $request->ad ?>" name="ad_uuid" />
                                                                             <input type="hidden" value="<?php echo $request->user_uuid ?>" name="user_uuid" />
-                                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i><?= $lang['refuse'] ?></button>
+                                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i><?= $lang['refuse'] ?></button>
                                                                             <button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#show<?= $request->ad ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                                         </form>
                                                                     </div>

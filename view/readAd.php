@@ -53,8 +53,8 @@
         </div>
         <div class="row">
             <div class="col-md text-center">
-                <a href="#" class="btn btn-success"><i class="fa fa-pencil"></i></a>
-                <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-window-close"></i></a>
                 <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
             </div>
         </div>

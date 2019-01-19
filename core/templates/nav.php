@@ -37,11 +37,11 @@
                     ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $helper->url("admin", "dashboard"); ?>&show=users">
-                            <i class='fa fa-dashboard'></i></a>
+                            <i class='fa fa-wrench'></i></a>
                     </li>
                 <?php }
                 ?>
-                <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i></a>
                     <div class="dropdown-menu" role="menu">
                         <?php

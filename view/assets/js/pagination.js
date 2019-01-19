@@ -99,11 +99,11 @@ function cargarUsuario(user, pag) {
             buttons.append(span);
         }
         var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['eliminar'] + "'>");
-        span.append("<button type='button' data-toggle='modal' data-target='#remove" + user.uuid + "' data-dismiss='modal' class='btn btn-danger'><i class='fa fa-remove'></i></button> </span>");
+        span.append("<button type='button' data-toggle='modal' data-target='#remove" + user.uuid + "' data-dismiss='modal' class='btn btn-danger'><i class='fa fa-window-close'></i></button> </span>");
         buttons.append(span);
     }
     var span = $("<span class='btn' data-toggle='tooltip' title='" + LANG['editar'] + "'>");
-    span.append("<button type='button' data-toggle='modal' data-target='#edit" + user.uuid + "' data-dismiss='modal' class='btn btn-success'><i class='fa fa-pencil'></i></button></span>");
+    span.append("<button type='button' data-toggle='modal' data-target='#edit" + user.uuid + "' data-dismiss='modal' class='btn btn-success'><i class='fa fa-edit'></i></button></span>");
     buttons.append(span);
 
     var form, modal_footer;
@@ -118,7 +118,7 @@ function cargarUsuario(user, pag) {
             modal = createModal("unlock" + user.uuid, user.uuid, LANG['desbloquear'] + " " + LANG['user'] + " " + user.name, button, "index.php?controller=admin&action=unlockUser&show=users", LANG['estas seguro']);
             td.append(modal);
         }
-        button = $("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>");
+        button = $("<button type='submit' class='btn btn-danger'><i class='fa fa-window-close'></i>" + LANG['eliminar'] + "</button>");
         modal = createModal("remove" + user.uuid, user.uuid, LANG['eliminar registro de'] + user.name, button, "index.php?controller=Admin&action=removeUser&show=users", LANG['estas seguro']);
         td.append(modal);
     }
@@ -224,7 +224,7 @@ function cargarComentario(comment) {
     tr.append(create("td", comment.timestamp, clase));
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#remove" + comment.uuid + "' class='btn btn-danger' />");
-    button.append($("<i class='fa fa-remove'/>"));
+    button.append($("<i class='fa fa-window-close'/>"));
     td.append(button);
 
     var modal = create("div id='remove" + comment.uuid + "' tabindex='-1'", "", "modal fade");
@@ -253,7 +253,7 @@ function cargarComentario(comment) {
 
     var form2 = $("<form method='post' action='index.php?controller=Admin&action=removeComment&show=comentarios' />");
     modal_footer.append($("<input type='hidden' value='" + comment.uuid + "' name='uuid' />"));
-    modal_footer.append($("<button type='subbmit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+    modal_footer.append($("<button type='subbmit' class='btn btn-danger'><i class='fa fa-window-close'></i>" + LANG['eliminar'] + "</button>"));
     modal_footer.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
     modal_footer.append(form2);
     form.append(modal_footer);
@@ -276,7 +276,7 @@ function cargarHousingType(housingType) {
 
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#edit" + housingType.uuid + "' class='btn btn-success' />");
-    button.append($("<i class='fa fa-pencil'/>"));
+    button.append($("<i class='fa fa-edit'/>"));
     td.append(button);
 
     var modal = create("div id='edit" + housingType.uuid + "' tabindex='-1'", "", "modal fade");
@@ -313,7 +313,7 @@ function cargarHousingType(housingType) {
 
     td = create("td", "", clase);
     button = $("<button data-toggle='modal' data-target='#remove" + housingType.uuid + "' class='btn btn-danger' />");
-    button.append($("<i class='fa fa-remove'/>"));
+    button.append($("<i class='fa fa-window-close'/>"));
     td.append(button);
 
     modal = create("div id='remove" + housingType.uuid + "' tabindex='-1'", "", "modal fade");
@@ -332,7 +332,7 @@ function cargarHousingType(housingType) {
 
     form = $("<form method='post' action='index.php?controller=Admin&action=removeHousingType&show=tipos' />");
     form.append($("<input type='hidden' value='" + housingType.uuid + "' name='uuid' />"));
-    form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+    form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-window-close'></i>" + LANG['eliminar'] + "</button>"));
     form.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
     modal_footer.append(form);
 
@@ -352,7 +352,7 @@ function cargarOperationType(operationType) {
 
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#edit2" + operationType.uuid + "' class='btn btn-success' />");
-    button.append($("<i class='fa fa-pencil'/>"));
+    button.append($("<i class='fa fa-edit'/>"));
     td.append(button);
 
     var modal = create("div id='edit2" + operationType.uuid + "' tabindex='-1'", "", "modal fade");
@@ -389,7 +389,7 @@ function cargarOperationType(operationType) {
 
     td = create("td", "", clase);
     button = $("<button data-toggle='modal' data-target='#remove2" + operationType.uuid + "' class='btn btn-danger' />");
-    button.append($("<i class='fa fa-remove'/>"));
+    button.append($("<i class='fa fa-window-close'/>"));
     td.append(button);
 
     modal = create("div id='remove2" + operationType.uuid + "' tabindex='-1'", "", "modal fade");
@@ -408,7 +408,7 @@ function cargarOperationType(operationType) {
 
     form = $("<form method='post' action='index.php?controller=Admin&action=removeOperationType&show=tipos' />");
     form.append($("<input type='hidden' value='" + operationType.uuid + "' name='uuid' />"));
-    form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['eliminar'] + "</button>"));
+    form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-window-close'></i>" + LANG['eliminar'] + "</button>"));
     form.append($("<button type='button' class='btn btn-secondary data-toggle='modal' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
     modal_footer.append(form);
 
@@ -468,7 +468,7 @@ function cargarRequests(request, pag) {
     footer.append(btn_group);
 
 
-    btn_group.append($("<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#refuse" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-remove'></i></button>"));
+    btn_group.append($("<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#refuse" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-window-close'></i></button>"));
     btn_group.append($("<button class='btn btn-success btn-sm' data-toggle='modal' data-target='#accept" + request.req_uuid + "' data-dismiss='modal'><i class='fa fa-check'></i></button>"));
 
 
@@ -497,7 +497,7 @@ function cargarRequests(request, pag) {
     refuse_form.append($("<input type='hidden' value='" + request.req_uuid + "' name='req_uuid' />"));
     refuse_form.append($("<input type='hidden' value='" + request.ad + "' name='ad_uuid' />"));
     refuse_form.append($("<input type='hidden' value='" + request.user_uuid + "' name='user_uuid' />"));
-    refuse_form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-remove'></i>" + LANG['refuse'] + "</button>"));
+    refuse_form.append($("<button type='submit' class='btn btn-danger'><i class='fa fa-window-close'></i>" + LANG['refuse'] + "</button>"));
     refuse_form.append($("<button type='button' class='btn btn-secondary'  data-toggle='modal' data-target='#show" + request.ad + "' data-dismiss='modal'>" + LANG['cancelar'] + "</button>"));
     modal_refuse_footer.append(refuse_form);
 
