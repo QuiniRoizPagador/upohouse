@@ -164,7 +164,7 @@ if (isset($count)) {
                 <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-body text-center">
-                            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
                         </div>
 
                     </div>
