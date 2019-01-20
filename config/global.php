@@ -34,3 +34,5 @@ const ROLES = array(
 );
 
 global $lang;
+
+const FOOTER_ABSOLUTE = array('login','profile');

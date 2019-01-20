@@ -289,10 +289,10 @@ class AdDao extends AbstractDao {
         AND 
             a.accepted_request IS NULL";
         if (isset($house)) {
-            $query .= " AND h.name = '$house' ";
+            $query .= " AND h.uuid = '$house' ";
         }
         if (isset($operation)) {
-            $query .= " AND o.name = '$operation' ";
+            $query .= " AND o.uuid = '$operation' ";
         }
         $query .= " GROUP BY 
             a.uuid
@@ -327,18 +327,15 @@ class AdDao extends AbstractDao {
         JOIN Operation_Types AS o
         ON
             a.operation_type = o.id
-        LEFT OUTER JOIN Images AS i
-        ON 
-                a.id = i.ad_id
         WHERE
            a.state = " . STATES['NEUTRO'] . "
         AND 
             a.accepted_request IS NULL";
         if (isset($house)) {
-            $query .= " AND h.name = '$house' ";
+            $query .= " AND h.uuid = '$house' ";
         }
         if (isset($operation)) {
-            $query .= " AND o.name = '$operation' ";
+            $query .= " AND o.uuid = '$operation' ";
         }
         $resultSet = $this->mysqli->query($query);
         $res = $resultSet->fetch_object();

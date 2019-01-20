@@ -12,13 +12,13 @@
 
             <ul class="navbar-nav mr-auto navbar-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $helper->url("ad", "listAds") ?>"><?= $lang['comprar'] ?></a>
+                    <a class="nav-link" href="<?= $helper->url("ad", "listAds") ?>"><i class="fa fa-hotel"></i> <?= $lang['anuncios'] ?></a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto navbar-right">
                 <?php if (verifySession()) { ?>
                     <li class = "nav-item">
-                        <a class="nav-link " href="<?= $helper->url("user", "readUser", array("uuid" => $_SESSION['uuid'])) ?>"><i class='fa fa-user'></i><?= $lang['profile'] ?></a>
+                        <a class="nav-link " href="<?= $helper->url("user", "readUser", array("uuid" => $_SESSION['uuid'])) ?>"><i class='fa fa-user'></i> <?= $lang['profile'] ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $helper->url("session", "logout"); ?>"><?= $lang['cerrar sesion'] ?></a>

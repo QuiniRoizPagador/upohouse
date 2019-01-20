@@ -121,5 +121,10 @@ $lang = array(
     'hour'=> "hora",
     'minute' => "minuto",
     'second'=> 'segundo',
+    'filtros' => 'Filtros',
+    'Crear un anuncio'=>'Crear un anuncio',
+    'Resultados Obtenidos'=>'Resultados obtenidos',
+    'dashboard'=> 'P&aacute;gina de Gesti&oacute;n',
+    'mainpage'=> 'P&aacute;gina Principal'
 );
 

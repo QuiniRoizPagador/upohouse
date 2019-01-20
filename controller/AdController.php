@@ -128,7 +128,7 @@ class AdController extends AbstractController {
                 $province = $this->provinceModel->readId($ad->province_id);
                 $municipality = $this->municipalityModel->readId($ad->municipality_id);
                 $this->view("readAd", array(
-                    'title' => "Anuncio",
+                    'title' => "anuncio",
                     "ad" => $ad,
                     "housingType" => $housingType,
                     "operationType" => $operationType,
@@ -208,12 +208,12 @@ class AdController extends AbstractController {
         $houses = $this->housingTypeModel->getAll();
         $operations = $this->operationTypeModel->getAll();
         $this->view("listAds", array(
-            'title' => "Resultados Obtenidos",
+            'title' => "anuncios",
             "results" => $ads,
             "countList" => $countAds,
             "pag" => $pag,
             "houses" => $houses,
-            "operations" => $operations
+            "operations" => $operations,
         ));
     }
 

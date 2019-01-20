@@ -70,7 +70,7 @@ function error($text) {
          */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $title ?></title>
+        <title><?php echo $lang[$title] ?></title>
         <link rel="icon" href="view/images/house.ico">
         <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="view/assets/lib/font-awesome/css/all.min.css">
