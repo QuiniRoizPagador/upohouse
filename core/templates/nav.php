@@ -12,10 +12,7 @@
 
             <ul class="navbar-nav mr-auto navbar-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= $lang['comprar'] ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><?= $lang['alquilar'] ?></a>
+                    <a class="nav-link" href="<?= $helper->url("ad", "listAds") ?>"><?= $lang['comprar'] ?></a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto navbar-right">
@@ -41,7 +38,7 @@
                     </li>
                 <?php }
                 ?>
-                    <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i></a>
                     <div class="dropdown-menu" role="menu">
                         <?php
