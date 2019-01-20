@@ -18,6 +18,7 @@ body{
     .footer-absolute{
         position: relative;
     }
+    
 }
 .resultado{
     text-decoration: none;  
@@ -42,6 +43,10 @@ body{
         position: absolute;
         right: 0%;
         transform: translatex(-50%);
+    }
+    ul.navbar-nav{
+        z-index: 1000;
+        position: absolute;
     }
 }
 .table td{
