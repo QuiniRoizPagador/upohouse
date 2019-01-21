@@ -2,8 +2,8 @@
     <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
         <h2 class="h2"><?= $lang["anuncio"] ?></h2>
         <div>
-            <a href="<?php echo $helper->url("ad", "modifyView", array("uuid" => "$ad->uuid")); ?>" class="btn btn-success"><i class="fa fa-pencil"></i></a>
-            <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+            <a href="<?php echo $helper->url("ad", "modifyView", array("uuid" => "$ad->uuid")); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
+            <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-window-close"></i></a>
             <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
         </div>
     </div>
@@ -66,7 +66,7 @@
         </div>
         <div class="row justify-content-between">
             <div class="col-md-3">
-                <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><span class="fa fa-file-image-o"></span> Fotos</button>
+                <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><i class="fa fa-images"></i> <?=$lang['fotos']?></button>
                 <div role="dialog" aria-labelledby="gallery" aria-hidden="true" tabindex="-1" id="gallery" class="modal fade">
                     <!-- Modal content-->
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

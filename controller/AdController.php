@@ -315,7 +315,7 @@ class AdController extends AbstractController {
         if (filter_has_var(INPUT_GET, 'query') && trim($_GET['query']) != "") {
             $pag = 0;
             if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
-                $pag = filter_var($GET['pag'], FILTER_SANITIZE_NUMBER_INT);
+                $pag = filter_var($_GET['pag'], FILTER_SANITIZE_NUMBER_INT);
             }
             $str = filter_var($_GET['query'], FILTER_SANITIZE_STRING);
             $list = array();
