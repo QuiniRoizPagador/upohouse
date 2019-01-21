@@ -2,7 +2,7 @@
 require_once 'core/templates/head.php';
 ?>
 
-<div class="bg-dark dk" id="wrap">
+<div class="bg-light dk" id="wrap">
     <div id="top">
         <?php require_once 'core/templates/nav.php' ?>  
     </div>

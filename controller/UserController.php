@@ -32,7 +32,7 @@ class UserController extends AbstractController {
         //Cargamos la vista index y le pasamos valores
         $ads = $this->adModel->getTop();
         $this->view("index", array(
-            'title' => "P&aacute;gina principal",
+            'title' => "mainpage",
             'ads' => $ads
         ));
     }
@@ -50,7 +50,7 @@ class UserController extends AbstractController {
                 $numRequests = $this->requestModel->countUserRequests($user->id);
                 $requests = $this->requestModel->listUserRequest($user);
                 $this->view("profile", array(
-                    'title' => "Perfil $user->name",
+                    'title' => "profile",
                     "user" => $user,
                     "userAds" => $userAds,
                     "userComments" => $userComments,

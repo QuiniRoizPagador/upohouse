@@ -125,6 +125,11 @@ $lang = array(
     "unidad baño" => "baños",
     "modificar anuncio" => "Modificar anuncio",
     "anuncioModificado" => "Anuncio modificado con &eacute;xito",
-    "fotos" => "Fotos"
+    "fotos" => "Fotos",
+    'filtros' => 'Filtros',
+    'Crear un anuncio'=>'Crear un anuncio',
+    'Resultados Obtenidos'=>'Resultados obtenidos',
+    'dashboard'=> 'P&aacute;gina de Gesti&oacute;n',
+    'mainpage'=> 'P&aacute;gina Principal'
 );
 

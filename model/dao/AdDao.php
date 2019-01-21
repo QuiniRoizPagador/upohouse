@@ -84,7 +84,7 @@ class AdDao extends AbstractDao {
         ON 
             a.id = i.ad_id
         WHERE 
-            state = " . STATES['NEUTRO'] . "
+            a.state = " . STATES['NEUTRO'] . "
         AND 
             a.accepted_request IS NULL
         GROUP BY
@@ -175,7 +175,7 @@ class AdDao extends AbstractDao {
                 ? IN BOOLEAN MODE
             ) OR MATCH(h.name) AGAINST(
                 ? IN BOOLEAN MODE
-            )) AND (state = " . STATES['NEUTRO'] . "
+            )) AND (a.state = " . STATES['NEUTRO'] . "
         AND 
             a.accepted_request IS NULL)
         GROUP BY 
@@ -231,7 +231,7 @@ class AdDao extends AbstractDao {
                 ? IN BOOLEAN MODE
             ) OR MATCH(h.name) AGAINST(
                 ? IN BOOLEAN MODE
-            )) AND (state = " . STATES['NEUTRO'] . "
+            )) AND (a.state = " . STATES['NEUTRO'] . "
             AND 
                 a.accepted_request IS NULL)
             GROUP BY a.uuid";
@@ -253,6 +253,104 @@ class AdDao extends AbstractDao {
         $data = array("ii", "accepted_request" => $req_id, "id" => $ad_id);
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
+    }
+
+    public function listAds($house, $operation, $pag) {
+        $query = "SELECT
+            CONCAT(h.name,' - ',m.municipality) as title,
+            a.uuid,
+            a.price,
+            a.rooms,
+            a.m_2,
+            a.timestamp,
+            a.bath,
+            a.description,
+            o.name AS operation,
+            h.name AS housing,
+            c.community,
+            p.province,
+            m.municipality,
+            i.image
+        FROM
+            Ads AS a
+        JOIN Communities AS c
+        ON
+            a.community_id = c.id
+        JOIN Provinces AS p
+        ON
+            a.province_id = p.id
+        JOIN Municipalities AS m
+        ON
+            a.municipality_id = m.id
+        JOIN Housing_Types AS h
+        ON
+            a.housing_type = h.id
+        JOIN Operation_Types AS o
+        ON
+            a.operation_type = o.id
+        LEFT OUTER JOIN Images AS i
+        ON 
+                a.id = i.ad_id
+        WHERE
+           a.state = " . STATES['NEUTRO'] . "
+        AND 
+            a.accepted_request IS NULL";
+        if (isset($house)) {
+            $query .= " AND h.uuid = '$house' ";
+        }
+        if (isset($operation)) {
+            $query .= " AND o.uuid = '$operation' ";
+        }
+        $query .= " GROUP BY 
+            a.uuid
+        ORDER BY a.timestamp DESC     
+        LIMIT 10 OFFSET " .$pag * 10;
+        $resultSet = $this->mysqli->query($query);
+        $res = array();
+        while ($row = $resultSet->fetch_object()) {
+            $res[] = $row;
+        }
+        mysqli_free_result($resultSet);
+        return $res;
+    }
+
+    public function countListAds($house, $operation) {
+        $query = "SELECT
+            COUNT(*) AS count
+        FROM
+            Ads AS a
+        JOIN Communities AS c
+        ON
+            a.community_id = c.id
+        JOIN Provinces AS p
+        ON
+            a.province_id = p.id
+        JOIN Municipalities AS m
+        ON
+            a.municipality_id = m.id
+        JOIN Housing_Types AS h
+        ON
+            a.housing_type = h.id
+        JOIN Operation_Types AS o
+        ON
+            a.operation_type = o.id
+        WHERE
+           a.state = " . STATES['NEUTRO'] . "
+        AND 
+            a.accepted_request IS NULL";
+        if (isset($house)) {
+            $query .= " AND h.uuid = '$house' ";
+        }
+        if (isset($operation)) {
+            $query .= " AND o.uuid = '$operation' ";
+        }
+        $resultSet = $this->mysqli->query($query);
+        $res = $resultSet->fetch_object();
+        mysqli_free_result($resultSet);
+        if (isset($res->count)) {
+            return $res->count;
+        }
+        return 0;
     }
 
 }
