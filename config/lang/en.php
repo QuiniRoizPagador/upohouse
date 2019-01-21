@@ -129,6 +129,7 @@ $lang = array(
     'Crear un anuncio'=>'Create an Ad',
     'Resultados Obtenidos'=>'Results obtained',
     'dashboard'=> 'Dashboard',
-    'mainpage'=> 'Main Page'
+    'mainpage'=> 'Main Page',
+    'Modificar un anuncio' => 'Edit Ad'
 );
 

@@ -130,6 +130,7 @@ $lang = array(
     'Crear un anuncio'=>'Crear un anuncio',
     'Resultados Obtenidos'=>'Resultados obtenidos',
     'dashboard'=> 'P&aacute;gina de Gesti&oacute;n',
-    'mainpage'=> 'P&aacute;gina Principal'
+    'mainpage'=> 'P&aacute;gina Principal',
+    'Modificar un anuncio' => 'Modificar un anuncio'
 );
 
