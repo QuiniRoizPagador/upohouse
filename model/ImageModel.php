@@ -17,5 +17,9 @@ class ImageModel extends AbstractModel {
     public function deleteAllByAd($id) {
         return $this->imageDao->deleteAllByAd($id);
     }
+    
+    public function readByAd($id) {
+        return $this->imageDao->readByAd($id);
+    }
 
 }

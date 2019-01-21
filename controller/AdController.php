@@ -270,6 +270,7 @@ class AdController extends AbstractController {
                 $community = $this->communityModel->readId($ad->community_id);
                 $province = $this->provinceModel->readId($ad->province_id);
                 $municipality = $this->municipalityModel->readId($ad->municipality_id);
+                $images = $this->imageModel->readByAd($ad->id);
                 $this->view("readAd", array(
                     'title' => "Anuncio",
                     "ad" => $ad,
@@ -278,6 +279,7 @@ class AdController extends AbstractController {
                     "community" => $community,
                     "province" => $province,
                     "municipality" => $municipality,
+                    "images" => $images
                 ));
             }
         } else {

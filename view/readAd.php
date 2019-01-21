@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-3">
                 <h6><?= $lang["habitaciones"] ?></h6>
-                <p><?= $ad->rooms ?> <?= $lang["unidad habitacion"]?></p>
+                <p><?= $ad->rooms ?> <?= $lang["unidad habitacion"] ?></p>
             </div>
         </div>
         <div class="row justify-content-between">
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-3">
                 <h6><?= $lang["baño"] ?></h6>
-                <p><?= $ad->bath ?> <?= $lang["unidad baño"]?></p>
+                <p><?= $ad->bath ?> <?= $lang["unidad baño"] ?></p>
             </div>
         </div>
         <div class="row">
@@ -64,5 +64,51 @@
                 <p><?= $municipality->municipality ?></p>
             </div>
         </div>
+        <div class="row justify-content-between">
+            <div class="col-md-3">
+                <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><span class="fa fa-file-image-o"></span> Fotos</button>
+                <div role="dialog" aria-labelledby="gallery" aria-hidden="true" tabindex="-1" id="gallery" class="modal fade">
+                    <!-- Modal content-->
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><?= $lang['fotos'] ?></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <?php
+                                            $count = 0;
+                                            foreach ($images as $image) {                                                
+                                                ?>
+                                                <div class="carousel-item <?php if ($count == 0) { echo 'active';}?>">
+                                                    <img src="<?= $image->image ?>" class="d-block w-100" alt="...">
+                                                </div>
+                                                <?php
+                                                $count++;
+                                            }
+                                            ?>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 </section>

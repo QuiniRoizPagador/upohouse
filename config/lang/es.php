@@ -96,6 +96,7 @@ $lang = array(
     "unidad habitacion" => "habitaciones",
     "unidad baño" => "baños",
     "modificar anuncio" => "Modificar anuncio",
-    "anuncioModificado" => "Anuncio modificado con &eacute;xito"
+    "anuncioModificado" => "Anuncio modificado con &eacute;xito",
+    "fotos" => "Fotos"
 );
 
