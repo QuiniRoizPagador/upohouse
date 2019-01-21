@@ -30,6 +30,149 @@ class AdController extends AbstractController {
         $this->imageModel = new ImageModel();
     }
 
+    public function modifyView() {
+        if (filter_has_var(INPUT_GET, "uuid")) {
+            $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
+            $ad = $this->adModel->read($uuid);
+            if (!isset($ad->uuid)) {
+                $this->redirect("User", "index");
+            } else {
+                $allHousingTypes = $this->housingTypeModel->getAll();
+                $allOperationTypes = $this->operationTypeModel->getAll();
+                $allCommunities = $this->communityModel->getAll();
+                //Cargamos la vista adView y le pasamos valores
+                $this->view("modifyAd", array(
+                    'title' => "Modificar un anuncio",
+                    'allHousingTypes' => $allHousingTypes,
+                    'allOperationTypes' => $allOperationTypes,
+                    'allCommunities' => $allCommunities,
+                    'adUuid' => $ad->uuid
+                ));
+            }
+        } else {
+            $this->redirect("User", "index");
+        }
+    }
+
+    public function modify() {
+        if (filter_has_var(INPUT_GET, "uuid")) {
+            $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
+            $adOld = $this->adModel->read($uuid);
+            if (!isset($adOld->uuid)) {
+                $this->redirect("User", "index");
+            } else {
+                $allHousingTypes = $this->housingTypeModel->getAll();
+                $allOperationTypes = $this->operationTypeModel->getAll();
+                $allCommunities = $this->communityModel->getAll();
+                $values = array("housingType" => "text", "operationType" => "text", "price" => "float",
+                    "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "text", "community" => "number",
+                    "province" => "number", "municipality" => "number");
+                $noRequired = array("housingType", "operationType", "price", "rooms",
+                    "m2", "bath", "images", "description", "community", "province", "municipality");
+                $errors = RegularUtils::filtrarPorTipo($values, "modify");
+                $errors = RegularUtils::camposNoRequeridos($errors, "modify", $noRequired);
+                if (isset($errors["modify"]["community"]) && !is_numeric($_POST["community"])) {
+                    unset($errors["modify"]["community"]);
+                    if (count($errors["modify"]) == 0) {
+                        $errors = null;
+                    }
+                }
+                if (!isset($errors["modify"])) {
+                    $strValues = array("housingType", "operationType", "description");
+                    $intValues = array("rooms", "m2", "bath", "community", "province", "municipality");
+                    $fltValues = array("price");
+                    $strFiltrado = RegularUtils::sanearStrings($strValues);
+                    $intFiltrado = RegularUtils::sanearIntegers($intValues);
+                    $fltFiltrado = RegularUtils::sanearFloats($fltValues);
+                    $filtrado = array_merge($strFiltrado, $intFiltrado, $fltFiltrado);
+                    //Creamos un anuncio
+                    $ad = new Ad();
+                    $ad->setUuid($adOld->uuid);
+                    $ad->setHousing_type($this->housingTypeModel->read($filtrado["housingType"])->id);
+                    $ad->setOperation_type($this->operationTypeModel->read($filtrado["operationType"])->id);
+                    if (!$filtrado["price"]) {
+                        $ad->setPrice($adOld->price);
+                    } else {
+                        $ad->setPrice($filtrado["price"]);
+                    }
+                    if (!$filtrado["rooms"]) {
+                        $ad->setRooms($adOld->rooms);
+                    } else {
+                        $ad->setRooms($filtrado["rooms"]);
+                    }
+                    if (!$filtrado["m2"]) {
+                        $ad->setM_2($adOld->m_2);
+                    } else {
+                        $ad->setM_2($filtrado["m2"]);
+                    }
+                    if (!$filtrado["bath"]) {
+                        $ad->setBath($adOld->bath);
+                    } else {
+                        $ad->setBath($filtrado["bath"]);
+                    }
+                    if (!$filtrado["description"]) {
+                        $ad->setDescription($adOld->description);
+                    } else {
+                        $ad->setDescription($filtrado["description"]);
+                    }
+                    if (!$filtrado["community"]) {
+                        $ad->setCommunity_id($adOld->community_id);
+                    } else {
+                        $ad->setCommunity_id($filtrado["community"]);
+                    }
+                    if (!$filtrado["province"]) {
+                        $ad->setProvince_id($adOld->province_id);
+                    } else {
+                        $ad->setProvince_id($filtrado["province"]);
+                    }
+                    if (!$filtrado["municipality"]) {
+                        $ad->setMunicipality_id($adOld->municipality_id);
+                    } else {
+                        $ad->setMunicipality_id($filtrado["municipality"]);
+                    }
+                    $save = $this->adModel->update($ad);
+                    if ($save != 1) {
+                        $errors['modify']['query'] = $save;
+                    } else {
+                        if ($_FILES["images"]["name"][0]) {
+                            $id = $adOld->id;
+                            RegularUtils::removeAdImages($ad->getUuid());
+                            $this->imageModel->deleteAllByAd($adOld->id);
+                            $images = RegularUtils::saveAdImages("images", $ad->getUuid());
+                            foreach ($images as $image) {
+                                $imgObj = new Image();
+                                $imgObj->setUuid(RegularUtils::uuid());
+                                $imgObj->setImage($image);
+                                $imgObj->setAd_id($id);
+                                $this->imageModel->create($imgObj);
+                            }
+                        }
+                        // si todo ha ido correcto, nos vamos a la web principal
+                        $this->view("modifyAd", array(
+                            'title' => "Modificar un anuncio",
+                            'allHousingTypes' => $allHousingTypes,
+                            'allOperationTypes' => $allOperationTypes,
+                            'allCommunities' => $allCommunities,
+                            'success' => TRUE,
+                            'adUuid' => $adOld->uuid
+                        ));
+                    }
+                }
+            }
+        }
+        if (isset($errors["modify"])) {
+            //Cargamos la vista adView y le pasamos valores
+            $this->view("modifyAd", array(
+                'title' => "Modificar un anuncio",
+                'allHousingTypes' => $allHousingTypes,
+                'allOperationTypes' => $allOperationTypes,
+                'allCommunities' => $allCommunities,
+                'errors' => $errors,
+                'adUuid' => $adOld->uuid
+            ));
+        }
+    }
+
     /**
      * Página para crear anuncio.
      */
@@ -69,8 +212,8 @@ class AdController extends AbstractController {
             $ad = new Ad();
             $ad->setUuid(RegularUtils::uuid());
             $ad->setUser_id($_SESSION["id"]);
-            $ad->setHousing_type($this->housingTypeModel->read($filtrado["housingType"], FALSE)->id);
-            $ad->setOperation_type($this->operationTypeModel->read($filtrado["operationType"], FALSE)->id);
+            $ad->setHousing_type($this->housingTypeModel->read($filtrado["housingType"])->id);
+            $ad->setOperation_type($this->operationTypeModel->read($filtrado["operationType"])->id);
             $ad->setPrice($filtrado["price"]);
             $ad->setRooms($filtrado["rooms"]);
             $ad->setM_2($filtrado["m2"]);
@@ -127,6 +270,7 @@ class AdController extends AbstractController {
                 $community = $this->communityModel->readId($ad->community_id);
                 $province = $this->provinceModel->readId($ad->province_id);
                 $municipality = $this->municipalityModel->readId($ad->municipality_id);
+                $images = $this->imageModel->readByAd($ad->id);
                 $this->view("readAd", array(
                     'title' => "Anuncio",
                     "ad" => $ad,
@@ -135,6 +279,7 @@ class AdController extends AbstractController {
                     "community" => $community,
                     "province" => $province,
                     "municipality" => $municipality,
+                    "images" => $images
                 ));
             }
         } else {

@@ -24,7 +24,14 @@ class AdDao extends AbstractDao {
     }
 
     public function update($obj) {
-        // TODO
+        $query = "UPDATE $this->table SET housing_type = ?, operation_type = ?, price = ?, "
+                . "rooms = ?, m_2 = ?, bath = ?, description = ?, community_id = ?, province_id = ?, municipality_id = ? WHERE uuid = ?";
+        $data = array("iidiiisiiis", "housing_type" => $obj->getHousing_type(), "operation_type" => $obj->getOperation_type(),
+            "price" => $obj->getPrice(), "rooms" => $obj->getRooms(), "m_2" => $obj->getM_2(), "bath" => $obj->getBath(),
+            "description" => $obj->getDescription(), "community_id" => $obj->getCommunity_id(), "province_id" => $obj->getProvince_id(),
+            "municipality_id" => $obj->getMunicipality_id(), "uuid" => $obj->getUuid());
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
     }
 
     public function getAllPaginated($pag) {

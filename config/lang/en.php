@@ -120,5 +120,10 @@ $lang = array(
     'hour'=> "hour",
     'minute' => "minute",
     'second'=> 'second',
+    "unidad habitacion" => "rooms",
+    "unidad baño" => "baths",
+    "modificar anuncio" => "Modify Ad",
+    "anuncioModificado" => "Ad has been modified successfully",
+    "fotos" => "Pictures"
 );
 

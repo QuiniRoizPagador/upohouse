@@ -29,4 +29,23 @@ class ImageDao extends AbstractDao {
         return $res;
     }
 
+    public function deleteAllByAd($id) {
+        $query = "DELETE FROM $this->table WHERE ad_id = ?";
+        $data = array('i', "id" => $id);
+        $res = $this::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
+    public function readByAd($id) {
+        $query = "SELECT * FROM $this->table WHERE ad_id = ?";
+        $data = array('s', "ad_id" => $id);
+        $resultSet = $this->preparedStatement($query, $data);
+        $res = array();
+        while ($row = $resultSet->fetch_object()) {
+            $res[] = $row;
+        }
+        mysqli_free_result($resultSet);
+        return $res;
+    }
+
 }
