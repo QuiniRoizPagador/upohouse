@@ -8,6 +8,7 @@ class Image {
     private $uuid;
     private $ad_id;
     private $image;
+    private $thumbnail;
 
     public function __construct() {
         
@@ -43,6 +44,14 @@ class Image {
 
     public function setImage($image) {
         $this->image = $image;
+    }
+
+    public function getThumbnail() {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail($thumbnail) {
+        $this->thumbnail = $thumbnail;
     }
 
 }

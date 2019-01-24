@@ -75,8 +75,8 @@ if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
                 ?>
                 <div class="media">
                     <picture class="align-self-center mr-3">
-                        <source srcset="<?= isset($result->image) ? $result->image : "view/images/home.png" ?>" type="image/svg+xml">
-                        <img src="<?= isset($result->image) ? $result->image : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
+                        <source srcset="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" type="image/svg+xml">
+                        <img src="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
                     </picture>
                     <div class="media-body">
                         <h5 class="mt-0"><?= $result->title ?></h5>

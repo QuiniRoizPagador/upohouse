@@ -62,7 +62,8 @@ class AdDao extends AbstractDao {
             c.community,
             p.province,
             m.municipality,
-            i.image
+            i.image,
+            i.thumbnail
         FROM
             Ads AS a
         JOIN Communities AS c
@@ -141,7 +142,8 @@ class AdDao extends AbstractDao {
             c.community,
             p.province,
             m.municipality,
-            i.image
+            i.image,
+            i.thumbnail
         FROM
             Ads AS a
         JOIN Communities AS c
@@ -270,7 +272,8 @@ class AdDao extends AbstractDao {
             c.community,
             p.province,
             m.municipality,
-            i.image
+            i.image,
+            i.thumbnail
         FROM
             Ads AS a
         JOIN Communities AS c
