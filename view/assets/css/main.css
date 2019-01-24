@@ -18,7 +18,7 @@ body{
     .footer-absolute{
         position: relative;
     }
-    
+
 }
 .resultado{
     text-decoration: none;  
@@ -74,4 +74,9 @@ body{
 /* When the input field gets focus, change its width to 100% */
 .searcher:focus {
     width: 100%;
+}
+
+.modal-content{
+    background: transparent;
+    border: none;
 }

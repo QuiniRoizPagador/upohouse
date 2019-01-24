@@ -66,21 +66,15 @@
         </div>
         <div class="row justify-content-between">
             <div class="col-md-3">
-                <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><i class="fa fa-images"></i> <?=$lang['fotos']?></button>
+                <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><i class="fa fa-images"></i> <?= $lang['fotos'] ?></button>
                 <div role="dialog" aria-labelledby="gallery" aria-hidden="true" tabindex="-1" id="gallery" class="modal fade">
                     <!-- Modal content-->
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title"><?= $lang['fotos'] ?></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
                                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
+                                        <div class="carousel-inner text-center">
                                             <?php
                                             $count = 0;
                                             foreach ($images as $image) {
@@ -114,5 +108,4 @@
             </div>
         </div>
     </div>
-</div>
 </section>
