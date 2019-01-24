@@ -80,22 +80,3 @@ body{
     background: transparent;
     border: none;
 }
-.modal-gallery{
-    overflow-y: hidden !important;
-}
-.modal-gallery
-.modal-dialog,
-.modal-content {
-    height: 100%;
-    width: 9100%;
-}
-.modal-gallery
-.modal-body {
-    max-height: 80%;
-    max-width: 90%;
-    overflow-y: auto;
-}
-
-#carouselControl .carousel-inner .carousel-item img{
-    height: 80%;
-}
