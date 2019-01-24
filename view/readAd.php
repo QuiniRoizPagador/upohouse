@@ -69,11 +69,11 @@
                 <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><i class="fa fa-images"></i> <?= $lang['fotos'] ?></button>
                 <div role="dialog" aria-labelledby="gallery" aria-hidden="true" tabindex="-1" id="gallery" class="modal fade">
                     <!-- Modal content-->
-                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content modal-gallery-content">
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div id="carouselControl" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner text-center">
                                             <?php
                                             $count = 0;
@@ -91,14 +91,19 @@
                                             }
                                             ?>
                                         </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
+                                        <?php if (sizeof($images) > 1) {
+                                            ?>
+                                            <a class="carousel-control-prev" href="#carouselControl" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselControl" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
