@@ -26,7 +26,7 @@
                         default:
                             regex = /[a-zA-Z0-9_]{1,255}/;
                     }
-                    if (!settings.empty && !val.match(regex)) {
+                    if (!settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
                         if ($(this)[0].type === "password") {
                             errorPassw++;
                         }
