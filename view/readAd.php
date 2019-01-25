@@ -84,7 +84,7 @@
                                                     echo 'active';
                                                 }
                                                 ?>">
-                                                   <img src="<?= $image->image ?>" class="d-block w-100 zoom" alt="<?=$image->uuid?>">
+                                                    <img src="<?= $image->image ?>" class="d-block w-100 zoom" alt="<?= $image->uuid ?>">
                                                 </div>
                                                 <?php
                                                 $count++;
@@ -111,6 +111,44 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <br>
+        <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
+            <h2 class="h5"><?= $lang["comentarios"] ?></h2>
+        </div>
+        <div class="row">
+            <form class="col-md-12 col-sm-12">
+                <div class="form-group" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
+
+                    <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
+                    <input name="idAd" type="hidden" value="<?= $ad->id ?>">
+                    <input name="idUser" type="hidden" value="<?= $_SESSION['id'] ?>">                 
+
+
+
+                </div>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </form>
+        </div>
+
+        <div>
+            <!--      <div class="media">
+                      <div class="media-body">
+                          <h5 class="mt-0"><?= $result->title ?></h5>
+                          <p>
+            <?= $lang['precio'] . ": " . $result->price ?>
+            <?= $lang['habitaciones'] . ": " . $result->rooms ?>
+            <?= $lang['m2'] . ": " . $result->m_2 ?>
+            <?= $result->municipality . ", " . $result->province ?>
+                          </p>
+                          <p><?= $result->description ?></p>
+                          <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                          <small class="text-muted float-lg-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
+                      </div>
+                  </div>-->
+
+
+
         </div>
     </div>
 </section>

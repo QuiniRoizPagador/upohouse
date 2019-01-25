@@ -15,5 +15,10 @@ class CommentController {
         parent::__construct();
         $this->commentModel = new CommentModel();
     }
+    
+    public function createComment()
+    {
+        
+    }
 
 }

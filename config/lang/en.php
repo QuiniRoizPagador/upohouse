@@ -138,5 +138,6 @@ $lang = array(
     'dashboard'=> 'Dashboard',
     'mainpage'=> 'Main Page',
     'Modificar un anuncio' => 'Edit Ad',
+    'escribir comentario'=>'Writte your comment'
 );
 
