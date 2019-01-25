@@ -121,13 +121,13 @@
         </div>
         <div class="col-sm-3">
             <ul class="list-group">
-                <li class="list-group-item text-muted">Acciones <i class="fa fa-asterisk fa-1x"></i></li>
+                <li class="list-group-item text-muted"><?=$lang['actions']?> <i class="fa fa-asterisk fa-1x"></i></li>
                 <?php if (!$hasUserRequest && !$isSame) { ?>
                     <li class="list-group-item">
                         <span class="pull-left">
-                            <strong>Estoy Interesado</strong>
+                            <strong><?=$lang['interesado']?></strong>
                         </span>
-                        <span class="btn float-lg-right" data-toggle="tooltip" title="Contactar">
+                        <span class="btn float-lg-right" data-toggle="tooltip" title="<?=$lang['contacto']?>">
                             <button data-toggle="modal" data-target="#request<?= $ad->uuid ?>" data-dismiss="modal" class="btn btn-success btn-sm"><i class="fa fa-comment-alt"></i></button>
                         </span>
                     </li>
@@ -135,7 +135,7 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Contactar</h5>
+                                    <h5 class="modal-title"><?=$lang['contacto']?></h5>
                                     <button type="button" class="close" data-dismiss="modal" data-toggle="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -145,7 +145,7 @@
                                         <input type="hidden" name="uuid" value="<?= $_SESSION['uuid'] ?>" />
                                         <input type="hidden" name="ad_uuid" value="<?= $ad->uuid ?>" />
                                         <div class="form-group">
-                                            <label for="content" class="col-form-label">Message:</label>
+                                            <label for="content" class="col-form-label"><?= $lang["descripcion"] ?>:</label>
                                             <textarea class="form-control <?= isset($_GET['content']) ? " is-invalid" : "" ?>" id="content" name="content"></textarea>
                                             <div class="invalid-feedback">
                                                 <?= isset($_GET['content']) ? $lang[$_GET['content']] : $lang['formato_incorrecto'] ?>
@@ -153,7 +153,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Send message</button>      
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-comment-alt"></i></button>      
                                     </div>
                                 </form>
                                 <?php

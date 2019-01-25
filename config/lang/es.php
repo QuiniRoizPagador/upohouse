@@ -131,6 +131,9 @@ $lang = array(
     'Resultados Obtenidos'=>'Resultados obtenidos',
     'dashboard'=> 'P&aacute;gina de Gesti&oacute;n',
     'mainpage'=> 'P&aacute;gina Principal',
-    'Modificar un anuncio' => 'Modificar un anuncio'
+    'Modificar un anuncio' => 'Modificar un anuncio',
+    'interesado' => "Estoy Interesado",
+    'actions' => "Acciones",
+    'activity' => "Actividades"
 );
 
