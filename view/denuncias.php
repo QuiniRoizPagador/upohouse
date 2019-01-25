@@ -95,7 +95,7 @@
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="user_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
@@ -231,7 +231,7 @@
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
@@ -368,7 +368,7 @@
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
@@ -502,7 +502,7 @@
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->request_reported; ?>" name="request_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>

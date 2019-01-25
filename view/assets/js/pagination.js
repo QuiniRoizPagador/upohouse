@@ -597,7 +597,7 @@ function cargarReportUser(report)
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
     var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
     footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
@@ -665,7 +665,7 @@ function cargarReportAd(report)
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
     var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
     footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
@@ -733,7 +733,7 @@ function cargarReportComment(report)
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
     var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
     footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
@@ -801,7 +801,7 @@ function cargarReportRequest(report)
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
     var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
     footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
