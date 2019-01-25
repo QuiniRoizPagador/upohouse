@@ -125,6 +125,9 @@ class RegularUtils {
                         case "text":
                             $error = !RegularUtils::isValidString(trim($_POST[$key]));
                             break;
+                        case "longText":
+                            $error = !RegularUtils::isValidLongString(trim($_POST[$key]));
+                            break;
                         case "float":
                             $error = !RegularUtils::isFloat($_POST[$key]);
                             break;
@@ -224,6 +227,10 @@ class RegularUtils {
 
     public static function isFloat($number) {
         return filter_var($number, FILTER_VALIDATE_FLOAT) !== FALSE;
+    }
+
+    static public function isValidLongString($string) {
+        return preg_match("/^[A-Za-z0-9_\s\n.áéíóúÁÉÍÓÚ]{1,3000}$/", $string);
     }
 
 }

@@ -87,6 +87,7 @@ $lang = array(
     "comentario_reported" => "Reported comment",
     "tipos operacion" => "Operation Types",
     "añadir tipo de operacion" => "Add Operation Type",
+    "editar tipo operacion" => "Edit Operation Type",
     "sinDescripcion" => "No description",
     "update" => "Update",
     "profile" => "Profile",
@@ -138,5 +139,8 @@ $lang = array(
     'dashboard'=> 'Dashboard',
     'mainpage'=> 'Main Page',
     'Modificar un anuncio' => 'Edit Ad',
+    'interesado' => "I'm interested",
+    'actions' => "Actions",
+    'activity' => "Activities"
 );
 

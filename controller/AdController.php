@@ -18,6 +18,7 @@ class AdController extends AbstractController {
     private $provinceModel;
     private $municipalityModel;
     private $imageModel;
+    private $requestModel;
 
     public function __construct() {
         parent::__construct();
@@ -28,6 +29,7 @@ class AdController extends AbstractController {
         $this->provinceModel = new ProvinceModel();
         $this->municipalityModel = new MunicipalityModel();
         $this->imageModel = new ImageModel();
+        $this->requestModel = new RequestModel();
     }
 
     public function modifyView() {
@@ -273,6 +275,8 @@ class AdController extends AbstractController {
                 $province = $this->provinceModel->readId($ad->province_id);
                 $municipality = $this->municipalityModel->readId($ad->municipality_id);
                 $images = $this->imageModel->readByAd($ad->id);
+                $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
+                $isSame = $ad->user_id == $_SESSION['id'];
                 $this->view("readAd", array(
                     'title' => "anuncio",
                     "ad" => $ad,
@@ -281,7 +285,9 @@ class AdController extends AbstractController {
                     "community" => $community,
                     "province" => $province,
                     "municipality" => $municipality,
-                    "images" => $images
+                    "images" => $images,
+                    "hasUserRequest" => $hasUserRequest,
+                    "isSame" => $isSame
                 ));
             }
         } else {
