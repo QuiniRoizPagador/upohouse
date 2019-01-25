@@ -2,13 +2,14 @@
 
 // constante que tomará los valores de los actions que necesitan ser verificados 
 const ACTIONS = array(
-    "USER" => array("remove", "readUser", "reportUser", "updateProfile", "paginateRequests", "createRequest", "refuse", "accept"),
+    "USER" => array("remove", "readUser", "reportUser", "updateProfile", "paginateRequests", 
+        "createRequest", "refuse", "accept", "createReport"),
     "GUEST" => array("index", "login", "register"),
     "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
-        "paginateComments","createHousingTypes","updateHousingTypes","paginateHousingTypes","removeHousingTypes",
-        "updateOperationTypes","removeOperationType","createOperationTypes","paginateOperationTypes","acceptReportComment",
-        "denyReportComment","acceptReportRequest","denyReportRequest","acceptReportAd","denyReportAd","paginateReportsUser",
-        "paginateReportsAd","paginateReportsComment","paginateReportsRequest")
+        "paginateComments", "createHousingTypes", "updateHousingTypes", "paginateHousingTypes", "removeHousingTypes",
+        "updateOperationTypes", "removeOperationType", "createOperationTypes", "paginateOperationTypes", "acceptReportComment",
+        "denyReportComment", "acceptReportRequest", "denyReportRequest", "acceptReportAd", "denyReportAd", "paginateReportsUser",
+        "paginateReportsAd", "paginateReportsComment", "paginateReportsRequest")
 );
 // controlador por defecto
 define("CONTROLADOR_DEFECTO", "user");
@@ -34,6 +35,13 @@ const ROLES = array(
     "USER" => 0,
     1 => "ADMIN",
     0 => "USER",
+);
+
+const REPORTS = array(
+    'USER' => 0,
+    'COMMENT' => 1,
+    'REQUEST' => 2,
+    'AD' => 3
 );
 
 global $lang;

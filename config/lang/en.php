@@ -142,6 +142,8 @@ $lang = array(
     'escribir comentario'=>'Writte your comment',
     'interesado' => "I'm interested",
     'actions' => "Actions",
-    'activity' => "Activities"
+    'activity' => "Activities",
+    'create_report'=> "Create Report",
+    "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report."
 );
 

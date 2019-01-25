@@ -42,7 +42,8 @@ class RequestDao extends AbstractDao {
             r.timestamp,
             r.uuid AS request,
             r.content,
-            r.uuid as req_uuid
+            r.uuid as req_uuid,
+            (rep.request_reported IS NOT NULL) AS denunciado
         FROM
             Requests AS r
         JOIN Ads AS a
@@ -57,6 +58,9 @@ class RequestDao extends AbstractDao {
         JOIN Housing_Types AS h
         ON
             a.housing_type = h.id
+        JOIN Reports as rep
+        ON 
+            rep.request_reported = r.id
         WHERE
             a.user_id = ?
         AND 

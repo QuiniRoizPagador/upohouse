@@ -2,7 +2,7 @@
 require_once 'core/templates/head.php';
 ?>
 
-<div class="bg-dark dk" id="wrap">
+<div class="bg-light" id="wrap">
     <div id="top">
         <?php require_once 'core/templates/nav.php' ?>  
     </div>
@@ -16,7 +16,7 @@ require_once 'core/templates/head.php';
                 <div class="col-sm-3"><!--left col-->
 
                     <ul class="list-group">
-                        <li class="list-group-item text-muted"><?=$lang['activity']?> <span class="float-lg-right"><i class="fa fa-tachometer-alt  fa-1x"></i></span></li>
+                        <li class="list-group-item text-muted"><?= $lang['activity'] ?> <span class="float-lg-right"><i class="fa fa-tachometer-alt  fa-1x"></i></span></li>
                         <li class="list-group-item"><span class="pull-left"><strong><?= $lang['anuncio'] ?>s</strong></span><span class="float-lg-right"><?= $userAds ?></span></li>
                         <li class="list-group-item"><span class="pull-left"><strong><?= $lang['comments'] ?></strong></span> <span class="float-lg-right"><?= $userComments ?></span></li>
                     </ul> 
@@ -101,6 +101,15 @@ require_once 'core/templates/head.php';
                                 <?php
                             } else {
                                 ?>
+                                <?php if (!$usuarioDenunciado) { ?>
+                                    <div class="float-lg-right">
+                                        <form method="post" action="<?= $helper->url("report", "createReport") ?>">
+                                            <input type="hidden" value="<?= REPORTS['USER'] ?>" name="report"  id="report"/>
+                                            <input type="hidden" value="<?= $user->uuid ?>" name="uuid" id="uuid" />
+                                            <button type="submit" class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-exclamation-triangle "></i></button>
+                                        </form>
+                                    </div>
+                                <?php } ?>
                                 <div class="row">
                                     <div class="has-success col-md-12 ml-auto"> 
                                         <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
@@ -248,7 +257,7 @@ require_once 'core/templates/head.php';
                                                         <a href="<?= $helper->url("user", "readUser", array("uuid" => $request->user_uuid)) ?>"><?= $request->name ?></a>
                                                     </td>
                                                     <td>
-                                                        <?= to_time_ago(strtotime($request->timestamp),$lang) ?>
+                                                        <?= to_time_ago(strtotime($request->timestamp), $lang) ?>
                                                     </td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $request->ad ?>">
@@ -265,7 +274,13 @@ require_once 'core/templates/head.php';
                                                                             </button>
                                                                         </div>
                                                                         <div class="card-body modal-body">
-                                                                            <button class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-exclamation-triangle "></i></button>
+                                                                            <?php if (!$request->denunciado) { ?>
+                                                                                <form method="post" action="<?= $helper->url("report", "createReport") ?>">
+                                                                                    <input type="hidden" value="<?= REPORTS['REQUEST'] ?>" name="report"  id="report"/>
+                                                                                    <input type="hidden" value="<?= $request->request ?>" name="uuid" id="uuid" />
+                                                                                    <button type="submit" class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-exclamation-triangle "></i></button>
+                                                                                </form>
+                                                                            <?php } ?>
                                                                             <p>
                                                                                 <strong><?= $lang['user'] ?></strong>:  <a href="<?= $helper->url("user", "readUser", array("uuid" => $request->user_uuid)) ?>"><?= $request->name ?></a>
                                                                             </p>
@@ -379,7 +394,20 @@ require_once 'core/templates/head.php';
                 </div><!--/col-9-->
             </div><!--/row-->
         </div>
+
         <?php
+        if (isset($_GET['report'])) {
+            ?>
+            <div class='alert alert-success alert-dismissible fade show col-md-6 content-center' role='alert'>
+                <?= $lang[$_GET['report']] ?>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <?php
+        }
+
+
         if (isset($errors['query'])) {
             error($errors['query']);
         }

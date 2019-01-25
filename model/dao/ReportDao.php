@@ -11,11 +11,11 @@ class ReportDao extends AbstractDao {
     }
 
     public function create($obj) {
-        $query = "INSERT INTO $this->table (`uuid`, title, description, `user_id`, state, user_reported,
+        $query = "INSERT INTO $this->table (`uuid`, title, description, `user_id`, user_reported,
             comment_reported, request_reported, ad_reported)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $data = array("sssiiiiii", "uuid" => $obj->getUuid(), "title" => $obj->getTitle(),
-            "description" => $obj->getDescription(), "user_id" => $obj->getUser_id(), "state" => $obj->getState(),
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        $data = array("sssiiiii", "uuid" => $obj->getUuid(), "title" => $obj->getTitle(),
+            "description" => $obj->getDescription(), "user_id" => $obj->getUser_id(),
             "user_reported" => $obj->getUser_reported(), "comment_reported" => $obj->getComment_reported(),
             "request_reported" => $obj->getRequest_reported(), "ad_reported" => $obj->getAd_reported());
         $res = parent::preparedStatement($query, $data, FALSE);
@@ -30,7 +30,6 @@ class ReportDao extends AbstractDao {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
         $data = array("is", "state" => $obj->getState(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
-        $this->closeConnection();
         return $res;
     }
 
@@ -47,7 +46,7 @@ class ReportDao extends AbstractDao {
 
     public function countReportUsers() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `user_reported` is not null AND state=".STATES["NEUTRO"]
+                . "WHERE `user_reported` is not null AND state=" . STATES["NEUTRO"]
                 . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
@@ -60,7 +59,7 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN users AS u ON r.user_reported=u.id "
                 . "JOIN users AS u2 ON r.user_id=u2.id "
-                . "WHERE user_reported is not null AND r.state=".STATES["NEUTRO"]
+                . "WHERE user_reported is not null AND r.state=" . STATES["NEUTRO"]
                 . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
 //Devolvemos el resultset en forma de array de objetos
@@ -75,7 +74,7 @@ class ReportDao extends AbstractDao {
 
     public function countReportAds() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `ad_reported` is not null AND state=".STATES["NEUTRO"]
+                . "WHERE `ad_reported` is not null AND state=" . STATES["NEUTRO"]
                 . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
@@ -88,7 +87,7 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN ads AS a ON r.ad_reported=a.id "
                 . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE ad_reported is not null AND r.state=".STATES["NEUTRO"]
+                . "WHERE ad_reported is not null AND r.state=" . STATES["NEUTRO"]
                 . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
 //Devolvemos el resultset en forma de array de objetos
@@ -103,7 +102,7 @@ class ReportDao extends AbstractDao {
 
     public function countReportComments() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `comment_reported` is not null AND state=".STATES["NEUTRO"]
+                . "WHERE `comment_reported` is not null AND state=" . STATES["NEUTRO"]
                 . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
@@ -116,7 +115,7 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN comments AS c ON r.comment_reported=c.id "
                 . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE comment_reported is not null AND r.state=".STATES["NEUTRO"]
+                . "WHERE comment_reported is not null AND r.state=" . STATES["NEUTRO"]
                 . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
 //Devolvemos el resultset en forma de array de objetos
@@ -131,7 +130,7 @@ class ReportDao extends AbstractDao {
 
     public function countReportRequests() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
-                . "WHERE `request_reported` is not null AND state=".STATES["NEUTRO"]
+                . "WHERE `request_reported` is not null AND state=" . STATES["NEUTRO"]
                 . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
@@ -144,7 +143,7 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r"
                 . " JOIN requests AS re ON r.request_reported=re.id "
                 . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE request_reported is not null AND r.state=".STATES["NEUTRO"]
+                . "WHERE request_reported is not null AND r.state=" . STATES["NEUTRO"]
                 . " ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 //Devolvemos el resultset en forma de array de objetos
         $resultSet = array();
@@ -154,6 +153,17 @@ class ReportDao extends AbstractDao {
         mysqli_free_result($query);
 
         return $resultSet;
+    }
+
+    public function isReportedUser($me, $otherUser) {
+        $query = "SELECT count(*) as count FROM $this->table
+                WHERE user_id = ? AND user_reported = ? ";
+        $data = array("ii", "user_id" => $me, "user_reported" => $otherUser);
+        $res = parent::preparedStatement($query, $data);
+        $count = $res->fetch_object()->count;
+        mysqli_free_result($res);
+
+        return $count != 0;
     }
 
 }

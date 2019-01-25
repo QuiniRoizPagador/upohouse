@@ -13,6 +13,7 @@ class UserController extends AbstractController {
     private $adModel;
     private $commentModel;
     private $requestModel;
+    private $reportModel;
 
     public function __construct() {
         parent::__construct();
@@ -20,6 +21,7 @@ class UserController extends AbstractController {
         $this->adModel = new AdModel();
         $this->commentModel = new CommentModel();
         $this->requestModel = new RequestModel();
+        $this->reportModel = new ReportModel();
     }
 
     /**
@@ -41,6 +43,7 @@ class UserController extends AbstractController {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'), "GET")['uuid'];
             $user = $this->userModel->read($id);
+            $usuarioDenunciado = $this->reportModel->isReportedUser($_SESSION['id'], $user->id);
 
             if (!isset($user->id) || $user->state == STATES['ELIMINADO']) {
                 $this->redirect("user", "index");
@@ -55,7 +58,8 @@ class UserController extends AbstractController {
                     "userAds" => $userAds,
                     "userComments" => $userComments,
                     "requests" => $requests,
-                    "numRequests" => $numRequests
+                    "numRequests" => $numRequests,
+                    'usuarioDenunciado' => $usuarioDenunciado
                 ));
             }
         } else {
