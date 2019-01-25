@@ -46,7 +46,10 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
+<<<<<<< HEAD
                                                 <!--HASTA AQUI-->
+=======
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                 <div class="card-body modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
@@ -99,7 +102,11 @@
                                                     </span>
                                                 </form>
                                             </div>
+<<<<<<< HEAD
                                             <div class="model-footer">
+=======
+                                            <div class="modal-footer">
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
@@ -124,7 +131,11 @@
                     <?php
                     for ($i = 0; $i < $numReportsUsers / 10; $i++) {
                         ?>
+<<<<<<< HEAD
                         <li class="page-item <?= $pag == $i ? "active" : "" ?>">
+=======
+                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                             <a class="page-link pagReportsUser"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -222,14 +233,22 @@
                                             <div class="text-center">
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportAd", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
+<<<<<<< HEAD
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
+=======
+                                                    <input type="hidden" value="<?php echo $reports->ad_reported; ?>" name="ad_uuid" />
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportAd", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
+<<<<<<< HEAD
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
+=======
+                                                    <input type="hidden" value="<?php echo $reports->ad_reported; ?>" name="ad_uuid" />
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
                                                     </span>
@@ -261,7 +280,11 @@
                     <?php
                     for ($i = 0; $i < $numReportsAds / 10; $i++) {
                         ?>
+<<<<<<< HEAD
                         <li class="page-item <?= $pag == $i ? "active" : "" ?>">
+=======
+                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                             <a class="page-link pagReportsAd"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -359,14 +382,22 @@
                                             <div class="text-center">
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportComment", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
+<<<<<<< HEAD
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
+=======
+                                                    <input type="hidden" value="<?php echo $reports->comment_reported; ?>" name="comment_uuid" />
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportComment", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
+<<<<<<< HEAD
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
+=======
+                                                    <input type="hidden" value="<?php echo $reports->comment_reported; ?>" name="comment_uuid" />
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
                                                     </span>
@@ -374,6 +405,9 @@
                                             </div>
                                             <div class="modal-footer">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
@@ -398,7 +432,11 @@
                     <?php
                     for ($i = 0; $i < $numReportsComments / 10; $i++) {
                         ?>
+<<<<<<< HEAD
                         <li class="page-item <?= $pag == $i ? "active" : "" ?>">
+=======
+                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                             <a class="page-link pagReportsComment"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -428,7 +466,11 @@
                         <th><?= $lang["ver"] ?></th>
                     </tr>
                 </thead>
+<<<<<<< HEAD
                 <tbody id="cuerpo4">
+=======
+                <tbody id="cuerpo3">
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                     <?php foreach ($allReportsRequests as $reports) { //recorremos el array de objetos y obtenemos el valor de las propiedades    ?>
                         <tr>
                             <td><?= $reports->id; ?> </td>
@@ -438,7 +480,11 @@
                             <td><?= $reports->request_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
+<<<<<<< HEAD
                                 <button data-toggle="modal" data-target="#çv<?= $reports->uuid ?>"
+=======
+                                <button data-toggle="modal" data-target="#searchReportRequests<?= $reports->uuid ?>"
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                         class="btn btn-info btn-sm">
                                     <span class="fa fa-eye"></span>
                                 </button>
@@ -494,7 +540,11 @@
                                             <div class="text-center">
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportRequest", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
+<<<<<<< HEAD
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="request_uuid" />
+=======
+                                                    <input type="hidden" value="<?php echo $reports->request_reported; ?>" name="request_uuid" />
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
@@ -505,12 +555,15 @@
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
                                                     </span>
+<<<<<<< HEAD
 =======
                                                 <form method="post" action="<?= $helper->url("admin", "removeComment"); ?>">
                                                     <input type="hidden" value="<?php echo $comment->uuid; ?>" name="uuid" />
                                                     <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
 >>>>>>> 17ddce4c737896dc11096a8703e79e0ca5c96987
+=======
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
@@ -538,7 +591,11 @@
                     <?php
                     for ($i = 0; $i < $numReportsRequests / 10; $i++) {
                         ?>
+<<<<<<< HEAD
                         <li class="page-item <?= $pag == $i ? "active" : "" ?>">
+=======
+                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+>>>>>>> 79ff6d174fe41c893ab28ded0726377ae4b7d9dc
                             <a class="page-link pagReportsRequest"><?= $i + 1 ?></a>
                         </li>
                     <?php }

@@ -808,6 +808,7 @@ function cargarReportRequest(report)
     modal_body.append(footer);
     td.append(modal);
     tr.append(td);
+    console.log(tr.html());
 
     return tr;
 }
@@ -1125,5 +1126,6 @@ $(document).ready(function () {
     $(".pagReportsAd").paginateReportsAds();
     $(".pagReportsComment").paginateReportsComments();
     $(".pagReportsRequest").paginateReportsRequests();
+
     $('[data-toggle="tooltip"]').tooltip();
 });
