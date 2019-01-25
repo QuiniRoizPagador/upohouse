@@ -18,13 +18,16 @@
                             regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
                             break;
                         case "text":
-                            regex = /[a-zA-Z_]{1,255}$/;
+                            regex = /[a-zA-Z0-9_]{1,255}$/;
+                            break;
+                        case "textarea":
+                            regex = /^[A-Za-z0-9_\s\n.áéíóúÁÉÍÓÚ]{1,3000}$/;
                             break;
                         case "select-one":
                             regex = /[0-9]/;
                             break;
                         default:
-                            regex = /[a-zA-Z0-9_]{1,255}/;
+                            regex = /[a-zA-Z0-9_]{1,255}$/;
                     }
                     if (!settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
                         if ($(this)[0].type === "password") {

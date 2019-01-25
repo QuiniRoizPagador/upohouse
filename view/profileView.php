@@ -16,7 +16,7 @@ require_once 'core/templates/head.php';
                 <div class="col-sm-3"><!--left col-->
 
                     <ul class="list-group">
-                        <li class="list-group-item text-muted">Activity <i class="fa fa-tachometer-alt  fa-1x"></i></li>
+                        <li class="list-group-item text-muted"><?=$lang['activity']?> <span class="float-lg-right"><i class="fa fa-tachometer-alt  fa-1x"></i></span></li>
                         <li class="list-group-item"><span class="pull-left"><strong><?= $lang['anuncio'] ?>s</strong></span><span class="float-lg-right"><?= $userAds ?></span></li>
                         <li class="list-group-item"><span class="pull-left"><strong><?= $lang['comments'] ?></strong></span> <span class="float-lg-right"><?= $userComments ?></span></li>
                     </ul> 

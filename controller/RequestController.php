@@ -25,7 +25,6 @@ class RequestController extends AbstractController {
     public function accept() {
         $variables = array('req_uuid' => "text", 'ad_uuid' => "text", "user_uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($variables, "accept");
-        print_r($errors);
         if (!isset($errors['accept'])) {
             $variables = array('req_uuid', 'ad_uuid', "user_uuid");
             $filtrado = RegularUtils::sanearStrings($variables);
@@ -57,7 +56,6 @@ class RequestController extends AbstractController {
     public function refuse() {
         $variables = array('req_uuid' => "text");
         $errors = RegularUtils::filtrarPorTipo($variables, "accept");
-        print_r($errors);
         if (!isset($errors['accept'])) {
             $variables = array('req_uuid');
             $filtrado = RegularUtils::sanearStrings($variables);
@@ -69,6 +67,43 @@ class RequestController extends AbstractController {
             $this->redirect("user", "readUser", array("uuid" => $_SESSION['uuid']));
         } else {
             $this->redirect();
+        }
+    }
+
+    public function createRequest() {
+        if (verifyIsAdmin() || verifyIsSame()) {
+            $variables = array('content' => "longText", "ad_uuid" => "text", "uuid" => "text");
+            $errors = RegularUtils::filtrarPorTipo($variables, "createRequest");
+            if (!isset($errors['createRequest'])) {
+                $variables = array('content', 'ad_uuid', 'uuid');
+                $filtrado = RegularUtils::sanearStrings($variables);
+                $user = $this->userModel->read($filtrado['uuid']);
+                $ad = $this->adModel->read($filtrado['ad_uuid']);
+                if ($user && $ad) {
+                    $exists = $this->requestModel->verifyExist($user->id, $ad->id);
+                    if (!$exists) {
+                        // crear la petición y almacenarla
+                        $request = new Request();
+                        $request->setUuid(RegularUtils::uuid());
+                        $content = str_replace("\n", "<br />", $filtrado['content']);
+
+                        $request->setContent($content);
+                        $request->setAd_id($ad->id);
+                        $request->setUser_id($user->id);
+                        $this->requestModel->create($request);
+                    }
+                }
+                $this->redirect("ad", "read", array("uuid" => $filtrado['ad_uuid']));
+            } else {
+                // error en las variables esperadas
+                $array = array("uuid" => $_POST['ad_uuid']);
+                if (isset($errors['createRequest']['content'])) {
+                    $array['content'] = $errors['createRequest']['content'];
+                }
+                $this->redirect("ad", "read", $array);
+            }
+        } else {
+            $this->redirect("ad", "read", array("uuid" => $filtrado['ad_uuid']));
         }
     }
 
