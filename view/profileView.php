@@ -265,7 +265,7 @@ require_once 'core/templates/head.php';
                                                                             </button>
                                                                         </div>
                                                                         <div class="card-body modal-body">
-                                                                            <button class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-ban"></i></button>
+                                                                            <button class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-exclamation-triangle "></i></button>
                                                                             <p>
                                                                                 <strong><?= $lang['user'] ?></strong>:  <a href="<?= $helper->url("user", "readUser", array("uuid" => $request->user_uuid)) ?>"><?= $request->name ?></a>
                                                                             </p>

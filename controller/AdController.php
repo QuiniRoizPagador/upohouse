@@ -142,7 +142,8 @@ class AdController extends AbstractController {
                             foreach ($images as $image) {
                                 $imgObj = new Image();
                                 $imgObj->setUuid(RegularUtils::uuid());
-                                $imgObj->setImage($image);
+                                $imgObj->setImage($image['image']);
+                                $imgObj->setThumbnail($image['thumbnail']);
                                 $imgObj->setAd_id($id);
                                 $this->imageModel->create($imgObj);
                             }

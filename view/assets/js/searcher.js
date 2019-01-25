@@ -32,8 +32,9 @@
                                     lista.empty();
                                     $.map(data, function (k, v) {
                                         var li = "<a class='resultado dropdown-item' href='index/Ad/read&uuid=" + k.uuid + "'>"
-                                                + LANG['descripcion'] + ": " + k.description + " - " + LANG['comunidad'] + ": " + k.community +
-                                                " - " + LANG['provincia'] + ": " + k.province + " - " + LANG['localidad'] + ": " + k.municipality +
+                                                + "<img class='img img-thumbnail' src='" + (k.thumbnail?k.thumbnail:'view/images/home.png') + "' alt='"+k.uuid+"' style='width:50px;'/>"
+                                                + " <b>" + LANG['descripcion'] + "</b>: " + k.name + " - " + "<b>" +LANG['m2'] + "</b>: " + k.m_2 +
+                                                " - <b>" + LANG['habitaciones'] + "</b>: " + k.rooms + " - <b>" + LANG['precio'] + "</b>: " + k.price +
                                                 "</a>";
                                         $($(".searcher").val().split(" ")).each(function () {
                                             $(li).html().replace($('#search').val(), "<span class='highlight'>" + $('#search').val() + "</span>");

@@ -84,7 +84,7 @@
                                                     echo 'active';
                                                 }
                                                 ?>">
-                                                   <img src="<?= $image->image ?>" class="d-block w-100" alt="...">
+                                                   <img src="<?= $image->image ?>" class="d-block w-100 zoom" alt="<?=$image->uuid?>">
                                                 </div>
                                                 <?php
                                                 $count++;

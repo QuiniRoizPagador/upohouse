@@ -14,14 +14,13 @@ class RegularUtils {
         $url = IMAGE_AD_URI . "/" . $adId;
         $field = $_FILES[$field];
         mkdir($url);
-        mkdir($url . "/thumbnails");
         $imagesAmount = count($field["name"]);
         for ($i = 0; $i < $imagesAmount; $i++) {
             $fileUrl = $url . "/" . $field["name"][$i];
-            $fileThumbnailUrl = $url . "/thumbnails/" . $field["name"][$i];
+            $fileThumbnailUrl = $url . "/thumbnails_" . $field["name"][$i];
             move_uploaded_file($field["tmp_name"][$i], $fileUrl);
             RegularUtils::resize_image($fileUrl, $fileThumbnailUrl, 200, 200);
-            $images[] = array("image"=>$fileUrl, "thumbnail" => $fileThumbnailUrl);
+            $images[] = array("image" => $fileUrl, "thumbnail" => $fileThumbnailUrl);
         }
         return $images;
     }

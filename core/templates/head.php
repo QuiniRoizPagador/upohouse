@@ -92,6 +92,7 @@ function error($text) {
         <script src="view/assets/lib/popper/popper.min.js"></script>
         <script src="view/assets/lib/bootstrap/js/bootstrap.min.js"></script>
         <script src="view/assets/lib/chartjs/Chart.min.js"></script>
+        <script src="view/assets/lib/zoom/jquery.zoom.min.js"></script>
         <script src="view/assets/js/charts.js"></script>
         <script src="view/assets/js/searcher.js"></script>
         <script>
@@ -157,6 +158,7 @@ if (isset($count)) {
         <script src="view/assets/js/pagination.js"></script>
         <script src="view/assets/js/localization.js"></script>
         <script src="view/assets/js/validations.js"></script>
+        <script src="view/assets/js/zoom.js"></script>
     </head>
     <body class="<?= $title ?>">
         <?php if (!verifyIsLogin()) { ?>

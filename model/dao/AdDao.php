@@ -130,6 +130,7 @@ class AdDao extends AbstractDao {
         $param = str_replace(" ", "* *", trim($param));
         $param .= "*";
         $query = "SELECT
+            CONCAT(h.name,' en ',m.municipality) as name,
             a.uuid,
             a.price,
             a.rooms,
