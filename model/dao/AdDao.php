@@ -258,7 +258,7 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
-    public function listAds($house, $operation, $pag) {
+    public function listAds($house, $operation, $pag, $user) {
         $query = "SELECT
             CONCAT(h.name,' - ',m.municipality) as title,
             a.uuid,
@@ -295,6 +295,9 @@ class AdDao extends AbstractDao {
         LEFT OUTER JOIN Images AS i
         ON 
                 a.id = i.ad_id
+        JOIN Users as u
+        ON
+            a.user_id = u.id
         WHERE
            a.state = " . STATES['NEUTRO'] . "
         AND 
@@ -304,6 +307,9 @@ class AdDao extends AbstractDao {
         }
         if (isset($operation)) {
             $query .= " AND o.uuid = '$operation' ";
+        }
+        if (isset($user)) {
+            $query .= " AND u.uuid = '$user' ";
         }
         $query .= " GROUP BY 
             a.uuid
@@ -318,7 +324,7 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
-    public function countListAds($house, $operation) {
+    public function countListAds($house, $operation, $user) {
         $query = "SELECT
             COUNT(*) AS count
         FROM
@@ -338,6 +344,9 @@ class AdDao extends AbstractDao {
         JOIN Operation_Types AS o
         ON
             a.operation_type = o.id
+        JOIN Users as u
+        ON
+            a.user_id = u.id
         WHERE
            a.state = " . STATES['NEUTRO'] . "
         AND 
@@ -347,6 +356,9 @@ class AdDao extends AbstractDao {
         }
         if (isset($operation)) {
             $query .= " AND o.uuid = '$operation' ";
+        }
+        if (isset($user)) {
+            $query .= " AND u.uuid = '$user' ";
         }
         $resultSet = $this->mysqli->query($query);
         $res = $resultSet->fetch_object();

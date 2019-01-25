@@ -14,6 +14,10 @@ if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
     $_pag = filter_var($_GET['pag'], FILTER_SANITIZE_NUMBER_INT);
 }
 
+if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
+    $_user = filter_var($_GET['user'], FILTER_SANITIZE_STRING);
+}
+
 ?>
 <div class="row col-md-12">
     <nav class="col-md-2 d-md-block sidebar">
@@ -102,7 +106,7 @@ if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
                 for ($i = 0; $i < $countList / 10; $i++) {
                     ?>
                     <li class="page-item <?= $pag == $i ? "active" : "" ?>">
-                        <a class="page-link" href="<?php echo $helper->url("Ad", "listAds", array("type_house" => $_house, "type_operation" => $_operation, "pag" => $i)); ?>"><?= $i + 1 ?></a>
+                        <a class="page-link" href="<?php echo $helper->url("Ad", "listAds", array("type_house" => $_house, "type_operation" => $_operation, "pag" => $i, "user" => $_user)); ?>"><?= $i + 1 ?></a>
                     </li>
                 <?php }
                 ?> 

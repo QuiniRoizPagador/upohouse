@@ -45,7 +45,7 @@ class ReportController extends AbstractController {
         if (!isset($errors)) {
             $saneado = RegularUtils::sanearStrings(array('title', 'uuid', 'description'));
             $uuid = $saneado["uuid"];
-            $description = $saneado['description'];
+            $description = str_replace("\n", "<br />", $saneado['description']);
             $title = $saneado["title"];
             $request = $this->requestModel->read($uuid);
             $report = new Report();
@@ -71,7 +71,7 @@ class ReportController extends AbstractController {
         if (!isset($errors)) {
             $saneado = RegularUtils::sanearStrings(array('title', 'uuid', 'description'));
             $uuid = $saneado["uuid"];
-            $description = $saneado['description'];
+            $description = str_replace("\n", "<br />", $saneado['description']);
             $title = $saneado["title"];
             $user = $this->userModel->read($uuid);
             $report = new Report();

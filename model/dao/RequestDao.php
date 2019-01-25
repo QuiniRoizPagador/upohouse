@@ -58,7 +58,7 @@ class RequestDao extends AbstractDao {
         JOIN Housing_Types AS h
         ON
             a.housing_type = h.id
-        JOIN Reports as rep
+        LEFT OUTER JOIN Reports as rep
         ON 
             rep.request_reported = r.id
         WHERE

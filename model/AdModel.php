@@ -46,12 +46,12 @@ class AdModel extends AbstractModel {
         return $this->adDao->getTop();
     }
 
-    public function listAds($house, $operation, $pag) {
-        return $this->adDao->listAds($house, $operation, $pag);
+    public function listAds($house, $operation, $pag, $user) {
+        return $this->adDao->listAds($house, $operation, $pag, $user);
     }
 
-    public function countListAds($house, $operation) {
-         return $this->adDao->countListAds($house, $operation);
+    public function countListAds($house, $operation, $user) {
+         return $this->adDao->countListAds($house, $operation, $user);
     }
 
 }

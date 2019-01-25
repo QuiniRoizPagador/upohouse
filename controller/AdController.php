@@ -346,6 +346,7 @@ class AdController extends AbstractController {
     public function listAds() {
         $house = null;
         $operation = null;
+        $user = null;
         $pag = 0;
         if (filter_has_var(INPUT_GET, "type_house") && trim($_GET['type_house']) != "") {
             $house = filter_var($_GET['type_house'], FILTER_SANITIZE_STRING);
@@ -356,8 +357,12 @@ class AdController extends AbstractController {
         if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
             $pag = filter_var($_GET['pag'], FILTER_SANITIZE_NUMBER_INT);
         }
-        $countAds = $this->adModel->countListAds($house, $operation);
-        $ads = $this->adModel->listAds($house, $operation, $pag);
+
+        if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
+            $user = filter_var($_GET['user'], FILTER_SANITIZE_STRING);
+        }
+        $countAds = $this->adModel->countListAds($house, $operation, $user);
+        $ads = $this->adModel->listAds($house, $operation, $pag, $user);
         $houses = $this->housingTypeModel->getAll();
         $operations = $this->operationTypeModel->getAll();
         $this->view("listAds", array(
@@ -367,6 +372,7 @@ class AdController extends AbstractController {
             "pag" => $pag,
             "houses" => $houses,
             "operations" => $operations,
+            "user" => $user
         ));
     }
 
