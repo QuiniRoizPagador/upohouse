@@ -21,19 +21,20 @@
             });
             $(this).keyup(function () {
                 var lista = $("#searchList");
-                lista.hide();
-                lista.empty();
                 if ($.trim($(".searcher").val()) != "") {
-                    $.queue($.post("index.php?controller=WS&action=globalSearch",
+                    $.queue($.post("index/WS/globalSearch",
                             {
                                 'str': $(".searcher").val()
                             },
                             function (data, status) {
                                 if (data !== "" && data !== null) {
+                                    lista.hide();
+                                    lista.empty();
                                     $.map(data, function (k, v) {
-                                        var li = "<a class='resultado dropdown-item' href='index.php?controller=Ad&action=read&uuid=" + k.uuid + "'>"
-                                                + LANG['descripcion'] + ": " + k.description + " - " + LANG['comunidad'] + ": " + k.community +
-                                                " - " + LANG['provincia'] + ": " + k.province + " - " + LANG['localidad'] + ": " + k.municipality +
+                                        var li = "<a class='resultado dropdown-item' href='index/Ad/read&uuid=" + k.uuid + "'>"
+                                                + "<img class='img img-thumbnail' src='" + (k.thumbnail?k.thumbnail:'view/images/home.png') + "' alt='"+k.uuid+"' style='width:50px;'/>"
+                                                + " <b>" + LANG['descripcion'] + "</b>: " + k.name + " - " + "<b>" +LANG['m2'] + "</b>: " + k.m_2 +
+                                                " - <b>" + LANG['habitaciones'] + "</b>: " + k.rooms + " - <b>" + LANG['precio'] + "</b>: " + k.price +
                                                 "</a>";
                                         $($(".searcher").val().split(" ")).each(function () {
                                             $(li).html().replace($('#search').val(), "<span class='highlight'>" + $('#search').val() + "</span>");

@@ -2,7 +2,7 @@
 
 // constante que tomará los valores de los actions que necesitan ser verificados 
 const ACTIONS = array(
-    "USER" => array("remove", "readUser", "reportUser", "updateProfile"),
+    "USER" => array("remove", "readUser", "reportUser", "updateProfile", "paginateRequests"),
     "GUEST" => array("index", "login", "register"),
     "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
         "paginateComments","createHousingTypes","updateHousingTypes","paginateHousingTypes","removeHousingTypes",
@@ -18,7 +18,7 @@ define("ACCION_DEFECTO", "index");
 // ficheros
 define("MAX_UPLOAD", 150000);
 const IMAGE_FORMAT = array('image/gif', 'image/jpeg', 'image/png', 'image/jpg');
-define("IMAGE_AD_URI", "view/images/ads");
+define("IMAGE_AD_URI", "view/images/anuncios");
 // estados
 const STATES = array(
     "NEUTRO" => 1,
@@ -34,3 +34,7 @@ const ROLES = array(
     1 => "ADMIN",
     0 => "USER",
 );
+
+global $lang;
+
+const FOOTER_ABSOLUTE = array('login','profile');

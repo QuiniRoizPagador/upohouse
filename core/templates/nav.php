@@ -9,19 +9,16 @@
         </button>
 
         <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0" id="nav">
-            
+
             <ul class="navbar-nav mr-auto navbar-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= $lang['comprar'] ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><?= $lang['alquilar'] ?></a>
+                    <a class="nav-link" href="<?= $helper->url("ad", "listAds") ?>"><i class="fa fa-hotel"></i> <?= $lang['anuncios'] ?></a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto navbar-right">
                 <?php if (verifySession()) { ?>
                     <li class = "nav-item">
-                        <a class="nav-link " href="#"><i class='fa fa-inbox'></i><?= $lang['mensajes'] ?></a>
+                        <a class="nav-link " href="<?= $helper->url("user", "readUser", array("uuid" => $_SESSION['uuid'])) ?>"><i class='fa fa-user'></i> <?= $lang['profile'] ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $helper->url("session", "logout"); ?>"><?= $lang['cerrar sesion'] ?></a>
@@ -37,7 +34,7 @@
                     ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $helper->url("admin", "dashboard"); ?>&show=users">
-                            <i class='fa fa-dashboard'></i></a>
+                            <i class='fa fa-wrench'></i></a>
                     </li>
                 <?php }
                 ?>

@@ -70,7 +70,7 @@ class AdminController extends AbstractController {
         $allAds = $this->adModel->getAllPaginated();
 //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
-            'title' => "P&aacute;gina de Gesti&oacute;n",
+            'title' => "dashboard",
             "allAds" => $allAds,
             "numAds" => $numAds,
             "errors" => $errors,
@@ -78,7 +78,7 @@ class AdminController extends AbstractController {
         ));
     }
 
-    private function users($errors, $show, $pag) {
+    private function users($errors, $show, $pag = NULL) {
 //TODO: según el usuario se mostrará la dashboard del admin 
 // por defecto o su página de administración básica
 //Conseguimos todos los usuarios
@@ -90,7 +90,7 @@ class AdminController extends AbstractController {
         $countRegistrations = $this->userModel->countRegistrations();
 //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
-            'title' => "P&aacute;gina de Gesti&oacute;n",
+            'title' => "dashboard",
             "allusers" => $allusers,
             "numUsers" => $numUsers,
             "errors" => $errors,
@@ -144,7 +144,7 @@ class AdminController extends AbstractController {
 
 //Cargamos la vista index y le pasamos valores
             $this->view("dashboard", array(
-                'title' => "P&aacute;gina de Gesti&oacute;n",
+                'title' => "dashboard",
                 "allusers" => $allusers,
                 "numUsers" => $numUsers,
                 "errors" => $errors,
@@ -195,7 +195,12 @@ class AdminController extends AbstractController {
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors, $_POST['pag']);
+            if (isset($_POST['pag'])) {
+                $pag = $_POST['pag'];
+            } else {
+                $pag = NULL;
+            }
+            $this->dashboard($errors, $pag);
         }
     }
 
@@ -314,7 +319,7 @@ class AdminController extends AbstractController {
                 $allHousingTypes = $this->housingTypeModel->getAllPaginated(0);
 //Cargamos la vista index y le pasamos valores
                 $this->view("dashboard", array(
-                    'title' => "P&aacute;gina de Gesti&oacute;n",
+                    'title' => "dashboard",
                     "allHousingTypes" => $allHousingTypes,
                     "numHousingTypes" => $numHousingTypes,
                     "errors" => $errors,
@@ -433,7 +438,12 @@ class AdminController extends AbstractController {
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors, $_POST['pag']);
+            if (isset($_POST['pag'])) {
+                $pag = $_POST['pag'];
+            } else {
+                $pag = NULL;
+            }
+            $this->dashboard($errors, $pag);
         }
     }
 
@@ -463,7 +473,12 @@ class AdminController extends AbstractController {
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         } else {
-            $this->dashboard($errors, $_POST['pag']);
+            if (isset($_POST['pag'])) {
+                $pag = $_POST['pag'];
+            } else {
+                $pag = NULL;
+            }
+            $this->dashboard($errors, $pag);
         }
     }
 
@@ -477,7 +492,7 @@ class AdminController extends AbstractController {
         $countComments = $this->commentModel->countRegistrationComments(FALSE);
 
         $this->view("dashboard", array(
-            'title' => "P&aacute;gina de Gesti&oacute;n",
+            'title' => "dashboard",
             "allComments" => $allComments,
             "numComments" => $numComments,
             "countComments" => $countComments,
@@ -495,7 +510,7 @@ class AdminController extends AbstractController {
         $numOperationTypes = $this->operationTypeModel->countOperationTypes(FALSE);
         $allOperationTypes = $this->operationTypeModel->getAllPaginated(0, FALSE);
         $this->view("dashboard", array(
-            'title' => "P&aacute;gina de Gesti&oacute;n",
+            'title' => "dashboard",
             "numHousingTypes" => $numHousingTypes,
             "allHousingTypes" => $allHousingTypes,
             "numOperationTypes" => $numOperationTypes,

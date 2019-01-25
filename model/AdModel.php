@@ -38,4 +38,20 @@ class AdModel extends AbstractModel {
         return $this->adDao->countGlobalSearch($str);
     }
 
+    public function accept($ad_id, $req_id) {
+        return $this->adDao->accept($ad_id, $req_id);
+    }
+
+    public function getTop() {
+        return $this->adDao->getTop();
+    }
+
+    public function listAds($house, $operation, $pag) {
+        return $this->adDao->listAds($house, $operation, $pag);
+    }
+
+    public function countListAds($house, $operation) {
+         return $this->adDao->countListAds($house, $operation);
+    }
+
 }

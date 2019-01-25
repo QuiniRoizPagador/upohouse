@@ -14,4 +14,12 @@ class ImageModel extends AbstractModel {
         parent::__construct($this->imageDao);
     }
 
+    public function deleteAllByAd($id) {
+        return $this->imageDao->deleteAllByAd($id);
+    }
+    
+    public function readByAd($id) {
+        return $this->imageDao->readByAd($id);
+    }
+
 }

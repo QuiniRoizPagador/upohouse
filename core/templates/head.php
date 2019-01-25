@@ -8,6 +8,7 @@ if (isset($_GET['lang'])) {
 
 if (isset($_SESSION['lang'])) {
     $lang = $_SESSION['lang'];
+    $GLOBALS['lang'] = $lang;
     if (is_file("config/lang/$lang.php") && file_exists("config/lang/$lang.php")) {
         require_once "config/lang/$lang.php";
     } else {
@@ -17,14 +18,14 @@ if (isset($_SESSION['lang'])) {
     require_once 'config/lang/es.php';
 }
 
-function to_time_ago($time) {
-
+function to_time_ago($time, &$lang) {
     $diff = time() - $time;
 
     if ($diff < 1) {
-        return 'less than 1 second ago';
+        return $lang['less than 1 second'];
     }
-
+    $prefix = $lang['prefix_ago'];
+    $suffix = $lang['suffix_ago'];
     $time_rules = array(
         12 * 30 * 24 * 60 * 60 => 'year',
         30 * 24 * 60 * 60 => 'month',
@@ -39,8 +40,8 @@ function to_time_ago($time) {
 
         if ($div >= 1) {
             $t = round($div);
-            return $t . ' ' . $str .
-                    ( $t > 1 ? 's' : '' ) . ' ago';
+            return $prefix . " " . $t . ' ' . $lang[$str .
+                    ( $t > 1 ? 's' : '' )] . $suffix;
         }
     }
 }
@@ -69,13 +70,16 @@ function error($text) {
          */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $title ?></title>
+        <title><?php echo $lang[$title] ?></title>
         <link rel="icon" href="view/images/house.ico">
         <link rel="stylesheet" href="view/assets/lib/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="view/assets/css/product.css">
+        <link rel="stylesheet" href="view/assets/lib/font-awesome/css/all.min.css">
+        <link href="view/assets/lib/font-awesome/css/brands.min.css" rel="stylesheet">
+        <link href="view/assets/lib/font-awesome/css/solid.min.css" rel="stylesheet">
+        <link href="view/assets/css/main.css" rel="stylesheet">
         <script src='view/assets/js/global.js'></script>
         <script src="view/assets/lib/jquery/jquery.min.js"></script>
+
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -84,87 +88,13 @@ function error($text) {
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <style>
-            body{
-                min-height: 100vh;
-                position: relative;
-                margin: 0;
-            }
-            .content-center{
-                margin:0 auto;
-            }
-            .footer-absolute{
-                position: absolute;
-            }
-            .footer{
-                bottom: 0;
-                width: 100%;
-                padding: 2%;
-            }
-            @media (max-width: 575.98px){
-                .footer-absolute{
-                    position: relative;
-                }
-            }
-            .resultado{
-                text-decoration: none;  
-                white-space: normal;
-            }
-            #searchList{
-                display: none;
-                width: 100%; 
-            }
-            #divSearch{
-                display:flex;
-                align-items: center;
-                justify-content: center;
-            }
-            @media (min-width:992px) {
-                .navbar-nav.navbar-center {
-                    position: absolute;
-                    left: 50%;
-                    transform: translatex(-50%);
-                }
-                .navbar-nav.navbar-right {
-                    position: absolute;
-                    right: 0%;
-                    transform: translatex(-50%);
-                }
-            }
 
-        </style>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="view/assets/lib/popper/popper.min.js"></script>
+        <script src="view/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="view/assets/lib/chartjs/Chart.min.js"></script>
+        <script src="view/assets/lib/zoom/jquery.zoom.min.js"></script>
         <script src="view/assets/js/charts.js"></script>
         <script src="view/assets/js/searcher.js"></script>
-        <style>
-            .jumbotron{
-                background-image: url('view/images/jumbotron.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-                padding: 10rem 2rem;
-                margin:0;
-            }
-            .site-header{
-                background-color: inherit;
-            }
-            .site-header a{
-                /* color:black;*/
-            }
-            .searcher {
-                width: 130px;
-                -webkit-transition: width 0.4s ease-in-out;
-                transition: width 0.4s ease-in-out;
-            }
-
-            /* When the input field gets focus, change its width to 100% */
-            .searcher:focus {
-                width: 100%;
-            }
-        </style>
         <script>
             var base = "<?= $_SERVER['REQUEST_URI'] ?>";
 <?php
@@ -196,6 +126,12 @@ if (isset($_GET['show'])) {
         case "comentarios":
             $count = $countComments;
             break;
+        case "ads":
+            $count = $numAds;
+            break;
+        case "tipos":
+            $count = $numOperationTypes;
+            break;
         case "users":
         default:
             $count = $countRegistrations;
@@ -218,9 +154,11 @@ if (isset($count)) {
 ?>
 
         </script>
+        <script src="view/assets/js/timeago.js"></script>
         <script src="view/assets/js/pagination.js"></script>
         <script src="view/assets/js/localization.js"></script>
         <script src="view/assets/js/validations.js"></script>
+        <script src="view/assets/js/zoom.js"></script>
     </head>
     <body class="<?= $title ?>">
         <?php if (!verifyIsLogin()) { ?>
@@ -228,7 +166,7 @@ if (isset($count)) {
                 <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-body text-center">
-                            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
                         </div>
 
                     </div>

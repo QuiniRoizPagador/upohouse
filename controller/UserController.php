@@ -12,12 +12,14 @@ class UserController extends AbstractController {
     private $userModel;
     private $adModel;
     private $commentModel;
+    private $requestModel;
 
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
         $this->adModel = new AdModel();
         $this->commentModel = new CommentModel();
+        $this->requestModel = new RequestModel();
     }
 
     /**
@@ -28,8 +30,10 @@ class UserController extends AbstractController {
         // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
         //Cargamos la vista index y le pasamos valores
+        $ads = $this->adModel->getTop();
         $this->view("index", array(
-            'title' => "P&aacute;gina principal"
+            'title' => "mainpage",
+            'ads' => $ads
         ));
     }
 
@@ -43,11 +47,15 @@ class UserController extends AbstractController {
             } else {
                 $userAds = $this->adModel->countUserAds($user->id);
                 $userComments = $this->commentModel->countUserComments($user->id);
+                $numRequests = $this->requestModel->countUserRequests($user->id);
+                $requests = $this->requestModel->listUserRequest($user);
                 $this->view("profile", array(
-                    'title' => "Perfil $user->name",
+                    'title' => "profile",
                     "user" => $user,
                     "userAds" => $userAds,
-                    "userComments" => $userComments
+                    "userComments" => $userComments,
+                    "requests" => $requests,
+                    "numRequests" => $numRequests
                 ));
             }
         } else {

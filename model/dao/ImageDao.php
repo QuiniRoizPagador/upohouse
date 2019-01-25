@@ -11,9 +11,10 @@ class ImageDao extends AbstractDao {
     }
 
     public function create($obj) {
-        $query = "INSERT INTO $this->table (`uuid`, `ad_id`, `image`)
-                VALUES(?, ?, ?)";
-        $data = array("sis", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(), "image" => $obj->getImage());
+        $query = "INSERT INTO $this->table (`uuid`, `ad_id`, `image`, `thumbnail`)
+                VALUES(?, ?, ?, ?)";
+        $data = array("siss", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(),
+            "image" => $obj->getImage(), "thumbnail" => $obj->getThumbnail());
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
@@ -23,9 +24,31 @@ class ImageDao extends AbstractDao {
         if (trim($obj->getImage()) == '') {
             $obj->setImage($prev->image);
         }
-        $query = "UPDATE $this->table SET image = ? WHERE uuid = ?";
-        $data = array("ss", "image" => $obj->getImage(), "uuid" => $obj->getUuid());
+        if (trim($obj->getThumbnail()) == '') {
+            $obj->setThumbnail($prev->image);
+        }
+        $query = "UPDATE $this->table SET image = ?, `thumbnail` = ? WHERE uuid = ?";
+        $data = array("sss", "image" => $obj->getImage(), "thumbnail" => $obj->getThumbnail(), "uuid" => $obj->getUuid());
         $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
+    public function deleteAllByAd($id) {
+        $query = "DELETE FROM $this->table WHERE ad_id = ?";
+        $data = array('i', "id" => $id);
+        $res = $this::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
+    public function readByAd($id) {
+        $query = "SELECT * FROM $this->table WHERE ad_id = ?";
+        $data = array('s', "ad_id" => $id);
+        $resultSet = $this->preparedStatement($query, $data);
+        $res = array();
+        while ($row = $resultSet->fetch_object()) {
+            $res[] = $row;
+        }
+        mysqli_free_result($resultSet);
         return $res;
     }
 

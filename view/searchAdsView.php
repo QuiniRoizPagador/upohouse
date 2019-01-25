@@ -13,8 +13,8 @@ require_once 'core/templates/nav.php';
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <picture class="text-center">
-                                <source srcset="view/images/home.png" type="image/svg+xml">
-                                <img src="view/images/home.png" class="img-fluid img-thumbnail" alt="Card Image">
+                                <source srcset="<?= isset($result->thumbnail)?$result->thumbnail:"view/images/home.png" ?>" type="image/svg+xml">
+                                <img src="<?= isset($result->thumbnail)?$result->thumbnail:"view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
                             </picture>
                             <div class="card-body">
                                 <p class="card-text">
@@ -33,7 +33,7 @@ require_once 'core/templates/nav.php';
                                     <div class="btn-group">
                                         <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
                                     </div>
-                                    <small class="text-muted"><?= to_time_ago(strtotime($result->timestamp)) ?></small>
+                                    <small class="text-muted"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
                                 </div>
                             </div>
                         </div>

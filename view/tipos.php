@@ -78,7 +78,7 @@
                             <td><?= $housingType->id; ?> </td>
                             <td><?= $housingType->name; ?> </td>
                             <td>
-                                <button data-toggle="modal" type="button" data-target="#edit<?= $housingType->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-pencil"></i></button>
+                                <button data-toggle="modal" type="button" data-target="#edit<?= $housingType->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-edit"></i></button>
 
                                 <div tabindex="-1" id="edit<?= $housingType->uuid ?>" class="modal fade">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -126,7 +126,7 @@
                             </td>
                             <td>
                                 <button data-toggle="modal" data-target="#remove<?= $housingType->uuid ?>"
-                                        class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                        class="btn btn-danger"><i class="fa fa-window-close"></i></button>
 
 
 
@@ -145,7 +145,7 @@
                                             <div class="modal-footer">
                                                 <form method="post" action="<?= $helper->url("admin", "removeHousingType", array("show" => "tipos")); ?>">
                                                     <input type="hidden" value="<?php echo $housingType->uuid; ?>" name="uuid" />
-                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                 </form>
                                             </div>
@@ -261,7 +261,7 @@
                             <td><?= $OperationType->id; ?> </td>
                             <td><?= $OperationType->name; ?> </td>
                             <td>
-                                <button data-toggle="modal" type="button" data-target="#edit2<?= $OperationType->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-pencil"></i></button>
+                                <button data-toggle="modal" type="button" data-target="#edit2<?= $OperationType->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-edit"></i></button>
 
                                 <div tabindex="-1" id="edit2<?= $OperationType->uuid ?>" class="modal fade">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -309,7 +309,7 @@
                             </td>
                             <td>
                                 <button data-toggle="modal" data-target="#remove2<?= $OperationType->uuid ?>"
-                                        class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                        class="btn btn-danger"><i class="fa fa-window-close"></i></button>
 
 
 
@@ -328,7 +328,7 @@
                                             <div class="modal-footer">
                                                 <form method="post" action="<?= $helper->url("admin", "removeOperationType", array("show" => "tipos")); ?>">
                                                     <input type="hidden" value="<?php echo $OperationType->uuid; ?>" name="uuid" />
-                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                    <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                 </form>
                                             </div>

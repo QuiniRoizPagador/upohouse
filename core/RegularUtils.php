@@ -17,10 +17,46 @@ class RegularUtils {
         $imagesAmount = count($field["name"]);
         for ($i = 0; $i < $imagesAmount; $i++) {
             $fileUrl = $url . "/" . $field["name"][$i];
+            $fileThumbnailUrl = $url . "/thumbnails_" . $field["name"][$i];
             move_uploaded_file($field["tmp_name"][$i], $fileUrl);
-            $images[] = $fileUrl;
+            RegularUtils::resize_image($fileUrl, $fileThumbnailUrl, 200, 200);
+            $images[] = array("image" => $fileUrl, "thumbnail" => $fileThumbnailUrl);
         }
         return $images;
+    }
+
+    static function resize_image($file, $destiny, $w, $h) {
+        copy($file, $destiny);
+        list($width, $height) = getimagesize($destiny);
+        $r = $width / $height;
+
+        if ($w / $h > $r) {
+            $newwidth = $h * $r;
+            $newheight = $h;
+        } else {
+            $newheight = $w / $r;
+            $newwidth = $w;
+        }
+        switch (mime_content_type($destiny)) {
+            case "image/png":
+                $src = imagecreatefrompng($destiny);
+                break;
+            case "image/jpg":
+            case "image/jpeg":
+                $src = imagecreatefromjpeg($destiny);
+                break;
+        }
+        $dst = imagecreatetruecolor($newwidth, $newheight);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+        switch (mime_content_type($destiny)) {
+            case "image/png":
+                imagepng($dst, $destiny);
+                break;
+            case "image/jpg":
+            case "image/jpeg":
+                imagejpeg($dst, $destiny);
+                break;
+        }
     }
 
     static public function removeAdImages($adId) {

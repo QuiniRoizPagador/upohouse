@@ -120,7 +120,7 @@
         ?>
 
         <div class="table-responsive">
-            <table class="table table-responsive-sm">
+            <table class="table table-striped table-sm">
                 <thead>
                     <tr>
                         <th>Id </th>
@@ -206,7 +206,7 @@
                                                 </div>
                                             </div>
 
-                                            <br>
+                                            <br />
                                             <div class="text-center">
                                                 <?php
                                                 if ($user->user_role != ROLES['ADMIN']) {
@@ -228,13 +228,13 @@
                                                     }
                                                     ?>
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['eliminar'] ?>">
-                                                        <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                                        <button type="button" data-toggle="modal" data-target="#remove<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-window-close "></i></button>
                                                     </span>
                                                     <?php
                                                 }
                                                 ?>
                                                 <span class="btn" data-toggle="tooltip" title="<?= $lang['editar'] ?>">
-                                                    <button type="button" data-toggle="modal" data-target="#edit<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" data-toggle="modal" data-target="#edit<?= $user->uuid ?>" data-dismiss="modal" class="btn btn-success"><i class="fa fa-edit"></i></button>
                                                 </span>
                                             </div>
                                             <div class="modal-footer">
@@ -313,7 +313,7 @@
                                                 <div class="modal-footer">
                                                     <form method="post" action="<?= $helper->url("admin", "removeUser", array("show" => "user")); ?>">
                                                         <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
-                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-remove"></i> <?= $lang['eliminar'] ?></button>
+                                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-window-close"></i> <?= $lang['eliminar'] ?></button>
                                                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#search<?= $user->uuid ?>" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                                     </form>
                                                 </div>
