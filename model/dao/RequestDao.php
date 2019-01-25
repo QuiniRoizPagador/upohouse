@@ -11,10 +11,10 @@ class RequestDao extends AbstractDao {
     }
 
     public function create($obj) {
-        $query = "INSERT INTO $this->table (`uuid`, `content`, `ad_id`,`user_id`, `state`)
-                VALUES(?, ?, ?, ?, ?)";
-        $data = array("ssiii", "uuid" => $obj->getUuid(), "content" => $obj->getContent(), "ad_id" => $obj->getAd_id(),
-            "user_id" => $obj->getUser_id(), "state" => $obj->getState());
+        $query = "INSERT INTO $this->table (`uuid`, `content`, `ad_id`,`user_id`)
+                VALUES(?, ?, ?, ?)";
+        $data = array("ssii", "uuid" => $obj->getUuid(), "content" => $obj->getContent(), "ad_id" => $obj->getAd_id(),
+            "user_id" => $obj->getUser_id());
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
@@ -119,6 +119,23 @@ class RequestDao extends AbstractDao {
         $data = array("is", "state" => STATES['DESCARTADO'], "uuid" => $req_uuid);
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
+    }
+
+    public function verifyExist($userId, $adId) {
+        $query = "SELECT 
+            COUNT(*) as count 
+        FROM 
+            $this->table 
+        WHERE 
+            user_id = ?
+        AND
+            ad_id = ?";
+
+        $data = array("ii", "user_id" => $userId, "ad_id" => $adId);
+        $resultSet = parent::preparedStatement($query, $data);
+        $count = mysqli_fetch_object($resultSet)->count;
+        mysqli_free_result($resultSet);
+        return $count != 0;
     }
 
 }

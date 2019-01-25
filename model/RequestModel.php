@@ -34,4 +34,8 @@ class RequestModel extends AbstractModel {
         return $this->requestDao->refuseRequest($req_uuid);
     }
 
+    public function verifyExist($userId, $adId) {
+        return $this->requestDao->verifyExist($userId, $adId);
+    }
+
 }

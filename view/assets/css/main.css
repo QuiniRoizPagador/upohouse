@@ -80,3 +80,7 @@ body{
     background: transparent;
     border: none;
 }
+
+.modal-gallery-header{
+    border-bottom: none;
+}
