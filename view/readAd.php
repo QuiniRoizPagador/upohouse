@@ -143,7 +143,6 @@
                                 </div>
                                 <form method="post" action="<?= $helper->url("request", "createRequest") ?>" class="formUser">
                                     <div class="modal-body">
-                                        <input type="hidden" name="uuid" value="<?= $_SESSION['uuid'] ?>" />
                                         <input type="hidden" name="ad_uuid" value="<?= $ad->uuid ?>" />
                                         <div class="form-group">
                                             <label for="content" class="col-form-label"><?= $lang["descripcion"] ?>:</label>
