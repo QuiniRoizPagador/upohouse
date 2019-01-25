@@ -419,6 +419,279 @@ function cargarOperationType(operationType) {
     return tr;
 }
 
+function cargarReportUser(report)
+{
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", report.id, clase));
+    tr.append(create("td", report.title, clase));
+    tr.append(create("td", report.description, clase));
+    tr.append(create("td", report.login, clase));
+    tr.append(create("td", report.login_reported, clase));
+    tr.append(create("td", report.timestamp, clase));
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#searchReportUser" + report.uuid + "' class='btn btn-info btn-sm'/>");
+    button.append($("<span class='fa fa-eye'/>"));
+    td.append(button);
+
+    var modal = create("div id='searchReportUser" + report.uuid + "' tabindex='-1' role='dialog' aria-labelledby='search<" + report.uuid + "' aria-hidden='true'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", report.id + " - " + report.title, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+
+    var modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+    var tabla = create("table", "", "table table-striped");
+
+    var tbody = $("<tbody />");
+    tbody.append(createTR("ID", report.id));
+    tbody.append(createTR("UUID", report.uuid));
+    tbody.append(createTR(LANG['titulo'], report.title));
+    tbody.append(createTR(LANG['descripcion'], report.description));
+    tbody.append(createTR(LANG['user'], report.login));
+    tbody.append(createTR(LANG['usuario_reported'], report.login_reported));
+    tbody.append(createTR(LANG['fecha registro'], report.timestamp));
+
+    tabla.append(tbody);
+    modal_body.append(tabla);
+    modal_body.append($("<br />"));
+
+    var buttons = create("div", "", "text-center");
+    modal_body.append(buttons);
+    var form = $('<form method="post" action="index.php?controller=Admin&action=acceptReportUser&show=denuncias">');
+    form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="user_uuid" />'));
+    form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form);
+    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    form.append(span);
+    var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportUser&show=denuncias">');
+    form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="user_uuid" />'));
+    form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form2);
+    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    form2.append(span2);
+    var footer = create("div", "", "modal-footer");
+    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    modal_body.append(footer);
+    td.append(modal);
+    tr.append(td);
+    console.log(tr.html());
+
+    return tr;
+}
+
+function cargarReportAd(report)
+{
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", report.id, clase));
+    tr.append(create("td", report.title, clase));
+    tr.append(create("td", report.description, clase));
+    tr.append(create("td", report.login, clase));
+    tr.append(create("td", report.ad_reported, clase));
+    tr.append(create("td", report.timestamp, clase));
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#searchReportAd" + report.uuid + "' class='btn btn-info btn-sm'/>");
+    button.append($("<span class='fa fa-eye'/>"));
+    td.append(button);
+
+    var modal = create("div id='searchReportAd" + report.uuid + "' tabindex='-1' role='dialog' aria-labelledby='search<" + report.uuid + "' aria-hidden='true'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", report.id + " - " + report.title, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+
+    var modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+    var tabla = create("table", "", "table table-striped");
+
+    var tbody = $("<tbody />");
+    tbody.append(createTR("ID", report.id));
+    tbody.append(createTR("UUID", report.uuid));
+    tbody.append(createTR(LANG['titulo'], report.title));
+    tbody.append(createTR(LANG['descripcion'], report.description));
+    tbody.append(createTR(LANG['user'], report.login));
+    tbody.append(createTR(LANG['anuncio_reported'], report.ad_reported));
+    tbody.append(createTR(LANG['fecha registro'], report.timestamp));
+
+    tabla.append(tbody);
+    modal_body.append(tabla);
+    modal_body.append($("<br />"));
+
+    var buttons = create("div", "", "text-center");
+    modal_body.append(buttons);
+    var form = $('<form method="post" action="index.php?controller=Admin&action=acceptReportAd&show=denuncias">');
+    form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="ad_uuid" />'));
+    form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form);
+    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    form.append(span);
+    var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportAd&show=denuncias">');
+    form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="ad_uuid" />'));
+    form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form2);
+    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    form2.append(span2);
+    var footer = create("div", "", "modal-footer");
+    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    modal_body.append(footer);
+    td.append(modal);
+    tr.append(td);
+    console.log(tr.html());
+
+    return tr;
+}
+
+function cargarReportComment(report)
+{
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", report.id, clase));
+    tr.append(create("td", report.title, clase));
+    tr.append(create("td", report.description, clase));
+    tr.append(create("td", report.login, clase));
+    tr.append(create("td", report.comment_reported, clase));
+    tr.append(create("td", report.timestamp, clase));
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#searchReportComment" + report.uuid + "' class='btn btn-info btn-sm'/>");
+    button.append($("<span class='fa fa-eye'/>"));
+    td.append(button);
+
+    var modal = create("div id='searchReportComment" + report.uuid + "' tabindex='-1' role='dialog' aria-labelledby='search<" + report.uuid + "' aria-hidden='true'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", report.id + " - " + report.title, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+
+    var modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+    var tabla = create("table", "", "table table-striped");
+
+    var tbody = $("<tbody />");
+    tbody.append(createTR("ID", report.id));
+    tbody.append(createTR("UUID", report.uuid));
+    tbody.append(createTR(LANG['titulo'], report.title));
+    tbody.append(createTR(LANG['descripcion'], report.description));
+    tbody.append(createTR(LANG['user'], report.login));
+    tbody.append(createTR(LANG['comentario_reported'], report.comment_reported));
+    tbody.append(createTR(LANG['fecha registro'], report.timestamp));
+
+    tabla.append(tbody);
+    modal_body.append(tabla);
+    modal_body.append($("<br />"));
+
+    var buttons = create("div", "", "text-center");
+    modal_body.append(buttons);
+    var form = $('<form method="post" action="index.php?controller=Admin&action=acceptReportComment&show=denuncias">');
+    form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="comment_uuid" />'));
+    form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form);
+    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    form.append(span);
+    var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportComment&show=denuncias">');
+    form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="comment_uuid" />'));
+    form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form2);
+    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    form2.append(span2);
+    var footer = create("div", "", "modal-footer");
+    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    modal_body.append(footer);
+    td.append(modal);
+    tr.append(td);
+    console.log(tr.html());
+
+    return tr;
+}
+
+function cargarRequestComment(report)
+{
+    var clase = "";
+    var tr = $("<tr/>");
+    tr.append(create("td", report.id, clase));
+    tr.append(create("td", report.title, clase));
+    tr.append(create("td", report.description, clase));
+    tr.append(create("td", report.login, clase));
+    tr.append(create("td", report.request_reported, clase));
+    tr.append(create("td", report.timestamp, clase));
+    var td = create("td", "", clase);
+    var button = $("<button data-toggle='modal' data-target='#searchReportRequests" + report.uuid + "' class='btn btn-info btn-sm'/>");
+    button.append($("<span class='fa fa-eye'/>"));
+    td.append(button);
+
+    var modal = create("div id='searchReportRequests" + report.uuid + "' tabindex='-1' role='dialog' aria-labelledby='search<" + report.uuid + "' aria-hidden='true'", "", "modal fade");
+    modal_dialog = $("<div class='modal-dialog modal-dialog-centered modal-lg' />");
+    modal.append(modal_dialog);
+    var modal_card = $("<div class='modal-content card' />");
+    modal_dialog.append(modal_card);
+    var modal_header = $("<div class='card-header modal-header' />");
+    modal_header.append(create("h5", report.id + " - " + report.title, "modal-title"));
+    modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
+    modal_card.append(modal_header);
+
+    var modal_body = $("<div class='card-body modal-body' />");
+    modal_card.append(modal_body);
+    var tabla = create("table", "", "table table-striped");
+
+    var tbody = $("<tbody />");
+    tbody.append(createTR("ID", report.id));
+    tbody.append(createTR("UUID", report.uuid));
+    tbody.append(createTR(LANG['titulo'], report.title));
+    tbody.append(createTR(LANG['descripcion'], report.description));
+    tbody.append(createTR(LANG['user'], report.login));
+    tbody.append(createTR(LANG['request_reported'], report.request_reported));
+    tbody.append(createTR(LANG['fecha registro'], report.timestamp));
+
+    tabla.append(tbody);
+    modal_body.append(tabla);
+    modal_body.append($("<br />"));
+
+    var buttons = create("div", "", "text-center");
+    modal_body.append(buttons);
+    var form = $('<form method="post" action="index.php?controller=Admin&action=acceptReportRequest&show=denuncias">');
+    form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="request_uuid" />'));
+    form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form);
+    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    form.append(span);
+    var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportRequest&show=denuncias">');
+    form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="request_uuid" />'));
+    form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
+    buttons.append(form2);
+    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>'));
+    form2.append(span2);
+    var footer = create("div", "", "modal-footer");
+    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    modal_body.append(footer);
+    td.append(modal);
+    tr.append(td);
+    console.log(tr.html());
+
+    return tr;
+}
+
+
 (function ($) {
     $.fn.paginateUsers = function () {
         this.each(function () {
@@ -438,7 +711,8 @@ function cargarOperationType(operationType) {
                                 for (var i = 0; i < users.length; i++) {
                                     $("#cuerpo").append(cargarUsuario(users[i], num - 1));
                                 }
-                                $(".formUpdateUser").validate({empty: true});
+                                $(".formUpdateUser").validate({
+                                    empty: true});
                             } catch (Exception) {
 
                             }
@@ -466,7 +740,6 @@ function cargarOperationType(operationType) {
                             try {
                                 $("#cuerpo").empty();
                                 var ads = data;
-                                console.log(ads);
                                 for (var i = 0; i < ads.length; i++) {
                                     $("#cuerpo").append(cargarAnuncio(ads[i]));
                                 }
@@ -570,8 +843,8 @@ function cargarOperationType(operationType) {
             });
         });
     };
-    
-        $.fn.paginateReportsUsers = function ()
+
+    $.fn.paginateReportsUsers = function ()
     {
         this.each(function () {
             $(this).click(function () {
@@ -586,7 +859,7 @@ function cargarOperationType(operationType) {
                         function (data, status) {
                             try {
                                 $("#cuerpo").empty();
-                                var usersReports = $.parseJSON(data);
+                                var usersReports = data;
                                 for (var i = 0; i < usersReports.length; i++) {
                                     $("#cuerpo").append(cargarReportUser(usersReports[i]));
                                 }
@@ -600,6 +873,97 @@ function cargarOperationType(operationType) {
             });
         });
     };
+
+    $.fn.paginateReportsAds = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagReportsAd").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateReportsAd";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'reportsAdPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo2").empty();
+                                var adReports = data;
+                                for (var i = 0; i < adReports.length; i++) {
+                                    $("#cuerpo2").append(cargarReportAd(adReports[i]));
+                                }
+                            } catch (Exception) {
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
+
+    $.fn.paginateReportsComments = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagReportsComment").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateReportsComment";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'reportsCommentPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo3").empty();
+                                var commentReports = data;
+                                for (var i = 0; i < commentReports.length; i++) {
+                                    $("#cuerpo3").append(cargarReportComment(commentReports[i]));
+                                }
+                            } catch (Exception) {
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
+
+    $.fn.paginateReportsRequests = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                $(".pagReportsRequest").parent().removeClass("active");
+                $("#lockModal").modal('show');
+                var url = "index.php?controller=WS&action=paginateReportsRequest";
+                var num = $(this).text();
+                $.post(url,
+                        {
+                            'reportsRequestPag': num - 1
+                        },
+                        function (data, status) {
+                            try {
+                                $("#cuerpo4").empty();
+                                var requestReports = data;
+                                for (var i = 0; i < requestReports.length; i++) {
+                                    $("#cuerpo4").append(cargarRequestComment(requestReports[i]));
+                                }
+                            } catch (Exception) {
+                            }
+
+                            $("#lockModal").modal("hide");
+                        }
+                );
+                $(this).parent().addClass("active");
+            });
+        });
+    };
+
 })(jQuery);
 
 $(document).ready(function () {
@@ -608,9 +972,12 @@ $(document).ready(function () {
     $(".pagComment").paginateComments();
     $(".pagHousingTypes").paginateHousingTypes();
     $(".pagOperationTypes").paginateOperationTypes();
-    
+
     $(".pagReportsUser").paginateReportsUsers();
-    
-    
+    $(".pagReportsAd").paginateReportsAds();
+    $(".pagReportsComment").paginateReportsComments();
+    $(".pagReportsRequest").paginateReportsRequests();
+
+
     $('[data-toggle="tooltip"]').tooltip();
 });

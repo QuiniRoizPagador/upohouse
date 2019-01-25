@@ -73,7 +73,7 @@
                     <?php
                     for ($i = 0; $i < $numComments / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagComment"><?= $i + 1 ?></a>
                         </li>
                     <?php }

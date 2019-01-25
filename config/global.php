@@ -6,8 +6,9 @@ const ACTIONS = array(
     "GUEST" => array("index", "login", "register"),
     "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
         "paginateComments","createHousingTypes","updateHousingTypes","paginateHousingTypes","removeHousingTypes",
-        "updateOperationTypes","removeOperationType","createOperationTypes","paginateOperationTypes","acceptReportComment","denyReportComment",
-        "acceptReportRequest","denyReportRequest","acceptReportAd","denyReportAd",)
+        "updateOperationTypes","removeOperationType","createOperationTypes","paginateOperationTypes","acceptReportComment",
+        "denyReportComment","acceptReportRequest","denyReportRequest","acceptReportAd","denyReportAd","paginateReportsUser",
+        "paginateReportsAd","paginateReportsComment","paginateReportsRequest",)
 );
 // controlador por defecto
 define("CONTROLADOR_DEFECTO", "user");

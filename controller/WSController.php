@@ -10,6 +10,7 @@ class WSController extends AbstractController {
     private $adModel;
     private $housingTypeModel;
     private $commentModel;
+    private $reportModel;
     private $operationTypeModel;
 
     public function __construct() {
@@ -21,10 +22,11 @@ class WSController extends AbstractController {
         $this->commentModel = new CommentModel();
         $this->housingTypeModel = new HousingTypeModel();
         $this->operationTypeModel = new OperationTypeModel();
+        $this->reportModel = new ReportModel();
     }
 
     public function globalSearch() {
-        // TODO: controlar encapsulando solo los atributos necesarios por seguridad
+// TODO: controlar encapsulando solo los atributos necesarios por seguridad
         if (filter_has_var(INPUT_POST, "str") && trim($_POST['str']) != "") {
             $str = filter_var($_POST['str'], FILTER_SANITIZE_STRING);
             $list = $this->adModel->globalSearch($str);
@@ -107,6 +109,50 @@ class WSController extends AbstractController {
             $allOperationTypes = $this->operationTypeModel->getAllPaginated($num);
             header('Content-type: application/json');
             echo json_encode($allOperationTypes);
+        } else {
+            $this->redirect();
+        }
+    }
+
+    public function paginateReportsUser() {
+        if (filter_has_var(INPUT_POST, "reportsUserPag")) {
+            $num = filter_var($_POST['reportsUserPag'], FILTER_SANITIZE_NUMBER_INT);
+            $allReportsUsers = $this->reportModel->getAllReportUserPaginated($num);
+            header('Content-type: application/json');
+            echo json_encode($allReportsUsers);
+        } else {
+            $this->redirect();
+        }
+    }
+
+    public function paginateReportsAd() {
+        if (filter_has_var(INPUT_POST, "reportsAdPag")) {
+            $num = filter_var($_POST['reportsAdPag'], FILTER_SANITIZE_NUMBER_INT);
+            $allReportsAds = $this->reportModel->getAllReportAdPaginated($num);
+            header('Content-type: application/json');
+            echo json_encode($allReportsAds);
+        } else {
+            $this->redirect();
+        }
+    }
+
+    public function paginateReportsComment() {
+        if (filter_has_var(INPUT_POST, "reportsCommentPag")) {
+            $num = filter_var($_POST['reportsCommentPag'], FILTER_SANITIZE_NUMBER_INT);
+            $allReportsComments = $this->reportModel->getAllReportCommentPaginated($num);
+            header('Content-type: application/json');
+            echo json_encode($allReportsComments);
+        } else {
+            $this->redirect();
+        }
+    }
+
+    public function paginateReportsRequest() {
+        if (filter_has_var(INPUT_POST, "reportsRequestPag")) {
+            $num = filter_var($_POST['reportsRequestPag'], FILTER_SANITIZE_NUMBER_INT);
+            $allReportsRequests = $this->reportModel->getAllReportRequestPaginated($num);
+            header('Content-type: application/json');
+            echo json_encode($allReportsRequests);
         } else {
             $this->redirect();
         }

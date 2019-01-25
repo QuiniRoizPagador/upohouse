@@ -170,7 +170,7 @@
                     <?php
                     for ($i = 0; $i < $numHousingTypes / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagHousingTypes"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -353,7 +353,7 @@
                     <?php
                     for ($i = 0; $i < $numOperationTypes / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagOperationTypes"><?= $i + 1 ?></a>
                         </li>
                     <?php }

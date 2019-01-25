@@ -46,6 +46,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
+                                                <!--HASTA AQUI-->
                                                 <div class="card-body modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
@@ -98,7 +99,7 @@
                                                     </span>
                                                 </form>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="model-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
@@ -123,7 +124,7 @@
                     <?php
                     for ($i = 0; $i < $numReportsUsers / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagReportsUser"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -221,14 +222,14 @@
                                             <div class="text-center">
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportAd", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
-                                                    <input type="hidden" value="<?php echo $reports->ad_reported; ?>" name="ad_uuid" />
+                                                    <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportAd", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
-                                                    <input type="hidden" value="<?php echo $reports->ad_reported; ?>" name="ad_uuid" />
+                                                    <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
                                                     </span>
@@ -260,7 +261,7 @@
                     <?php
                     for ($i = 0; $i < $numReportsAds / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagReportsAd"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -358,14 +359,14 @@
                                             <div class="text-center">
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportComment", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
-                                                    <input type="hidden" value="<?php echo $reports->comment_reported; ?>" name="comment_uuid" />
+                                                    <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportComment", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
-                                                    <input type="hidden" value="<?php echo $reports->comment_reported; ?>" name="comment_uuid" />
+                                                    <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button>
                                                     </span>
@@ -396,7 +397,7 @@
                     <?php
                     for ($i = 0; $i < $numReportsComments / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagReportsComment"><?= $i + 1 ?></a>
                         </li>
                     <?php }
@@ -426,7 +427,7 @@
                         <th><?= $lang["ver"] ?></th>
                     </tr>
                 </thead>
-                <tbody id="cuerpo3">
+                <tbody id="cuerpo4">
                     <?php foreach ($allReportsRequests as $reports) { //recorremos el array de objetos y obtenemos el valor de las propiedades    ?>
                         <tr>
                             <td><?= $reports->id; ?> </td>
@@ -436,7 +437,7 @@
                             <td><?= $reports->request_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
-                                <button data-toggle="modal" data-target="#searchReportRequests<?= $reports->uuid ?>"
+                                <button data-toggle="modal" data-target="#çv<?= $reports->uuid ?>"
                                         class="btn btn-info btn-sm">
                                     <span class="fa fa-eye"></span>
                                 </button>
@@ -492,7 +493,7 @@
                                             <div class="text-center">
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportRequest", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
-                                                    <input type="hidden" value="<?php echo $reports->request_reported; ?>" name="request_uuid" />
+                                                    <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="request_uuid" />
                                                     <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
                                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
@@ -530,7 +531,7 @@
                     <?php
                     for ($i = 0; $i < $numReportsRequests / 10; $i++) {
                         ?>
-                        <li class="page-item <?= $i == 0 ? "active" : "" ?>">
+                        <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagReportsRequest"><?= $i + 1 ?></a>
                         </li>
                     <?php }
