@@ -535,7 +535,7 @@ class AdminController extends AbstractController {
         $numReportsRequests = $this->reportModel->countReportRequests(FALSE);
 
         $this->view("dashboard", array(
-            'title' => "P&aacute;gina de Gesti&oacute;n",
+            'title' => "dashboard",
             "numReportsUsers" => $numReportsUsers,
             "allReportsUsers" => $allReportsUsers,
             "numReportsAds" => $numReportsAds,
