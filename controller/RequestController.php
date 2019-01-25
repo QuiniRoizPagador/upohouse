@@ -71,16 +71,15 @@ class RequestController extends AbstractController {
     }
 
     public function createRequest() {
-        if (verifyIsAdmin() || verifyIsSame()) {
-            $variables = array('content' => "longText", "ad_uuid" => "text", "uuid" => "text");
+        if (verifyIsAdmin()) {
+            $variables = array('content' => "longText", "ad_uuid" => "text");
             $errors = RegularUtils::filtrarPorTipo($variables, "createRequest");
             if (!isset($errors['createRequest'])) {
-                $variables = array('content', 'ad_uuid', 'uuid');
+                $variables = array('content', 'ad_uuid');
                 $filtrado = RegularUtils::sanearStrings($variables);
-                $user = $this->userModel->read($filtrado['uuid']);
                 $ad = $this->adModel->read($filtrado['ad_uuid']);
-                if ($user && $ad) {
-                    $exists = $this->requestModel->verifyExist($user->id, $ad->id);
+                if ($ad) {
+                    $exists = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
                     if (!$exists) {
                         // crear la petición y almacenarla
                         $request = new Request();
@@ -89,7 +88,7 @@ class RequestController extends AbstractController {
 
                         $request->setContent($content);
                         $request->setAd_id($ad->id);
-                        $request->setUser_id($user->id);
+                        $request->setUser_id($_SESSION['id']);
                         $this->requestModel->create($request);
                     }
                 }
