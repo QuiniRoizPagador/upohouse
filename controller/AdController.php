@@ -264,8 +264,12 @@ class AdController extends AbstractController {
         }
     }
 
-    public function read() {
+    public function read($pag = NULL) {
         if (filter_has_var(INPUT_GET, "uuid")) {
+
+            if ($pag == NULL) {
+                $pag = 0;
+            }
             $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
             $ad = $this->adModel->read($uuid);
             if (!isset($ad->uuid)) {
@@ -280,7 +284,8 @@ class AdController extends AbstractController {
                 $hasUserRequest = FALSE;
                 $isSame = FALSE;
                 $comments = $this->commentModel->getComments($ad->id);
-                
+                $numComments = $this->commentModel->countCommentsAd($ad->id);
+
                 if (verifySession()) {
                     $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
                     $isSame = $ad->user_id == $_SESSION['id'];
@@ -296,7 +301,9 @@ class AdController extends AbstractController {
                     "images" => $images,
                     "hasUserRequest" => $hasUserRequest,
                     "isSame" => $isSame,
-                    "comments" => $comments
+                    "comments" => $comments,
+                    "numComments" => $numComments,
+                    "pag" => $pag
                 ));
             }
         } else {

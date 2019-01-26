@@ -61,7 +61,7 @@ function error($text) {
 <html lang="es">
     <head>
         <!-- PRUEBAS -->
-        <base href="//<?= $_SERVER['HTTP_HOST'] ?>/COREPHPMVC/">
+        <base href="//<?= $_SERVER['HTTP_HOST'] ?>/CorePHPMVC/">
 
         <?php /*
          * <!-- PRODUCCIÓN -->

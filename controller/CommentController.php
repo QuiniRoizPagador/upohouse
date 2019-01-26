@@ -27,8 +27,7 @@ class CommentController extends AbstractController{
                 $filtrado = RegularUtils::sanearStrings($values);
                 
                 $ad=$this->adModel->read($filtrado["uuidAd"]);
-                
-                
+                               
                 $comentario = new Comment();
                 $comentario->setAd_id($ad->id);
                 $comentario->setUser_id($_SESSION['id']);

@@ -813,6 +813,20 @@ function cargarReportRequest(report)
     return tr;
 }
 
+function cargarComentarioAd(comentario)
+{
+    var div = $("<div class='media'>");
+    var divCard = $("<div class='card card-body media-body'>")
+    div.append(divCard);
+    divCard.append($("<h5 class='mt-0'>" + comentario.login + "</h5>"));
+    divCard.append($("<p>" + comentario.content + "</p>"));
+    var divContainer = $("<div class='container-fluid'>")
+    divCard.append(divContainer);
+    var small = $("<small class='text-muted float-rigth'>" + time_ago(comentario.timestamp) + "</small>");
+    divContainer.append(small);
+    return div;
+}
+
 (function ($) {
     $.fn.paginateUsers = function () {
         this.each(function () {
@@ -1113,6 +1127,46 @@ function cargarReportRequest(report)
         });
     };
 
+    $.fn.paginateCommentsAd = function ()
+    {
+        this.each(function () {
+            $(this).click(function () {
+                var url = "index.php?controller=WS&action=paginateCommentsAd";
+                var num = $(this).attr('pag');
+                var uuidAd = $(this).attr('uuid');
+                var numComments = $("#numComments").val();
+                var hijos = $("#listComentarios .media").length;
+                if (numComments != hijos)
+                {
+                    $.post(url,
+                            {
+                                'commentsAdPag': num,
+                                'uuid': uuidAd
+                            },
+                            function (data, status) {
+                                try {
+                                    var comentariosAd = data;
+                                    for (var i = 0; i < comentariosAd.length; i++) {
+                                        $("#listComentarios").append(cargarComentarioAd(comentariosAd[i]));
+                                    }
+
+                                } catch (Exception) {
+                                }
+
+                            }
+                    );
+                    $(this).attr('pag', parseInt($(this).attr('pag')) + 1);
+
+
+                } else
+                {
+                    $(".paginacionCommentsAd").hide();
+                }
+            });
+
+        });
+    };
+//http://localhost/CorePHPMVC/index.php?controller=WS&action=paginateCommentsAd&uuid=43e0f023-28a2-41ca-94b8-4580b1873ca2&pagCommentAd=0
 })(jQuery);
 
 $(document).ready(function () {
@@ -1126,6 +1180,7 @@ $(document).ready(function () {
     $(".pagReportsAd").paginateReportsAds();
     $(".pagReportsComment").paginateReportsComments();
     $(".pagReportsRequest").paginateReportsRequests();
+    $(".pagCommentAd").paginateCommentsAd();
 
     $('[data-toggle="tooltip"]').tooltip();
 });

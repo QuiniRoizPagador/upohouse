@@ -173,21 +173,35 @@
         </div>
     </div>
     <br>
-    <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
-        <h2 class="h5"><?= $lang["comentarios"] ?></h2>
-    </div>
-    <div class="row">
-        <form class="col-md-12 col-sm-12" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
-            <div class="form-group">
-                <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
-                <input name="idAd" type="hidden" value="<?= $ad->id ?>">
-                <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
+
+    <?php
+    if (isset($_SESSION["id"])) {
+        ?>
+        <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
+            <h2 class="h5"><?= $lang["comentarios"] ?></h2>
+        </div>
+        <div class="row">
+            <form class="col-md-12 col-sm-12" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
+                <div class="form-group">
+                    <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
+                    <input name="idAd" type="hidden" value="<?= $ad->id ?>">
+                    <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
+                </div>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </form>
+        </div>
+        <br>
+        <?php
+    } else {
+        ?>
+        <div class="media text-center">
+            <div class="card card-body media-body">
+                <h5 class="mt-0"><a href="index/session/login">Inicie sesión para comentar el anuncio</a></h5>
             </div>
-            <button type="submit" class="btn btn-success">Enviar</button>
-        </form>
-    </div>
-    <br>
-    <div>
+        </div>
+    <?php }
+    ?>
+    <div id="listComentarios">
         <?php foreach ($comments as $result) { ?>
             <div class="media">
                 <div class="card card-body media-body">
@@ -200,4 +214,27 @@
             </div>
         <?php } ?>
     </div>
+    <br>
+    <div class="text-xs-center">
+        <!--    <ul class="pagination justify-content-center">
+    
+        <?php
+        /* for ($i = 0; $i < $numComments / 5; $i++) { */
+        ?>
+                    <li class="page-item <?= $pag == $i ? "active" : "" ?>">
+                        <a uuid="<?= $ad->uuid ?>" class="page-link pagCommentAd"><?= $i + 1 ?></a>
+                    </li>
+        <?php /* } */
+        ?>       
+            </ul>-->
+
+
+        <div class="text-center paginacionCommentsAd">
+            <li pag="1" uuid="<?= $ad->uuid ?>" class="btn btn-info pagCommentAd"><i class="fa fa-plus "></i></li>   
+            <input type="hidden" value="<?= $numComments ?>" id="numComments">
+        </div>
+
+
+    </div>
+
 </section>
