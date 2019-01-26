@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Diccionario inglés
+ */
 $lang = array(
     "añadir usuario" => "Add User",
     "añadir anuncio" => "Add Ad",
@@ -125,25 +128,25 @@ $lang = array(
     'year' => "year",
     'month' => "month",
     'day' => "day",
-    'hour'=> "hour",
+    'hour' => "hour",
     'minute' => "minute",
-    'second'=> 'second',
+    'second' => 'second',
     "unidad habitacion" => "rooms",
     "unidad baño" => "baths",
     "modificar anuncio" => "Modify Ad",
     "anuncioModificado" => "Ad has been modified successfully",
     "fotos" => "Pictures",
     'filtros' => 'Filters',
-    'Crear un anuncio'=>'Create an Ad',
-    'Resultados Obtenidos'=>'Results obtained',
-    'dashboard'=> 'Dashboard',
-    'mainpage'=> 'Main Page',
+    'Crear un anuncio' => 'Create an Ad',
+    'Resultados Obtenidos' => 'Results obtained',
+    'dashboard' => 'Dashboard',
+    'mainpage' => 'Main Page',
     'Modificar un anuncio' => 'Edit Ad',
-    'escribir comentario'=>'Writte your comment',
+    'escribir comentario' => 'Writte your comment',
     'interesado' => "I'm interested",
     'actions' => "Actions",
     'activity' => "Activities",
-    'create_report'=> "Create Report",
+    'create_report' => "Create Report",
     "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report."
 );
 

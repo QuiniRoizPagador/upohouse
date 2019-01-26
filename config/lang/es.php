@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Diccionario español
+ */
 $lang = array(
     "añadir usuario" => "A&ntilde;adir Usuario",
     "añadir anuncio" => "A&ntilde;adir Anuncio",
@@ -125,25 +128,25 @@ $lang = array(
     'year' => "a&ntilde;o",
     'month' => "mes",
     'day' => "d&iacute;a",
-    'hour'=> "hora",
+    'hour' => "hora",
     'minute' => "minuto",
-    'second'=> 'segundo',
+    'second' => 'segundo',
     "unidad habitacion" => "habitaciones",
     "unidad baño" => "baños",
     "modificar anuncio" => "Modificar anuncio",
     "anuncioModificado" => "Anuncio modificado con &eacute;xito",
     "fotos" => "Fotos",
     'filtros' => 'Filtros',
-    'Crear un anuncio'=>'Crear un anuncio',
-    'Resultados Obtenidos'=>'Resultados obtenidos',
-    'dashboard'=> 'P&aacute;gina de Gesti&oacute;n',
-    'mainpage'=> 'P&aacute;gina Principal',
+    'Crear un anuncio' => 'Crear un anuncio',
+    'Resultados Obtenidos' => 'Resultados obtenidos',
+    'dashboard' => 'P&aacute;gina de Gesti&oacute;n',
+    'mainpage' => 'P&aacute;gina Principal',
     'Modificar un anuncio' => 'Modificar un anuncio',
-    'escribir comentario'=>'Escriba su comentario',
+    'escribir comentario' => 'Escriba su comentario',
     'interesado' => "Estoy Interesado",
     'actions' => "Acciones",
     'activity' => "Actividades",
-    'create_report'=> "Crear Denuncia",
+    'create_report' => "Crear Denuncia",
     'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte."
 );
 
