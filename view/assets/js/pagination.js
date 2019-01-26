@@ -260,8 +260,9 @@ function cargarComentario(comment) {
     var clase = "";
     var tr = $("<tr/>");
     tr.append(create("td", comment.id, clase));
-    tr.append(create("td", comment.ad_id, clase));
-    tr.append(create("td", comment.user_id, clase));
+    tr.append("<td><a href='index/ad/read&uuid="+comment.uuid_ad+"'><i class='fas fa-images'></i></a></td>");
+    tr.append("<td><a href='index/user/readUser&uuid="+comment.uuid_user+"'>"+comment.login+"</a></td>");
+    
     tr.append(create("td", comment.content, clase));
     tr.append(create("td", comment.timestamp, clase));
     var td = create("td", "", clase);
@@ -605,7 +606,6 @@ function cargarReportUser(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.description, clase));
     tr.append(create("td", report.login, clase));
     tr.append(create("td", report.login_reported, clase));
     tr.append(create("td", report.timestamp, clase));
@@ -678,7 +678,6 @@ function cargarReportAd(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.description, clase));
     tr.append(create("td", report.login, clase));
     tr.append(create("td", report.ad_reported, clase));
     tr.append(create("td", report.timestamp, clase));
@@ -751,7 +750,6 @@ function cargarReportComment(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.description, clase));
     tr.append(create("td", report.login, clase));
     tr.append(create("td", report.comment_reported, clase));
     tr.append(create("td", report.timestamp, clase));
@@ -824,7 +822,6 @@ function cargarReportRequest(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.description, clase));
     tr.append(create("td", report.login, clase));
     tr.append(create("td", report.request_reported, clase));
     tr.append(create("td", report.timestamp, clase));
@@ -892,14 +889,29 @@ function cargarReportRequest(report)
  */
 function cargarComentarioAd(comentario)
 {
+    
     var div = $("<div class='media'>");
     var divCard = $("<div class='card card-body media-body'>")
     div.append(divCard);
     divCard.append($("<h5 class='mt-0'>" + comentario.login + "</h5>"));
+    
+    console.log(!!comentario.denunciado);
+    if(!!comentario.denunciado)
+    {
+        var divDenuncias=$("<div class='float-lg-right'>");
+        divCard.append(divDenuncias);
+        var form=$("<form method='post' action='index.php?controller=report&action=createReport'>");
+        divDenuncias.append(form);
+        form.append($("<input type='hidden' value='"+REPORTS['COMMENT']+"' name='report' id='report'>"));
+        form.append($("<input type='hidden' value='"+comentario.uuid+"' name='uuid' id='uuid'>"));
+        form.append($("<input type='hidden' value='"+REPORTS['COMMENT']+"' name='report' id='report'>"));
+        form.append($("<button type='submit' class='btn btn-warning btn-sm float-lg-right'><i class='fa fa-exclamation-triangle'></i></button> "));
+    }
+    
     divCard.append($("<p>" + comentario.content + "</p>"));
     var divContainer = $("<div class='container-fluid'>")
     divCard.append(divContainer);
-    var small = $("<small class='text-muted float-rigth'>" + time_ago(comentario.timestamp) + "</small>");
+    var small = $("<small class='text-muted float-right'>" + time_ago(comentario.timestamp) + "</small>");
     divContainer.append(small);
     return div;
 }

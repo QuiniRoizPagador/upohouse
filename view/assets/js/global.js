@@ -16,3 +16,9 @@ const ROLES = {
     '0': "USER",
 };
 
+const REPORTS = {
+    'USER': 0,
+    'COMMENT': 1,
+    'REQUEST': 2,
+    'AD': 3
+};

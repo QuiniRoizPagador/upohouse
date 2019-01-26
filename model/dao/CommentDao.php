@@ -30,13 +30,13 @@ class CommentDao extends AbstractDao {
         return $row->count;
     }
 
-//$sql = "SELECT c.id,c.uuid,c.ad_id,a.uuid AS \'ad_uuid\',u.login,u.uuid AS \'user_uuid\',c.content,c.timestamp,c.state FROM comments c, ads a , users u WHERE c.ad_id=a.id AND c.user_id=u.id";
-    public function getAllPaginated($pag = 0) {
-        $query = $this->mysqli->query("SELECT * FROM $this->table "
-                . "WHERE state != " . STATES['ELIMINADO'] . " "
-                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
+    public function getAllPaginated($pag = 0) {           
+        $query = $this->mysqli->query("SELECT c.*,a.uuid AS 'uuid_ad', u.login AS 'login', u.uuid AS 'uuid_user' "
+                . "FROM $this->table AS c JOIN ads AS a ON a.id=c.ad_id "
+                . "JOIN users AS u ON u.id=c.user_id WHERE c.state != " . STATES['ELIMINADO'] . " "
+                . "GROUP BY c.id ORDER BY c.id ASC LIMIT 5 OFFSET " . $pag * 5);
+        
         //Devolvemos el resultset en forma de array de objetos
-
         $resultSet = array();
         while ($row = $query->fetch_object()) {
             $resultSet[] = $row;
@@ -84,11 +84,11 @@ class CommentDao extends AbstractDao {
     }
 
     public function getComments($id, $pag = 0) {
-        $query = $this->mysqli->query("SELECT c.*,u.login, (rep.comment_reported IS NOT NULL) AS denunciado FROM $this->table AS c "
+        $query = $this->mysqli->query("SELECT c.*,u.login, (rep.comment_reported IS NOT NULL  AND rep.user_id!=".$_SESSION['id'].") AS denunciado FROM $this->table AS c "
                 . "LEFT OUTER JOIN Reports as rep ON rep.comment_reported = c.id "
                 . "JOIN users AS u ON c.user_id=u.id "
                 . "WHERE c.state = " . STATES['NEUTRO'] . " AND c.ad_id=" . $id . " "
-                . "ORDER BY id ASC LIMIT 5 OFFSET " . $pag * 5);
+                . "GROUP BY c.id ORDER BY c.timestamp DESC LIMIT 5 OFFSET " . $pag * 5);
         //Devolvemos el resultset en forma de array de objetos
 
         $resultSet = array();

@@ -11,8 +11,7 @@
                 <thead>
                     <tr>
                         <th>Id </th>
-                        <th><?= $lang['titulo'] ?> </th>                        
-                        <th><?= $lang['descripcion'] ?> </th>                
+                        <th><?= $lang['titulo'] ?> </th>                                     
                         <th><?= $lang['user'] ?> </th>
                         <th><?= $lang['usuario_reported'] ?> </th>
                         <th><?= $lang['fecha registro'] ?></th>
@@ -24,7 +23,6 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->description; ?> </td>
                             <td><?= $reports->login; ?> </td>
                             <td><?= $reports->login_reported; ?> </td>
                             <td><?= $reports->timestamp; ?> </td>
@@ -148,8 +146,7 @@
                 <thead>
                     <tr>
                         <th>Id </th>
-                        <th><?= $lang['titulo'] ?> </th>                        
-                        <th><?= $lang['descripcion'] ?> </th>                
+                        <th><?= $lang['titulo'] ?> </th>                                    
                         <th><?= $lang['user'] ?> </th>
                         <th><?= $lang['anuncio_reported'] ?> </th>
                         <th><?= $lang['fecha registro'] ?></th>
@@ -161,7 +158,6 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->description; ?> </td>
                             <td><?= $reports->login; ?> </td>
                             <td><?= $reports->ad_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
@@ -285,8 +281,7 @@
                 <thead>
                     <tr>
                         <th>Id </th>
-                        <th><?= $lang['titulo'] ?> </th>                        
-                        <th><?= $lang['descripcion'] ?> </th>                
+                        <th><?= $lang['titulo'] ?> </th>                                     
                         <th><?= $lang['user'] ?> </th>
                         <th><?= $lang['comentario_reported'] ?> </th>
                         <th><?= $lang['fecha registro'] ?></th>
@@ -298,7 +293,6 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->description; ?> </td>
                             <td><?= $reports->login; ?> </td>
                             <td><?= $reports->comment_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
@@ -419,8 +413,7 @@
                 <thead>
                     <tr>
                         <th>Id </th>
-                        <th><?= $lang['titulo'] ?> </th>                        
-                        <th><?= $lang['descripcion'] ?> </th>                
+                        <th><?= $lang['titulo'] ?> </th>                                    
                         <th><?= $lang['user'] ?> </th>
                         <th><?= $lang['request_reported'] ?> </th>
                         <th><?= $lang['fecha registro'] ?></th>
@@ -432,7 +425,6 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->description; ?> </td>
                             <td><?= $reports->login; ?> </td>
                             <td><?= $reports->request_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>

@@ -204,7 +204,7 @@
                     <input name="idAd" type="hidden" value="<?= $ad->id ?>">
                     <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
                 </div>
-                <button type="submit" class="btn btn-success">Enviar</button>
+                <button type="submit" class="btn btn-success"><?= $lang["enviar"]?></button>
             </form>
         </div>
         <br>
@@ -213,24 +213,10 @@
         ?>
         <div class="media text-center">
             <div class="card card-body media-body">
-                <h5 class="mt-0"><a href="index/session/login">Inicie sesión</a></h5>
+                <h5 class="mt-0"><a href="index/session/login"><?= $lang["inicie sesion"]?></a></h5>
             </div>
         </div>
     <?php }
-    ?>
-    <br>
-
-    <?php
-    if (isset($_GET['report'])) {
-        ?>
-        <div class='alert alert-success alert-dismissible fade show col-md-6 content-center' role='alert'>
-            <?= $lang[$_GET['report']] ?>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-            </button>
-        </div>
-        <?php
-    }
     ?>
     <br>
     <div id="listComentarios">     
@@ -239,7 +225,7 @@
                 <div class="media">
                     <div class="card card-body media-body">
                         <h5 class="mt-0"><?= $result->login ?></h5>
-                        <?php if (true) { ?>
+                        <?php if (!$result->denunciado) { ?>
                             <div class="float-lg-right">
                                 <form method="post" action="<?= $helper->url("report", "createReport") ?>">
                                     <input type="hidden" value="<?= REPORTS['COMMENT'] ?>" name="report"  id="report"/>

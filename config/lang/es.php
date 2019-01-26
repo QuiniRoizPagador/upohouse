@@ -147,6 +147,7 @@ $lang = array(
     'actions' => "Acciones",
     'activity' => "Actividades",
     'create_report' => "Crear Denuncia",
-    'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte."
+    'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte.",
+    'inicie sesion' => 'Inicie sesi&oacute;n'
 );
 

@@ -24,15 +24,15 @@
                     <?php foreach ($allComments as $comment) { //recorremos el array de objetos y obtenemos el valor de las propiedades    ?>
                         <tr>
                             <td><?= $comment->id; ?> </td>
-                            <td><?= $comment->ad_id; ?> </td>
-                            <td><?= $comment->user_id; ?> </td>
+                            
+                            <td><a href="<?php echo $helper->url("ad", "read", array("uuid" => "$comment->uuid_ad"));?>"><i class="fas fa-images"></i></a></td>
+                            <!-- fa-images-->
+                            <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$comment->uuid_user"));?>"><?= $comment->login; ?> </a></td>
                             <td><?= $comment->content; ?> </td>
                             <td><?= $comment->timestamp; ?> </td>
                             <td>
                                 <button data-toggle="modal" data-target="#remove<?= $comment->uuid ?>"
                                         class="btn btn-danger"><i class="fa fa-window-close"></i></button>
-
-
 
                                     <div tabindex="-1" id="remove<?= $comment->uuid ?>" class="modal fade">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -65,24 +65,14 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
-                    for ($i = 0; $i < $numComments / 10; $i++) {
+                    for ($i = 0; $i < $numComments / 5; $i++) {
                         ?>
                         <li class="page-item <?= $pag == $i ? "active" : "" ?>">
                             <a class="page-link pagComment"><?= $i + 1 ?></a>
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 
