@@ -39,9 +39,9 @@ class ScoreController extends AbstractController {
                     $score->setUuid(RegularUtils::uuid());
                     $this->scoreModel->create($score);
                 }
-                $this->redirect("ad", "read", array("uuid" => $_POST['ad_uuid']));
             }
         }
+        $this->redirect("ad", "read", array("uuid" => $_POST['ad_uuid']));
     }
 
 }
