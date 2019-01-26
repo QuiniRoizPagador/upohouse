@@ -8,7 +8,7 @@ const ACTIONS = array(
     "USER" => array("remove", "readUser", "reportUser", "updateProfile", "paginateRequests",
         "createRequest", "refuse", "accept", "createReport", "createComment", "createView", "create" ,"modifyView", "modify"),
     "GUEST" => array("index", "login", "register"),
-    "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
+    "ADMIN" => array('createUser', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
         "paginateComments", "createHousingTypes", "updateHousingTypes", "paginateHousingTypes", "removeHousingTypes",
         "updateOperationTypes", "removeOperationType", "createOperationTypes", "paginateOperationTypes", "acceptReportComment",
         "denyReportComment", "acceptReportRequest", "denyReportRequest", "acceptReportAd", "denyReportAd", "paginateReportsUser",

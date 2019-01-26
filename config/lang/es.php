@@ -150,5 +150,6 @@ $lang = array(
     'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte.",
     'inicie sesion' => 'Inicie sesi&oacute;n',
     'modificar' => "Modificar",
+    'anunciante' => "Anunciante"
 );
 
