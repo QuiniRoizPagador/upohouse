@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/controller/UserController.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/model/dao/RequestDao.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/view/listAdsView.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/model/dao/ReportDao.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/model/AdModel.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/core/templates/head.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/controller/AdController.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/controller/RequestController.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/controller/ReportController.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/view/profileView.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/view/loginView.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/model/ReportModel.php</file>
+            <file>file:/F:/xampp/htdocs/CorePHPMVC/model/dao/AdDao.php</file>
+        </group>
+    </open-files>
 </project-private>
