@@ -148,6 +148,7 @@ $lang = array(
     'activity' => "Activities",
     'create_report' => "Create Report",
     "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report.",
-    "inicie sesion" => "Log in"
+    "inicie sesion" => "Log in",
+    'modificar' => "modify",
 );
 

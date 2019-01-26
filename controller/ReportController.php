@@ -19,7 +19,7 @@ class ReportController extends AbstractController {
         $this->reportModel = new ReportModel();
         $this->requestModel = new RequestModel();
         $this->userModel = new UserModel();
-        $this->commentModel= new CommentModel();
+        $this->commentModel = new CommentModel();
     }
 
     public function createReport() {
@@ -92,8 +92,7 @@ class ReportController extends AbstractController {
             $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid']));
         }
     }
-    
-    
+
     public function reportComment() {
         $data = array("title" => "text", "description" => "longText", "uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($data, "createReport");
@@ -113,10 +112,10 @@ class ReportController extends AbstractController {
             if ($lineas == 0) {
                 $this->redirect();
             } else {
-                $this->redirect("Ad", "read", array('uuid' => $_POST['uuid'], 'report' => "report_ok"));
+                $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid'], 'report' => "report_ok"));
             }
         } else {
-            $this->redirect("Ad", "read", array('uuid' => $_POST['uuid']));
+            $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid'], 'report' => "report_ok"));
         }
     }
 

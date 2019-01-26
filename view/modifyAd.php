@@ -2,7 +2,7 @@
     <div class="pb-2 mb-3 border-bottom">
         <h2 class="h2"><?= $lang["modificar anuncio"] ?></h2>
     </div>
-    <form class="formUpdateUser" action="<?php echo $helper->url("Ad", "modify", array('uuid' => $adUuid)); ?>" method="post" enctype="multipart/form-data">
+    <form class="" action="<?php echo $helper->url("Ad", "modify", array('uuid' => $ad->uuid)); ?>" method="post" enctype="multipart/form-data">
         <?php
         if (isset($errors['modify']['query'])) {
             ?>
@@ -24,7 +24,7 @@
                 <label for="housingType"><?= $lang["tipoCasa"] ?></label>
                 <select class="form-control <?= isset($errors['modify']['housingType']) ? " is-invalid" : "" ?>" id="housingType" name="housingType">
                     <?php foreach ($allHousingTypes as $housingType) { ?>
-                        <option value="<?= $housingType->uuid; ?>"><?= $housingType->name; ?></option>
+                        <option value="<?= $housingType->uuid; ?>" <?= $ad->housing_type == $housingType->id ? " selected='selected'" : ""?>><?= $housingType->name; ?></option>
                     <?php } ?>
                 </select>
                 <div class="invalid-feedback">
@@ -35,7 +35,7 @@
                 <label for="operationType"><?= $lang["tipoOperacion"] ?></label>
                 <select class="form-control <?= isset($errors['modify']['operationType']) ? " is-invalid" : "" ?>" id="operationType" name="operationType">
                     <?php foreach ($allOperationTypes as $operationType) { ?>
-                        <option value="<?= $operationType->uuid; ?>"><?= $operationType->name; ?></option>
+                        <option value="<?= $operationType->uuid; ?>" <?= $ad->operation_type == $operationType->id ? " selected='selected'" : ""?>><?= $operationType->name; ?></option>
                     <?php } ?>
                 </select>
                 <div class="invalid-feedback">
@@ -46,28 +46,28 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="price"><?= $lang["precio"] ?></label>
-                <input id="price" type="number" step=".01" class="form-control <?= isset($errors['modify']['price']) ? " is-invalid" : "" ?>" name="price" placeholder="<?= $lang["precio"] ?>">
+                <input id="price" value="<?= $ad->price?>" type="number" step=".01" class="form-control <?= isset($errors['modify']['price']) ? " is-invalid" : "" ?>" name="price" placeholder="<?= $lang["precio"] ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['modify']['price']) ? $lang[$errors['modify']['price']] : $lang['formato_incorrecto'] ?>
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label for="rooms"><?= $lang["habitaciones"] ?></label>
-                <input id="rooms" type="number" class="form-control <?= isset($errors['modify']['rooms']) ? " is-invalid" : "" ?>" name="rooms"  placeholder="<?= $lang["habitaciones"] ?>">
+                <input id="rooms" value="<?= $ad->rooms?>" type="number" class="form-control <?= isset($errors['modify']['rooms']) ? " is-invalid" : "" ?>" name="rooms"  placeholder="<?= $lang["habitaciones"] ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['modify']['rooms']) ? $lang[$errors['modify']['rooms']] : $lang['formato_incorrecto'] ?>
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label for="m2"><?= $lang["m2"] ?></label>
-                <input id="m2" type="number" class="form-control <?= isset($errors['modify']['m2']) ? " is-invalid" : "" ?>" name="m2"  placeholder="<?= $lang["m2Texto"] ?>">
+                <input id="m2" value="<?= $ad->m_2?>" type="number" class="form-control <?= isset($errors['modify']['m2']) ? " is-invalid" : "" ?>" name="m2"  placeholder="<?= $lang["m2Texto"] ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['modify']['m2']) ? $lang[$errors['modify']['m2']] : $lang['formato_incorrecto'] ?>
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label for="bath"><?= $lang["baño"] ?></label>
-                <input id="bath" type="number" class="form-control <?= isset($errors['modify']['bath']) ? " is-invalid" : "" ?>" name="bath"  placeholder="<?= $lang["baño"] ?>">
+                <input id="bath" value="<?= $ad->bath?>" type="number" class="form-control <?= isset($errors['modify']['bath']) ? " is-invalid" : "" ?>" name="bath"  placeholder="<?= $lang["baño"] ?>">
                 <div class="invalid-feedback">
                     <?= isset($errors['modify']['bath']) ? $lang[$errors['modify']['bath']] : $lang['formato_incorrecto'] ?>
                 </div>
@@ -87,7 +87,7 @@
         </div>
         <div class="form-group">
             <label for="description"><?= $lang["descripcion"] ?></label>
-            <textarea class="form-control <?= isset($errors['create']['description']) ? " is-invalid" : "" ?>" id="description" name="description" rows="3"></textarea>
+            <textarea class="form-control <?= isset($errors['create']['description']) ? " is-invalid" : "" ?>" id="description" name="description" rows="3"><?= $ad->description ?></textarea>
             <div class="invalid-feedback">
                 <?= isset($errors['modify']['description']) ? $lang[$errors['modify']['description']] : $lang['formato_incorrecto'] ?>
             </div>

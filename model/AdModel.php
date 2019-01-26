@@ -30,6 +30,10 @@ class AdModel extends AbstractModel {
         return $this->adDao->block($uuid);
     }
 
+    public function unblock($uuid) {
+        return $this->adDao->unblock($uuid);
+    }
+
     public function globalSearch($str, $pag = 0) {
         return $this->adDao->globalSearch($str, $pag);
     }
@@ -51,7 +55,7 @@ class AdModel extends AbstractModel {
     }
 
     public function countListAds($house, $operation, $user) {
-         return $this->adDao->countListAds($house, $operation, $user);
+        return $this->adDao->countListAds($house, $operation, $user);
     }
 
 }
