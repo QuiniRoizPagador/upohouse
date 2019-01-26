@@ -63,7 +63,7 @@ class ReportController extends AbstractController {
                 $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid'], 'report' => "report_ok"));
             }
         } else {
-            $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid']));
+            $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid'], 'report' => "report_fail"));
         }
     }
 

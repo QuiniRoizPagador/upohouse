@@ -150,6 +150,9 @@ $lang = array(
     "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report.",
     "inicie sesion" => "Log in",
     'modificar' => "modify",
-    'anunciante' => "Ad owner"
+    'anunciante' => "Ad owner",
+    'crear_denuncia'=> "Create Report",
+    "report_fail" => "Sorry, there was an error creating your request. Try it again later.",
+    'less than 1 second' => 'less than 1 second'
 );
 

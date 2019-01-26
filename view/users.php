@@ -375,14 +375,11 @@
                                                             <div class="invalid-feedback">
                                                                 <?= isset($errors[$user->uuid]['updateUser']['password2']) ? $lang[$errors[$user->uuid]['updateUser']['password2']] : $lang['formato_incorrecto'] ?>
                                                             </div>
-                                                            <label><?= $lang['rol'] ?></label>
+                                                            <label for="user_role"><?= $lang['rol'] ?></label>
                                                             <select class="form-control <?= isset($errors[$user->uuid]['updateUser']['user_role']) ? " is-invalid" : "" ?>" name="user_role">
                                                                 <option value="0">USER</option>
                                                                 <option value="1">ADMIN</option>
                                                             </select>
-                                                            <div class="invalid-feedback">
-                                                                <?= isset($errors[$user->uuid]['updateUser']['user_role']) ? $lang[$errors[$user->uuid]['updateUser']['user_role']] : $lang['formato_incorrecto'] ?>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

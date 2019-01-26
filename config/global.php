@@ -53,8 +53,6 @@ global $lang;
 
 // páginas que necesitan footer absoluto
 const FOOTER_ABSOLUTE = array(
-    'login',
-    'profile'
 );
 // tipos de likes
 const LIKES = array(

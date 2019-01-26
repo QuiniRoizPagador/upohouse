@@ -77,11 +77,6 @@ require_once 'core/templates/head.php';
                                         </div>
                                         <label for="email" class="col-sm-2 col-form-label"> <?= $lang['email'] ?></label>
 
-                                        <input type="email" id="email" name="email" value="<?= $user->email ?>" class="form-control  <?= isset($errors['createUser']['email']) ? " is-invalid" : "" ?>"/>
-                                        <div class="invalid-feedback">
-                                            <?= isset($errors['updateUser']['email']) ? $lang[$errors['updateUser']['email']] : $lang['formato_incorrecto'] ?>
-                                        </div>
-
                                         <label for="phone" class="col-sm-2 col-form-label"><?= $lang['phone'] ?></label>
 
                                         <input type="tel" id="phone" name="phone" value="<?= $user->phone ?>" class="form-control <?= isset($errors['createUser']['phone']) ? " is-invalid" : "" ?>"/>
@@ -412,14 +407,25 @@ require_once 'core/templates/head.php';
 
         <?php
         if (isset($_GET['report'])) {
-            ?>
-            <div class='alert alert-success alert-dismissible fade show col-md-6 content-center' role='alert'>
-                <?= $lang[$_GET['report']] ?>
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                </button>
-            </div>
-            <?php
+            if ($_GET['report'] == "report_ok") {
+                ?>
+                <div class='alert alert-success alert-dismissible fade show col-md-6 content-center' role='alert'>
+                    <?= $lang[$_GET['report']] ?>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <?php
+            } else {
+                ?>
+                <div class='alert alert-danger alert-dismissible fade show col-md-6 content-center' role='alert'>
+                    <?= $lang[$_GET['report']] ?>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
         }
 
 

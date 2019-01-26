@@ -150,6 +150,9 @@ $lang = array(
     'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte.",
     'inicie sesion' => 'Inicie sesi&oacute;n',
     'modificar' => "Modificar",
-    'anunciante' => "Anunciante"
+    'anunciante' => "Anunciante",
+    'crear_denuncia' => "Crear Denuncia",
+    "report_fail" => "Lo sentimos, ha habido un error al crear su petici&oacute;n. Int&eacute;ntelo de nuevo m&aacute;s tarde.",
+    'less than 1 second' => "menos de 1 segundo"
 );
 

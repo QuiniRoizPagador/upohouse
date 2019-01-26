@@ -29,7 +29,9 @@
                         default:
                             regex = /[a-zA-Z0-9_]{1,255}$/;
                     }
-                    if ($(this)[0].getAttribute("class").indexOf("can-be-empty") < 0 && 
+                    var $_class = $(this)[0].getAttribute("class");
+                    var canBeEmpty = $_class !== null && $_class.indexOf("can-be-empty") >= 0;
+                    if (!canBeEmpty &&
                             !settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
                         if ($(this)[0].type === "password") {
                             errorPassw++;
