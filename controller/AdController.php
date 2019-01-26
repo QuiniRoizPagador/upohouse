@@ -21,6 +21,7 @@ class AdController extends AbstractController {
     private $requestModel;
     private $commentModel;
     private $scoreModel;
+    private $userModel;
 
     public function __construct() {
         parent::__construct();
@@ -34,6 +35,7 @@ class AdController extends AbstractController {
         $this->requestModel = new RequestModel();
         $this->commentModel = new CommentModel();
         $this->scoreModel = new ScoreModel();
+        $this->userModel = new UserModel();
     }
 
     public function modifyView() {
@@ -285,6 +287,7 @@ class AdController extends AbstractController {
                     $community = $this->communityModel->readId($ad->community_id);
                     $province = $this->provinceModel->readId($ad->province_id);
                     $municipality = $this->municipalityModel->readId($ad->municipality_id);
+                    $user = $this->userModel->read($ad->user_id);
                     $images = $this->imageModel->readByAd($ad->id);
                     $hasUserRequest = FALSE;
                     $isSame = FALSE;
@@ -309,6 +312,7 @@ class AdController extends AbstractController {
                         "community" => $community,
                         "province" => $province,
                         "municipality" => $municipality,
+                        "user" => $user,
                         "images" => $images,
                         "hasUserRequest" => $hasUserRequest,
                         "isSame" => $isSame,
@@ -357,7 +361,7 @@ class AdController extends AbstractController {
                 //RegularUtils::removeAdImages($id);
             }
         }
-        $this->redirect("Admin", "dashboard", array("show" => "ads"));
+        $this->redirect("User", "index", array("show" => "ads"));
     }
 
     public function paginate() {

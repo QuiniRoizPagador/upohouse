@@ -25,11 +25,15 @@ class RegularUtils {
      * @return array Se devuelve un array con clave-valor de imágenes y su respectiva versión reducida.
      */
     static public function saveAdImages($field, $adId) {
-        $images = null;
+        $images = array();
         $url = IMAGE_AD_URI . "/" . $adId;
         $field = $_FILES[$field];
         mkdir($url);
-        $imagesAmount = count($field["name"]);
+        if ($field["size"][0] == 0) {
+            $imagesAmount = 0;
+        } else {
+            $imagesAmount = count($field["name"]);
+        }
         for ($i = 0; $i < $imagesAmount; $i++) {
             $fileUrl = $url . "/" . $field["name"][$i];
             $fileThumbnailUrl = $url . "/thumbnails_" . $field["name"][$i];

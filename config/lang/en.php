@@ -150,5 +150,6 @@ $lang = array(
     "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report.",
     "inicie sesion" => "Log in",
     'modificar' => "modify",
+    'anunciante' => "Ad owner"
 );
 

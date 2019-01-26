@@ -75,7 +75,7 @@
         </div>
         <div class="form-group">
             <label for="images"><?= $lang["imagenes"] ?></label>
-            <input id="images" type="file" multiple class="form-control-file" name="images[]">
+            <input id="images" class="can-be-empty" type="file" multiple class="form-control-file" name="images[]">
             <small id="imagesHelpBlock" class="form-text text-muted">
                 <?= $lang["imagenesTextoAyuda"] ?>
             </small>

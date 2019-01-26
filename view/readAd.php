@@ -117,6 +117,7 @@
 
         <div class="col-sm-3">
             <ul class="list-group">
+                <li class="list-group-item text-muted"><?= $lang['anunciante'] ?>: <a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$user->uuid"));?>"><?= $user->name?></a></li>
                 <li class="list-group-item text-muted"><?= $lang['actions'] ?> <i class="fa fa-asterisk fa-1x"></i></li>
                 <?php
                 if ((verifyIsAdmin() || verifyAdProperty($ad->user_id)) && $ad->state !== STATES["BLOQUEADO"]) {
