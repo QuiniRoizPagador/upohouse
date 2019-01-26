@@ -10,7 +10,7 @@ class RegularUtils {
 
     /**
      * Método estático que creará un UUID siguiendo el estándar último de UUID.
-     * @return type String con el uuid generado.
+     * @return String con el uuid generado.
      */
     static public function uuid() {
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
@@ -20,8 +20,8 @@ class RegularUtils {
      * Método estático que guardará las imágenes recibidas por parámetros, 
      * una versión en tamaño real y otra para imágenes de tipo thumbnail.
      * 
-     * @param type $field String con el nombre del campo a buscar en $_FILES
-     * @param type $adId id del anuncio al que irá asociado
+     * @param string $field String con el nombre del campo a buscar en $_FILES
+     * @param string $adId id del anuncio al que irá asociado
      * @return array Se devuelve un array con clave-valor de imágenes y su respectiva versión reducida.
      */
     static public function saveAdImages($field, $adId) {
@@ -86,7 +86,7 @@ class RegularUtils {
      * Método estático que iterará en el contenido de una carpeta y eliminará 
      * todas sus imágenes. Posteriormente eliminará la propia carpeta.
      * 
-     * @param type $adId id del anuncio que buscar para eliminar.
+     * @param string $adId id del anuncio que buscar para eliminar.
      */
     static public function removeAdImages($adId) {
         $url = IMAGE_AD_URI . "/" . $adId;
@@ -123,8 +123,8 @@ class RegularUtils {
      * Método estático que filtrará un diccionario de valores recibidos por parámetro
      * con su tipo asociado, de forma que se filtre individualmente por tipo cada valor.
      * 
-     * @param type $values array asociativo con los valores y sus tipos a filtrar.
-     * @param type $name Nombre del error asociado.
+     * @param array $values array asociativo con los valores y sus tipos a filtrar.
+     * @param string $name Nombre del error asociado.
      * @return array Se devuelve un array asociativo con los errores en cada campo.
      */
     static public function filtrarPorTipo($values, $name) {
@@ -194,9 +194,10 @@ class RegularUtils {
 
     /**
      * Método estático que eliminará de los errores aquellos campos no requeridos.
-     * @param type $errors array asociativo con los errores existentes de una verificación previa.
-     * @param type $name nombre del campo error.
-     * @param type $fields campo a buscar en el array asociativo.
+     * 
+     * @param array $errors array asociativo con los errores existentes de una verificación previa.
+     * @param string $name nombre del campo error.
+     * @param string $fields campo a buscar en el array asociativo.
      * @return array con los errores actualizados.
      */
     public static function camposNoRequeridos($errors, $name, $fields) {
@@ -214,11 +215,14 @@ class RegularUtils {
         }
         return $errors;
     }
+
     /**
+     * Método estático que senará los valores pasados por parámetro en un array 
+     * pasándoles el filtro de string.
      * 
-     * @param type $values
-     * @param type $method
-     * @return type
+     * @param array $values array con los valores a sanear.
+     * @param string $method método al que invocar (GET/POST)
+     * @return array asociativo con los valores saneados
      */
     static public function sanearStrings($values, $method = 'POST') {
         switch ($method) {
@@ -235,6 +239,14 @@ class RegularUtils {
         return filter_input_array($method, $filtro);
     }
 
+    /**
+     * Método estático que senará los valores pasados por parámetro en un array 
+     * pasándoles el filtro de integer.
+     * 
+     * @param array $values array con los valores a sanear.
+     * @param string $method método al que invocar (GET/POST)
+     * @return array asociativo con los valores saneados
+     */
     static public function sanearIntegers($values) {
         foreach ($values as $v) {
             $filtro[$v] = FILTER_SANITIZE_NUMBER_INT;
@@ -242,6 +254,14 @@ class RegularUtils {
         return filter_input_array(INPUT_POST, $filtro);
     }
 
+    /**
+     * Método estático que senará los valores pasados por parámetro en un array 
+     * pasándoles el filtro de float.
+     * 
+     * @param array $values array con los valores a sanear.
+     * @param string $method método al que invocar (GET/POST)
+     * @return array asociativo con los valores saneados
+     */
     static public function sanearFloats($values) {
         foreach ($values as $v) {
             $filtro[$v] = array(FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
@@ -249,6 +269,14 @@ class RegularUtils {
         return filter_input_array(INPUT_POST, $filtro);
     }
 
+    /**
+     * Método estático que senará los valores pasados por parámetro en un array 
+     * pasándoles el filtro de email.
+     * 
+     * @param array $values array con los valores a sanear.
+     * @param string $method método al que invocar (GET/POST)
+     * @return array asociativo con los valores saneados
+     */
     static public function sanearEmail($values) {
         foreach ($values as $v) {
             $filtro[$v] = FILTER_SANITIZE_EMAIL;
@@ -256,34 +284,83 @@ class RegularUtils {
         return filter_input_array(INPUT_POST, $filtro);
     }
 
+    /**
+     * Método estático que verificará si un número es un teléfono.
+     * 
+     * @param string $phone a verificar
+     * @return boolean resultado de la verificación.
+     */
     static public function isPhone($phone) {
         return preg_match("/^\d{9}$/", $phone);
     }
 
+    /**
+     * Método estático que verificará si un número es un móvil.
+     * 
+     * @param string $mobile a verificar
+     * @return boolean resultado de la verificación.
+     */
     static public function isMobile($mobile) {
         return preg_match("/^\6\d{8}$/", $mobile);
     }
 
+    /**
+     * Método estático que verificará si un string contiene otro string en su interior.
+     * 
+     * @param string $what a buscar.
+     * @param string $in dónde buscar.
+     * @return boolean resultado de la verificación.
+     */
     static public function containsString($what, $in) {
         return preg_match("/$what/", $in);
     }
 
+    /**
+     * Método estático que verificará si string sigue el formato adecuado.
+     * 
+     * @param string $string a verificar
+     * @return boolean resultado de la verificación.
+     */
     static public function isValidString($string) {
         return preg_match("/[a-zA-Z0-9_]{1,255}$/", $string);
     }
 
+    /**
+     * Método estático que verificará si un email es correcto.
+     * 
+     * @param string $email a verificar
+     * @return boolean resultado de la verificación.
+     */
     static public function isEmail($email) {
         return preg_match("/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $email) && filter_var($email, FILTER_VALIDATE_EMAIL) !== FALSE;
     }
 
+    /**
+     * Método estático que verificará si un número es correcto.
+     * 
+     * @param string $number a verificar
+     * @return boolean resultado de la verificación.
+     */
     public static function isNumber($number) {
         return filter_var($number, FILTER_VALIDATE_INT) !== FALSE;
     }
 
+    /**
+     * Método estático que verificará si un número es un float correcto.
+     * 
+     * @param string $number a verificar
+     * @return boolean resultado de la verificación.
+     */
     public static function isFloat($number) {
         return filter_var($number, FILTER_VALIDATE_FLOAT) !== FALSE;
     }
 
+    /**
+     * Método estático que verificará si un string largo sigue el formato adecuado.
+     * 
+     * @param string $string a verificar
+     * @return boolean resultado de la verificación.
+     */
     static public function isValidLongString($string) {
         return preg_match("/^[A-Za-z0-9_\s\n.áéíóúÁÉÍÓÚ]{1,3000}$/", $string);
     }
