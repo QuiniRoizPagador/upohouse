@@ -45,8 +45,8 @@ class AdDao extends AbstractDao {
         ON
             s.ad_id = a.id
         WHERE
-            a.state = 1
-        GROUP BY
+            a.state != " . STATES['ELIMINADO']
+                . " GROUP BY
             a.id
         ORDER BY
             a.id ASC 
@@ -144,8 +144,8 @@ class AdDao extends AbstractDao {
     }
 
     public function countUserAds($id) {
-        $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ?";
-        $data = array("i", "user_id" => $id);
+        $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ? AND state = ?";
+        $data = array("ii", "user_id" => $id, "state" => STATES["NEUTRO"]);
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
@@ -326,7 +326,7 @@ class AdDao extends AbstractDao {
         ON
             a.user_id = u.id
         WHERE
-           a.state = " . STATES['NEUTRO'] . "
+           a.state = " . STATES['NEUTRO'] . " 
         AND 
             a.accepted_request IS NULL";
         if (isset($house)) {

@@ -24,7 +24,8 @@ class CommentDao extends AbstractDao {
     }
 
     public function countComments() {
-        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
+        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table "
+                . "WHERE state = " . STATES['NEUTRO'] . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
@@ -68,8 +69,8 @@ class CommentDao extends AbstractDao {
     }
 
     public function countUserComments($id) {
-        $query = "SELECT COUNT(*) as comments from $this->table WHERE user_id = ?";
-        $data = array("i", "user_id" => $id);
+        $query = "SELECT COUNT(*) as comments from $this->table WHERE user_id = ? AND state = ?";
+        $data = array("ii", "user_id" => $id,"state"=> STATES["NEUTRO"]);
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
