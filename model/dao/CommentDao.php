@@ -82,11 +82,12 @@ class CommentDao extends AbstractDao {
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
-    
+
     public function getComments($id, $pag = 0) {
-        $query = $this->mysqli->query("SELECT c.*,u.login FROM $this->table AS c "
+        $query = $this->mysqli->query("SELECT c.*,u.login, (rep.comment_reported IS NOT NULL) AS denunciado FROM $this->table AS c "
+                . "LEFT OUTER JOIN Reports as rep ON rep.comment_reported = c.id "
                 . "JOIN users AS u ON c.user_id=u.id "
-                . "WHERE c.state = " . STATES['NEUTRO'] . " AND c.ad_id=".$id." "
+                . "WHERE c.state = " . STATES['NEUTRO'] . " AND c.ad_id=" . $id . " "
                 . "ORDER BY id ASC LIMIT 5 OFFSET " . $pag * 5);
         //Devolvemos el resultset en forma de array de objetos
 
@@ -97,7 +98,13 @@ class CommentDao extends AbstractDao {
         mysqli_free_result($query);
 
         return $resultSet;
-        
+    }
+
+    public function countCommentsAd($id) {
+        $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state = " . STATES['NEUTRO'] . " AND ad_id=$id ORDER BY id DESC LIMIT 1");
+        $row = $query->fetch_object();
+        mysqli_free_result($query);
+        return $row->count;
     }
 
 }

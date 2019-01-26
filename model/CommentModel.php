@@ -34,8 +34,12 @@ class CommentModel extends AbstractModel {
         return $this->commentDao->block($uuid);
     }
 
-    public function getComments($id) {
-        return $this->commentDao->getComments($id);
+    public function getComments($id, $pag = 0) {
+        return $this->commentDao->getComments($id, $pag);
+    }
+
+    public function countCommentsAd($id) {
+        return $this->commentDao->countCommentsAd($id);
     }
 
 }

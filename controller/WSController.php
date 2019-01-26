@@ -172,4 +172,17 @@ class WSController extends AbstractController {
         }
     }
 
+    public function paginateCommentsAd() {
+        if (filter_has_var(INPUT_POST, 'commentsAdPag') && filter_has_var(INPUT_POST, 'uuid')) {
+            $pag = filter_var($_POST['commentsAdPag'], FILTER_SANITIZE_NUMBER_INT);
+            $uuid=filter_var($_POST["uuid"], FILTER_SANITIZE_STRING);
+            $ad = $this->adModel->read($uuid);
+            $comments = $this->commentModel->getComments($ad->id, $pag);
+            header('Content-type: application/json');
+            echo json_encode($comments);
+        } else {
+            $this->redirect();
+        }
+    }
+
 }
