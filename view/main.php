@@ -12,11 +12,6 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-        <?php if (verifyIsLogin()) { ?>
-            <div class="row">
-                <a href="index.php?controller=Ad&action=createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
-            </div>
-        <?php } ?>
         <div class="row">
             <?php
             foreach ($ads as $result) {
