@@ -7,8 +7,8 @@ El sistema permite al usuario denunciar un anuncio.
 \end{itemize}
 \subsubsection{Precondici\'{o}n.}
 \begin{itemize}
-\item Usuario logueado.
-\item Anuncio consultado.
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Anuncio consultado (CU202 Consultar Anuncio).
 \end{itemize}
 \subsubsection{Poscondici\'{o}n.}
 Se almacen\'{o} la denuncia del anuncio.
@@ -20,8 +20,9 @@ Se almacen\'{o} la denuncia del anuncio.
 \item El sistema guarda la denuncia.
 \end{enumerate}
 Finaliza el CU.
-\subsubsection{Escenario Alternativo. L\'{i}nea 2. El usuario no cumple con los formatos de entrada en alguno de los campos.}
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. El usuario no cumple con los formatos de entrada en alguno de los campos.}
 \begin{enumerate}
+\setcounter{enumi}{4}
 \item El sistema informa del fallo en los campos afectados.
 \end{enumerate}
 
