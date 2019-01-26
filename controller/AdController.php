@@ -52,7 +52,7 @@ class AdController extends AbstractController {
                     'allHousingTypes' => $allHousingTypes,
                     'allOperationTypes' => $allOperationTypes,
                     'allCommunities' => $allCommunities,
-                    'adUuid' => $ad->uuid
+                    'ad' => $ad
                 ));
             }
         } else {
@@ -161,7 +161,7 @@ class AdController extends AbstractController {
                             'allOperationTypes' => $allOperationTypes,
                             'allCommunities' => $allCommunities,
                             'success' => TRUE,
-                            'adUuid' => $adOld->uuid
+                            'ad' => $ad
                         ));
                     }
                 }
@@ -175,7 +175,7 @@ class AdController extends AbstractController {
                 'allOperationTypes' => $allOperationTypes,
                 'allCommunities' => $allCommunities,
                 'errors' => $errors,
-                'adUuid' => $adOld->uuid
+                'ad' => $adOld
             ));
         }
     }
@@ -277,44 +277,48 @@ class AdController extends AbstractController {
             if (!isset($ad->uuid)) {
                 $this->redirect("User", "index");
             } else {
-                $housingType = $this->housingTypeModel->read($ad->housing_type);
-                $operationType = $this->operationTypeModel->read($ad->operation_type);
-                $community = $this->communityModel->readId($ad->community_id);
-                $province = $this->provinceModel->readId($ad->province_id);
-                $municipality = $this->municipalityModel->readId($ad->municipality_id);
-                $images = $this->imageModel->readByAd($ad->id);
-                $hasUserRequest = FALSE;
-                $isSame = FALSE;
-                $isScored = false;
-                $userScore = null;
-                $comments = $this->commentModel->getComments($ad->id);
-                $numComments = $this->commentModel->countCommentsAd($ad->id);
+                if (($ad->state == STATES["BLOQUEADO"] && !verifyIsAdmin()) || $ad->state == STATES["ELIMINADO"]) {
+                    $this->redirect("User", "index");
+                } else {
+                    $housingType = $this->housingTypeModel->read($ad->housing_type);
+                    $operationType = $this->operationTypeModel->read($ad->operation_type);
+                    $community = $this->communityModel->readId($ad->community_id);
+                    $province = $this->provinceModel->readId($ad->province_id);
+                    $municipality = $this->municipalityModel->readId($ad->municipality_id);
+                    $images = $this->imageModel->readByAd($ad->id);
+                    $hasUserRequest = FALSE;
+                    $isSame = FALSE;
+                    $isScored = false;
+                    $userScore = null;
+                    $comments = $this->commentModel->getComments($ad->id);
+                    $numComments = $this->commentModel->countCommentsAd($ad->id);
 
-                if (verifySession()) {
-                    $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
-                    $isSame = $ad->user_id == $_SESSION['id'];
-                    $isScored = $this->scoreModel->isUserScored($_SESSION['id'], $ad->id);
-                    if ($isScored) {
-                        $userScore = $this->scoreModel->getUserScore($_SESSION['id'], $ad->id);
+                    if (verifySession()) {
+                        $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
+                        $isSame = $ad->user_id == $_SESSION['id'];
+                        $isScored = $this->scoreModel->isUserScored($_SESSION['id'], $ad->id);
+                        if ($isScored) {
+                            $userScore = $this->scoreModel->getUserScore($_SESSION['id'], $ad->id);
+                        }
                     }
+                    $this->view("readAd", array(
+                        'title' => "anuncio",
+                        "ad" => $ad,
+                        "housingType" => $housingType,
+                        "operationType" => $operationType,
+                        "community" => $community,
+                        "province" => $province,
+                        "municipality" => $municipality,
+                        "images" => $images,
+                        "hasUserRequest" => $hasUserRequest,
+                        "isSame" => $isSame,
+                        "comments" => $comments,
+                        "numComments" => $numComments,
+                        "pag" => $pag,
+                        "isScored" => $isScored,
+                        "userScore" => $userScore
+                    ));
                 }
-                $this->view("readAd", array(
-                    'title' => "anuncio",
-                    "ad" => $ad,
-                    "housingType" => $housingType,
-                    "operationType" => $operationType,
-                    "community" => $community,
-                    "province" => $province,
-                    "municipality" => $municipality,
-                    "images" => $images,
-                    "hasUserRequest" => $hasUserRequest,
-                    "isSame" => $isSame,
-                    "comments" => $comments,
-                    "numComments" => $numComments,
-                    "pag" => $pag,
-                    "isScored" => $isScored,
-                    "userScore" => $userScore
-                ));
             }
         } else {
             $this->redirect("User", "index");
@@ -332,6 +336,17 @@ class AdController extends AbstractController {
         $this->redirect("Admin", "dashboard", array("show" => "ads"));
     }
 
+    public function unblock() {
+        if (filter_has_var(INPUT_GET, "uuid") && (verifyIsAdmin())) {
+            $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
+            $rem = $this->adModel->unblock($id);
+            if ($rem == 0) {
+                die("Error al desbloquear usuario");
+            }
+        }
+        $this->redirect("Admin", "dashboard", array("show" => "ads"));
+    }
+
     public function remove() {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
@@ -339,7 +354,7 @@ class AdController extends AbstractController {
             if ($rem == 0) {
                 die("Error al eliminar usuario");
             } else {
-                RegularUtils::removeAdImages($id);
+                //RegularUtils::removeAdImages($id);
             }
         }
         $this->redirect("Admin", "dashboard", array("show" => "ads"));

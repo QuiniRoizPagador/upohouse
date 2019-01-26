@@ -17,6 +17,24 @@ function verifySession() {
 }
 
 /**
+ * Función que verificará si un anuncio es propiedad de el usuario identificado
+ * en el sistema.
+ * 
+ * @return boolean Se devuelve la verificación de la propiedad del anuncio.
+ */
+function verifyAdProperty($userIdFromAd) {
+    if (!isset($_SESSION['id'])) {
+        return False;
+    } else {
+        if ($userIdFromAd == $_SESSION['id']) {
+            return True;
+        } else {
+            return False;
+        }
+    }
+}
+
+/**
  * Función que verifica si el parámetro recibido por GET o POST de uuid coincide 
  * con el uuid del usuario que ha realizado alguna petición.
  * 

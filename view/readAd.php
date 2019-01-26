@@ -1,11 +1,6 @@
 <section class="container py-5">
     <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
         <h2 class="h2"><?= $lang["anuncio"] ?></h2>
-        <div>
-            <a href="<?php echo $helper->url("ad", "modifyView", array("uuid" => "$ad->uuid")); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-            <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-window-close"></i></a>
-            <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
-        </div>
     </div>
     <div class="row">
         <div class="container-fluid col-sm-9">
@@ -123,7 +118,55 @@
         <div class="col-sm-3">
             <ul class="list-group">
                 <li class="list-group-item text-muted"><?= $lang['actions'] ?> <i class="fa fa-asterisk fa-1x"></i></li>
-                <?php if (verifySession() && !$hasUserRequest && !$isSame) { ?>
+                <?php
+                if ((verifyIsAdmin() || verifyAdProperty($ad->user_id)) && $ad->state !== STATES["BLOQUEADO"]) {
+                    ?>
+                    <li class="list-group-item">
+                        <span class="pull-left">
+                            <strong><?= $lang['modificar'] ?></strong>
+                        </span>
+                        <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['modificar'] ?>">
+                            <a href="<?php echo $helper->url("ad", "modifyView", array("uuid" => "$ad->uuid")); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="pull-left">
+                            <strong><?= $lang['eliminar'] ?></strong>
+                        </span>
+                        <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['eliminar'] ?>">
+                            <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-window-close"></i></a>
+                        </span>
+                    </li>
+                    <?php
+                }
+                ?>
+                <?php
+                if (verifyIsAdmin()) {
+                    if ($ad->state !== STATES["BLOQUEADO"]) {
+                        ?>
+                        <li class="list-group-item">
+                            <span class="pull-left">
+                                <strong><?= $lang['bloquear'] ?></strong>
+                            </span>
+                            <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['bloquear'] ?>">
+                                <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
+                            </span>
+                        </li>
+                        <?php } else {
+                        ?>
+                        <li class="list-group-item">
+                            <span class="pull-left">
+                                <strong><?= $lang['desbloquear'] ?></strong>
+                            </span>
+                            <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['desbloquear'] ?>">
+                                <a href="<?php echo $helper->url("ad", "unblock", array("uuid" => "$ad->uuid")); ?>" class="btn btn-success"><i class="fa fa-check"></i></a>
+                            </span>
+                        </li>
+                        <?php
+                    }
+                }
+                ?>
+                <?php if ((verifySession() && !$hasUserRequest && !$isSame) && $ad->state !== STATES["BLOQUEADO"]) { ?>
                     <li class="list-group-item">
                         <span class="pull-left">
                             <strong><?= $lang['interesado'] ?></strong>

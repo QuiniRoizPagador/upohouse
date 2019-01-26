@@ -4,21 +4,21 @@ namespace model\dao\dto;
 
 class Ad {
 
-    private $id;
-    private $uuid;
-    private $user_id;
-    private $price;
-    private $rooms;
-    private $m_2;
-    private $bath;
-    private $description;
-    private $housing_type;
-    private $operation_type;
-    private $accepted_request;
-    private $community_id;
-    private $province_id;
-    private $municipality_id;
-    private $state;
+    public $id;
+    public $uuid;
+    public $user_id;
+    public $price;
+    public $rooms;
+    public $m_2;
+    public $bath;
+    public $description;
+    public $housing_type;
+    public $operation_type;
+    public $accepted_request;
+    public $community_id;
+    public $province_id;
+    public $municipality_id;
+    public $state;
 
     public function __construct() {
         

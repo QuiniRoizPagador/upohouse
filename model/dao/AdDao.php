@@ -129,6 +129,20 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    public function unblock($uuid) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES["NEUTRO"], "uuid" => $uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
+    public function delete($uuid) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES["ELIMINADO"], "uuid" => $uuid);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
     public function countUserAds($id) {
         $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ?";
         $data = array("i", "user_id" => $id);

@@ -147,6 +147,7 @@ $lang = array(
     'actions' => "Actions",
     'activity' => "Activities",
     'create_report' => "Create Report",
-    "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report."
+    "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report.",
+    'modificar' => "modify"
 );
 
