@@ -123,7 +123,7 @@
         <div class="col-sm-3">
             <ul class="list-group">
                 <li class="list-group-item text-muted"><?= $lang['actions'] ?> <i class="fa fa-asterisk fa-1x"></i></li>
-                <?php if (!$hasUserRequest && !$isSame) { ?>
+                <?php if (verifySession() && !$hasUserRequest && !$isSame) { ?>
                     <li class="list-group-item">
                         <span class="pull-left">
                             <strong><?= $lang['interesado'] ?></strong>
@@ -131,6 +131,23 @@
                         <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['contacto'] ?>">
                             <button data-toggle="modal" data-target="#request<?= $ad->uuid ?>" data-dismiss="modal" class="btn btn-success btn-sm"><i class="fa fa-comment-alt"></i></button>
                         </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="pull-left">
+                            <strong>Score</strong>
+                        </span>
+                        <div class="btn-group float-right">
+                            <form action="<?= $helper->url("score", "score") ?>" method="post">
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
+                                <input type="hidden" value="<?= LIKES['LIKE'] ?>" name="score" />
+                                <button class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['LIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-up"></i></button>
+                            </form>
+                            <form action="<?= $helper->url("score", "score") ?>" method="post">
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
+                                <input type="hidden" value="<?= LIKES['DISLIKE'] ?>" name="score" />
+                                <button type="submit" class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['DISLIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-down fa-flip-horizontal"></i></button>
+                            </form>
+                        </div>
                     </li>
                     <div tabindex="-1" id="request<?= $ad->uuid ?>" class="modal fade" >
                         <div class="modal-dialog modal-dialog-centered">
@@ -196,45 +213,56 @@
         ?>
         <div class="media text-center">
             <div class="card card-body media-body">
-                <h5 class="mt-0"><a href="index/session/login">Inicie sesión para comentar el anuncio</a></h5>
+                <h5 class="mt-0"><a href="index/session/login">Inicie sesión</a></h5>
             </div>
         </div>
     <?php }
     ?>
-    <div id="listComentarios">
-        <?php foreach ($comments as $result) { ?>
-            <div class="media">
-                <div class="card card-body media-body">
-                    <h5 class="mt-0"><?= $result->login ?></h5>
-                    <p><?= $result->content ?></p>
-                    <div class="container-fluid">
-                        <small class="text-muted float-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>                    
+    <br>
+
+    <?php
+    if (isset($_GET['report'])) {
+        ?>
+        <div class='alert alert-success alert-dismissible fade show col-md-6 content-center' role='alert'>
+            <?= $lang[$_GET['report']] ?>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>
+        <?php
+    }
+    ?>
+    <br>
+    <div id="listComentarios">     
+        <div>
+            <?php foreach ($comments as $result) { ?>
+                <div class="media">
+                    <div class="card card-body media-body">
+                        <h5 class="mt-0"><?= $result->login ?></h5>
+                        <?php if (true) { ?>
+                            <div class="float-lg-right">
+                                <form method="post" action="<?= $helper->url("report", "createReport") ?>">
+                                    <input type="hidden" value="<?= REPORTS['COMMENT'] ?>" name="report"  id="report"/>
+                                    <input type="hidden" value="<?= $result->uuid ?>" name="uuid" id="uuid" />
+                                    <button type="submit" class="btn btn-warning btn-sm float-lg-right"><i class="fa fa-exclamation-triangle "></i></button>
+                                </form>
+                            </div>
+                        <?php } ?>
+                        <p><?= $result->content ?></p>
+                        <div class="container-fluid">
+                            <small class="text-muted float-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>                    
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
+        </div>
     </div>
     <br>
     <div class="text-xs-center">
-        <!--    <ul class="pagination justify-content-center">
-    
-        <?php
-        /* for ($i = 0; $i < $numComments / 5; $i++) { */
-        ?>
-                    <li class="page-item <?= $pag == $i ? "active" : "" ?>">
-                        <a uuid="<?= $ad->uuid ?>" class="page-link pagCommentAd"><?= $i + 1 ?></a>
-                    </li>
-        <?php /* } */
-        ?>       
-            </ul>-->
-
-
         <div class="text-center paginacionCommentsAd">
             <li pag="1" uuid="<?= $ad->uuid ?>" class="btn btn-info pagCommentAd"><i class="fa fa-plus "></i></li>   
             <input type="hidden" value="<?= $numComments ?>" id="numComments">
         </div>
-
-
     </div>
-
+</div>
 </section>

@@ -12,12 +12,14 @@ class ReportController extends AbstractController {
     private $reportModel;
     private $requestModel;
     private $userModel;
+    private $commentModel;
 
     public function __construct() {
         parent::__construct();
         $this->reportModel = new ReportModel();
         $this->requestModel = new RequestModel();
         $this->userModel = new UserModel();
+        $this->commentModel= new CommentModel();
     }
 
     public function createReport() {
@@ -88,6 +90,33 @@ class ReportController extends AbstractController {
             }
         } else {
             $this->redirect("User", "readUser", array('uuid' => $_SESSION['uuid']));
+        }
+    }
+    
+    
+    public function reportComment() {
+        $data = array("title" => "text", "description" => "longText", "uuid" => "text");
+        $errors = RegularUtils::filtrarPorTipo($data, "createReport");
+        if (!isset($errors)) {
+            $saneado = RegularUtils::sanearStrings(array('title', 'uuid', 'description'));
+            $uuid = $saneado["uuid"];
+            $description = str_replace("\n", "<br />", $saneado['description']);
+            $title = $saneado["title"];
+            $comment = $this->commentModel->read($uuid);
+            $report = new Report();
+            $report->setComment_reported($comment->id);
+            $report->setTitle($title);
+            $report->setDescription($description);
+            $report->setUser_id($_SESSION['id']);
+            $report->setUuid(RegularUtils::uuid());
+            $lineas = $this->reportModel->create($report);
+            if ($lineas == 0) {
+                $this->redirect();
+            } else {
+                $this->redirect("Ad", "read", array('uuid' => $_POST['uuid'], 'report' => "report_ok"));
+            }
+        } else {
+            $this->redirect("Ad", "read", array('uuid' => $_POST['uuid']));
         }
     }
 

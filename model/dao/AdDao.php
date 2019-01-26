@@ -35,10 +35,23 @@ class AdDao extends AbstractDao {
     }
 
     public function getAllPaginated($pag) {
-        $query = $this->mysqli->query("SELECT * FROM $this->table "
-                . "WHERE state != " . STATES['ELIMINADO'] . " "
-                . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
-        //Devolvemos el resultset en forma de array de objetos
+        $query = $this->mysqli->query("SELECT
+            a.*,
+            COUNT(IF(s.score=1,1,NULL)) AS LIKES,
+            COUNT(IF(s.score=0,0,NULL)) AS DISLIKES
+        FROM
+            Ads AS a
+        LEFT OUTER JOIN Scores AS s
+        ON
+            s.ad_id = a.id
+        WHERE
+            a.state = 1
+        GROUP BY
+            a.id
+        ORDER BY
+            a.id ASC 
+        LIMIT 10 
+        OFFSET " . $pag * 10);
 
         $resultSet = array();
         while ($row = $query->fetch_object()) {
@@ -314,7 +327,7 @@ class AdDao extends AbstractDao {
         $query .= " GROUP BY 
             a.uuid
         ORDER BY a.timestamp DESC     
-        LIMIT 10 OFFSET " .$pag * 10;
+        LIMIT 10 OFFSET " . $pag * 10;
         $resultSet = $this->mysqli->query($query);
         $res = array();
         while ($row = $resultSet->fetch_object()) {
