@@ -6,11 +6,11 @@ if (in_array($title, FOOTER_ABSOLUTE)) {
 ?>
 <footer class="footer <?= $class ?>">
     <div class="row">
-        <div class="col-12 col-md">
+        <div class="order-3 col-md-6">
             <small class="d-block mb-3 text-muted">&copy; 2018-2019</small>
         </div>
-        <div class="col-6 col-md">
-            <ul class="list-unstyled text-small">
+        <div class="order-1 col-md-6">
+            <ul class="list-unstyled text-small text-center">
                 <li><a class="text-muted" href="<?php echo $helper->url("user", "index"); ?>"><i class="fa fa-home"></i></a></li>
                 <li><a class="text-muted" href="<?= $helper->url("ad", "listAds") ?>"><?= $lang['anuncios'] ?></a></li>
                 <?php if (verifySession()) { ?>
@@ -24,7 +24,7 @@ if (in_array($title, FOOTER_ABSOLUTE)) {
                 ?>
             </ul>
         </div>
-        <div class="col-6 col-md">
+        <div class="order-2 col-md-6 text-center">
             <h5><i class="fa fa-code-branch"></i> <a class="text-muted" href="https://github.com/QuiniRoizPagador/CorePHPMVC">Master Branch</a></h5>
             <ul class="list-unstyled text-small">
                 <li><a class="text-muted" href="https://github.com/AQR7">Alberto Quevedo Rodr&iacute;guez</a></li>
