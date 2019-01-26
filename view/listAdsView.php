@@ -18,7 +18,6 @@ if (filter_has_var(INPUT_GET, 'pag') && trim($_GET['pag']) != "") {
 if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
     $_user = filter_var($_GET['user'], FILTER_SANITIZE_STRING);
 }
-
 ?>
 <div class="row col-md-12">
     <nav class="col-md-2 d-md-block sidebar">
@@ -72,34 +71,41 @@ if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
     </nav>
     <main class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="container-fluid">
-            <div class="float-lg-right">
+            <?php if (verifySession()) { ?>
+                <div class="float-md-left">
+                    <a href="index.php?controller=Ad&action=createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
+                </div>
+            <?php } ?>
+            <div class="float-md-right">
                 <?= $_pag * 10 + 1 ?>-<?= $_pag * 10 + sizeof($results) ?>/<?= $countList ?>
             </div>
-            <?php
-            foreach ($results as $result) {
-                ?>
-                <div class="media">
-                    <picture class="align-self-center mr-3">
-                        <source srcset="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" type="image/svg+xml">
-                        <img src="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
-                    </picture>
-                    <div class="media-body">
-                        <h5 class="mt-0"><?= $result->title ?></h5>
-                        <p>
-                            <?= $lang['precio'] . ": " . $result->price ?>
-                            <?= $lang['habitaciones'] . ": " . $result->rooms ?>
-                            <?= $lang['m2'] . ": " . $result->m_2 ?>
-                            <?= $result->municipality . ", " . $result->province ?>
-                        </p>
-                        <p><?= $result->description ?></p>
-                        <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
-                        <small class="text-muted float-lg-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
-                    </div>
-                </div>
-                <hr />
+            <div class="container-fluid" style="clear:both !important;">
                 <?php
-            }
-            ?>
+                foreach ($results as $result) {
+                    ?>
+                    <div class="row media">
+                        <picture class="align-self-center mr-3">
+                            <source srcset="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" type="image/svg+xml">
+                            <img src="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
+                        </picture>
+                        <div class="media-body">
+                            <h5 class="mt-0"><?= $result->title ?></h5>
+                            <p>
+                                <?= $lang['precio'] . ": " . $result->price ?>
+                                <?= $lang['habitaciones'] . ": " . $result->rooms ?>
+                                <?= $lang['m2'] . ": " . $result->m_2 ?>
+                                <?= $result->municipality . ", " . $result->province ?>
+                            </p>
+                            <p><?= $result->description ?></p>
+                            <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
+                            <small class="text-muted float-lg-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
+                        </div>
+                    </div>
+                    <hr />
+                    <?php
+                }
+                ?>
+            </div>
         </div>
         <div class="text-xs-center">
             <ul class="pagination pagination-sm justify-content-center">

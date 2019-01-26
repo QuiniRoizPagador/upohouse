@@ -3,7 +3,7 @@
 // constante que tomará los valores de los actions que necesitan ser verificados 
 const ACTIONS = array(
     "USER" => array("remove", "readUser", "reportUser", "updateProfile", "paginateRequests", 
-        "createRequest", "refuse", "accept", "createReport"),
+        "createRequest", "refuse", "accept", "createReport", "createView"),
     "GUEST" => array("index", "login", "register"),
     "ADMIN" => array('createUser', 'remove', "dashboard", "updateUser", "blockUser", "removeUser", "paginateUsers",
         "paginateComments", "createHousingTypes", "updateHousingTypes", "paginateHousingTypes", "removeHousingTypes",

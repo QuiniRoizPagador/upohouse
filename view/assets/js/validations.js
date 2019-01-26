@@ -29,7 +29,10 @@
                         default:
                             regex = /[a-zA-Z0-9_]{1,255}$/;
                     }
-                    if (!settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
+                    var a = $(this)[0].getAttribute("class").indexOf("can-be-empty") > 0 && val.length === 0;
+                    console.log(a);
+                    //NO ESTA FINO
+                    if (($(this)[0].getAttribute("class").indexOf("can-be-empty") > 0 && val.length !== 0 && !val.match(regex)) || !settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
                         if ($(this)[0].type === "password") {
                             errorPassw++;
                         }
