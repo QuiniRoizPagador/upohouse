@@ -4,6 +4,7 @@ require_once 'core/templates/nav.php';
 $_house = null;
 $_operation = null;
 $_pag = 0;
+$_user = null;
 if (filter_has_var(INPUT_GET, "type_house") && trim($_GET['type_house']) != "") {
     $_house = filter_var($_GET['type_house'], FILTER_SANITIZE_STRING);
 }

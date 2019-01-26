@@ -275,8 +275,12 @@ class AdController extends AbstractController {
                 $province = $this->provinceModel->readId($ad->province_id);
                 $municipality = $this->municipalityModel->readId($ad->municipality_id);
                 $images = $this->imageModel->readByAd($ad->id);
-                $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
-                $isSame = $ad->user_id == $_SESSION['id'];
+                $hasUserRequest = FALSE;
+                $isSame = FALSE;
+                if (verifySession()) {
+                    $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
+                    $isSame = $ad->user_id == $_SESSION['id'];
+                }
                 $this->view("readAd", array(
                     'title' => "anuncio",
                     "ad" => $ad,
