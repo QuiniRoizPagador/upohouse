@@ -47,3 +47,8 @@ const REPORTS = array(
 global $lang;
 
 const FOOTER_ABSOLUTE = array('login', 'profile');
+
+const LIKES = array(
+    'LIKE' => 1,
+    'DISLIKE' => 0
+);

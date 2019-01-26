@@ -169,35 +169,54 @@
                     <?php
                 }
                 ?>
-            </ul> 
-        </div>
-    </div>
-    <br>
-    <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
-        <h2 class="h5"><?= $lang["comentarios"] ?></h2>
-    </div>
-    <div class="row">
-        <form class="col-md-12 col-sm-12" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
-            <div class="form-group">
-                <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
-                <input name="idAd" type="hidden" value="<?= $ad->id ?>">
-                <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
+                <?php if (verifySession()) { ?>
+                    <li class="list-group-item">
+                        <span class="pull-left">
+                            <strong>Score</strong>
+                        </span>
+                        <div class="btn-group float-right">
+                            <form action="<?= $helper->url("score", "score") ?>" method="post">
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
+                                <input type="hidden" value="<?= LIKES['LIKE'] ?>" name="score" />
+                                <button class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['LIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-up"></i></button>
+                            </form>
+                            <form action="<?= $helper->url("score", "score") ?>" method="post">
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
+                                <input type="hidden" value="<?= LIKES['DISLIKE'] ?>" name="score" />
+                                <button type="submit" class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['DISLIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-down fa-flip-horizontal"></i></button>
+                            </form>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul> 
             </div>
-            <button type="submit" class="btn btn-success">Enviar</button>
-        </form>
-    </div>
-    <br>
-    <div>
-        <?php foreach ($comments as $result) { ?>
-            <div class="media">
-                <div class="card card-body media-body">
-                    <h5 class="mt-0"><?= $result->login ?></h5>
-                    <p><?= $result->content ?></p>
-                    <div class="container-fluid">
-                        <small class="text-muted float-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>                    
+        </div>
+        <br>
+        <div class="d-flex justify-content-between pb-2 mb-3 border-bottom">
+            <h2 class="h5"><?= $lang["comentarios"] ?></h2>
+        </div>
+        <div class="row">
+            <form class="col-md-12 col-sm-12" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
+                <div class="form-group">
+                    <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
+                    <input name="idAd" type="hidden" value="<?= $ad->id ?>">
+                    <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
+                </div>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <?php foreach ($comments as $result) { ?>
+                <div class="media">
+                    <div class="card card-body media-body">
+                        <h5 class="mt-0"><?= $result->login ?></h5>
+                        <p><?= $result->content ?></p>
+                        <div class="container-fluid">
+                            <small class="text-muted float-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>                    
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
     </div>
 </section>

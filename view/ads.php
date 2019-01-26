@@ -16,6 +16,8 @@
                     <tr>
                         <th>Id</th>
                         <th>UUID</th>
+                        <th>LIKES</th>
+                        <th>DISLIKES</th>
                         <th><?= $lang['precio'] ?> </th>
                         <th><?= $lang['fecha registro'] ?></th>
                         <th>Ver</th>
@@ -32,6 +34,8 @@
                         <tr>
                             <td class="<?= $class ?>"><?= $ad->id; ?> </td>
                             <td class="<?= $class ?>"><?= $ad->uuid; ?> </td>
+                            <td class="<?= $class ?>"><?= $ad->LIKES; ?> </td>
+                            <td class="<?= $class ?>"><?= $ad->DISLIKES; ?> </td>
                             <td class="<?= $class ?>"><?= $ad->price; ?> </td>
                             <td class="<?= $class ?>"><?= $ad->timestamp; ?> </td>
                             <td class="<?= $class ?>">

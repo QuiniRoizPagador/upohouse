@@ -20,6 +20,7 @@ class AdController extends AbstractController {
     private $imageModel;
     private $requestModel;
     private $commentModel;
+    private $scoreModel;
 
     public function __construct() {
         parent::__construct();
@@ -32,6 +33,7 @@ class AdController extends AbstractController {
         $this->imageModel = new ImageModel();
         $this->requestModel = new RequestModel();
         $this->commentModel = new CommentModel();
+        $this->scoreModel = new ScoreModel();
     }
 
     public function modifyView() {
@@ -279,11 +281,17 @@ class AdController extends AbstractController {
                 $images = $this->imageModel->readByAd($ad->id);
                 $hasUserRequest = FALSE;
                 $isSame = FALSE;
+                $isScored = false;
+                $userScore = null;
                 $comments = $this->commentModel->getComments($ad->id);
-                
+
                 if (verifySession()) {
                     $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
                     $isSame = $ad->user_id == $_SESSION['id'];
+                    $isScored = $this->scoreModel->isUserScored($_SESSION['id'], $ad->id);
+                    if ($isScored) {
+                        $userScore = $this->scoreModel->getUserScore($_SESSION['id'], $ad->id);
+                    }
                 }
                 $this->view("readAd", array(
                     'title' => "anuncio",
@@ -296,7 +304,9 @@ class AdController extends AbstractController {
                     "images" => $images,
                     "hasUserRequest" => $hasUserRequest,
                     "isSame" => $isSame,
-                    "comments" => $comments
+                    "comments" => $comments,
+                    "isScored" => $isScored,
+                    "userScore" => $userScore
                 ));
             }
         } else {

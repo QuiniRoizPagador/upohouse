@@ -207,6 +207,8 @@ function cargarAnuncio(ad) {
     td.append(a);
     tr.append(create("td", ad.id, clase));
     tr.append(create("td", ad.uuid, clase));
+    tr.append(create("td", ad.LIKES, clase));
+    tr.append(create("td", ad.DISLIKES, clase));
     tr.append(create("td", ad.price, clase));
     tr.append(create("td", ad.timestamp, clase));
     tr.append(td);
