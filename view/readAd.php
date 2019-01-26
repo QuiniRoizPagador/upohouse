@@ -177,34 +177,27 @@
         <h2 class="h5"><?= $lang["comentarios"] ?></h2>
     </div>
     <div class="row">
-        <form class="col-md-12 col-sm-12">
-            <div class="form-group" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
-
+        <form class="col-md-12 col-sm-12" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
+            <div class="form-group">
                 <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
                 <input name="idAd" type="hidden" value="<?= $ad->id ?>">
-                <input name="idUser" type="hidden" value="<?= $_SESSION['id'] ?>">                 
-
-
-
+                <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
             </div>
             <button type="submit" class="btn btn-success">Enviar</button>
         </form>
     </div>
-
+    <br>
     <div>
-        <!--      <div class="media">
-                  <div class="media-body">
-                      <h5 class="mt-0"><?= $result->title ?></h5>
-                      <p>
-        <?= $lang['precio'] . ": " . $result->price ?>
-        <?= $lang['habitaciones'] . ": " . $result->rooms ?>
-        <?= $lang['m2'] . ": " . $result->m_2 ?>
-        <?= $result->municipality . ", " . $result->province ?>
-                      </p>
-                      <p><?= $result->description ?></p>
-                      <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
-                      <small class="text-muted float-lg-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
-                  </div>
-              </div>-->
+        <?php foreach ($comments as $result) { ?>
+            <div class="media">
+                <div class="card card-body media-body">
+                    <h5 class="mt-0"><?= $result->login ?></h5>
+                    <p><?= $result->content ?></p>
+                    <div class="container-fluid">
+                        <small class="text-muted float-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>                    
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </section>

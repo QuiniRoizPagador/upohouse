@@ -11,10 +11,10 @@ class CommentDao extends AbstractDao {
     }
 
     public function create($obj) {
-        $query = "INSERT INTO $this->table (`uuid`, `ad_id`, `user_id`,`content`, `state`)
-                VALUES(?, ?, ?, ?, ?)";
-        $data = array("siisi", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(), "user_id" => $obj->getUser_id(),
-            "content" => $obj->getContent(), "state" => $obj->getState());
+        $query = "INSERT INTO $this->table (`uuid`, `ad_id`, `user_id`,`content`)
+                VALUES(?, ?, ?, ?)";
+        $data = array("siis", "uuid" => $obj->getUuid(), "ad_id" => $obj->getAd_id(), "user_id" => $obj->getUser_id(),
+            "content" => $obj->getContent());
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
@@ -81,6 +81,23 @@ class CommentDao extends AbstractDao {
         $data = array("is", "state" => STATES["BLOQUEADO"], "uuid" => $uuid);
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
+    }
+    
+    public function getComments($id, $pag = 0) {
+        $query = $this->mysqli->query("SELECT c.*,u.login FROM $this->table AS c "
+                . "JOIN users AS u ON c.user_id=u.id "
+                . "WHERE c.state = " . STATES['NEUTRO'] . " AND c.ad_id=".$id." "
+                . "ORDER BY id ASC LIMIT 5 OFFSET " . $pag * 5);
+        //Devolvemos el resultset en forma de array de objetos
+
+        $resultSet = array();
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
+        }
+        mysqli_free_result($query);
+
+        return $resultSet;
+        
     }
 
 }
