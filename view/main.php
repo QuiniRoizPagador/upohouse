@@ -12,9 +12,11 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-        <div class="row">
-            <a href="index.php?controller=Ad&action=createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
-        </div>
+        <?php if (verifyIsLogin()) { ?>
+            <div class="row">
+                <a href="index.php?controller=Ad&action=createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
+            </div>
+        <?php } ?>
         <div class="row">
             <?php
             foreach ($ads as $result) {
@@ -22,8 +24,8 @@
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <picture class="text-center">
-                            <source srcset="<?= isset($result->thumbnail)?$result->thumbnail:"view/images/home.png" ?>" type="image/svg+xml">
-                            <img src="<?= isset($result->thumbnail)?$result->thumbnail:"view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
+                            <source srcset="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" type="image/svg+xml">
+                            <img src="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
                         </picture>
                         <div class="card-body">
                             <p class="card-text">
