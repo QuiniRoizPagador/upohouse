@@ -241,7 +241,7 @@
             <h2 class="h5"><?= $lang["comentarios"] ?></h2>
         </div>
         <div class="row">
-            <form class="col-md-12 col-sm-12" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
+            <form class="col-md-12 col-sm-12 formUser" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
                 <div class="form-group">
                     <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
                     <input name="idAd" type="hidden" value="<?= $ad->id ?>">
@@ -267,7 +267,7 @@
             <?php foreach ($comments as $result) { ?>
                 <div class="media">
                     <div class="card card-body media-body">
-                        <h5 class="mt-0"><?= $result->login ?></h5>
+                        <h5 class="mt-0"><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$result->uuid_user"));?>"><?= $result->login ?></a></h5>
                         <?php if (!$result->denunciado) { ?>
                             <div class="float-lg-right">
                                 <form method="post" action="<?= $helper->url("report", "createReport") ?>">

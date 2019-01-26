@@ -84,7 +84,7 @@ class CommentDao extends AbstractDao {
     }
 
     public function getComments($id, $pag = 0) {
-        $query = $this->mysqli->query("SELECT c.*,u.login, (rep.comment_reported IS NOT NULL  AND rep.user_id!=".$_SESSION['id'].") AS denunciado FROM $this->table AS c "
+        $query = $this->mysqli->query("SELECT c.*,u.login, u.uuid as 'uuid_user',(rep.comment_reported IS NOT NULL  AND rep.user_id!=".$_SESSION['id'].") AS denunciado FROM $this->table AS c "
                 . "LEFT OUTER JOIN Reports as rep ON rep.comment_reported = c.id "
                 . "JOIN users AS u ON c.user_id=u.id "
                 . "WHERE c.state = " . STATES['NEUTRO'] . " AND c.ad_id=" . $id . " "

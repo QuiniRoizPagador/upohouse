@@ -43,6 +43,10 @@ class CommentController extends AbstractController{
                 }
             }
         }
+        else
+        {
+             $this->redirect("ad", "read", array("uuid" => $_POST['uuidAd']));
+        }
     }
 
 }

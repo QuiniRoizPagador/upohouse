@@ -260,9 +260,9 @@ function cargarComentario(comment) {
     var clase = "";
     var tr = $("<tr/>");
     tr.append(create("td", comment.id, clase));
-    tr.append("<td><a href='index/ad/read&uuid="+comment.uuid_ad+"'><i class='fas fa-images'></i></a></td>");
-    tr.append("<td><a href='index/user/readUser&uuid="+comment.uuid_user+"'>"+comment.login+"</a></td>");
-    
+    tr.append("<td><a href='index/ad/read&uuid=" + comment.uuid_ad + "'><i class='fas fa-images'></i></a></td>");
+    tr.append("<td><a href='index/user/readUser&uuid=" + comment.uuid_user + "'>" + comment.login + "</a></td>");
+
     tr.append(create("td", comment.content, clase));
     tr.append(create("td", comment.timestamp, clase));
     var td = create("td", "", clase);
@@ -889,25 +889,25 @@ function cargarReportRequest(report)
  */
 function cargarComentarioAd(comentario)
 {
-    
+
     var div = $("<div class='media'>");
     var divCard = $("<div class='card card-body media-body'>")
     div.append(divCard);
-    divCard.append($("<h5 class='mt-0'>" + comentario.login + "</h5>"));
-    
+    divCard.append($("<h5 class='mt-0'><a href='index/user/readUser&uuid=" + comentario.uuid_user + "'>" + comentario.login + "</a></h5>"));
+
     console.log(!!comentario.denunciado);
-    if(!!comentario.denunciado)
+    if (!!comentario.denunciado)
     {
-        var divDenuncias=$("<div class='float-lg-right'>");
+        var divDenuncias = $("<div class='float-lg-right'>");
         divCard.append(divDenuncias);
-        var form=$("<form method='post' action='index.php?controller=report&action=createReport'>");
+        var form = $("<form method='post' action='index.php?controller=report&action=createReport'>");
         divDenuncias.append(form);
-        form.append($("<input type='hidden' value='"+REPORTS['COMMENT']+"' name='report' id='report'>"));
-        form.append($("<input type='hidden' value='"+comentario.uuid+"' name='uuid' id='uuid'>"));
-        form.append($("<input type='hidden' value='"+REPORTS['COMMENT']+"' name='report' id='report'>"));
+        form.append($("<input type='hidden' value='" + REPORTS['COMMENT'] + "' name='report' id='report'>"));
+        form.append($("<input type='hidden' value='" + comentario.uuid + "' name='uuid' id='uuid'>"));
+        form.append($("<input type='hidden' value='" + REPORTS['COMMENT'] + "' name='report' id='report'>"));
         form.append($("<button type='submit' class='btn btn-warning btn-sm float-lg-right'><i class='fa fa-exclamation-triangle'></i></button> "));
     }
-    
+
     divCard.append($("<p>" + comentario.content + "</p>"));
     var divContainer = $("<div class='container-fluid'>")
     divCard.append(divContainer);
@@ -1222,6 +1222,7 @@ function cargarComentarioAd(comentario)
     {
         this.each(function () {
             $(this).click(function () {
+
                 var url = "index.php?controller=WS&action=paginateCommentsAd";
                 var num = $(this).attr('pag');
                 var uuidAd = $(this).attr('uuid');
@@ -1229,6 +1230,7 @@ function cargarComentarioAd(comentario)
                 var hijos = $("#listComentarios .media").length;
                 if (numComments != hijos)
                 {
+                    $("#lockModal").modal('show');
                     $.post(url,
                             {
                                 'commentsAdPag': num,
@@ -1243,7 +1245,7 @@ function cargarComentarioAd(comentario)
 
                                 } catch (Exception) {
                                 }
-
+                                $("#lockModal").modal("hide");
                             }
                     );
                     $(this).attr('pag', parseInt($(this).attr('pag')) + 1);
