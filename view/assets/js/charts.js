@@ -1,3 +1,6 @@
+/**
+ * Plugin que cargará los gráficos utilizados en la zona de administración
+ */
 $(document).ready(function () {
     if (typeof (lb) !== 'undefined') {
         var ctx = document.getElementById("countRegistrations");

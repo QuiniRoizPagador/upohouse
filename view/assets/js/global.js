@@ -1,3 +1,6 @@
+/**
+ * Archivo js que contiene variables globales
+ */
 const STATES = {
     "NEUTRO": '1',
     "BLOQUEADO": '2',

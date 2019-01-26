@@ -1,3 +1,11 @@
+/**
+ * Función de utilidad que crea nodos.
+ * 
+ * @param {string} type tipo del nodo
+ * @param {string} data contenido del nodo
+ * @param {string} clase clase que se añade al nodo
+ * @returns {create.td|window.$|$}
+ */
 function create(type, data, clase) {
     var td = $("<" + type + " />");
     if (clase !== "") {
@@ -6,14 +14,29 @@ function create(type, data, clase) {
     td.append(data);
     return td;
 }
-
+/**
+ * Función que crea columnas para tablas horizontales.
+ * @param {string} title título (cabecera)
+ * @param {string} content contenido del tr
+ * @returns {createTR.tr|window.$|$}
+ */
 function createTR(title, content) {
     var tr = $("<tr />");
     tr.append(create("th", title, ""));
     tr.append(create("td", content, ""));
     return tr;
 }
-
+/**
+ * Función que creará un modal de verificación genérico.
+ * 
+ * @param {string} id del objeto
+ * @param {string} uuid del objeto
+ * @param {string} title título del modal
+ * @param {node} button botón que enviará la orden al formulario
+ * @param {string} action dirección de la petición del formulario
+ * @param {string} content contenido a escribir en el modal.
+ * @returns {window.$|$|createModal.modal|create.td}
+ */
 function createModal(id, uuid, title, button, action, content) {
     var modal = create("div id='" + id + "' tabindex='-1'", "", "modal fade");
     var dialog = $("<div class='modal-dialog modal-dialog-centered' />");
@@ -36,7 +59,14 @@ function createModal(id, uuid, title, button, action, content) {
     card.append(footer);
     return modal;
 }
-
+/**
+ * Función que cargará los datos de un usuario en su tabla de administración
+ * y posteriormente inflará un modal para el mismo.
+ * 
+ * @param {jsonObject} user objeto json del usuario con el que se trabajará.
+ * @param {integer} pag página que se está cargando.
+ * @returns {cargarUsuario.tr|window.$|$}
+ */
 function cargarUsuario(user, pag) {
     var clase = "";
     if (user.state == '2') {
@@ -190,7 +220,12 @@ function cargarUsuario(user, pag) {
 
     return tr;
 }
-
+/**
+ * Función que cargará los datos en la tabla de anuncios.
+ * 
+ * @param {jsonObject} ad objeto json con el anuncio a inflar.
+ * @returns {cargarAnuncio.tr|window.$|$}
+ */
 function cargarAnuncio(ad) {
     var clase = "";
     if (ad.state == '2') {
@@ -214,7 +249,12 @@ function cargarAnuncio(ad) {
     tr.append(td);
     return tr;
 }
-
+/**
+ * Función que cargará los comentarios paginadamente.
+ * 
+ * @param {jsonObject} comment Comentarios a inflar.
+ * @returns {cargarComentario.tr|window.$|$}
+ */
 function cargarComentario(comment) {
 
     var clase = "";
@@ -267,8 +307,11 @@ function cargarComentario(comment) {
     console.log(tr);
     return tr;
 }
-
-
+/**
+ * Función que cargará en la tabla de administración los tipos de vivienda.
+ * @param {jsonObject} housingType objeto de tipo de vivienda con el que se trabajará.
+ * @returns {cargarHousingType.tr|window.$|$}
+ */
 function cargarHousingType(housingType) {
 
     var clase = "";
@@ -344,7 +387,11 @@ function cargarHousingType(housingType) {
 
     return tr;
 }
-
+/**
+ * Función que cargará en su debida tabla los datos de los tipos de operación.
+ * @param {jsonObject} operationType objeto con el que se trabajará.
+ * @returns {cargarOperationType.tr|window.$|$}
+ */
 function cargarOperationType(operationType) {
 
     var clase = "";
@@ -420,8 +467,12 @@ function cargarOperationType(operationType) {
 
     return tr;
 }
-
-
+/**
+ * Función que cargará las peticiones correctamente paginadas.
+ * @param {jsonObject} request peticiones con las que trabajar.
+ * @param {jsonObject} pag página con la que se trabaja.
+ * @returns {cargarRequests.tr|window.$|$}
+ */
 function cargarRequests(request, pag) {
     var clase = "";
     var tr = $("<tr/>");
@@ -542,7 +593,12 @@ function cargarRequests(request, pag) {
 
     return tr;
 }
-
+/**
+ * Función que cargará los reportes o denuncias sobre un usuario para el administrador.
+ * 
+ * @param {jsonObject} report denuncia a paginar.
+ * @returns {cargarReportUser.tr|window.$|$}
+ */
 function cargarReportUser(report)
 {
     var clase = "";
@@ -610,7 +666,12 @@ function cargarReportUser(report)
 
     return tr;
 }
-
+/**
+ * Función que cargará un anuncio en la tabla de anuncios del administrador.
+ * 
+ * @param {type} report anuncio con el que se trabajará.
+ * @returns {cargarReportAd.tr|window.$|$}
+ */
 function cargarReportAd(report)
 {
     var clase = "";
@@ -678,7 +739,12 @@ function cargarReportAd(report)
 
     return tr;
 }
-
+/**
+ * Función que cargará las denuncias relacionadas con los comentarios.
+ * 
+ * @param {jsonObject} report denuncia de comentario con la que trabajar.
+ * @returns {cargarReportComment.tr|window.$|$}
+ */
 function cargarReportComment(report)
 {
     var clase = "";
@@ -746,7 +812,12 @@ function cargarReportComment(report)
 
     return tr;
 }
-
+/**
+ * Función que cargará las denuncias de las peticiones de los usuarios sobre los anuncios.
+ * 
+ * @param {jsonObject} report denuncia sobre la que trabajar.
+ * @returns {cargarReportRequest.tr|window.$|$}
+ */
 function cargarReportRequest(report)
 {
     var clase = "";
@@ -814,7 +885,10 @@ function cargarReportRequest(report)
 
     return tr;
 }
-
+/**
+ * Plugin jquery encargado de las paginaciones específicas del sistema
+ * 
+ */
 (function ($) {
     $.fn.paginateUsers = function () {
         this.each(function () {
@@ -1116,7 +1190,9 @@ function cargarReportRequest(report)
     };
 
 })(jQuery);
-
+/**
+ * Se cargan las paginaciones del sistema
+ */
 $(document).ready(function () {
     $(".pagUser").paginateUsers();
     $(".pagAd").paginateAds();
