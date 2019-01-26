@@ -437,7 +437,7 @@
                             <td><?= $reports->request_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
-                                <button data-toggle="modal" data-target="#รงv<?= $reports->uuid ?>"
+                                <button data-toggle="modal" data-target="#searchReportRequests<?= $reports->uuid ?>"
                                         class="btn btn-info btn-sm">
                                     <span class="fa fa-eye"></span>
                                 </button>

@@ -34,4 +34,8 @@ class CommentModel extends AbstractModel {
         return $this->commentDao->block($uuid);
     }
 
+    public function getComments($id) {
+        return $this->commentDao->getComments($id);
+    }
+
 }
