@@ -2,13 +2,28 @@
 
 namespace core;
 
+/**
+ * Clase estática de utilidad encargada de verificaciones de expresiones regulares, 
+ * saneamientos, creaciones de uuid y guardado de imágenes
+ */
 class RegularUtils {
 
+    /**
+     * Método estático que creará un UUID siguiendo el estándar último de UUID.
+     * @return type String con el uuid generado.
+     */
     static public function uuid() {
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
     }
 
-    //El método necesita que se existan dichas imagenes.
+    /**
+     * Método estático que guardará las imágenes recibidas por parámetros, 
+     * una versión en tamaño real y otra para imágenes de tipo thumbnail.
+     * 
+     * @param type $field String con el nombre del campo a buscar en $_FILES
+     * @param type $adId id del anuncio al que irá asociado
+     * @return array Se devuelve un array con clave-valor de imágenes y su respectiva versión reducida.
+     */
     static public function saveAdImages($field, $adId) {
         $images = null;
         $url = IMAGE_AD_URI . "/" . $adId;
@@ -25,6 +40,14 @@ class RegularUtils {
         return $images;
     }
 
+    /**
+     * Método estático que redimensionará una imagen a partir de una url recibida.
+     * 
+     * @param type $file URL con la imagen original
+     * @param type $destiny URL del destino donde deseamos almacenar la nueva imagen.
+     * @param type $w Ancho nuevo.
+     * @param type $h Alto nuevo.
+     */
     static function resize_image($file, $destiny, $w, $h) {
         copy($file, $destiny);
         list($width, $height) = getimagesize($destiny);
@@ -59,6 +82,12 @@ class RegularUtils {
         }
     }
 
+    /**
+     * Método estático que iterará en el contenido de una carpeta y eliminará 
+     * todas sus imágenes. Posteriormente eliminará la propia carpeta.
+     * 
+     * @param type $adId id del anuncio que buscar para eliminar.
+     */
     static public function removeAdImages($adId) {
         $url = IMAGE_AD_URI . "/" . $adId;
         $files = scandir($url);
@@ -70,6 +99,13 @@ class RegularUtils {
         rmdir($url);
     }
 
+    /**
+     * Método estático que iterará por cada unas de las variables recibidas y 
+     * filtrará su existencia en la variable global $_POST.
+     * 
+     * @param type $values array con los valores a filtrar.
+     * @return Se devuelve un array con los errores en caso de existir o null en caso contrario.
+     */
     static public function filtrarVariable(&$values) {
         foreach ($values as $v) {
             if (!filter_has_var(INPUT_POST, $v) || trim($_POST[$v]) == "") {
@@ -83,7 +119,14 @@ class RegularUtils {
         }
     }
 
-    //Todos los campossiempre son requeridos.
+    /**
+     * Método estático que filtrará un diccionario de valores recibidos por parámetro
+     * con su tipo asociado, de forma que se filtre individualmente por tipo cada valor.
+     * 
+     * @param type $values array asociativo con los valores y sus tipos a filtrar.
+     * @param type $name Nombre del error asociado.
+     * @return array Se devuelve un array asociativo con los errores en cada campo.
+     */
     static public function filtrarPorTipo($values, $name) {
         foreach ($values as $key => $value) {
             if ($value == "image") {
@@ -149,6 +192,13 @@ class RegularUtils {
         }
     }
 
+    /**
+     * Método estático que eliminará de los errores aquellos campos no requeridos.
+     * @param type $errors array asociativo con los errores existentes de una verificación previa.
+     * @param type $name nombre del campo error.
+     * @param type $fields campo a buscar en el array asociativo.
+     * @return array con los errores actualizados.
+     */
     public static function camposNoRequeridos($errors, $name, $fields) {
         if ($errors != null) {
             foreach ($fields as $field) {
@@ -164,7 +214,12 @@ class RegularUtils {
         }
         return $errors;
     }
-
+    /**
+     * 
+     * @param type $values
+     * @param type $method
+     * @return type
+     */
     static public function sanearStrings($values, $method = 'POST') {
         switch ($method) {
             case 'GET':
