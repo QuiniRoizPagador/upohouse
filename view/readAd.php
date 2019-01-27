@@ -330,7 +330,7 @@
                 <div class="media">
                     <div class="card card-body media-body">
                         <h5 class="mt-0"><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$result->uuid_user")); ?>"><?= $result->login ?></a></h5>
-                        <?php if (!$result->denunciado && isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
+                        <?php if (isset($result->denunciado) && !$result->denunciado) { ?>
                             <div class="float-lg-right">
                                 <form method="post" action="<?= $helper->url("report", "createReport") ?>">
                                     <input type="hidden" value="<?= REPORTS['COMMENT'] ?>" name="report"  id="report"/>

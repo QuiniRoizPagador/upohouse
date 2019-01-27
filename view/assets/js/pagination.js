@@ -680,7 +680,6 @@ function cargarReportAd(report)
     tr.append(create("td", report.title, clase));
     tr.append($("<td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td>"));
     tr.append($("<td><a href='index/ad/read&uuid=" + report.uuid_reported + "'><i class='fas fa-images'></i></a></td>"));
-    tr.append(create("td", report.ad_reported, clase));
     tr.append(create("td", report.timestamp, clase));
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#searchReportAd" + report.uuid + "' class='btn btn-info btn-sm'/>");

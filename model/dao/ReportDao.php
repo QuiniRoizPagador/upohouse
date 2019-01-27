@@ -78,12 +78,8 @@ class ReportDao extends AbstractDao {
                      10 OFFSET " . $pag * 10);
 
         $resultSet = array();
-        if (mysqli_error($this->mysqli) != "") {
-            while ($row = $query->fetch_object()) {
-                $resultSet[] = $row;
-            }
-        }else{
-            print_r(mysqli_error($this->mysqli));
+        while ($row = $query->fetch_object()) {
+            $resultSet[] = $row;
         }
         mysqli_free_result($query);
 

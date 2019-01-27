@@ -487,9 +487,9 @@ class AdminController extends AbstractController {
             $pag = 0;
         }
 
-        $numComments = $this->commentModel->countComments(FALSE);
-        $allComments = $this->commentModel->getAllPaginated(0, FALSE);
-        $countComments = $this->commentModel->countRegistrationComments(FALSE);
+        $numComments = $this->commentModel->countComments();
+        $allComments = $this->commentModel->getAllPaginated(0);
+        $countComments = $this->commentModel->countRegistrationComments();
 
         $this->view("dashboard", array(
             'title' => "dashboard",
@@ -505,10 +505,10 @@ class AdminController extends AbstractController {
         if ($pag == NULL) {
             $pag = 0;
         }
-        $numHousingTypes = $this->housingTypeModel->countHousingTypes(FALSE);
-        $allHousingTypes = $this->housingTypeModel->getAllPaginated(0, FALSE);
-        $numOperationTypes = $this->operationTypeModel->countOperationTypes(FALSE);
-        $allOperationTypes = $this->operationTypeModel->getAllPaginated(0, FALSE);
+        $numHousingTypes = $this->housingTypeModel->countHousingTypes();
+        $allHousingTypes = $this->housingTypeModel->getAllPaginated(0);
+        $numOperationTypes = $this->operationTypeModel->countOperationTypes();
+        $allOperationTypes = $this->operationTypeModel->getAllPaginated(0);
         $this->view("dashboard", array(
             'title' => "dashboard",
             "numHousingTypes" => $numHousingTypes,
@@ -525,14 +525,14 @@ class AdminController extends AbstractController {
             $pag = 0;
         }
 
-        $allReportsUsers = $this->reportModel->getAllReportUserPaginated(0, FALSE);
-        $numReportsUsers = $this->reportModel->countReportUsers(FALSE);
-        $allReportsAds = $this->reportModel->getAllReportAdPaginated(0, FALSE);
-        $numReportsAds = $this->reportModel->countReportAds(FALSE);
-        $allReportsComments = $this->reportModel->getAllReportCommentPaginated(0, FALSE);
-        $numReportsComments = $this->reportModel->countReportComments(FALSE);
-        $allReportsRequests = $this->reportModel->getAllReportRequestPaginated(0, FALSE);
-        $numReportsRequests = $this->reportModel->countReportRequests(FALSE);
+        $allReportsUsers = $this->reportModel->getAllReportUserPaginated(0);
+        $numReportsUsers = $this->reportModel->countReportUsers();
+        $allReportsAds = $this->reportModel->getAllReportAdPaginated(0);
+        $numReportsAds = $this->reportModel->countReportAds();
+        $allReportsComments = $this->reportModel->getAllReportCommentPaginated(0);
+        $numReportsComments = $this->reportModel->countReportComments();
+        $allReportsRequests = $this->reportModel->getAllReportRequestPaginated(0);
+        $numReportsRequests = $this->reportModel->countReportRequests();
 
         $this->view("dashboard", array(
             'title' => "dashboard",

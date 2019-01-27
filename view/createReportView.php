@@ -22,8 +22,10 @@ require_once 'core/templates/head.php';
                     break;
                 case REPORTS['COMMENT']:
                     $url = $helper->url("report", "reportComment");
+                    break;
                 case REPORTS['AD']:
                     $url = $helper->url("report", "reportAd");
+                    break;
             }
             ?>
             <form method="post" action="<?= $url ?>" class="formUser">
