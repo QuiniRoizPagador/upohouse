@@ -52,8 +52,8 @@ class MailUtils {
         }
     }
 
-    static function sendFreeMail($to, $subject, $message) {
-        mail($to, $subject, $message);
+    static function sendFreeMail($to, $subject, $message, $header) {
+        mail($to, $subject, $message, $header);
     }
 
 }

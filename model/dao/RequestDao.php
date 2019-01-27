@@ -66,6 +66,8 @@ class RequestDao extends AbstractDao {
             a.accepted_request IS NULL
         AND 
             r.state = " . STATES['NEUTRO'] . " 
+        AND 
+            a.state = " . STATES['NEUTRO'] . " 
         GROUP BY
             a.uuid,
             r.uuid

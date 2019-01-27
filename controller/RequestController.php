@@ -46,12 +46,11 @@ class RequestController extends AbstractController {
                 $this->requestModel->refuseAll($ad->id, $request->id);
 
                 //Versión gratuita
-                MailUtils::sendFreeMail($user->email, "Your request was accepted", "<p>Estimated $user->name, We are pleased to inform you that your"
+                MailUtils::sendFreeMail($user->email, "Your request was accepted", "Estimated $user->name, We are pleased to inform you that your"
                         . " request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted."
                         . " Therefore, the website terminates the agreement, and with this, your participation."
-                        . " We hope that the service provided was to your liking.</p><p>Kind regards,</p><p>The technical"
-                        . " team of Upohouse.</p>", "From: webmaster@example.com" . "\r\n" .
-                        "CC: somebodyelse@example.com");
+                        . " We hope that the service provided was to your liking.\n\nKind regards,\n\nThe technical"
+                        . " team of Upohouse.", "From: upohouse@gmail.com");
 
                 //Versión de pago
                 /* MailUtils::sendMail($user->email, "Your request was accepted", "<p>Estimated $user->name, 
