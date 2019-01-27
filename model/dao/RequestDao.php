@@ -131,6 +131,7 @@ class RequestDao extends AbstractDao {
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
+
     public function verifyExist($userId, $adId) {
         $query = "SELECT 
             COUNT(*) as count 
@@ -146,6 +147,13 @@ class RequestDao extends AbstractDao {
         $count = mysqli_fetch_object($resultSet)->count;
         mysqli_free_result($resultSet);
         return $count != 0;
+    }
+
+    public function removeRequest($id) {
+        $query = "UPDATE $this->table SET state = ? WHERE uuid = ? ";
+        $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
     }
 
 }

@@ -42,4 +42,8 @@ class CommentModel extends AbstractModel {
         return $this->commentDao->countCommentsAd($id);
     }
 
+    public function removeComment($id) {
+        return $this->commentDao->removeComment($id);
+    }
+
 }

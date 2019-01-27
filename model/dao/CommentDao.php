@@ -108,4 +108,11 @@ class CommentDao extends AbstractDao {
         return $row->count;
     }
 
+    public function removeComment($id) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
+        $data = array("is", "state" => STATES["ELIMINADO"], "uuid" => $id);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
+    }
+
 }

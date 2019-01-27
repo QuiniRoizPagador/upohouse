@@ -117,7 +117,7 @@
 
         <div class="col-sm-3">
             <ul class="list-group">
-                <li class="list-group-item text-muted"><?= $lang['anunciante'] ?>: <a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$user->uuid"));?>"><?= $user->name?></a></li>
+                <li class="list-group-item text-muted"><?= $lang['anunciante'] ?>: <a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$user->uuid")); ?>"><?= $user->name ?></a></li>
                 <li class="list-group-item text-muted"><?= $lang['actions'] ?> <i class="fa fa-asterisk fa-1x"></i></li>
                 <?php
                 if ((verifyIsAdmin() || verifyAdProperty($ad->user_id)) && $ad->state !== STATES["BLOQUEADO"]) {
@@ -153,7 +153,7 @@
                                 <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
                             </span>
                         </li>
-                        <?php } else {
+                    <?php } else {
                         ?>
                         <li class="list-group-item">
                             <span class="pull-left">
@@ -228,8 +228,12 @@
                         </div>
                     </div>
                     <?php
-                }
-                ?>
+                } else if ($hasUserRequest) {
+                    ?>
+                    <div class="alert alert-info">
+                        <?= $lang['peticion_existente'] ?>
+                    </div>
+                <?php } ?>
             </ul> 
         </div>
     </div>
@@ -248,7 +252,7 @@
                     <input name="idAd" type="hidden" value="<?= $ad->id ?>">
                     <input name="uuidAd" type="hidden" value="<?= $ad->uuid ?>">                
                 </div>
-                <button type="submit" class="btn btn-success"><?= $lang["enviar"]?></button>
+                <button type="submit" class="btn btn-success"><?= $lang["enviar"] ?></button>
             </form>
         </div>
         <br>
@@ -257,7 +261,7 @@
         ?>
         <div class="media text-center">
             <div class="card card-body media-body">
-                <h5 class="mt-0"><a href="index/session/login"><?= $lang["inicie sesion"]?></a></h5>
+                <h5 class="mt-0"><a href="index/session/login"><?= $lang["inicie sesion"] ?></a></h5>
             </div>
         </div>
     <?php }
@@ -268,7 +272,7 @@
             <?php foreach ($comments as $result) { ?>
                 <div class="media">
                     <div class="card card-body media-body">
-                        <h5 class="mt-0"><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$result->uuid_user"));?>"><?= $result->login ?></a></h5>
+                        <h5 class="mt-0"><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$result->uuid_user")); ?>"><?= $result->login ?></a></h5>
                         <?php if (!$result->denunciado) { ?>
                             <div class="float-lg-right">
                                 <form method="post" action="<?= $helper->url("report", "createReport") ?>">

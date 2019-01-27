@@ -567,7 +567,7 @@ class AdminController extends AbstractController {
             $this->dashboard($errors);
         } else {
             $id = RegularUtils::sanearStrings(array('comment_uuid'))['comment_uuid'];
-            $rem = $this->commentModel->block($id);
+            $rem = $this->commentModel->removeComment($id);
             if ($rem == 0) {
                 $errors['acceptReportComment'][$_POST['comment_uuid']]['query'] = "error_block_comment";
                 $this->dashboard($errors);
@@ -605,7 +605,6 @@ class AdminController extends AbstractController {
         if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "request_uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->reportModel->modifyState($id, "Aceptar");
-            //$rem = $this->commentModel->block($id);
             if ($rem == 0) {
                 $errors['acceptReportRequest'][$_POST['uuid']]['query'] = "error_accept_report";
             }
@@ -614,7 +613,7 @@ class AdminController extends AbstractController {
             $this->dashboard($errors);
         } else {
             $id = RegularUtils::sanearStrings(array('request_uuid'))['request_uuid'];
-            $rem = $this->requestModel->block($id);
+            $rem = $this->requestModel->removeRequest($id);
             if ($rem == 0) {
                 $errors['acceptReportRequest'][$_POST['request_uuid']]['query'] = "error_block_request";
                 $this->dashboard($errors);

@@ -42,4 +42,8 @@ class RequestModel extends AbstractModel {
         return $this->requestDao->verifyExist($userId, $adId);
     }
 
+    public function removeRequest($id) {
+        return $this->requestDao->removeRequest($id);
+    }
+
 }

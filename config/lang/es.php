@@ -153,6 +153,7 @@ $lang = array(
     'anunciante' => "Anunciante",
     'crear_denuncia' => "Crear Denuncia",
     "report_fail" => "Lo sentimos, ha habido un error al crear su petici&oacute;n. Int&eacute;ntelo de nuevo m&aacute;s tarde.",
-    'less than 1 second' => "menos de 1 segundo"
+    'less than 1 second' => "menos de 1 segundo",
+    'peticion_existente' => 'Existe una petici&oacute;n sobre este anuncio.'
 );
 

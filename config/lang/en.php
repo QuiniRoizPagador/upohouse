@@ -153,6 +153,7 @@ $lang = array(
     'anunciante' => "Ad owner",
     'crear_denuncia'=> "Create Report",
     "report_fail" => "Sorry, there was an error creating your request. Try it again later.",
-    'less than 1 second' => 'less than 1 second'
+    'less than 1 second' => 'less than 1 second',
+    'peticion_existente' => 'There is a request about this announcement.'
 );
 
