@@ -21,7 +21,7 @@
                             regex = /[a-zA-Z0-9_]{1,255}$/;
                             break;
                         case "textarea":
-                            regex = /^[A-Za-z0-9_\s\n.áéíóúÁÉÍÓÚ]{1,3000}$/;
+                            regex = /^[A-Za-z0-9_\s\n\r\t.,áéíóúÁÉÍÓÚñÑ]{1,3000}$/;
                             break;
                         case "select-one":
                             regex = /[0-9]/;

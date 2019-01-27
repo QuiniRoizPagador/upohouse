@@ -366,7 +366,7 @@ class RegularUtils {
      * @return boolean resultado de la verificación.
      */
     static public function isValidLongString($string) {
-        return preg_match("/^[A-Za-z0-9_\s\n.áéíóúÁÉÍÓÚ]{1,3000}$/", $string);
+        return preg_match("/^[A-Za-z0-9_\s\r\t\n.,áéíóúÁÉÍÓÚñÑ]{1,3000}$/", $string);
     }
 
 }
