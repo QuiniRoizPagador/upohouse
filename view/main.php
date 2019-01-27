@@ -1,6 +1,6 @@
 <section class="jumbotron text-center"  style="z-index: 1;">
     <div class="container dropdown">
-        <h1 class="jumbotron-heading">Ventor House</h1>
+        <h1 class="jumbotron-heading">UpoHouse</h1>
         <br/>
         <div class="row dropdown" id="divSearch">
             <input type="text" class='form-control searcher' name="search" placeholder="<?= $lang['buscar'] ?>" /> 

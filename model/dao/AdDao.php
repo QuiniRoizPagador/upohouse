@@ -36,6 +36,7 @@ class AdDao extends AbstractDao {
 
     public function getAllPaginated($pag) {
         $query = $this->mysqli->query("SELECT
+            a.id as id,
             a.uuid as uuid,
             a.price as price, 
             a.rooms as rooms,
@@ -44,7 +45,7 @@ class AdDao extends AbstractDao {
             SUBSTRING(a.description, 1, 300) as short_description,
             a.description as description,
             a.timestamp as timestamp, 
-            a.state as state
+            a.state as state,
             COUNT(IF(s.score=1,1,NULL)) AS LIKES,
             COUNT(IF(s.score=0,0,NULL)) AS DISLIKES
         FROM
