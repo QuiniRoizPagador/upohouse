@@ -31,6 +31,8 @@ class RequestController extends AbstractController {
             $req_uuid = $filtrado['req_uuid'];
             $ad_uuid = $filtrado['ad_uuid'];
             $user_uuid = $filtrado['user_uuid'];
+            $ownerUserName = $_SESSION['name'];
+            $ownerUserEmail = $_SESSION['email'];
 
             $ad = $this->adModel->read($ad_uuid);
             if ($ad->user_id == $_SESSION['id']) {
@@ -43,7 +45,8 @@ class RequestController extends AbstractController {
                 $this->requestModel->accept($req_uuid);
                 $this->requestModel->refuseAll($ad->id, $request->id);
 
-                MailUtils::sendMail("quiniroiz@gmail.com", "Peticion aceptada", "prueba", "From: Quini <quiniroiz@gmail.com>");
+                MailUtils::sendMail($user->email, "Your request was accepted", "<p>Estimated $user->name, 
+We are pleased to inform you that your request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted. Therefore, the website terminates the agreement, and with this, your participation. We hope that the service provided was to your liking.</p><p>Kind regards,</p><p>The technical team of Upohouse.</p>");
                 $this->redirect("user", "readUser", array("uuid" => $_SESSION['uuid']));
             } else {
                 $this->redirect();
