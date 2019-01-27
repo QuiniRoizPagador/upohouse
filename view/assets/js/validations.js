@@ -21,7 +21,7 @@
                             regex = /[a-zA-Z0-9_]{1,255}$/;
                             break;
                         case "textarea":
-                            regex = /^[A-Za-z0-9_\s\n\r\t.,áéíóúÁÉÍÓÚñÑ]{1,3000}$/;
+                            regex = /^[A-Za-z0-9-()"@_\s\r\t\n.,áéíóúÁÉÍÓÚñÑ…]{1,3000}$/;
                             break;
                         case "select-one":
                             regex = /[0-9]/;
@@ -31,7 +31,8 @@
                     }
                     var $_class = $(this)[0].getAttribute("class");
                     var canBeEmpty = $_class !== null && $_class.indexOf("can-be-empty") >= 0;
-                    if (!canBeEmpty &&
+                    var no_validate = $_class !== null && $_class.indexOf("no-validate") >= 0;
+                    if (!no_validate && !canBeEmpty &&
                             !settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
                         if ($(this)[0].type === "password") {
                             errorPassw++;

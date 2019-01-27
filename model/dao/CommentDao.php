@@ -85,18 +85,34 @@ class CommentDao extends AbstractDao {
     }
 
     public function getComments($id, $pag = 0) {
-        $query = $this->mysqli->query("SELECT c.*,u.login, u.uuid as 'uuid_user',(rep.comment_reported IS NOT NULL  AND rep.user_id!=".$_SESSION['id'].") AS denunciado FROM $this->table AS c "
-                . "LEFT OUTER JOIN Reports as rep ON rep.comment_reported = c.id "
-                . "JOIN users AS u ON c.user_id=u.id "
-                . "WHERE c.state = " . STATES['NEUTRO'] . " AND c.ad_id=" . $id . " "
-                . "GROUP BY c.id ORDER BY c.timestamp DESC LIMIT 5 OFFSET " . $pag * 5);
-        //Devolvemos el resultset en forma de array de objetos
-
+        $query = "SELECT 
+            c.*,u.login, 
+            u.uuid as uuid_user,";
+            if(isset($_SESSION['id'])){
+            $query.=" (rep.comment_reported IS NOT NULL  AND rep.user_id!=".$_SESSION['id'].") ";
+            }else{
+            $query.=" (rep.comment_reported) AS denunciado ";
+            }
+        $query.= "FROM $this->table AS c 
+        LEFT OUTER JOIN Reports as rep
+        ON 
+            rep.comment_reported = c.id 
+        JOIN Users AS u 
+        ON 
+            c.user_id=u.id 
+        WHERE c.state = ?
+        AND c.ad_id= ?
+        GROUP BY 
+            c.id 
+        ORDER BY 
+            c.timestamp DESC LIMIT 5 OFFSET " . $pag * 5;
+        $data = array("ii", "state" => STATES["NEUTRO"], "c.ad_id" => $id);
+        $res = parent::preparedStatement($query, $data);   
         $resultSet = array();
-        while ($row = $query->fetch_object()) {
+        while ($row = $res->fetch_object()) {
             $resultSet[] = $row;
         }
-        mysqli_free_result($query);
+        mysqli_free_result($res);
 
         return $resultSet;
     }

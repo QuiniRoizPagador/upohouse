@@ -73,7 +73,7 @@ class AdController extends AbstractController {
                 $allOperationTypes = $this->operationTypeModel->getAll();
                 $allCommunities = $this->communityModel->getAll();
                 $values = array("housingType" => "text", "operationType" => "text", "price" => "float",
-                    "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "text", "community" => "number",
+                    "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "longText", "community" => "number",
                     "province" => "number", "municipality" => "number");
                 $noRequired = array("housingType", "operationType", "price", "rooms",
                     "m2", "bath", "images", "description", "community", "province", "municipality");
@@ -203,7 +203,7 @@ class AdController extends AbstractController {
         $allOperationTypes = $this->operationTypeModel->getAll();
         $allCommunities = $this->communityModel->getAll();
         $values = array("housingType" => "text", "operationType" => "text", "price" => "float",
-            "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "text", "community" => "number",
+            "rooms" => "number", "m2" => "number", "bath" => "number", "images" => "image", "description" => "longText", "community" => "number",
             "province" => "number", "municipality" => "number");
         $noRequired = array("images", "description");
         $errors = RegularUtils::filtrarPorTipo($values, "create");
