@@ -233,23 +233,6 @@
                             <button data-toggle="modal" data-target="#request<?= $ad->uuid ?>" data-dismiss="modal" class="btn btn-success btn-sm"><i class="fa fa-comment-alt"></i></button>
                         </span>
                     </li>
-                    <li class="list-group-item">
-                        <span class="pull-left">
-                            <strong>Score</strong>
-                        </span>
-                        <div class="btn-group float-right">
-                            <form action="<?= $helper->url("score", "score") ?>" method="post">
-                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
-                                <input type="hidden" value="<?= LIKES['LIKE'] ?>" name="score" />
-                                <button class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['LIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-up"></i></button>
-                            </form>
-                            <form action="<?= $helper->url("score", "score") ?>" method="post">
-                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
-                                <input type="hidden" value="<?= LIKES['DISLIKE'] ?>" name="score" />
-                                <button type="submit" class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['DISLIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-down fa-flip-horizontal"></i></button>
-                            </form>
-                        </div>
-                    </li>
                     <div tabindex="-1" id="request<?= $ad->uuid ?>" class="modal fade" >
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -290,6 +273,28 @@
                     <div class="alert alert-info">
                         <?= $lang['peticion_existente'] ?>
                     </div>
+                    <?php
+                }
+
+                if (verifySession()) {
+                    ?>
+                    <li class="list-group-item">
+                        <span class="pull-left">
+                            <strong>Score</strong>
+                        </span>
+                        <div class="btn-group float-right">
+                            <form action="<?= $helper->url("score", "score") ?>" method="post">
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
+                                <input type="hidden" value="<?= LIKES['LIKE'] ?>" name="score" />
+                                <button class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['LIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-up"></i></button>
+                            </form>
+                            <form action="<?= $helper->url("score", "score") ?>" method="post">
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="ad_uuid" />
+                                <input type="hidden" value="<?= LIKES['DISLIKE'] ?>" name="score" />
+                                <button type="submit" class="btn btn-primary btn-sm <?= isset($isScored) && $userScore->score === LIKES['DISLIKE'] ? "active" : "" ?>"><i class="fa fa-thumbs-down fa-flip-horizontal"></i></button>
+                            </form>
+                        </div>
+                    </li>
                 <?php } ?>
             </ul>
         </div>

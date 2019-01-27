@@ -96,7 +96,7 @@ if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
                                 <?= $lang['m2'] . ": " . $result->m_2 ?>
                                 <?= $result->municipality . ", " . $result->province ?>
                             </p>
-                            <p><?= $result->description ?></p>
+                            <p><?= $result->short_description . (strlen($result->short_description) >= 300 ? "..." : "") ?></p>
                             <a type="button"  href="index/Ad/read&uuid=<?= $result->uuid ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></a>
                             <small class="text-muted float-lg-right"><?= to_time_ago(strtotime($result->timestamp), $lang) ?></small>
                         </div>

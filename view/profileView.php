@@ -75,8 +75,7 @@ require_once 'core/templates/head.php';
                                         <div class="invalid-feedback">
                                             <?= isset($errors['updateUser']['surname']) ? $lang[$errors['updateUser']['surname']] : $lang['formato_incorrecto'] ?>
                                         </div>
-                                        <label for="email" class="col-sm-2 col-form-label"> <?= $lang['email'] ?></label>
-
+                                        
                                         <label for="phone" class="col-sm-2 col-form-label"><?= $lang['phone'] ?></label>
 
                                         <input type="tel" id="phone" name="phone" value="<?= $user->phone ?>" class="form-control <?= isset($errors['createUser']['phone']) ? " is-invalid" : "" ?>"/>
@@ -270,10 +269,10 @@ require_once 'core/templates/head.php';
                                                         <?= to_time_ago(strtotime($request->timestamp), $lang) ?>
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $request->ad ?>">
+                                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#show<?= $request->request ?>">
                                                             <i class="fa fa-eye"></i>
                                                         </button>
-                                                        <div class="modal fade" id="show<?= $request->ad ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal fade" id="show<?= $request->request ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                                 <div class="modal-content card">
                                                                     <div class="card bg-light text-muted">
@@ -309,8 +308,8 @@ require_once 'core/templates/head.php';
                                                                             </p>
                                                                             <div class="center-block float-lg-right">
                                                                                 <div class="btn-group">
-                                                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#refuse<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-window-close"></i></button>
-                                                                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#accept<?= $request->req_uuid ?>" data-dismiss="modal"><i class="fa fa-check"></i></button>
+                                                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#refuse<?= $request->request ?>" data-dismiss="modal"><i class="fa fa-window-close"></i></button>
+                                                                                    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#accept<?= $request->request ?>" data-dismiss="modal"><i class="fa fa-check"></i></button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -325,7 +324,7 @@ require_once 'core/templates/head.php';
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div tabindex="-1" id="refuse<?= $request->req_uuid ?>" class="modal fade" >
+                                                        <div tabindex="-1" id="refuse<?= $request->request ?>" class="modal fade" >
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -339,7 +338,7 @@ require_once 'core/templates/head.php';
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form method="post" action="<?= $helper->url("request", "refuse") ?>">
-                                                                            <input type="hidden" value="<?php echo $request->req_uuid ?>" name="req_uuid" />
+                                                                            <input type="hidden" value="<?php echo $request->request ?>" name="req_uuid" />
                                                                             <input type="hidden" value="<?php echo $request->ad ?>" name="ad_uuid" />
                                                                             <input type="hidden" value="<?php echo $request->user_uuid ?>" name="user_uuid" />
                                                                             <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i><?= $lang['refuse'] ?></button>
@@ -349,7 +348,7 @@ require_once 'core/templates/head.php';
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div tabindex="-1" id="accept<?= $request->req_uuid ?>" class="modal fade" >
+                                                        <div tabindex="-1" id="accept<?= $request->request ?>" class="modal fade" >
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -363,7 +362,7 @@ require_once 'core/templates/head.php';
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form method="post" action="<?= $helper->url("request", "accept") ?>">
-                                                                            <input type="hidden" value="<?php echo $request->req_uuid ?>" name="req_uuid" />
+                                                                            <input type="hidden" value="<?php echo $request->request ?>" name="req_uuid" />
                                                                             <input type="hidden" value="<?php echo $request->ad ?>" name="ad_uuid" />
                                                                             <input type="hidden" value="<?php echo $request->user_uuid ?>" name="user_uuid" />
                                                                             <button type="submit" class="btn btn-success"><i class="fa fa-check"></i><?= $lang['accept'] ?></button>

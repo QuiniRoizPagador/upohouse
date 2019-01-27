@@ -42,7 +42,6 @@ class RequestDao extends AbstractDao {
             r.timestamp,
             r.uuid AS request,
             r.content,
-            r.uuid as req_uuid,
             (rep.request_reported IS NOT NULL) AS denunciado
         FROM
             Requests AS r
