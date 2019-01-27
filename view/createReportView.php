@@ -8,7 +8,7 @@ require_once 'core/templates/head.php';
     </div>
     <div class="container-fluid bg-light">
         <div class="container-fluid content-center">
-            <div class="col-sm-6  content-center"><h1><?=$lang['crear_denuncia']?></h1></div>
+            <div class="col-sm-6  content-center"><h1><?= $lang['crear_denuncia'] ?></h1></div>
         </div>
         <hr />
         <div class="col-md-12 ">
@@ -22,6 +22,8 @@ require_once 'core/templates/head.php';
                     break;
                 case REPORTS['COMMENT']:
                     $url = $helper->url("report", "reportComment");
+                case REPORTS['AD']:
+                    $url = $helper->url("report", "reportAd");
             }
             ?>
             <form method="post" action="<?= $url ?>" class="formUser">

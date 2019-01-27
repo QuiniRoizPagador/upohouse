@@ -606,8 +606,8 @@ function cargarReportUser(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.login, clase));
-    tr.append(create("td", report.login_reported, clase));
+    tr.append($("<td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td>"));
+    tr.append($("<td><a href='index/user/readUser&uuid=" + report.uuid_reported + "'>" + report.login_reported + "</a></td>"));
     tr.append(create("td", report.timestamp, clase));
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#searchReportUser" + report.uuid + "' class='btn btn-info btn-sm'/>");
@@ -633,8 +633,8 @@ function cargarReportUser(report)
     tbody.append(createTR("UUID", report.uuid));
     tbody.append(createTR(LANG['titulo'], report.title));
     tbody.append(createTR(LANG['descripcion'], report.description));
-    tbody.append(createTR(LANG['user'], report.login));
-    tbody.append(createTR(LANG['usuario_reported'], report.login_reported));
+    tbody.append($("<tr><th>" + LANG['user'] + "</th><td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td></tr>"));
+    tbody.append($("<tr><th>" + LANG['usuario_reported'] + "</th><td><a href='index/user/readUser&uuid=" + report.uuid_reported + "'>" + report.login_reported + "</a></td></tr>"));
     tbody.append(createTR(LANG['fecha registro'], report.timestamp));
 
     tabla.append(tbody);
@@ -647,18 +647,18 @@ function cargarReportUser(report)
     form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="user_uuid" />'));
     form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form);
-    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
-    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    var span = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>'));
     form.append(span);
     var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportUser&show=denuncias">');
     form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="user_uuid" />'));
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
-    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
+    var span2 = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
-    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    footer.append($('<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
     modal_body.append(footer);
     td.append(modal);
     tr.append(td);
@@ -678,7 +678,8 @@ function cargarReportAd(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.login, clase));
+    tr.append($("<td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td>"));
+    tr.append($("<td><a href='index/ad/read&uuid=" + report.uuid_reported + "'><i class='fas fa-images'></i></a></td>"));
     tr.append(create("td", report.ad_reported, clase));
     tr.append(create("td", report.timestamp, clase));
     var td = create("td", "", clase);
@@ -705,8 +706,8 @@ function cargarReportAd(report)
     tbody.append(createTR("UUID", report.uuid));
     tbody.append(createTR(LANG['titulo'], report.title));
     tbody.append(createTR(LANG['descripcion'], report.description));
-    tbody.append(createTR(LANG['user'], report.login));
-    tbody.append(createTR(LANG['anuncio_reported'], report.ad_reported));
+    tbody.append($("<tr><th>" + LANG['user'] + "</th><td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td></tr>"));
+    tbody.append($("<tr><th>" + LANG['anuncio_reported'] + "</th><td><a href='index/ad/read&uuid=" + report.uuid_reported + "'><i class='fas fa-images'></i></a></td></tr>"));
     tbody.append(createTR(LANG['fecha registro'], report.timestamp));
 
     tabla.append(tbody);
@@ -719,18 +720,18 @@ function cargarReportAd(report)
     form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="ad_uuid" />'));
     form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form);
-    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
-    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    var span = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>'));
     form.append(span);
     var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportAd&show=denuncias">');
     form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="ad_uuid" />'));
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
-    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
+    var span2 = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
-    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    footer.append($('<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
     modal_body.append(footer);
     td.append(modal);
     tr.append(td);
@@ -750,8 +751,8 @@ function cargarReportComment(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.login, clase));
-    tr.append(create("td", report.comment_reported, clase));
+    tr.append($("<td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td>"));
+    tr.append(create("td", report.uuid_reported, clase));
     tr.append(create("td", report.timestamp, clase));
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#searchReportComment" + report.uuid + "' class='btn btn-info btn-sm'/>");
@@ -777,8 +778,8 @@ function cargarReportComment(report)
     tbody.append(createTR("UUID", report.uuid));
     tbody.append(createTR(LANG['titulo'], report.title));
     tbody.append(createTR(LANG['descripcion'], report.description));
-    tbody.append(createTR(LANG['user'], report.login));
-    tbody.append(createTR(LANG['comentario_reported'], report.comment_reported));
+    tbody.append($("<tr><th>" + LANG['user'] + "</th><td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td></tr>"));
+    tbody.append(createTR(LANG['comentario_reported'], report.content));
     tbody.append(createTR(LANG['fecha registro'], report.timestamp));
 
     tabla.append(tbody);
@@ -791,18 +792,18 @@ function cargarReportComment(report)
     form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="comment_uuid" />'));
     form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form);
-    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
-    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    var span = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>'));
     form.append(span);
     var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportComment&show=denuncias">');
     form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="comment_uuid" />'));
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
-    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
+    var span2 = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
-    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    footer.append($('<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
     modal_body.append(footer);
     td.append(modal);
     tr.append(td);
@@ -822,8 +823,8 @@ function cargarReportRequest(report)
     var tr = $("<tr/>");
     tr.append(create("td", report.id, clase));
     tr.append(create("td", report.title, clase));
-    tr.append(create("td", report.login, clase));
-    tr.append(create("td", report.request_reported, clase));
+    tr.append($("<td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td>"));
+    tr.append(create("td", report.uuid_reported, clase));
     tr.append(create("td", report.timestamp, clase));
     var td = create("td", "", clase);
     var button = $("<button data-toggle='modal' data-target='#searchReportRequests" + report.uuid + "' class='btn btn-info btn-sm'/>");
@@ -849,8 +850,8 @@ function cargarReportRequest(report)
     tbody.append(createTR("UUID", report.uuid));
     tbody.append(createTR(LANG['titulo'], report.title));
     tbody.append(createTR(LANG['descripcion'], report.description));
-    tbody.append(createTR(LANG['user'], report.login));
-    tbody.append(createTR(LANG['request_reported'], report.request_reported));
+    tbody.append($("<tr><th>" + LANG['user'] + "</th><td><a href='index/user/readUser&uuid=" + report.uuid_user + "'>" + report.login + "</a></td></tr>"));
+    tbody.append(createTR(LANG['request_reported'], report.content));
     tbody.append(createTR(LANG['fecha registro'], report.timestamp));
 
     tabla.append(tbody);
@@ -863,18 +864,18 @@ function cargarReportRequest(report)
     form.append($('<input type="hidden" value="' + report.uuid_reported + '" name="request_uuid" />'));
     form.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form);
-    var span = $('<span class="btn" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
-    span.append($('<button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>'));
+    var span = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['accept'] + '"</span>');
+    span.append($('<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>'));
     form.append(span);
     var form2 = $('<form method="post" action="index.php?controller=Admin&action=denyReportRequest&show=denuncias">');
     form2.append($('<input type="hidden" value="' + report.uuid_reported + '" name="request_uuid" />'));
     form2.append($('<input type="hidden" value="' + report.uuid + '" name="uuid" />'));
     buttons.append(form2);
-    var span2 = $('<span class="btn" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
-    span2.append($('<button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>'));
+    var span2 = $('<span class="btn btn-sm" data-toggle="tooltip" title="' + LANG['deny'] + '"</span>');
+    span2.append($('<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>'));
     form2.append(span2);
     var footer = create("div", "", "modal-footer");
-    footer.append($('<button type="button" class="btn btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
+    footer.append($('<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">' + LANG['cancelar'] + '</button>'));
     modal_body.append(footer);
     td.append(modal);
     tr.append(td);
@@ -894,10 +895,11 @@ function cargarComentarioAd(comentario)
     var divCard = $("<div class='card card-body media-body'>")
     div.append(divCard);
     divCard.append($("<h5 class='mt-0'><a href='index/user/readUser&uuid=" + comentario.uuid_user + "'>" + comentario.login + "</a></h5>"));
+    var session = $("#session").val();
 
-    console.log(!!comentario.denunciado);
-    if (!!comentario.denunciado)
+    if (!!comentario.denunciado && session == 'true')
     {
+
         var divDenuncias = $("<div class='float-lg-right'>");
         divCard.append(divDenuncias);
         var form = $("<form method='post' action='index.php?controller=report&action=createReport'>");

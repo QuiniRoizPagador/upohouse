@@ -147,13 +147,16 @@ $lang = array(
     'actions' => "Actions",
     'activity' => "Activities",
     'create_report' => "Create Report",
-    "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report.",
+    "report_ok" => "We will deal with your complaint as soon as possible. Thanks for the report :)",
     "inicie sesion" => "Log in",
     'modificar' => "modify",
     'anunciante' => "Ad owner",
     'crear_denuncia'=> "Create Report",
-    "report_fail" => "Sorry, there was an error creating your request. Try it again later.",
+    "report_fail" => "Sorry, there was an error creating your request. Try it again later :(",
     'less than 1 second' => 'less than 1 second',
-    'peticion_existente' => 'There is a request about this announcement.'
+    'peticion_existente' => 'There is a request about this announcement.',
+    'eliminar anuncio' => 'Delete ad',
+    'bloquear anuncio' => 'Block ad',
+    'reportar' => 'Report'
 );
 

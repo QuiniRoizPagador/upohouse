@@ -31,12 +31,12 @@ class CommentDao extends AbstractDao {
         return $row->count;
     }
 
-    public function getAllPaginated($pag = 0) {           
+    public function getAllPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT c.*,a.uuid AS 'uuid_ad', u.login AS 'login', u.uuid AS 'uuid_user' "
                 . "FROM $this->table AS c JOIN ads AS a ON a.id=c.ad_id "
                 . "JOIN users AS u ON u.id=c.user_id WHERE c.state != " . STATES['ELIMINADO'] . " "
                 . "GROUP BY c.id ORDER BY c.id ASC LIMIT 5 OFFSET " . $pag * 5);
-        
+
         //Devolvemos el resultset en forma de array de objetos
         $resultSet = array();
         while ($row = $query->fetch_object()) {
@@ -70,7 +70,7 @@ class CommentDao extends AbstractDao {
 
     public function countUserComments($id) {
         $query = "SELECT COUNT(*) as comments from $this->table WHERE user_id = ? AND state = ?";
-        $data = array("ii", "user_id" => $id,"state"=> STATES["NEUTRO"]);
+        $data = array("ii", "user_id" => $id, "state" => STATES["NEUTRO"]);
         $resultSet = $this->preparedStatement($query, $data);
         $res = mysqli_fetch_object($resultSet);
         mysqli_free_result($resultSet);
@@ -91,7 +91,7 @@ class CommentDao extends AbstractDao {
             if(isset($_SESSION['id'])){
             $query.=" (rep.comment_reported IS NOT NULL  AND rep.user_id!=".$_SESSION['id'].") ";
             }else{
-            $query.=" (rep.comment_reported) AS denunciado ";
+            $query.=" (rep.comment_reported IS NOT NULL) AS denunciado ";
             }
         $query.= "FROM $this->table AS c 
         LEFT OUTER JOIN Reports as rep
@@ -108,6 +108,7 @@ class CommentDao extends AbstractDao {
             c.timestamp DESC LIMIT 5 OFFSET " . $pag * 5;
         $data = array("ii", "state" => STATES["NEUTRO"], "c.ad_id" => $id);
         $res = parent::preparedStatement($query, $data);   
+
         $resultSet = array();
         while ($row = $res->fetch_object()) {
             $resultSet[] = $row;
