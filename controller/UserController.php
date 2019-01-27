@@ -43,8 +43,9 @@ class UserController extends AbstractController {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'), "GET")['uuid'];
             $user = $this->userModel->read($id);
-            $usuarioDenunciado = $this->reportModel->isReportedUser($_SESSION['id'], $user->id);
-
+            if ($user) {
+                $usuarioDenunciado = $this->reportModel->isReportedUser($_SESSION['id'], $user->id);
+            }
             if (!isset($user->id) || $user->state == STATES['ELIMINADO']) {
                 $this->redirect("user", "index");
             } else {

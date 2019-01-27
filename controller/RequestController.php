@@ -102,7 +102,7 @@ class RequestController extends AbstractController {
                 $this->redirect("ad", "read", $array);
             }
         } else {
-            $this->redirect("ad", "read", array("uuid" => $filtrado['ad_uuid']));
+            $this->redirect("ad", "read", array("uuid" => $_POST['ad_uuid']));
         }
     }
 

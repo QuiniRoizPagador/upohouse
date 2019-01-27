@@ -32,7 +32,7 @@ class CommentDao extends AbstractDao {
     }
 
     public function getAllPaginated($pag = 0) {
-        $query = $this->mysqli->query("SELECT c.*,a.uuid AS 'uuid_ad', u.login AS 'login', u.uuid AS 'uuid_user' "
+        $query = $this->mysqli->query("SELECT c.*,a.uuid AS uuid_ad, u.login AS login, u.uuid AS uuid_user "
                 . "FROM $this->table AS c JOIN ads AS a ON a.id=c.ad_id "
                 . "JOIN users AS u ON u.id=c.user_id WHERE c.state != " . STATES['ELIMINADO'] . " "
                 . "GROUP BY c.id ORDER BY c.id ASC LIMIT 5 OFFSET " . $pag * 5);
