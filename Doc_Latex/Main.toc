@@ -322,5 +322,9 @@
 \contentsline {section}{\numberline {4.13}Usuarios}{78}{section.4.13}
 \contentsline {chapter}{\numberline {5}Usuario no logueado}{81}{chapter.5}
 \contentsline {section}{\numberline {5.1}P\'{a}gina Principal}{81}{section.5.1}
-\contentsline {section}{\numberline {5.2}Registro e Inicio de Sesi\'{o}n}{81}{section.5.2}
-\contentsline {section}{\numberline {5.3}Anuncios}{82}{section.5.3}
+\contentsline {section}{\numberline {5.2}Registro e Inicio de Sesi\'{o}n}{83}{section.5.2}
+\contentsline {section}{\numberline {5.3}Anuncios}{84}{section.5.3}
+\contentsline {chapter}{\numberline {6}Usuario Registrado}{86}{chapter.6}
+\contentsline {section}{\numberline {6.1}P\'{a}gina Principal}{86}{section.6.1}
+\contentsline {section}{\numberline {6.2}Anuncios}{86}{section.6.2}
+\contentsline {section}{\numberline {6.3}Perfil de Usuario}{88}{section.6.3}
