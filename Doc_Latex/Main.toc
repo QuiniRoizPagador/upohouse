@@ -328,3 +328,5 @@
 \contentsline {section}{\numberline {6.1}P\'{a}gina Principal}{86}{section.6.1}
 \contentsline {section}{\numberline {6.2}Anuncios}{86}{section.6.2}
 \contentsline {section}{\numberline {6.3}Perfil de Usuario}{88}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Perfil de otros usuarios}{89}{subsection.6.3.1}
+\contentsline {section}{\numberline {6.4}Crear una denuncia}{90}{section.6.4}
