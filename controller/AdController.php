@@ -292,6 +292,7 @@ class AdController extends AbstractController {
                     $user = $this->userModel->read($ad->user_id);
                     $images = $this->imageModel->readByAd($ad->id);
                     $hasUserRequest = FALSE;
+                    $haveReportedAd = FALSE;
                     $isSame = FALSE;
                     $isScored = false;
                     $userScore = null;

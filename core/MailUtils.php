@@ -18,7 +18,7 @@ class MailUtils {
      * @return boolean True si mensaje enviado correctamente, Falso en caso contrario.
      */
     static function sendMail($to, $subject, $message, $headers) {
-        return mail($to, $subject, $message, $headers);
+        
     }
 
 }
