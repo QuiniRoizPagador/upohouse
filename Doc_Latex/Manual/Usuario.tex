@@ -45,7 +45,9 @@ En la secci\'{o}n de mensajes, ahora se permite que se env\'{i}e un comentario s
 
 \section{Perfil de Usuario}
 
-Al acceder desde la opci\'{o}n del men\'{u} principal con el nombre 'Perfil' el usuario dispondr\'{a} de un peque\~{n}o formulario con sus datos editables y una peque\~{n}a columna que muestre las actividades, como la cantidad de anuncios publicados y comentarios. A diferencia de los comentarios, los anuncios podr\'{a}n  ser consultados, list\'{a}ndose del mismo modo que en la p\'{a}gina de listado, en caso de existir m\'{a}s de uno, haciendo click sobre la opci\'{o}n pertinente. 
+Al acceder desde la opci\'{o}n del men\'{u} principal con el nombre 'Perfil' el usuario dispondr\'{a} de un peque\~{n}o formulario con sus datos editables y una peque\~{n}a columna que muestre las actividades, como la cantidad de anuncios publicados y comentarios. \\
+
+A diferencia de los comentarios, los anuncios podr\'{a}n  ser consultados, list\'{a}ndose del mismo modo que en la p\'{a}gina de listado, en caso de existir m\'{a}s de uno, haciendo click sobre la opci\'{o}n pertinente. 
 
 
 \begin{figure}[h!]
@@ -53,31 +55,43 @@ Al acceder desde la opci\'{o}n del men\'{u} principal con el nombre 'Perfil' el 
 \includegraphics[width=1\textwidth]{Img/ManualUsuario/USER_PROFILE_EDIT.png}
 \end{figure}
 
-Justo encima de la tarjeta de perfil, se encuentra la de solicitudes, donde el usuario podr\'{a} listar y gestionar sus solicitudes existentes sobre alg\'{u}n anuncio que hubiera publicado.
+Justo encima de la tarjeta de perfil, se encuentra la pesta\~{n}a de solicitudes, donde, al hacer click,  el usuario dispondr\'{a} de una tabla  podr\'{a} listar y gestionar sus solicitudes existentes sobre alg\'{u}n anuncio que hubiera publicado. En esta tabla se muestra el anuncio asociado a cada petici\'{o}n y el usuario que la cre\'{o}, adem\'{a}s del tiempo pasado desde entonces. Se ofrece tambi\'{e}n un bot\'{o}n para visualizar el contenido de la petici\'{o}n.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.7\textwidth]{Img/ManualUsuario/USER_REQUESTS.png}
+\includegraphics[width=1\textwidth]{Img/ManualUsuario/USER_REQUESTS.png}
 \end{figure}
 
-Haciendo click en el nombre del anuncio se redirigir\'{a} al anuncio en cuesti\'{o}n para poder observarlo. Del mismo modo, al hacer click en un usuario, se podr\'{a} ver el perfil del mismo.
+Haciendo click en el nombre del anuncio se redirigir\'{a} al anuncio en cuesti\'{o}n para poder observarlo. Del mismo modo, al hacer click en un usuario, se podr\'{a} ver el perfil del mismo. \\
 
+
+Si se accede al bot\'{o}n 'Ver' de una fila de peticiones, se abrir\'{a} un modal con el contenido de la petici\'{o}n, en donde se encuentran el accedo al perfil del usuario que realiz\'{o} la petici\'{o}n, los datos de contacto (al hacer click sobre el correo se abrir\'{a} la aplicaci\'{o}n que se tenga por defecto en el sistema para enviarle un correo electr\'{o}nico personal) y el contenido de la propia petici\'{o}n a modo de texto. \\
+
+En la zona derecha, se puede observar un bot\'{o}n amarillo que permite denunciar la petici\'{o}n, en caso de que sea inadecuada. Debajo de este, se ofrecen las posibilidades de aceptar y rechazar petici\'{o}n, con sus respectivos botones (en rojo rechazar y en verde aceptar). Debajo de estos botones la fecha de registro de la petici\'{o}n.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.8\textwidth]{Img/ManualUsuario/PERFIL_OTHER.png}
+\includegraphics[width=.6\textwidth]{Img/ManualUsuario/USER_REQUEST_READ.png}
 \end{figure}
 
-Encima del nombre, a la derecha, aparecer\'{a} un bot\'{o}n que permite denunciar al usuario en caso de mal comportamiento. Se mostrar\'{a} para ello un formulario com\'{u}n a todas las tipos de denuncias, con t\'{i}tulo y descripci\'{o}n de la misma.
+\subsection{Perfil de otros usuarios}
+Si es el perfil de otro usuario el que se consulta, el aspecto ser\'{a} muy similar al visto en el anterior punto, salvo que no se listan las peticiones (es algo privado) y los datos son s\'{o}lamente de lectura. 
+
+Encima del nombre, a la derecha, aparecer\'{a} un bot\'{o}n que permite denunciar al usuario en caso de mal comportamiento. \\
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.4\textwidth]{Img/ManualUsuario/DENUNCIA.png}
+\includegraphics[width=.7\textwidth]{Img/ManualUsuario/PERFIL_OTHER.png}
 \end{figure}
 
-
+\section{Crear una denuncia}
+Sea el caso de denunciar un comentario, un anuncio, un usuario o una petici\'{o}n, el formulario de denuncia es el mismo, solicitando el t\'{i}tulo y una detallada descripci\'{o}n del motivo de denuncia. 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.4\textwidth]{Img/ManualUsuario/USER_REQUEST_READ.png}
+\includegraphics[width=.6\textwidth]{Img/ManualUsuario/DENUNCIA.png}
 \end{figure}
+
+
+
+
