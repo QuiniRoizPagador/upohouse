@@ -1,7 +1,8 @@
 //Soporta traducción
 
-function resetField(f, disabled = false) { //Limpia un campo de tipo selected, dando opción a deshabilitarlo.
+function resetField(f, txt, disabled = false) { //Limpia un campo de tipo selected, dando opción a deshabilitarlo.
     f.empty();
+    f.append("<option selected='selected'>" + txt + "</option>");
     if (disabled) {
         f.attr("disabled", "disabled");
     } else {
@@ -16,7 +17,6 @@ function getProvincesList(id) { //Devuelve lista de provincias en base a una com
     },
             function (data, status) {
                 var provinces = data;
-                $("#province").append("<option selected='selected'>" + LANG["eligeProvincia"] + "</option>'");
                 for (var i = 0; i < provinces.length; i++) {
                     $("#province").append("<option value='" + provinces[i].id + "'>" + provinces[i].province + "</option>");
                 }
@@ -30,7 +30,6 @@ function getMunicipalitiesList(id) { //Devuelve lista de municipios en base a un
     },
             function (data, status) {
                 var municipalities = data;
-                $("#municipality").append("<option selected='selected'>" + LANG["eligeMunicipio"] + "</option>'");
                 for (var i = 0; i < municipalities.length; i++) {
                     $("#municipality").append("<option value='" + municipalities[i].id + "'>" + municipalities[i].municipality + "</option>");
                 }
@@ -44,20 +43,20 @@ $(document).ready(function () {//Al seleccionar una comunidad o provincia, carga
     cf.change(function () {
         var val = $(this).children("option:selected").val();
         if ($.isNumeric(val)) {
-            resetField(pf);
+            resetField(pf, LANG["eligeProvincia"]);
             getProvincesList(val);
         } else {
-            resetField(pf, true);
+            resetField(pf, LANG["eligeProvincia"], true);
         }
-        resetField(mf, true);
+        resetField(mf, LANG["eligeMunicipio"], true);
     });
     pf.change(function () {
         var val = $(this).children("option:selected").val();
         if ($.isNumeric(val)) {
-            resetField(mf);
+            resetField(mf, LANG["eligeMunicipio"]);
             getMunicipalitiesList(val);
         } else {
-            resetField(mf, true);
+            resetField(mf, LANG["eligeMunicipio"], true);
         }
     });
 }

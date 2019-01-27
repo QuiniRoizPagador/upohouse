@@ -60,51 +60,53 @@
                     <p><?= $municipality->municipality ?></p>
                 </div>
             </div>
-            <div class="row justify-content-between">
-                <div class="col-md-3">
-                    <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><i class="fa fa-images"></i> <?= $lang['fotos'] ?></button>
-                    <div role="dialog" aria-labelledby="gallery" aria-hidden="true" tabindex="-1" id="gallery" class="modal fade">
-                        <!-- Modal content-->
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content modal-gallery-content">
-                                <div class="modal-header modal-gallery-header">
-                                    <button type="button" class="close" data-dismiss="modal" data-toggle="modal" aria-label="Close">
-                                        <i class="fa fa-times fa-1x"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div id="carouselControl" class="carousel slide" data-ride="carousel">
-                                            <div class="carousel-inner text-center">
-                                                <?php
-                                                $count = 0;
-                                                foreach ($images as $image) {
-                                                    ?>
-                                                    <div class="carousel-item <?php
-                                                    if ($count == 0) {
-                                                        echo 'active';
-                                                    }
-                                                    ?>">
-                                                        <img src="<?= $image->image ?>" class="d-block w-100 zoom" alt="<?= $image->uuid ?>">
-                                                    </div>
+            <?php if (count($images) > 0) { ?>
+                <div class="row justify-content-between">
+                    <div class="col-md-3">
+                        <button data-toggle="modal" data-target="#gallery" class="btn btn-primary"><i class="fa fa-images"></i> <?= $lang['fotos'] ?></button>
+                        <div role="dialog" aria-labelledby="gallery" aria-hidden="true" tabindex="-1" id="gallery" class="modal fade">
+                            <!-- Modal content-->
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content modal-gallery-content">
+                                    <div class="modal-header modal-gallery-header">
+                                        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" aria-label="Close">
+                                            <i class="fa fa-times fa-1x"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div id="carouselControl" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner text-center">
                                                     <?php
-                                                    $count++;
+                                                    $count = 0;
+                                                    foreach ($images as $image) {
+                                                        ?>
+                                                        <div class="carousel-item <?php
+                                                        if ($count == 0) {
+                                                            echo 'active';
+                                                        }
+                                                        ?>">
+                                                            <img src="<?= $image->image ?>" class="d-block w-100 zoom" alt="<?= $image->uuid ?>">
+                                                        </div>
+                                                        <?php
+                                                        $count++;
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <?php if (sizeof($images) > 1) {
+                                                    ?>
+                                                    <a class="carousel-control-prev" href="#carouselControl" role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#carouselControl" role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                    <?php
                                                 }
                                                 ?>
                                             </div>
-                                            <?php if (sizeof($images) > 1) {
-                                                ?>
-                                                <a class="carousel-control-prev" href="#carouselControl" role="button" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#carouselControl" role="button" data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                                <?php
-                                            }
-                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -112,15 +114,32 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
 
         <div class="col-sm-3">
             <ul class="list-group">
-                <li class="list-group-item text-muted"><?= $lang['anunciante'] ?>: <a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$user->uuid")); ?>"><?= $user->name ?></a></li>
+                <li class="list-group-item text-muted"><?= $lang['anunciante'] ?>: <a <?php if (verifySession()) { ?>href="<?php
+                        echo $helper->url("user", "readUser", array("uuid" => "$user->uuid"));
+                    }
+                    ?>"><?= $user->name ?></a></li>
                 <li class="list-group-item text-muted"><?= $lang['actions'] ?> <i class="fa fa-asterisk fa-1x"></i></li>
+                <?php if (!$haveReportedAd) { ?>
+                    <li class="list-group-item">
+                        <span class="pull-left">
+                            <strong><?= $lang['reportar'] ?></strong>
+                        </span>
+                        <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['reportar'] ?>">
+                            <form method="post" action="<?= $helper->url("report", "createReport") ?>">
+                                <input type="hidden" value="<?= REPORTS['AD'] ?>" name="report"  id="report"/>
+                                <input type="hidden" value="<?= $ad->uuid ?>" name="uuid" id="uuid" />
+                                <button type="submit" class="btn btn-warning"><i class="fa fa-exclamation-triangle "></i></button>
+                            </form>
+                        </span>
+                    </li>
+                <?php } ?>
                 <?php
-                if ((verifyIsAdmin() || verifyAdProperty($ad->user_id)) && $ad->state !== STATES["BLOQUEADO"]) {
+                if ((verifyIsAdmin() || $isSame) && $ad->state !== STATES["BLOQUEADO"]) {
                     ?>
                     <li class="list-group-item">
                         <span class="pull-left">
@@ -135,9 +154,28 @@
                             <strong><?= $lang['eliminar'] ?></strong>
                         </span>
                         <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['eliminar'] ?>">
-                            <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-window-close"></i></a>
+                            <button type="button" data-toggle="modal" data-target="#remove" data-dismiss="modal" class="btn btn-danger"><i class="fa fa-window-close "></i></button>
                         </span>
                     </li>
+                    <div tabindex="-1" id="remove" class="modal fade">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><?= $lang['eliminar anuncio'] ?></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <?= $lang['estas seguro'] ?>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="<?php echo $helper->url("ad", "remove", array("uuid" => "$ad->uuid")); ?>" class="btn btn-danger"><i class="fa fa-window-close"></i></a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php
                 }
                 ?>
@@ -150,9 +188,28 @@
                                 <strong><?= $lang['bloquear'] ?></strong>
                             </span>
                             <span class="btn float-lg-right" data-toggle="tooltip" title="<?= $lang['bloquear'] ?>">
-                                <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
+                                <button type="button" data-toggle="modal" data-target="#block" data-dismiss="modal" class="btn btn-warning"><i class="fa fa-ban"></i></button>
                             </span>
                         </li>
+                        <div tabindex="-1" id="block" class="modal fade">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"><?= $lang['bloquear anuncio'] ?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <?= $lang['estas seguro'] ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="<?php echo $helper->url("ad", "block", array("uuid" => "$ad->uuid")); ?>" class="btn btn-warning"><i class="fa fa-ban"></i></a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <?php } else {
                         ?>
                         <li class="list-group-item">
@@ -234,7 +291,7 @@
                         <?= $lang['peticion_existente'] ?>
                     </div>
                 <?php } ?>
-            </ul> 
+            </ul>
         </div>
     </div>
     <br>
@@ -306,5 +363,4 @@
             <input type="hidden" value="<?= $sessionUsuario ?>" id="session">
         </div>
     </div>
-</div>
 </section>

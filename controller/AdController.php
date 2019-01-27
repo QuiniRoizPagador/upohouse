@@ -22,6 +22,7 @@ class AdController extends AbstractController {
     private $commentModel;
     private $scoreModel;
     private $userModel;
+    private $reportModel;
 
     public function __construct() {
         parent::__construct();
@@ -36,6 +37,7 @@ class AdController extends AbstractController {
         $this->commentModel = new CommentModel();
         $this->scoreModel = new ScoreModel();
         $this->userModel = new UserModel();
+        $this->reportModel = new ReportModel();
     }
 
     public function modifyView() {
@@ -298,6 +300,7 @@ class AdController extends AbstractController {
 
                     if (verifySession()) {
                         $hasUserRequest = $this->requestModel->verifyExist($_SESSION['id'], $ad->id);
+                        $haveReportedAd = $this->reportModel->isReportedAd($_SESSION['id'], $ad->id);
                         $isSame = $ad->user_id == $_SESSION['id'];
                         $isScored = $this->scoreModel->isUserScored($_SESSION['id'], $ad->id);
                         if ($isScored) {
@@ -320,7 +323,8 @@ class AdController extends AbstractController {
                         "numComments" => $numComments,
                         "pag" => $pag,
                         "isScored" => $isScored,
-                        "userScore" => $userScore
+                        "userScore" => $userScore,
+                        "haveReportedAd" => $haveReportedAd
                     ));
                 }
             }
