@@ -281,7 +281,7 @@ class AdController extends AbstractController {
             if (!isset($ad->uuid)) {
                 $this->redirect("User", "index");
             } else {
-                if (($ad->state == STATES["BLOQUEADO"] && !verifyIsAdmin()) || $ad->state == STATES["ELIMINADO"]) {
+                if (($ad->state == STATES["BLOQUEADO"] && !verifyIsAdmin()) || ($ad->accepted_request != NULL && !verifyIsAdmin() && $ad->user_id != $_SESSION["id"]) || $ad->state == STATES["ELIMINADO"]) {
                     $this->redirect("User", "index");
                 } else {
                     $housingType = $this->housingTypeModel->read($ad->housing_type);
