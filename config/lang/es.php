@@ -147,13 +147,16 @@ $lang = array(
     'actions' => "Acciones",
     'activity' => "Actividades",
     'create_report' => "Crear Denuncia",
-    'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte.",
+    'report_ok' => "Atenderemos su denuncia tan pronto como sea posible. Gracias por el reporte :)",
     'inicie sesion' => 'Inicie sesi&oacute;n',
     'modificar' => "Modificar",
     'anunciante' => "Anunciante",
     'crear_denuncia' => "Crear Denuncia",
-    "report_fail" => "Lo sentimos, ha habido un error al crear su petici&oacute;n. Int&eacute;ntelo de nuevo m&aacute;s tarde.",
+    "report_fail" => "Lo sentimos, ha habido un error al crear su petici&oacute;n. Int&eacute;ntelo de nuevo m&aacute;s tarde :(",
     'less than 1 second' => "menos de 1 segundo",
-    'peticion_existente' => 'Existe una petici&oacute;n sobre este anuncio.'
+    'peticion_existente' => 'Existe una petici&oacute;n sobre este anuncio.',
+    'eliminar anuncio' => 'Eliminar anuncio',
+    'bloquear anuncio' => 'Bloquear anuncio',
+    'reportar' => 'Denunciar'
 );
 

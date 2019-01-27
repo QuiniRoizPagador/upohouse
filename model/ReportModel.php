@@ -13,10 +13,9 @@ class ReportModel extends AbstractModel {
         $this->reportDao = new ReportDao();
         parent::__construct($this->reportDao);
     }
-  
-    public function modifyState($uuid,$state)
-    {
-        return $this->reportDao->modifyState($uuid,$state);
+
+    public function modifyState($uuid, $state) {
+        return $this->reportDao->modifyState($uuid, $state);
     }
 
     public function countReportUsers() {
@@ -52,7 +51,11 @@ class ReportModel extends AbstractModel {
     }
 
     public function isReportedUser($me, $otherUser) {
-        return $this->reportDao->isReportedUser($me,$otherUser);
+        return $this->reportDao->isReportedUser($me, $otherUser);
+    }
+    
+    public function isReportedAd($user, $ad) {
+        return $this->reportDao->isReportedAd($user, $ad);
     }
 
 }

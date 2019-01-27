@@ -59,7 +59,7 @@ class ReportDao extends AbstractDao {
                 . "'uuid_user' FROM $this->table AS r "
                 . "JOIN users AS u ON r.user_reported=u.id "
                 . "JOIN users AS u2 ON r.user_id=u2.id "
-                . "WHERE user_reported is not null AND r.state=" . STATES["NEUTRO"] ." "
+                . "WHERE user_reported is not null AND r.state=" . STATES["NEUTRO"] . " "
                 . "GROUP BY r.id ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
 //Devolvemos el resultset en forma de array de objetos
@@ -159,6 +159,17 @@ class ReportDao extends AbstractDao {
         $query = "SELECT count(*) as count FROM $this->table
                 WHERE user_id = ? AND user_reported = ? ";
         $data = array("ii", "user_id" => $me, "user_reported" => $otherUser);
+        $res = parent::preparedStatement($query, $data);
+        $count = $res->fetch_object()->count;
+        mysqli_free_result($res);
+
+        return $count != 0;
+    }
+
+    public function isReportedAd($user, $ad) {
+        $query = "SELECT count(*) as count FROM $this->table
+                WHERE user_id = ? AND ad_reported = ? ";
+        $data = array("ii", "user_id" => $user, "ad_reported" => $ad);
         $res = parent::preparedStatement($query, $data);
         $count = $res->fetch_object()->count;
         mysqli_free_result($res);
