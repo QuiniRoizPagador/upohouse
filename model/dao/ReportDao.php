@@ -54,32 +54,36 @@ class ReportDao extends AbstractDao {
     }
 
     public function getAllReportUserPaginated($pag = 0) {
-        $query = $this->mysqli->query("SELECT "
-                    . "r.*, "
-                    . "u.login as login_reported,"
-                    . "u2.login as login, "
-                    . "u.uuid AS uuid_reported, "
-                    . "u2.uuid AS uuid_user "
-                . "FROM "
-                    . "$this->table AS r "
-                . "JOIN users AS u "
-                . "ON "
-                    . "r.user_reported=u.id "
-                . "JOIN users AS u2 "
-                . "ON "
-                    . "r.user_id=u2.id "
-                . "WHERE "
-                    . "user_reported is not null "
-                . "AND "
-                    . "r.state=" . STATES["NEUTRO"] . " "
-                . "GROUP BY "
-                    . "r.id ORDER BY id ASC "
-                . "LIMIT "
-                    . "10 OFFSET " . $pag * 10);
+        $query = $this->mysqli->query("SELECT 
+                    r.*, 
+                    u.login AS login_reported,
+                    u2.login AS login, 
+                    u.uuid AS uuid_reported, 
+                    u2.uuid AS uuid_user 
+                FROM 
+                  $this->table AS r 
+                JOIN Users AS u 
+                ON 
+                    r.user_reported=u.id 
+                JOIN Users AS u2 
+                ON 
+                   r.user_id=u2.id 
+                WHERE 
+                   user_reported IS NOT NULL 
+                AND 
+                   r.state=" . STATES["NEUTRO"] . "
+                GROUP BY 
+                  r.id ORDER BY id ASC 
+                LIMIT 
+                     10 OFFSET " . $pag * 10);
 
         $resultSet = array();
-        while ($row = $query->fetch_object()) {
-            $resultSet[] = $row;
+        if (mysqli_error($this->mysqli) != "") {
+            while ($row = $query->fetch_object()) {
+                $resultSet[] = $row;
+            }
+        }else{
+            print_r(mysqli_error($this->mysqli));
         }
         mysqli_free_result($query);
 
@@ -99,9 +103,9 @@ class ReportDao extends AbstractDao {
         $query = $this->mysqli->query("SELECT r.*,"
                 . "u.login as login, a.uuid AS uuid_reported, u.uuid AS "
                 . "uuid_user FROM $this->table AS r"
-                . " JOIN ads AS a ON r.ad_reported=a.id "
-                . "JOIN users AS u ON r.user_id=u.id "
-                . "WHERE ad_reported is not null AND r.state=" . STATES["NEUTRO"]
+                . " JOIN Ads AS a ON r.ad_reported=a.id "
+                . "JOIN Users AS u ON r.user_id=u.id "
+                . "WHERE ad_reported IS NOT NULL AND r.state=" . STATES["NEUTRO"]
                 . " GROUP BY r.id ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
 //Devolvemos el resultset en forma de array de objetos
@@ -127,8 +131,8 @@ class ReportDao extends AbstractDao {
         $query = $this->mysqli->query("SELECT r.*,"
                 . "u.login as login, c.uuid AS uuid_reported, u.uuid AS "
                 . "uuid_user, c.content FROM $this->table AS r"
-                . " JOIN comments AS c ON r.comment_reported=c.id "
-                . "JOIN users AS u ON r.user_id=u.id "
+                . " JOIN Comments AS c ON r.comment_reported=c.id "
+                . "JOIN Users AS u ON r.user_id=u.id "
                 . "WHERE comment_reported is not null AND r.state=" . STATES["NEUTRO"]
                 . " GROUP BY r.id ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 
@@ -155,8 +159,8 @@ class ReportDao extends AbstractDao {
         $query = $this->mysqli->query("SELECT r.*,"
                 . "u.login as login, re.uuid AS uuid_reported, u.uuid AS "
                 . "uuid_user, re.content FROM $this->table AS r"
-                . " JOIN requests AS re ON r.request_reported=re.id "
-                . "JOIN users AS u ON r.user_id=u.id "
+                . " JOIN Requests AS re ON r.request_reported=re.id "
+                . "JOIN Users AS u ON r.user_id=u.id "
                 . "WHERE request_reported is not null AND r.state=" . STATES["NEUTRO"]
                 . " GROUP BY r.id ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
 //Devolvemos el resultset en forma de array de objetos
