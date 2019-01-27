@@ -112,7 +112,7 @@ class ReportDao extends AbstractDao {
     public function getAllReportCommentPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT r.*,"
                 . "u.login as 'login', c.uuid AS 'uuid_reported', u.uuid AS "
-                . "'uuid_user' FROM $this->table AS r"
+                . "'uuid_user', c.content FROM $this->table AS r"
                 . " JOIN comments AS c ON r.comment_reported=c.id "
                 . "JOIN users AS u ON r.user_id=u.id "
                 . "WHERE comment_reported is not null AND r.state=" . STATES["NEUTRO"]
@@ -140,7 +140,7 @@ class ReportDao extends AbstractDao {
     public function getAllReportRequestPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT r.*,"
                 . "u.login as 'login', re.uuid AS 'uuid_reported', u.uuid AS "
-                . "'uuid_user' FROM $this->table AS r"
+                . "'uuid_user', re.content FROM $this->table AS r"
                 . " JOIN requests AS re ON r.request_reported=re.id "
                 . "JOIN users AS u ON r.user_id=u.id "
                 . "WHERE request_reported is not null AND r.state=" . STATES["NEUTRO"]

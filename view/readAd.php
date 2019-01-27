@@ -273,7 +273,7 @@
                 <div class="media">
                     <div class="card card-body media-body">
                         <h5 class="mt-0"><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$result->uuid_user")); ?>"><?= $result->login ?></a></h5>
-                        <?php if (!$result->denunciado) { ?>
+                        <?php if (!$result->denunciado && isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
                             <div class="float-lg-right">
                                 <form method="post" action="<?= $helper->url("report", "createReport") ?>">
                                     <input type="hidden" value="<?= REPORTS['COMMENT'] ?>" name="report"  id="report"/>
@@ -296,6 +296,14 @@
         <div class="text-center paginacionCommentsAd">
             <li pag="1" uuid="<?= $ad->uuid ?>" class="btn btn-info pagCommentAd"><i class="fa fa-plus "></i></li>   
             <input type="hidden" value="<?= $numComments ?>" id="numComments">
+            <?php
+            if (isset($_SESSION['id'])) {
+                $sessionUsuario = 'true';
+            } else {
+                $sessionUsuario = 'false';
+            }
+            ?>
+            <input type="hidden" value="<?= $sessionUsuario ?>" id="session">
         </div>
     </div>
 </div>

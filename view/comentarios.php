@@ -26,7 +26,6 @@
                             <td><?= $comment->id; ?> </td>
                             
                             <td><a href="<?php echo $helper->url("ad", "read", array("uuid" => "$comment->uuid_ad"));?>"><i class="fas fa-images"></i></a></td>
-                            <!-- fa-images-->
                             <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$comment->uuid_user"));?>"><?= $comment->login; ?> </a></td>
                             <td><?= $comment->content; ?> </td>
                             <td><?= $comment->timestamp; ?> </td>

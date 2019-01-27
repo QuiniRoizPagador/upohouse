@@ -23,8 +23,8 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->login; ?> </td>
-                            <td><?= $reports->login_reported; ?> </td>
+                            <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
+                            <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_reported")); ?>"><?= $reports->login_reported; ?> </a></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
                                 <button data-toggle="modal" data-target="#searchReportUser<?= $reports->uuid ?>"
@@ -66,11 +66,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['user'] ?></th>
-                                                                <td><?= $reports->login ?></td>
+                                                                <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['usuario_reported'] ?></th>
-                                                                <td><?= $reports->login_reported ?></td>
+                                                                <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_reported")); ?>"><?= $reports->login_reported; ?> </a></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['fecha registro'] ?></th>
@@ -85,20 +85,20 @@
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportUser", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="user_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
-                                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportUser", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="user_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
                                             <div class="model-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -114,11 +114,6 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
                     for ($i = 0; $i < $numReportsUsers / 10; $i++) {
                         ?>
@@ -127,11 +122,6 @@
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 
@@ -158,8 +148,8 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->login; ?> </td>
-                            <td><?= $reports->ad_reported; ?></td>
+                            <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
+                            <td><a href="<?php echo $helper->url("ad", "read", array("uuid" => "$reports->uuid_reported")); ?>"><i class="fas fa-images"></i></a></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
                                 <button data-toggle="modal" data-target="#searchReportAds<?= $reports->uuid ?>"
@@ -200,11 +190,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['user'] ?></th>
-                                                                <td><?= $reports->login ?></td>
+                                                                <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['anuncio_reported'] ?></th>
-                                                                <td><?= $reports->ad_reported ?></td>
+                                                                <td><a href="<?php echo $helper->url("ad", "read", array("uuid" => "$reports->uuid_reported")); ?>"><i class="fas fa-images"></i></a></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['fecha registro'] ?></th>
@@ -219,20 +209,20 @@
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportAd", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
-                                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportAd", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="ad_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -249,11 +239,6 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
                     for ($i = 0; $i < $numReportsAds / 10; $i++) {
                         ?>
@@ -262,11 +247,6 @@
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 
@@ -293,8 +273,8 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->login; ?> </td>
-                            <td><?= $reports->comment_reported; ?></td>
+                            <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
+                            <td><?= $reports->uuid_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
                                 <button data-toggle="modal" data-target="#searchReportComments<?= $reports->uuid ?>"
@@ -335,11 +315,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['user'] ?></th>
-                                                                <td><?= $reports->login ?></td>
+                                                                <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['comentario_reported'] ?></th>
-                                                                <td><?= $reports->comment_reported ?></td>
+                                                                <td><?= $reports->content ?></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['fecha registro'] ?></th>
@@ -354,20 +334,20 @@
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportComment", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
-                                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportComment", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="comment_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -383,11 +363,6 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
                     for ($i = 0; $i < $numReportsComments / 10; $i++) {
                         ?>
@@ -396,11 +371,6 @@
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 
@@ -425,8 +395,8 @@
                         <tr>
                             <td><?= $reports->id; ?> </td>
                             <td><?= $reports->title; ?> </td>
-                            <td><?= $reports->login; ?> </td>
-                            <td><?= $reports->request_reported; ?></td>
+                            <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
+                            <td><?= $reports->uuid_reported; ?></td>
                             <td><?= $reports->timestamp; ?> </td>
                             <td>
                                 <button data-toggle="modal" data-target="#searchReportRequests<?= $reports->uuid ?>"
@@ -467,11 +437,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['user'] ?></th>
-                                                                <td><?= $reports->login ?></td>
+                                                                <td><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$reports->uuid_user")); ?>"><?= $reports->login; ?> </a></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['request_reported'] ?></th>
-                                                                <td><?= $reports->request_reported ?></td>
+                                                                <td><?= $reports->content ?></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><?= $lang['fecha registro'] ?></th>
@@ -486,20 +456,20 @@
                                                 <form method="post" action="<?= $helper->url("admin", "acceptReportRequest", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->uuid_reported; ?>" name="request_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
-                                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['accept'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
                                                     </span>
                                                 </form>
                                                 <form method="post" action="<?= $helper->url("admin", "denyReportRequest", array("show" => "denuncias")); ?>">
                                                     <input type="hidden" value="<?php echo $reports->uuid; ?>" name="uuid" />
                                                     <input type="hidden" value="<?php echo $reports->request_reported; ?>" name="request_uuid" />
-                                                    <span class="btn" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-window-close"></i></button>
+                                                    <span class="btn btn-sm" data-toggle="tooltip" title="<?= $lang['deny'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-window-close"></i></button>
                                                     </span>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
+                                                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= $lang['cancelar'] ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -515,11 +485,6 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
                     for ($i = 0; $i < $numReportsRequests / 10; $i++) {
                         ?>
@@ -528,11 +493,6 @@
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 
