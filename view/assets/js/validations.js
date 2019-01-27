@@ -33,7 +33,7 @@
                     var canBeEmpty = $_class !== null && $_class.indexOf("can-be-empty") >= 0;
                     var no_validate = $_class !== null && $_class.indexOf("no-validate") >= 0;
                     if (!no_validate && !canBeEmpty &&
-                            !settings.empty && val.length === 0 || (val.length !== 0 && !val.match(regex))) {
+                            !settings.empty && val.length === 0 || (!no_validate && val.length !== 0 && !val.match(regex))) {
                         if ($(this)[0].type === "password") {
                             errorPassw++;
                         }

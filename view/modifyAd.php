@@ -2,7 +2,7 @@
     <div class="pb-2 mb-3 border-bottom">
         <h2 class="h2"><?= $lang["modificar anuncio"] ?></h2>
     </div>
-    <form action="<?php echo $helper->url("Ad", "modify", array('uuid' => $ad->uuid)); ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo $helper->url("Ad", "modify", array('uuid' => $ad->uuid)); ?>" method="post" enctype="multipart/form-data" class="formUpdateUser">
         <?php
         if (isset($errors['modify']['query'])) {
             ?>
@@ -95,7 +95,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="community"><?= $lang["comunidad"] ?></label>
-                <select class="form-control <?= isset($errors['modify']['community']) ? " is-invalid" : "" ?>" id="community" name="community">
+                <select class="form-control no-validate <?= isset($errors['modify']['community']) ? " is-invalid" : "" ?>" id="community" name="community">
                     <option selected="selected"><?= $lang["eligeComunidad"] ?></option>
                     <?php foreach ($allCommunities as $community) { ?>
                         <option value="<?= $community->id; ?>"><?= $community->community; ?></option>
@@ -107,7 +107,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="province"><?= $lang["provincia"] ?></label>
-                <select class="form-control <?= isset($errors['modify']['province']) ? " is-invalid" : "" ?>" id="province" name="province" disabled="disabled">
+                <select class="form-control no-validate <?= isset($errors['modify']['province']) ? " is-invalid" : "" ?>" id="province" name="province" disabled="disabled">
                     <option selected="selected"><?= $lang["eligeProvincia"] ?></option>
                 </select>
                 <div class="invalid-feedback">
@@ -116,7 +116,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="municipality"><?= $lang["localidad"] ?></label>
-                <select class="form-control <?= isset($errors['modify']['municipality']) ? " is-invalid" : "" ?>" id="municipality" name="municipality" disabled="disabled">
+                <select class="form-control no-validate <?= isset($errors['modify']['municipality']) ? " is-invalid" : "" ?>" id="municipality" name="municipality" disabled="disabled">
                     <option selected="selected"><?= $lang["eligeMunicipio"] ?></option>
                 </select>
                 <div class="invalid-feedback">
