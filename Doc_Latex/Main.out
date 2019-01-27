@@ -38,22 +38,21 @@
 \BOOKMARK [2][-]{subsection.2.3.4}{CU304 Denunciar Petici\363n}{section.2.3}% 38
 \BOOKMARK [2][-]{subsection.2.3.5}{CU305 Listar Peticiones}{section.2.3}% 39
 \BOOKMARK [2][-]{subsection.2.3.6}{CU306 Descartar Petici\363n}{section.2.3}% 40
-\BOOKMARK [2][-]{subsection.2.3.7}{CU307 Eliminar Petici\363n}{section.2.3}% 41
-\BOOKMARK [1][-]{section.2.4}{Gesti\363n de Denuncias}{chapter.2}% 42
-\BOOKMARK [2][-]{subsection.2.4.1}{CU401 Listar denuncias.}{section.2.4}% 43
-\BOOKMARK [2][-]{subsection.2.4.2}{CU402 Consultar denuncia.}{section.2.4}% 44
-\BOOKMARK [2][-]{subsection.2.4.3}{CU403 Aceptar denuncia.}{section.2.4}% 45
-\BOOKMARK [2][-]{subsection.2.4.4}{CU404 Rechazar denuncia.}{section.2.4}% 46
-\BOOKMARK [1][-]{section.2.5}{Gesti\363n de Usuarios}{chapter.2}% 47
-\BOOKMARK [2][-]{subsection.2.5.1}{CU501 Listar Comentarios.}{section.2.5}% 48
-\BOOKMARK [2][-]{subsection.2.5.2}{CU502 Denunciar Comentario}{section.2.5}% 49
-\BOOKMARK [2][-]{subsection.2.5.3}{CU503 Eliminar Comentario}{section.2.5}% 50
-\BOOKMARK [1][-]{section.2.6}{Gesti\363n de Tipos}{chapter.2}% 51
-\BOOKMARK [2][-]{subsection.2.6.1}{CU601 Crear Tipo Vivienda.}{section.2.6}% 52
-\BOOKMARK [2][-]{subsection.2.6.2}{CU602 Crear Tipo Operaci\363n.}{section.2.6}% 53
-\BOOKMARK [2][-]{subsection.2.6.3}{CU603 Listar Tipos Vivienda}{section.2.6}% 54
-\BOOKMARK [2][-]{subsection.2.6.4}{CU604 Listar Tipos Operaciones}{section.2.6}% 55
-\BOOKMARK [2][-]{subsection.2.6.5}{CU605 Modificar Tipo Vivienda}{section.2.6}% 56
-\BOOKMARK [2][-]{subsection.2.6.6}{CU606 Modificar Tipo Operaci\363n}{section.2.6}% 57
-\BOOKMARK [2][-]{subsection.2.6.7}{CU607 Eliminar Tipo Vivienda}{section.2.6}% 58
-\BOOKMARK [2][-]{subsection.2.6.8}{CU608 Eliminar Tipo Operaci\363n}{section.2.6}% 59
+\BOOKMARK [1][-]{section.2.4}{Gesti\363n de Denuncias}{chapter.2}% 41
+\BOOKMARK [2][-]{subsection.2.4.1}{CU401 Listar denuncias.}{section.2.4}% 42
+\BOOKMARK [2][-]{subsection.2.4.2}{CU402 Consultar denuncia.}{section.2.4}% 43
+\BOOKMARK [2][-]{subsection.2.4.3}{CU403 Aceptar denuncia.}{section.2.4}% 44
+\BOOKMARK [2][-]{subsection.2.4.4}{CU404 Rechazar denuncia.}{section.2.4}% 45
+\BOOKMARK [1][-]{section.2.5}{Gesti\363n de Comentarios}{chapter.2}% 46
+\BOOKMARK [2][-]{subsection.2.5.1}{CU501 Listar Comentarios.}{section.2.5}% 47
+\BOOKMARK [2][-]{subsection.2.5.2}{CU502 Denunciar Comentario}{section.2.5}% 48
+\BOOKMARK [2][-]{subsection.2.5.3}{CU503 Eliminar Comentario}{section.2.5}% 49
+\BOOKMARK [1][-]{section.2.6}{Gesti\363n de Tipos}{chapter.2}% 50
+\BOOKMARK [2][-]{subsection.2.6.1}{CU601 Crear Tipo Vivienda.}{section.2.6}% 51
+\BOOKMARK [2][-]{subsection.2.6.2}{CU602 Crear Tipo Operaci\363n.}{section.2.6}% 52
+\BOOKMARK [2][-]{subsection.2.6.3}{CU603 Listar Tipos Vivienda}{section.2.6}% 53
+\BOOKMARK [2][-]{subsection.2.6.4}{CU604 Listar Tipos Operaciones}{section.2.6}% 54
+\BOOKMARK [2][-]{subsection.2.6.5}{CU605 Modificar Tipo Vivienda}{section.2.6}% 55
+\BOOKMARK [2][-]{subsection.2.6.6}{CU606 Modificar Tipo Operaci\363n}{section.2.6}% 56
+\BOOKMARK [2][-]{subsection.2.6.7}{CU607 Eliminar Tipo Vivienda}{section.2.6}% 57
+\BOOKMARK [2][-]{subsection.2.6.8}{CU608 Eliminar Tipo Operaci\363n}{section.2.6}% 58

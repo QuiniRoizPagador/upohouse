@@ -11,9 +11,27 @@ El sistema acepta la denuncia informando al usuario de este hecho.
 \end{itemize}
 \subsubsection{Poscondici\'{o}n.}
 Se marc\'{o} como aceptada una denuncia en el sistema.
-\subsubsection{Escenario Principal.}
+\subsubsection{Escenario Principal. Denuncia usuario)}
 \begin{enumerate}
 \item El actor inicia la operativa de aceptar denuncia.
-\item El sistema marca como aceptada la denuncia y envía un correo al usuario informando.
+\item El sistema marca como aceptada la denuncia y bloquea al usuario en cuesti\'{o}n.
 \end{enumerate}
 Finaliza el CU.
+\subsubsection{Escenario Alternativo. L\'{i}nea 2. Denuncia Anuncio.}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item El sistema marca como aceptada la denuncia y bloquea el anuncio en cuesti\'{o}n.
+\end{enumerate}
+Finaliza el caso de uso.
+\subsubsection{Escenario Alternativo. L\'{i}nea 2. Denuncia Comentario.}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item El sistema marca como aceptada la denuncia y elimina el comentario en cuesti\'{o}n.
+\end{enumerate}
+Finaliza el caso de uso.
+\subsubsection{Escenario Alternativo. L\'{i}nea 2. Denuncia Petici\'{o}n.}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item El sistema marca como aceptada la denuncia y elimina la petici\'{o}n en cuesti\'{o}n.
+\end{enumerate}
+Finaliza el caso de uso.
