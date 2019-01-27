@@ -45,8 +45,13 @@ class RequestController extends AbstractController {
                 $this->requestModel->accept($req_uuid);
                 $this->requestModel->refuseAll($ad->id, $request->id);
 
-                MailUtils::sendMail($user->email, "Your request was accepted", "<p>Estimated $user->name, 
-We are pleased to inform you that your request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted. Therefore, the website terminates the agreement, and with this, your participation. We hope that the service provided was to your liking.</p><p>Kind regards,</p><p>The technical team of Upohouse.</p>");
+                //Versión gratuita
+                MailUtils::sendFreeMail($user->email, "Your request was accepted", "<p>Estimated $user->name, We are pleased to inform you that your request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted. Therefore, the website terminates the agreement, and with this, your participation. We hope that the service provided was to your liking.</p><p>Kind regards,</p><p>The technical team of Upohouse.</p>", "From: webmaster@example.com" . "\r\n" .
+                        "CC: somebodyelse@example.com");
+
+                //Versión de pago
+                /* MailUtils::sendMail($user->email, "Your request was accepted", "<p>Estimated $user->name, 
+                  We are pleased to inform you that your request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted. Therefore, the website terminates the agreement, and with this, your participation. We hope that the service provided was to your liking.</p><p>Kind regards,</p><p>The technical team of Upohouse.</p>"); */
                 $this->redirect("user", "readUser", array("uuid" => $_SESSION['uuid']));
             } else {
                 $this->redirect();
