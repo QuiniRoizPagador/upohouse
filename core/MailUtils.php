@@ -52,4 +52,8 @@ class MailUtils {
         }
     }
 
+    static function sendFreeMail($to, $subject, $message) {
+        mail($to, $subject, $message);
+    }
+
 }
