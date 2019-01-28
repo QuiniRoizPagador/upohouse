@@ -1,0 +1,82 @@
+\section{Usuario Administrador}
+
+\subsection{P\'{a}gina Principal}
+El usuario administrador compartir\'{a} las mismas vistas que un usuario registrado, adem\'{a}s de algunas opciones extra y acceso a sitios privilegiados de gesti\'{o}n.
+
+Aparece una nueva opci\'{o}n de navegaci\'{o}n adem\'{a}s de las del usuario registrado, un icono con forma de llave inglesa, despu\'{e}s de la opci\'{o}n de cerrar sesi\'{o}n, que indica el acceso a la zona de gesti\'{o}n o dashboard.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{Img/ManualUsuario/ADMIN_MENU.png}
+\end{figure}
+
+\subsection{Anuncios}
+En la consulta de anuncios, el usuario administrador dispondr\'{a} de las siguientes opciones extra en el men\'{u} lateral, es decir: podr\'{a} modificar cualquier anuncio (aunque no lo haya publicado \'{e}l), eliminarlo y bloquearlo. El resto de opciones ser\'{a}n comunes al usuario registrado.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.3\textwidth]{Img/ManualUsuario/ADS_ADMIN__PANEL.png}
+\end{figure}
+
+\subsection{Perfil de Usuario}
+En la zona del perfil de usuario cabe mencionar que la visi\'{o}n ser\'{a} la misma que los usuarios registrados, con la salvedad de que, al consultar el perfil de otros usuarios (y que estos no sean administrador) se a\~{n}adir\'{a}n opciones de bloqueo y eliminaci\'{o}n.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.4\textwidth]{Img/ManualUsuario/ADMIN_SEARCH_USER.png}
+\end{figure}
+
+
+\subsection{Dashboard o panel de gesti\'{o}n}
+La zona m\'{a}s importante y clave en el rol de administrador es la conocida como panel de gesti\'{o}n o Dashboard (cuadro de mando en ingl\'{e}s).  En esta parte de la aplicaci\'{o}n, el administrador dispondr\'{a} de 5 tipos de gesti\'{o}n: usuarios, anuncios, comentarios, tipos y denuncias.
+
+\subsubsection{Gesti\'{o}n de Usuarios}
+En la primera p\'{a}gina, por defecto, el usuario administrador podr\'{a} observar una gr\'{a}fica con las estad\'{i}sticas de los usuarios registrados por meses. A su derecha, un bot\'{o}n que permite crear usuarios desde el mismo cuadro de mando. Debajo de lo mencionado anteriormente, se tiene una tabla con los listados de los usuarios, mostrando id, nombre, apellido, email, rol y fecha de registro, adem\'{a}s de ofrecer la posibilidad de mostrar todos los datos al completo y gestionar editando, bloqueando o eliminando a los usuarios.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{Img/ManualUsuario/ADMIN_DASHBOARD_USER.png}
+\end{figure}
+
+Al hacer click sobre el bot\'{o}n de creaci\'{o}n de usuarios se mostrar\'{a} un modal que solicite nombre, apellidos, email, tel\'{e}fono, login, contrase\~{n}a, su verificaci\'{o}n y el rol del usuario a crear. Esta \'{u}ltima petici\'{o}n se debe a la posibilidad de crear varios usuarios con el rol de administrador para que gestionen el sistema.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{Img/ManualUsuario/ADMIN_CREATE_USER.png}
+\end{figure}
+
+Accediendo a la tabla de usuarios y accionando el bot\'{o}n para consultar los datos (Ver), se visualizar\'{a} una tabla con el id, uuid, nombre, apellidos, email, tel\'{e}fono, fecha de registro y rol, adem\'{a}s de tres posibles botones: bloquear, eliminar y editar. Bloquear ser\'{a} sustitu\'{i}do por desbloquear en caso de que el usuario en cuesti\'{o}n est\'{e} ya bloqueado. Tanto bloquear como eliminar no ser\'{a}n ofrecidos si el usuario consultado es administrador.
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{Img/ManualUsuario/ADMIN_READ_USER.png}
+\end{figure}
+
+Los modales que se mostrar\'{a}n para la confirmaci\'{o}n de bloqueo, desbloqueo y eliminaci\'{o}n ser\'{a} como el siguiente, variando en el mensaje de confirmaci\'{o}n.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.6\textwidth]{Img/ManualUsuario/ADMIN_BLOCK_USER.png}
+\end{figure}
+
+Si confirmara dicha acci\'{o}n de bloqueo,el usuario bloqueado tendr\'{i}a un tono amarillo en la tabla, adem\'{a}s de un mensaje avisando en su consulta.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{Img/ManualUsuario/ADMIN_USER_BLOCKED.png}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.4\textwidth]{Img/ManualUsuario/ADMIN_BLOCKED_READ_USER.png}
+\end{figure}
+
+Si accionara el bot\'{o}n de editar usuario acceder\'{i}a a otro modal con el formulario que permitiera editar nombre, apellidos, tel\'{e}fono rol y contrase\~{n}a, verificando siempre esta \'{u}ltima en un segundo campo de contrase\~{n}a.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.4\textwidth]{Img/ManualUsuario/ADMIN_EDIT_USER.png}
+\end{figure}

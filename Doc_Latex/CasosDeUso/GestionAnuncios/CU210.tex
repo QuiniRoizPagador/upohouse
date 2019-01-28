@@ -1,0 +1,28 @@
+\subsection{CU110 Desbloquear Usuario}
+\subsubsection{Descripci\'{o}n}
+El sistema permite que se desbloquee un anuncio.
+\subsubsection{Actores}
+\begin{itemize}
+\item Administrador.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Consultar usuario (CU202 Consultar anuncio).
+\end{itemize}
+\subsubsection{Postcondici\'{o}n}
+Se desbloque\'{o} un anuncio bloqueado del sistema.
+\subsubsection{Escenario Principal}
+\begin{enumerate}
+\item El actor acciona la opci\'{o}n para desbloquear un anuncio.
+\item El sistema solicita verificaci\'{o}n.
+\item El actor verifica.
+\item El sistema desbloquea el anuncio e informa.
+\end{enumerate}
+Finaliza el caso de uso.
+\subsubsection{Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item El sistema informa.
+\end{enumerate}
+Finaliza el caso de uso.
