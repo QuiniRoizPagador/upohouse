@@ -6,6 +6,9 @@ use core\AbstractDao;
 
 class HousingTypeDao extends AbstractDao {
 
+    /**
+     * Método constructor
+     */
     public function __construct() {
         parent::__construct("Housing_Types");
     }
@@ -28,15 +31,22 @@ class HousingTypeDao extends AbstractDao {
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
     }
-
-    public function countHousingTypes($close = TRUE) {
+    
+    /**
+     * Método que devuelve el número de tipos de casas 
+     */
+    public function countHousingTypes() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
     }
-
-    public function getAllPaginated($pag = 0, $close = TRUE) {
+    
+    /**
+     * Método que devuelve los tipos de casas paginados
+     * @param Integer $pag offset de la paginacion de tipos de casas
+     */
+    public function getAllPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT * FROM $this->table "
                 . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
         //Devolvemos el resultset en forma de array de objetos

@@ -34,7 +34,7 @@
 
 
                                 <div class="modal fade" id="searchReportUser<?= $reports->uuid ?>" tabindex="-1"
-                                     role="dialog" aria-labelledby="search<?= $reports->uuid ?>" aria-hidden="true">
+                                     role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content card">
                                             <div class="card bg-light text-muted">
@@ -159,7 +159,7 @@
 
 
                                 <div class="modal fade" id="searchReportAds<?= $reports->uuid ?>" tabindex="-1"
-                                     role="dialog" aria-labelledby="search<?= $reports->uuid ?>" aria-hidden="true">
+                                     role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content card">
                                             <div class="card bg-light text-muted">
@@ -284,7 +284,7 @@
 
 
                                 <div class="modal fade" id="searchReportComments<?= $reports->uuid ?>" tabindex="-1"
-                                     role="dialog" aria-labelledby="search<?= $reports->uuid ?>" aria-hidden="true">
+                                     role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content card">
                                             <div class="card bg-light text-muted">
@@ -406,7 +406,7 @@
 
 
                                 <div class="modal fade" id="searchReportRequests<?= $reports->uuid ?>" tabindex="-1"
-                                     role="dialog" aria-labelledby="search<?= $reports->uuid ?>" aria-hidden="true">
+                                     role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content card">
                                             <div class="card bg-light text-muted">

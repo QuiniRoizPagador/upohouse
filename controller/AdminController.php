@@ -267,6 +267,9 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Metodo que elimina comentarios
+     */
     public function removeComment() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -288,6 +291,9 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Método que crea tipo de casas
+     */
     public function createHousingTypes() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -328,7 +334,10 @@ class AdminController extends AbstractController {
             }
         }
     }
-
+    
+    /**
+     * Método que crea tipo de operaciones
+     */
     public function createOperationTypes() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -340,7 +349,7 @@ class AdminController extends AbstractController {
             $values = array("name");
             $filtrado = RegularUtils::sanearStrings($values);
 
-//Creamos un tipo de vivienda
+//Creamos un tipo de operacion
             $operationType = new Housing_type();
             $operationType->setName($filtrado["name"]);
             $operationType->setUuid(RegularUtils::uuid());
@@ -355,7 +364,7 @@ class AdminController extends AbstractController {
             }
 
             if (isset($errors["createOperationTypes"])) {
-//Conseguimos todos los tipos de vivienda
+//Conseguimos todos los tipos de operaciones
                 $numOperationTypes = $this->operationTypeModel->countOperationTypes(FALSE);
                 $allOperationTypes = $this->operationTypeModel->getAllPaginated(0, FALSE);
 //Cargamos la vista index y le pasamos valores
@@ -369,7 +378,10 @@ class AdminController extends AbstractController {
             }
         }
     }
-
+    
+    /**
+     * Método que elimina tipos de casas
+     */
     public function removeHousingType() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -390,7 +402,9 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-
+    /**
+     * Método que elimina tipos de operaciones
+     */
     public function removeOperationType() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -411,7 +425,10 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-
+    
+    /**
+     * Método que actualiza tipos de casas
+     */
     public function updateHousingTypes() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -446,7 +463,10 @@ class AdminController extends AbstractController {
             $this->dashboard($errors, $pag);
         }
     }
-
+    
+    /**
+     * Método que actualiza tipos de operaciones
+     */
     public function updateOperationTypes() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -482,6 +502,13 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Método que pasa a la vista información
+     * sobre los comentarios
+     * @param String $errors con los errores de las operaciones
+     * @param String $show con la página que se debe mostrar
+     * @param Integer $pag con el numero de página a mostrar de la paginación
+     */
     private function comments($errors, $show, $pag) {
         if ($pag == NULL) {
             $pag = 0;
@@ -500,7 +527,14 @@ class AdminController extends AbstractController {
             "pag" => $pag,
         ));
     }
-
+    
+    /**
+     * Método que pasa a la vista información
+     * sobre los tipos de operaciones y tipos de casas
+     * @param String $errors con los errores de las operaciones
+     * @param String $show con la página que se debe mostrar
+     * @param Integer $pag con el numero de página a mostrar de la paginación
+     */
     private function types($errors, $show, $pag) {
         if ($pag == NULL) {
             $pag = 0;
@@ -520,6 +554,13 @@ class AdminController extends AbstractController {
         ));
     }
 
+    /**
+     * Método que pasa a la vista información
+     * sobre las denuncias
+     * @param String $errors con los errores de las operaciones
+     * @param String $show con la página que se debe mostrar
+     * @param Integer $pag con el numero de página a mostrar de la paginación
+     */
     private function reports($errors, $show, $pag) {
         if ($pag == NULL) {
             $pag = 0;
@@ -548,7 +589,10 @@ class AdminController extends AbstractController {
             "pag" => $pag,
         ));
     }
-
+    
+    /**
+     * Método que acepta una denuncia sobre un comentario
+     */
     public function acceptReportComment() {
 
         $show = null;
@@ -558,7 +602,6 @@ class AdminController extends AbstractController {
         if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "comment_uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->reportModel->modifyState($id, "Aceptar");
-            //$rem = $this->commentModel->block($id);
             if ($rem == 0) {
                 $errors['acceptReportComment'][$_POST['uuid']]['query'] = "error_accept_report";
             }
@@ -576,7 +619,10 @@ class AdminController extends AbstractController {
             }
         }
     }
-
+    
+    /**
+     * Método que deniega una denuncia sobre un comentario
+     */
     public function denyReportComment() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -596,7 +642,10 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-
+    
+    /**
+     * Método que acepta una denuncia sobre una petición
+     */
     public function acceptReportRequest() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -623,6 +672,9 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Método que deniega una denuncia sobre una petición
+     */
     public function denyReportRequest() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -642,6 +694,9 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Método que acepta una denuncia sobre un anuncio
+     */
     public function acceptReportAd() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -650,7 +705,6 @@ class AdminController extends AbstractController {
         if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "ad_uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->reportModel->modifyState($id, "Aceptar");
-            //$rem = $this->commentModel->block($id);
             if ($rem == 0) {
                 $errors['acceptReportAd'][$_POST['uuid']]['query'] = "error_accept_report";
             }
@@ -668,7 +722,10 @@ class AdminController extends AbstractController {
             }
         }
     }
-
+    
+    /**
+     * Método que deniega una denuncia sobre un anuncio
+     */
     public function denyReportAd() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -677,7 +734,6 @@ class AdminController extends AbstractController {
         if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "ad_uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->reportModel->modifyState($id, "Denegar");
-            //$rem = $this->commentModel->block($id);
             if ($rem == 0) {
                 $errors['denyReportAd'][$_POST['uuid']]['query'] = "error_deny_report";
             }
@@ -688,7 +744,10 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-
+    
+    /**
+     * Método que acepta una denuncia sobre un usuario
+     */
     public function acceptReportUser() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -697,7 +756,6 @@ class AdminController extends AbstractController {
         if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "user_uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->reportModel->modifyState($id, "Aceptar");
-            //$rem = $this->commentModel->block($id);
             if ($rem == 0) {
                 $errors['acceptReportUser'][$_POST['uuid']]['query'] = "error_accept_report";
             }
@@ -715,7 +773,10 @@ class AdminController extends AbstractController {
             }
         }
     }
-
+    
+    /**
+     * Método que deniega una denuncia sobre un usuario
+     */
     public function denyReportUser() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -724,7 +785,6 @@ class AdminController extends AbstractController {
         if (filter_has_var(INPUT_POST, "uuid") && filter_has_var(INPUT_POST, "user_uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'))['uuid'];
             $rem = $this->reportModel->modifyState($id, "Denegar");
-            //$rem = $this->commentModel->block($id);
             if ($rem == 0) {
                 $errors['denyReportUser'][$_POST['uuid']]['query'] = "error_deny_report";
             }

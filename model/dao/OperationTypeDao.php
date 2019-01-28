@@ -6,10 +6,12 @@ use core\AbstractDao;
 
 class OperationTypeDao extends AbstractDao {
 
+    /**
+     * Método constructor
+     */
     public function __construct() {
         parent::__construct("Operation_Types");
     }
-
 
     public function create($obj) {
         $query = "INSERT INTO $this->table (`uuid`, `name`)
@@ -30,6 +32,9 @@ class OperationTypeDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que devuelve el número de tipos de operaciones 
+     */
     public function countOperationTypes() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
@@ -37,6 +42,10 @@ class OperationTypeDao extends AbstractDao {
         return $row->count;
     }
 
+    /**
+     * Método que devuelve los tipos de operaciones paginados
+     * @param Integer $pag offset de la paginacion de tipos de operaciones
+     */
     public function getAllPaginated($pag = 0) {
         $query = $this->mysqli->query("SELECT * FROM $this->table "
                 . "ORDER BY id ASC LIMIT 10 OFFSET " . $pag * 10);
@@ -50,6 +59,5 @@ class OperationTypeDao extends AbstractDao {
 
         return $resultSet;
     }
-
 
 }

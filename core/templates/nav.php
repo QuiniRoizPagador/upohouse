@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="<?php echo $helper->url("user", "index"); ?>">
             <img src="view/images/home.png" width="30" height="30" class="d-inline-block align-top" alt="" />
         </a>
-        <button class="navbar-toggler" type="button" data-target="#nav" data-toggle="collapse" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-target="#nav" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 

@@ -7,7 +7,7 @@
             <h1 class="h2"><?= $lang['tipos vivienda'] ?></h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <button data-toggle="modal" data-target="#addHousingType" class="btn btn-primary btn-sm float-lg-right"><i class="fa fa-plus"></i></button>
-                <div role="dialog" aria-labelledby="A&ntilde;adir Tipo de vivienda" aria-hidden="true" tabindex="-1" id="addHousingType" class="modal fade" role="dialog">
+                <div role="dialog" aria-hidden="true" tabindex="-1" id="addHousingType" class="modal fade">
 
                     <!-- Modal content-->
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -32,8 +32,8 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="form-control has-success col-md-12 ml-auto"> 
-                                                <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
-                                                <input type="text" id="name" name="name" <?php echo isset($_POST['name']) ? "value='" . $_POST['name'] . "'" : "" ?> class="form-control <?= isset($errors['createHousingTypes']['name']) ? " is-invalid" : "" ?>"/>
+                                                <label for="nameHousingType" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
+                                                <input type="text" id="nameHousingType" name="name" <?php echo isset($_POST['name']) ? "value='" . $_POST['name'] . "'" : "" ?> class="form-control <?= isset($errors['createHousingTypes']['name']) ? " is-invalid" : "" ?>"/>
                                                 <div class="invalid-feedback">
                                                     <?= isset($errors['createHousingTypes']['name']) ? $lang[$errors['createHousingTypes']['name']] : $lang['formato_incorrecto'] ?>
                                                 </div>
@@ -104,7 +104,7 @@
                                                         <div class="row">
                                                             <div class="form-control has-success col-md-12 ml-auto"> 
                                                                 <input type="hidden" value="<?php echo $housingType->uuid; ?>" name="uuid" />
-                                                                <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
+                                                                <label class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
                                                                 <input type="text" name="name" <?php echo isset($_POST['name']) ? "value='" . $_POST['name'] . "'" : "" ?> class="form-control <?= isset($errors['updateHousingTypes']['name']) ? " is-invalid" : "" ?>"/>
                                                                 <div class="invalid-feedback">
                                                                     <?= isset($errors['updateHousingTypes']['name']) ? $lang[$errors['updateHousingTypes']['name']] : $lang['formato_incorrecto'] ?>
@@ -162,11 +162,6 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
                     for ($i = 0; $i < $numHousingTypes / 10; $i++) {
                         ?>
@@ -175,23 +170,18 @@
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 
         </div>
-            
-            
-            
+
+
+
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2"><?= $lang['tipos operacion'] ?></h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <button data-toggle="modal" data-target="#addOperationType" class="btn btn-primary btn-sm float-lg-right"><i class="fa fa-plus"></i></button>
-                <div role="dialog" aria-labelledby="A&ntilde;adir Tipo de operacion" aria-hidden="true" tabindex="-1" id="addOperationType" class="modal fade" role="dialog">
+                <div role="dialog" aria-hidden="true" tabindex="-1" id="addOperationType" class="modal fade">
 
                     <!-- Modal content-->
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -216,8 +206,8 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="form-control has-success col-md-12 ml-auto"> 
-                                                <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
-                                                <input type="text" id="name" name="name" <?php echo isset($_POST['name']) ? "value='" . $_POST['name'] . "'" : "" ?> class="form-control <?= isset($errors['createOperationTypes']['name']) ? " is-invalid" : "" ?>"/>
+                                                <label for="nameOperationType" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
+                                                <input type="text" id="nameOperationType" name="name" <?php echo isset($_POST['name']) ? "value='" . $_POST['name'] . "'" : "" ?> class="form-control <?= isset($errors['createOperationTypes']['name']) ? " is-invalid" : "" ?>"/>
                                                 <div class="invalid-feedback">
                                                     <?= isset($errors['createOperationTypes']['name']) ? $lang[$errors['createOperationTypes']['name']] : $lang['formato_incorrecto'] ?>
                                                 </div>
@@ -287,7 +277,7 @@
                                                         <div class="row">
                                                             <div class="form-control has-success col-md-12 ml-auto"> 
                                                                 <input type="hidden" value="<?php echo $OperationType->uuid; ?>" name="uuid" />
-                                                                <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
+                                                                <label class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>
                                                                 <input type="text" name="name" <?php echo isset($_POST['name']) ? "value='" . $_POST['name'] . "'" : "" ?> class="form-control <?= isset($errors['updateOperationTypes']['name']) ? " is-invalid" : "" ?>"/>
                                                                 <div class="invalid-feedback">
                                                                     <?= isset($errors['updateOperationTypes']['name']) ? $lang[$errors['updateOperationTypes']['name']] : $lang['formato_incorrecto'] ?>
@@ -345,11 +335,6 @@
             </table>
             <div class="text-xs-center">
                 <ul class="pagination justify-content-center">
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>-->
                     <?php
                     for ($i = 0; $i < $numOperationTypes / 10; $i++) {
                         ?>
@@ -358,11 +343,6 @@
                         </li>
                     <?php }
                     ?>       
-                    <!--<li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <      span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>-->
                 </ul>
             </div>
 

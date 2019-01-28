@@ -14,6 +14,9 @@ class WSController extends AbstractController {
     private $operationTypeModel;
     private $requestModel;
 
+    /**
+     * Método constructor
+     */
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
@@ -83,6 +86,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de comentarios
+     */
     public function paginateComments() {
         if (filter_has_var(INPUT_POST, "commentPag")) {
             $num = filter_var($_POST['commentPag'], FILTER_SANITIZE_NUMBER_INT);
@@ -94,6 +100,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de tipos de casas
+     */
     public function paginateHousingTypes() {
         if (filter_has_var(INPUT_POST, "housingTypePag")) {
             $num = filter_var($_POST['housingTypePag'], FILTER_SANITIZE_NUMBER_INT);
@@ -105,6 +114,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de tipos de operaciones
+     */
     public function paginateOperationTypes() {
         if (filter_has_var(INPUT_POST, "operationTypePag")) {
             $num = filter_var($_POST['operationTypePag'], FILTER_SANITIZE_NUMBER_INT);
@@ -116,6 +128,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de usuarios denunciados
+     */
     public function paginateReportsUser() {
         if (filter_has_var(INPUT_POST, "reportsUserPag")) {
             $num = filter_var($_POST['reportsUserPag'], FILTER_SANITIZE_NUMBER_INT);
@@ -127,6 +142,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de anuncios denunciados
+     */
     public function paginateReportsAd() {
         if (filter_has_var(INPUT_POST, "reportsAdPag")) {
             $num = filter_var($_POST['reportsAdPag'], FILTER_SANITIZE_NUMBER_INT);
@@ -138,6 +156,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de comentarios denunciados
+     */
     public function paginateReportsComment() {
         if (filter_has_var(INPUT_POST, "reportsCommentPag")) {
             $num = filter_var($_POST['reportsCommentPag'], FILTER_SANITIZE_NUMBER_INT);
@@ -149,6 +170,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de peticiones denunciadas
+     */
     public function paginateReportsRequest() {
         if (filter_has_var(INPUT_POST, "reportsRequestPag")) {
             $num = filter_var($_POST['reportsRequestPag'], FILTER_SANITIZE_NUMBER_INT);
@@ -160,6 +184,9 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de peticiones
+     */
     public function paginateRequests() {
         if (filter_has_var(INPUT_POST, 'pag')) {
             $pag = filter_var($_POST['pag'], FILTER_SANITIZE_NUMBER_INT);
@@ -172,10 +199,13 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que llama a la paginación de los comentarios de un anuncio concreto
+     */
     public function paginateCommentsAd() {
         if (filter_has_var(INPUT_POST, 'commentsAdPag') && filter_has_var(INPUT_POST, 'uuid')) {
             $pag = filter_var($_POST['commentsAdPag'], FILTER_SANITIZE_NUMBER_INT);
-            $uuid=filter_var($_POST["uuid"], FILTER_SANITIZE_STRING);
+            $uuid = filter_var($_POST["uuid"], FILTER_SANITIZE_STRING);
             $ad = $this->adModel->read($uuid);
             $comments = $this->commentModel->getComments($ad->id, $pag);
             header('Content-type: application/json');

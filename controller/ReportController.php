@@ -15,6 +15,9 @@ class ReportController extends AbstractController {
     private $commentModel;
     private $adModel;
 
+    /**
+     * Método constructor
+     */
     public function __construct() {
         parent::__construct();
         $this->reportModel = new ReportModel();
@@ -24,6 +27,9 @@ class ReportController extends AbstractController {
         $this->adModel = new AdModel();
     }
 
+    /**
+     * Método que crea denuncias
+     */
     public function createReport() {
         $data = array("report" => "number", "uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($data, "report");
@@ -43,6 +49,9 @@ class ReportController extends AbstractController {
         }
     }
 
+    /**
+     * Método que denuncia peticiones
+     */
     public function reportRequest() {
         $data = array("title" => "text", "description" => "longText", "uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($data, "createReport");
@@ -69,6 +78,9 @@ class ReportController extends AbstractController {
         }
     }
 
+    /**
+     * Método que denuncia usuarios
+     */
     public function reportUser() {
         $data = array("title" => "text", "description" => "longText", "uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($data, "createReport");
@@ -95,6 +107,9 @@ class ReportController extends AbstractController {
         }
     }
 
+    /**
+     * Método que denuncia anuncios
+     */
     public function reportAd() {
         $data = array("title" => "text", "description" => "longText", "uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($data, "createReport");
@@ -121,6 +136,9 @@ class ReportController extends AbstractController {
         }
     }
 
+    /**
+     * Método que denuncia comentarios
+     */
     public function reportComment() {
         $data = array("title" => "text", "description" => "longText", "uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($data, "createReport");

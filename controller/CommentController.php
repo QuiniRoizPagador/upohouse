@@ -12,12 +12,18 @@ class CommentController extends AbstractController {
     private $commentModel;
     private $adModel;
 
+    /**
+     * Método constructor
+     */
     public function __construct() {
         parent::__construct();
         $this->commentModel = new CommentModel();
         $this->adModel = new AdModel();
     }
 
+    /**
+     * Método que crear comentarios
+     */
     public function createComment() {
         if (isset($_POST["uuidAd"]) && isset($_POST["comentario"]) && strlen(trim($_POST["comentario"])) > 0) {
             $values = array("comentario" => "longText");
@@ -27,7 +33,7 @@ class CommentController extends AbstractController {
                 $filtrado = RegularUtils::sanearStrings($values);
 
                 $ad = $this->adModel->read($filtrado["uuidAd"]);
-                
+
                 $contenido = str_replace("\n", "<br />", $filtrado['comentario']);
                 $comentario = new Comment();
                 $comentario->setAd_id($ad->id);
