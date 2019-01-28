@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.3)  28 JAN 2019 01:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.3)  28 JAN 2019 03:17
 entering extended mode
 **./Main.tex
 (Main.tex
@@ -6134,11 +6134,175 @@ File: Img/ManualUsuario/ADMIN_EDIT_USER.png Graphic file (type png)
 <use Img/ManualUsuario/ADMIN_EDIT_USER.png>
 Package pdftex.def Info: Img/ManualUsuario/ADMIN_EDIT_USER.png  used on input l
 ine 81.
-(pdftex.def)             Requested size: 281.68513pt x 220.85202pt.
+(pdftex.def)             Requested size: 187.78531pt x 147.22667pt.
+LaTeX Info: Redefining \. on input line 86.
+LaTeX Info: Redefining \% on input line 86.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 86.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 86.
+ [94 <./Img/ManualUsuario/ADMIN_BLOCK_USER.png> <./Img/ManualUsuario/ADMIN_USER
+_BLOCKED.png> <./Img/ManualUsuario/ADMIN_BLOCKED_READ_USER.png> <./Img/ManualUs
+uario/ADMIN_EDIT_USER.png>]
+<Img/ManualUsuario/ADMIN_ADS_DASHBOARD.png, id=1436, 1069.9975pt x 498.86375pt>
 
+File: Img/ManualUsuario/ADMIN_ADS_DASHBOARD.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_ADS_DASHBOARD.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_ADS_DASHBOARD.png  used on inp
+ut line 89.
+(pdftex.def)             Requested size: 328.62788pt x 153.2151pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
+ []
+
+<Img/ManualUsuario/ADMIN_COMMENT_DASH.png, id=1437, 1069.9975pt x 499.8675pt>
+File: Img/ManualUsuario/ADMIN_COMMENT_DASH.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_COMMENT_DASH.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_COMMENT_DASH.png  used on inpu
+t line 103.
+(pdftex.def)             Requested size: 328.62788pt x 153.52338pt.
+LaTeX Info: Redefining \. on input line 109.
+LaTeX Info: Redefining \% on input line 109.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 109.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 109.
+[95 <./Img/ManualUsuario/ADMIN_ADS_DASHBOARD.png> <./Img/ManualUsuario/ADMIN_CO
+MMENT_DASH.png>]
+<Img/ManualUsuario/ADMIN_TYPE.png, id=1447, 1055.945pt x 778.91pt>
+File: Img/ManualUsuario/ADMIN_TYPE.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_TYPE.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_TYPE.png  used on input line 1
+12.
+(pdftex.def)             Requested size: 281.68513pt x 207.77696pt.
+<Img/ManualUsuario/ADMIN_CREATE_THOUSING_TYPE.png, id=1448, 803.0pt x 258.9675p
+t>
+File: Img/ManualUsuario/ADMIN_CREATE_THOUSING_TYPE.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_CREATE_THOUSING_TYPE.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_CREATE_THOUSING_TYPE.png  used
+ on input line 119.
+(pdftex.def)             Requested size: 281.68513pt x 90.84544pt.
+<Img/ManualUsuario/ADMIN_EDIT_HOUSING_TYPE.png, id=1449, 501.875pt x 258.9675pt
+>
+File: Img/ManualUsuario/ADMIN_EDIT_HOUSING_TYPE.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_EDIT_HOUSING_TYPE.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_EDIT_HOUSING_TYPE.png  used on
+ input line 126.
+(pdftex.def)             Requested size: 234.73523pt x 121.12595pt.
+LaTeX Info: Redefining \. on input line 133.
+LaTeX Info: Redefining \% on input line 133.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 133.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 133.
+ [96 <./Img/ManualUsuario/ADMIN_TYPE.png> <./Img/ManualUsuario/ADMIN_CREATE_THO
+USING_TYPE.png> <./Img/ManualUsuario/ADMIN_EDIT_HOUSING_TYPE.png>]
+<Img/ManualUsuario/DENUNCIAS_ADMIN.png, id=1458, 796.47563pt x 795.72281pt>
+File: Img/ManualUsuario/DENUNCIAS_ADMIN.png Graphic file (type png)
+<use Img/ManualUsuario/DENUNCIAS_ADMIN.png>
+Package pdftex.def Info: Img/ManualUsuario/DENUNCIAS_ADMIN.png  used on input l
+ine 138.
+(pdftex.def)             Requested size: 422.52054pt x 422.11961pt.
+<Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png, id=1459, 803.0pt x 573.14125pt>
+File: Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png  used on 
+input line 148.
+(pdftex.def)             Requested size: 328.62788pt x 234.5609pt.
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 149.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 149.
+ [97 <./Img/ManualUsuario/DENUNCIAS_ADMIN.png>]
+<Img/ManualUsuario/ADMIN_SHOW_REPORT_AD.png, id=1466, 803.0pt x 606.265pt>
+File: Img/ManualUsuario/ADMIN_SHOW_REPORT_AD.png Graphic file (type png)
+<use Img/ManualUsuario/ADMIN_SHOW_REPORT_AD.png>
+Package pdftex.def Info: Img/ManualUsuario/ADMIN_SHOW_REPORT_AD.png  used on in
+put line 157.
+(pdftex.def)             Requested size: 328.62788pt x 248.11696pt.
 )
 LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
@@ -6166,53 +6330,26 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 83.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 83.
- [94 <./Img/ManualUsuario/ADMIN_BLOCK_USER.png> <./Img/ManualUsuario/ADMIN_USER
-_BLOCKED.png> <./Img/ManualUsuario/ADMIN_BLOCKED_READ_USER.png>]
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 83.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 83.
- [95 <./Img/ManualUsuario/ADMIN_EDIT_USER.png>]
+ [98 <./Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png> <./Img/ManualUsuario/ADMI
+N_SHOW_REPORT_AD.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 104.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 104.
- (Main.aux (HojaTitulo/HojaTituloMSc.aux)
+
+(Main.aux (HojaTitulo/HojaTituloMSc.aux)
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
-
-(Intro/Intro.aux) (CasosDeUso/GestionUsuarios/DCU01.aux)
-(CasosDeUso/GestionUsuarios/CU101.aux) (CasosDeUso/GestionUsuarios/CU102.aux)
-(CasosDeUso/GestionUsuarios/CU103.aux) (CasosDeUso/GestionUsuarios/CU104.aux)
-(CasosDeUso/GestionUsuarios/CU105.aux) (CasosDeUso/GestionUsuarios/CU106.aux)
-(CasosDeUso/GestionUsuarios/CU107.aux) (CasosDeUso/GestionUsuarios/CU108.aux)
-(CasosDeUso/GestionUsuarios/CU109.aux) (CasosDeUso/GestionUsuarios/CU110.aux)
-(CasosDeUso/GestionUsuarios/CU111.aux) (CasosDeUso/GestionAnuncios/DCU02.aux)
-(CasosDeUso/GestionAnuncios/CU201.aux) (CasosDeUso/GestionAnuncios/CU202.aux)
-(CasosDeUso/GestionAnuncios/CU203.aux) (CasosDeUso/GestionAnuncios/CU204.aux)
-(CasosDeUso/GestionAnuncios/CU205.aux) (CasosDeUso/GestionAnuncios/CU206.aux)
-(CasosDeUso/GestionAnuncios/CU207.aux) (CasosDeUso/GestionAnuncios/CU208.aux)
-(CasosDeUso/GestionPeticiones/DCU03.aux)
+ (Intro/Intro.aux)
+(CasosDeUso/GestionUsuarios/DCU01.aux) (CasosDeUso/GestionUsuarios/CU101.aux)
+(CasosDeUso/GestionUsuarios/CU102.aux) (CasosDeUso/GestionUsuarios/CU103.aux)
+(CasosDeUso/GestionUsuarios/CU104.aux) (CasosDeUso/GestionUsuarios/CU105.aux)
+(CasosDeUso/GestionUsuarios/CU106.aux) (CasosDeUso/GestionUsuarios/CU107.aux)
+(CasosDeUso/GestionUsuarios/CU108.aux) (CasosDeUso/GestionUsuarios/CU109.aux)
+(CasosDeUso/GestionUsuarios/CU110.aux) (CasosDeUso/GestionUsuarios/CU111.aux)
+(CasosDeUso/GestionAnuncios/DCU02.aux) (CasosDeUso/GestionAnuncios/CU201.aux)
+(CasosDeUso/GestionAnuncios/CU202.aux) (CasosDeUso/GestionAnuncios/CU203.aux)
+(CasosDeUso/GestionAnuncios/CU204.aux) (CasosDeUso/GestionAnuncios/CU205.aux)
+(CasosDeUso/GestionAnuncios/CU206.aux) (CasosDeUso/GestionAnuncios/CU207.aux)
+(CasosDeUso/GestionAnuncios/CU208.aux) (CasosDeUso/GestionPeticiones/DCU03.aux)
 (CasosDeUso/GestionPeticiones/CU301.aux)
 (CasosDeUso/GestionPeticiones/CU302.aux)
 (CasosDeUso/GestionPeticiones/CU303.aux)
@@ -6246,10 +6383,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 104.
  ) 
 Here is how much of TeX's memory you used:
- 32294 strings out of 493305
- 766002 string characters out of 3129803
+ 32341 strings out of 493305
+ 767724 string characters out of 3129803
  1021955 words of memory out of 3000000
- 34234 multiletter control sequences out of 15000+200000
+ 34266 multiletter control sequences out of 15000+200000
  11263 words of font info for 40 fonts, out of 3000000 for 9000
  1151 hyphenation exceptions out of 8191
  66i,13n,100p,8844b,784s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -6264,9 +6401,9 @@ bra/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
 m/cmr17.pfb><C:/Users/cobra/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmr8.pfb><C:/Users/cobra/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on Main.pdf (103 pages, 4826572 bytes).
+Output written on Main.pdf (106 pages, 4902901 bytes).
 PDF statistics:
- 1604 PDF objects out of 1728 (max. 8388607)
- 642 named destinations out of 1000 (max. 500000)
- 1057 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1640 PDF objects out of 1728 (max. 8388607)
+ 649 named destinations out of 1000 (max. 500000)
+ 1097 words of extra memory for PDF output out of 10000 (max. 10000000)
 
