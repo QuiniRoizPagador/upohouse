@@ -145,14 +145,29 @@ Las denuncias de usuarios presentan en el listado el id, t\'{i}tulo, referencia 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.7\textwidth]{Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png}
+\includegraphics[width=.5\textwidth]{Img/ManualUsuario/ADMIN_SHOW_REPORT_USER.png}
 \end{figure}
 
 
-Las denuncias de anuncios presentan el id, t\'{i}tulo del mismo, referencia al usuario denunciante y al anuncio denunciado, fecha de registro y ampliaci\'{o}n de los datos, a\~{n}adiendo a los anteriores id, uuid, descripci\'{o}n y los botones anteriormente mencionados de aceptar y rechazar denuncia.
+Las denuncias de anuncios presentan el id, t\'{i}tulo del mismo, referencia al usuario denunciante y al anuncio denunciado, fecha de registro y ampliaci\'{o}n de los datos, a\~{n}adiendo a los anteriores id, uuid, descripci\'{o}n y los botones anteriormente mencionados de aceptar y rechazar denuncia. Las denuncias de anuncios, al igual que las de usuarios, son bloqueantes.
 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.7\textwidth]{Img/ManualUsuario/ADMIN_SHOW_REPORT_AD.png}
+\includegraphics[width=.5\textwidth]{Img/ManualUsuario/ADMIN_SHOW_REPORT_AD.png}
+\end{figure}
+
+Los comentarios denunciados presentan las mismas caracter\'{i}sticas, es decir, un id, t\'{i}tulo, link al usuario denunciante, el uuid del comentario denunciado, fecha registro y acceso al detalle en 'ver'. En este caso el comentario denunciado no es referenciado directamente, pero se prevee que en futuras implementaciones se pueda hacer. El detalle de las denuncias de comentarios presenta id, uuid, t\'{i}tulo, descripci\'{o}n, link al usuario, contenido del comentario que fue denunciado y fecha registro, adem\'{a}s de los dos botones ya conocidos de aceptar y rechazar. Las denuncias de comentarios no bloquean al aceptar, como las de usuarios y anuncios. En su lugar, se borra del sistema.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.5\textwidth]{Img/ManualUsuario/ADMIN_SHOW_REPORT_COMMENT.png}
+\end{figure}
+
+En \'{u}ltimo, lugar, pero no menos importante por ello, se tiene el listado de denuncias de peticiones, mostrando el id, t\'{i}tulo y referencia al usuario denunciante nuevamente, uuid de la petici\'{o}n denunciada, fecha registro y ampliaci\'{o}n en 'ver'. Al igual que las anteriores, el contenido de la tarjeta con los detalles contendr\'{a} id, uuid, t\'{i}tulo, descripci\'{o}n, link al perfil del usuario denunciante,  contenido de la petici\'{o}n denunciada (es decir, el mensaje que escribi\'{o} el usuario cuya petici\'{o}n fue denunciada), fecha registro y los botones de aceptar o rechazar.Al igual que los comentarios, se borrar\'{a}n las peticiones cuyas denuncias asociadas sean aceptadas.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.5\textwidth]{Img/ManualUsuario/ADMIN_SHOW_REPORT_REQUEST.png}
 \end{figure}
