@@ -6,355 +6,379 @@
 \contentsline {subsection}{\numberline {1.2.1}P\'{a}gina Principal}{6}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Registro y Login}{7}{subsection.1.2.2}
 \contentsline {subsection}{\numberline {1.2.3}Listado de anuncios}{8}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}Perfil de Usuario}{9}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.4}Perfil de Usuario}{8}{subsection.1.2.4}
 \contentsline {subsection}{\numberline {1.2.5}Anuncios}{11}{subsection.1.2.5}
 \contentsline {subsection}{\numberline {1.2.6}Creaci\'{o}n de anuncios}{12}{subsection.1.2.6}
-\contentsline {subsection}{\numberline {1.2.7}Dashboard}{15}{subsection.1.2.7}
-\contentsline {subsubsection}{\nonumberline Usuarios}{15}{section*.2}
-\contentsline {subsubsection}{\nonumberline Anuncios}{16}{section*.3}
+\contentsline {subsection}{\numberline {1.2.7}Dashboard}{13}{subsection.1.2.7}
+\contentsline {subsubsection}{\nonumberline Usuarios}{13}{section*.2}
+\contentsline {subsubsection}{\nonumberline Anuncios}{15}{section*.3}
 \contentsline {subsubsection}{\nonumberline Comentarios}{16}{section*.4}
 \contentsline {subsubsection}{\nonumberline Tipos}{17}{section*.5}
-\contentsline {subsubsection}{\nonumberline Denuncias}{17}{section*.6}
-\contentsline {chapter}{\numberline {2}Casos de Uso}{21}{chapter.2}
-\contentsline {section}{\numberline {2.1}Gesti\'{o}n de Usuarios}{21}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}CU101 Iniciar Sesi\'{o}n.}{22}{subsection.2.1.1}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{22}{section*.7}
-\contentsline {subsubsection}{\nonumberline Actores.}{22}{section*.8}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n.}{22}{section*.9}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{22}{section*.10}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos o sin introducir o usuario bloqueado.}{22}{section*.11}
-\contentsline {subsection}{\numberline {2.1.2}CU102 Cerrar Sesi\'{o}n.}{23}{subsection.2.1.2}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{23}{section*.12}
-\contentsline {subsubsection}{\nonumberline Actores.}{23}{section*.13}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{23}{section*.14}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n.}{23}{section*.15}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{23}{section*.16}
-\contentsline {subsection}{\numberline {2.1.3}CU03 Consultar Usuario}{24}{subsection.2.1.3}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{24}{section*.17}
-\contentsline {subsubsection}{\nonumberline Actores}{24}{section*.18}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{24}{section*.19}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{24}{section*.20}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{24}{section*.21}
-\contentsline {subsection}{\numberline {2.1.4}CU104 Modificar Usuario}{25}{subsection.2.1.4}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{25}{section*.22}
-\contentsline {subsubsection}{\nonumberline Actores}{25}{section*.23}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{25}{section*.24}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{25}{section*.25}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{25}{section*.26}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{25}{section*.27}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}{25}{section*.28}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{26}{section*.29}
-\contentsline {subsection}{\numberline {2.1.5}CU105 Eliminar Usuario}{27}{subsection.2.1.5}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{27}{section*.30}
-\contentsline {subsubsection}{\nonumberline Actores}{27}{section*.31}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{27}{section*.32}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{27}{section*.33}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{27}{section*.34}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{27}{section*.35}
-\contentsline {subsection}{\numberline {2.1.6}CU106 Reportar Usuario}{28}{subsection.2.1.6}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{28}{section*.36}
-\contentsline {subsubsection}{\nonumberline Actores}{28}{section*.37}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{28}{section*.38}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{28}{section*.39}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{28}{section*.40}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}{28}{section*.41}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Campos vac\'{i}os.}{28}{section*.42}
-\contentsline {subsection}{\numberline {2.1.7}CU107 Crear Usuario}{29}{subsection.2.1.7}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{29}{section*.43}
-\contentsline {subsubsection}{\nonumberline Actores}{29}{section*.44}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{29}{section*.45}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{29}{section*.46}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{29}{section*.47}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos o usuario ya existente.}{29}{section*.48}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{29}{section*.49}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{29}{section*.50}
-\contentsline {subsection}{\numberline {2.1.8}CU108 Listar Usuarios}{30}{subsection.2.1.8}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{30}{section*.51}
-\contentsline {subsubsection}{\nonumberline Actores}{30}{section*.52}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{30}{section*.53}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{30}{section*.54}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{30}{section*.55}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen usuarios a mostrar.}{30}{section*.56}
-\contentsline {subsection}{\numberline {2.1.9}CU109 Bloquear Usuario}{31}{subsection.2.1.9}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{31}{section*.57}
-\contentsline {subsubsection}{\nonumberline Actores}{31}{section*.58}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{31}{section*.59}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{31}{section*.60}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{31}{section*.61}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{31}{section*.62}
-\contentsline {subsection}{\numberline {2.1.10}CU110 Desbloquear Usuario}{32}{subsection.2.1.10}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{32}{section*.63}
-\contentsline {subsubsection}{\nonumberline Actores}{32}{section*.64}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{32}{section*.65}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{32}{section*.66}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{32}{section*.67}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{32}{section*.68}
-\contentsline {subsection}{\numberline {2.1.11}CU107 Registrar Usuario}{33}{subsection.2.1.11}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{33}{section*.69}
-\contentsline {subsubsection}{\nonumberline Actores}{33}{section*.70}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{33}{section*.71}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{33}{section*.72}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{33}{section*.73}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos o usuario ya existente.}{33}{section*.74}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{33}{section*.75}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{33}{section*.76}
-\contentsline {section}{\numberline {2.2}Gesti\'{o}n de Anuncios}{34}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}CU201 Crear Anuncio.}{36}{subsection.2.2.1}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{36}{section*.77}
-\contentsline {subsubsection}{\nonumberline Actores.}{36}{section*.78}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{36}{section*.79}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{36}{section*.80}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{36}{section*.81}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos.}{36}{section*.82}
-\contentsline {subsection}{\numberline {2.2.2}CU202 Consultar Anuncio.}{37}{subsection.2.2.2}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{37}{section*.83}
-\contentsline {subsubsection}{\nonumberline Actores.}{37}{section*.84}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{37}{section*.85}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{37}{section*.86}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{37}{section*.87}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Restricci\'{o}n de operaciones}{37}{section*.88}
-\contentsline {subsection}{\numberline {2.2.3}CU203 Listar anuncios.}{38}{subsection.2.2.3}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{38}{section*.89}
-\contentsline {subsubsection}{\nonumberline Actores.}{38}{section*.90}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{38}{section*.91}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{38}{section*.92}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El usuario cancela la operaci\'{o}n}{38}{section*.93}
-\contentsline {subsection}{\numberline {2.2.4}CU204 Modificar Anuncio.}{39}{subsection.2.2.4}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{39}{section*.94}
-\contentsline {subsubsection}{\nonumberline Actores.}{39}{section*.95}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{39}{section*.96}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{39}{section*.97}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{39}{section*.98}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. El usuario introduce alg\'{u}n dato incorrecto.}{39}{section*.99}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{39}{section*.100}
-\contentsline {subsection}{\numberline {2.2.5}CU205 Eliminar Anuncio.}{40}{subsection.2.2.5}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{40}{section*.101}
-\contentsline {subsubsection}{\nonumberline Actores.}{40}{section*.102}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{40}{section*.103}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{40}{section*.104}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{40}{section*.105}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El usuario cancela la operaci\'{o}n}{40}{section*.106}
-\contentsline {subsection}{\numberline {2.2.6}CU206 Comentar Anuncio.}{41}{subsection.2.2.6}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{41}{section*.107}
-\contentsline {subsubsection}{\nonumberline Actores.}{41}{section*.108}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{41}{section*.109}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{41}{section*.110}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{41}{section*.111}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El usuario cancela la operaci\'{o}n.}{41}{section*.112}
-\contentsline {subsection}{\numberline {2.2.7}CU207 Valorar Anuncio.}{42}{subsection.2.2.7}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{42}{section*.113}
-\contentsline {subsubsection}{\nonumberline Actores.}{42}{section*.114}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{42}{section*.115}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{42}{section*.116}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{42}{section*.117}
-\contentsline {subsection}{\numberline {2.2.8}CU208 Denunciar Anuncio.}{43}{subsection.2.2.8}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{43}{section*.118}
-\contentsline {subsubsection}{\nonumberline Actores.}{43}{section*.119}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{43}{section*.120}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{43}{section*.121}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{43}{section*.122}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. El usuario no cumple con los formatos de entrada en alguno de los campos.}{43}{section*.123}
-\contentsline {section}{\numberline {2.3}Gesti\'{o}n de Peticiones}{44}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}CU301 Crear Petici\'{o}n.}{45}{subsection.2.3.1}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{45}{section*.124}
-\contentsline {subsubsection}{\nonumberline Actores.}{45}{section*.125}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{45}{section*.126}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n.}{45}{section*.127}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{45}{section*.128}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}{45}{section*.129}
-\contentsline {subsection}{\numberline {2.3.2}CU302 Consultar Petici\'{o}n}{46}{subsection.2.3.2}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{46}{section*.130}
-\contentsline {subsubsection}{\nonumberline Actores}{46}{section*.131}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{46}{section*.132}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{46}{section*.133}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{46}{section*.134}
-\contentsline {subsection}{\numberline {2.3.3}CU303 Aceptar Petici\'{o}n}{47}{subsection.2.3.3}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{47}{section*.135}
-\contentsline {subsubsection}{\nonumberline Actores}{47}{section*.136}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{47}{section*.137}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{47}{section*.138}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{47}{section*.139}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{47}{section*.140}
-\contentsline {subsection}{\numberline {2.3.4}CU304 Denunciar Petici\'{o}n}{48}{subsection.2.3.4}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{48}{section*.141}
-\contentsline {subsubsection}{\nonumberline Actores}{48}{section*.142}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{48}{section*.143}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{48}{section*.144}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{48}{section*.145}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}{48}{section*.146}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos.}{48}{section*.147}
-\contentsline {subsection}{\numberline {2.3.5}CU305 Listar Peticiones}{49}{subsection.2.3.5}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{49}{section*.148}
-\contentsline {subsubsection}{\nonumberline Actores}{49}{section*.149}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{49}{section*.150}
-\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{49}{section*.151}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{49}{section*.152}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen peticiones a mostrar.}{49}{section*.153}
-\contentsline {subsection}{\numberline {2.3.6}CU306 Descartar Petici\'{o}n}{50}{subsection.2.3.6}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{50}{section*.154}
-\contentsline {subsubsection}{\nonumberline Actores}{50}{section*.155}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{50}{section*.156}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{50}{section*.157}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{50}{section*.158}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{50}{section*.159}
-\contentsline {section}{\numberline {2.4}Gesti\'{o}n de Denuncias}{51}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}CU401 Listar denuncias.}{52}{subsection.2.4.1}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{52}{section*.160}
-\contentsline {subsubsection}{\nonumberline Actores.}{52}{section*.161}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{52}{section*.162}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{52}{section*.163}
-\contentsline {subsection}{\numberline {2.4.2}CU402 Consultar denuncia.}{53}{subsection.2.4.2}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{53}{section*.164}
-\contentsline {subsubsection}{\nonumberline Actores.}{53}{section*.165}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{53}{section*.166}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{53}{section*.167}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{53}{section*.168}
-\contentsline {subsection}{\numberline {2.4.3}CU403 Aceptar denuncia.}{54}{subsection.2.4.3}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{54}{section*.169}
-\contentsline {subsubsection}{\nonumberline Actores.}{54}{section*.170}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{54}{section*.171}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{54}{section*.172}
-\contentsline {subsubsection}{\nonumberline Escenario Principal. Denuncia usuario)}{54}{section*.173}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Denuncia Anuncio.}{54}{section*.174}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Denuncia Comentario.}{54}{section*.175}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Denuncia Petici\'{o}n.}{54}{section*.176}
-\contentsline {subsection}{\numberline {2.4.4}CU404 Rechazar denuncia.}{55}{subsection.2.4.4}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{55}{section*.177}
-\contentsline {subsubsection}{\nonumberline Actores.}{55}{section*.178}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{55}{section*.179}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{55}{section*.180}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{55}{section*.181}
-\contentsline {section}{\numberline {2.5}Gesti\'{o}n de Comentarios}{56}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}CU501 Listar Comentarios.}{57}{subsection.2.5.1}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{57}{section*.182}
-\contentsline {subsubsection}{\nonumberline Actores.}{57}{section*.183}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{57}{section*.184}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{57}{section*.185}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{57}{section*.186}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. No existen datos a mostrar.}{57}{section*.187}
-\contentsline {subsection}{\numberline {2.5.2}CU502 Denunciar Comentario}{58}{subsection.2.5.2}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{58}{section*.188}
-\contentsline {subsubsection}{\nonumberline Actores}{58}{section*.189}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{58}{section*.190}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{58}{section*.191}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{58}{section*.192}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}{58}{section*.193}
-\contentsline {subsection}{\numberline {2.5.3}CU503 Eliminar Comentario}{59}{subsection.2.5.3}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{59}{section*.194}
-\contentsline {subsubsection}{\nonumberline Actores}{59}{section*.195}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{59}{section*.196}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{59}{section*.197}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{59}{section*.198}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{59}{section*.199}
-\contentsline {section}{\numberline {2.6}Gesti\'{o}n de Tipos}{60}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}CU601 Crear Tipo Vivienda.}{61}{subsection.2.6.1}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{61}{section*.200}
-\contentsline {subsubsection}{\nonumberline Actores.}{61}{section*.201}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{61}{section*.202}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{61}{section*.203}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{61}{section*.204}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}{61}{section*.205}
-\contentsline {subsection}{\numberline {2.6.2}CU602 Crear Tipo Operaci\'{o}n.}{62}{subsection.2.6.2}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{62}{section*.206}
-\contentsline {subsubsection}{\nonumberline Actores.}{62}{section*.207}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{62}{section*.208}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{62}{section*.209}
-\contentsline {subsubsection}{\nonumberline Escenario Principal.}{62}{section*.210}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}{62}{section*.211}
-\contentsline {subsection}{\numberline {2.6.3}CU603 Listar Tipos Vivienda}{63}{subsection.2.6.3}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{63}{section*.212}
-\contentsline {subsubsection}{\nonumberline Actores}{63}{section*.213}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{63}{section*.214}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{63}{section*.215}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{63}{section*.216}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen tipos de viviendas a mostrar.}{63}{section*.217}
-\contentsline {subsection}{\numberline {2.6.4}CU604 Listar Tipos Operaciones}{64}{subsection.2.6.4}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{64}{section*.218}
-\contentsline {subsubsection}{\nonumberline Actores}{64}{section*.219}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{64}{section*.220}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{64}{section*.221}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{64}{section*.222}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen tipos de operaciones a mostrar.}{64}{section*.223}
-\contentsline {subsection}{\numberline {2.6.5}CU605 Modificar Tipo Vivienda}{65}{subsection.2.6.5}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{65}{section*.224}
-\contentsline {subsubsection}{\nonumberline Actores}{65}{section*.225}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{65}{section*.226}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{65}{section*.227}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{65}{section*.228}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{65}{section*.229}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}{65}{section*.230}
-\contentsline {subsection}{\numberline {2.6.6}CU606 Modificar Tipo Operaci\'{o}n}{66}{subsection.2.6.6}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{66}{section*.231}
-\contentsline {subsubsection}{\nonumberline Actores}{66}{section*.232}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{66}{section*.233}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{66}{section*.234}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{66}{section*.235}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{66}{section*.236}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}{66}{section*.237}
-\contentsline {subsection}{\numberline {2.6.7}CU607 Eliminar Tipo Vivienda}{67}{subsection.2.6.7}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{67}{section*.238}
-\contentsline {subsubsection}{\nonumberline Actores}{67}{section*.239}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{67}{section*.240}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{67}{section*.241}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{67}{section*.242}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{67}{section*.243}
-\contentsline {subsection}{\numberline {2.6.8}CU608 Eliminar Tipo Operaci\'{o}n}{68}{subsection.2.6.8}
-\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{68}{section*.244}
-\contentsline {subsubsection}{\nonumberline Actores}{68}{section*.245}
-\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{68}{section*.246}
-\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{68}{section*.247}
-\contentsline {subsubsection}{\nonumberline Escenario Principal}{68}{section*.248}
-\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{68}{section*.249}
-\contentsline {chapter}{\numberline {3}Tabla Crud}{71}{chapter.3}
-\contentsline {chapter}{\numberline {4}Puntos donde se manipulan las entidades}{72}{chapter.4}
-\contentsline {section}{\numberline {4.1}Usuario}{72}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Crear}{72}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Modificar}{73}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Eliminar}{74}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Consultar}{74}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}Anuncio}{75}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Crear}{75}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Modificar}{76}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Eliminar}{77}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Consultar}{77}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}Peticiones}{78}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Crear}{78}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Modificar}{78}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Eliminar}{79}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Consultar}{79}{subsection.4.3.4}
-\contentsline {section}{\numberline {4.4}Denuncias}{79}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Crear}{79}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Modificar}{81}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Consultar}{81}{subsection.4.4.3}
-\contentsline {section}{\numberline {4.5}Comentarios}{82}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Crear}{82}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Eliminar}{82}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Consultar}{83}{subsection.4.5.3}
-\contentsline {section}{\numberline {4.6}Puntuaci\'{o}n}{84}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Crear}{84}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Modificar}{84}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Consultar}{84}{subsection.4.6.3}
-\contentsline {chapter}{\numberline {5}Modelo Fisico}{86}{chapter.5}
-\contentsline {section}{\numberline {5.1}Anuncios}{86}{section.5.1}
-\contentsline {section}{\numberline {5.2}Comentarios}{87}{section.5.2}
-\contentsline {section}{\numberline {5.3}Comunidades Aut\'{o}nomas}{87}{section.5.3}
-\contentsline {section}{\numberline {5.4}Tipos de vivienda}{88}{section.5.4}
-\contentsline {section}{\numberline {5.5}Im\'{a}genes}{88}{section.5.5}
-\contentsline {section}{\numberline {5.6}Municipios}{89}{section.5.6}
-\contentsline {section}{\numberline {5.7}Tipos de Operaciones}{89}{section.5.7}
-\contentsline {section}{\numberline {5.8}Provincias}{90}{section.5.8}
-\contentsline {section}{\numberline {5.9}Denuncias}{90}{section.5.9}
-\contentsline {section}{\numberline {5.10}Peticiones}{91}{section.5.10}
-\contentsline {section}{\numberline {5.11}Puntuaciones}{91}{section.5.11}
-\contentsline {section}{\numberline {5.12}Estados}{92}{section.5.12}
-\contentsline {section}{\numberline {5.13}Usuarios}{92}{section.5.13}
-\contentsline {chapter}{\numberline {6}Usuario no logueado}{95}{chapter.6}
-\contentsline {section}{\numberline {6.1}P\'{a}gina Principal}{95}{section.6.1}
-\contentsline {section}{\numberline {6.2}Registro e Inicio de Sesi\'{o}n}{97}{section.6.2}
-\contentsline {section}{\numberline {6.3}Anuncios}{98}{section.6.3}
-\contentsline {chapter}{\numberline {7}Usuario Registrado}{100}{chapter.7}
-\contentsline {section}{\numberline {7.1}P\'{a}gina Principal}{100}{section.7.1}
-\contentsline {section}{\numberline {7.2}Anuncios}{100}{section.7.2}
-\contentsline {section}{\numberline {7.3}Perfil de Usuario}{102}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Perfil de otros usuarios}{103}{subsection.7.3.1}
-\contentsline {section}{\numberline {7.4}Crear una denuncia}{104}{section.7.4}
+\contentsline {subsubsection}{\nonumberline Denuncias}{18}{section*.6}
+\contentsline {chapter}{\numberline {2}Requisitos Funcionales}{23}{chapter.2}
+\contentsline {section}{\numberline {2.1}Gesti\'{o}n de usuarios}{23}{section.2.1}
+\contentsline {section}{\numberline {2.2}Gesti\'{o}n de anuncios}{23}{section.2.2}
+\contentsline {section}{\numberline {2.3}Gesti\'{o}n de comentarios}{24}{section.2.3}
+\contentsline {section}{\numberline {2.4}Gesti\'{o}n de tipos}{24}{section.2.4}
+\contentsline {section}{\numberline {2.5}Gesti\'{o}n de solicitudes}{24}{section.2.5}
+\contentsline {section}{\numberline {2.6}Gesti\'{o}n de denuncias}{25}{section.2.6}
+\contentsline {chapter}{\numberline {3}Casos de Uso}{26}{chapter.3}
+\contentsline {section}{\numberline {3.1}Gesti\'{o}n de Usuarios}{26}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}CU101 Iniciar Sesi\'{o}n.}{27}{subsection.3.1.1}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{27}{section*.7}
+\contentsline {subsubsection}{\nonumberline Actores.}{27}{section*.8}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n.}{27}{section*.9}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{27}{section*.10}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos o sin introducir o usuario bloqueado.}{27}{section*.11}
+\contentsline {subsection}{\numberline {3.1.2}CU102 Cerrar Sesi\'{o}n.}{28}{subsection.3.1.2}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{28}{section*.12}
+\contentsline {subsubsection}{\nonumberline Actores.}{28}{section*.13}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{28}{section*.14}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n.}{28}{section*.15}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{28}{section*.16}
+\contentsline {subsection}{\numberline {3.1.3}CU03 Consultar Usuario}{29}{subsection.3.1.3}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{29}{section*.17}
+\contentsline {subsubsection}{\nonumberline Actores}{29}{section*.18}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{29}{section*.19}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{29}{section*.20}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{29}{section*.21}
+\contentsline {subsection}{\numberline {3.1.4}CU104 Modificar Usuario}{30}{subsection.3.1.4}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{30}{section*.22}
+\contentsline {subsubsection}{\nonumberline Actores}{30}{section*.23}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{30}{section*.24}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{30}{section*.25}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{30}{section*.26}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{30}{section*.27}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}{30}{section*.28}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{31}{section*.29}
+\contentsline {subsection}{\numberline {3.1.5}CU105 Eliminar Usuario}{32}{subsection.3.1.5}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{32}{section*.30}
+\contentsline {subsubsection}{\nonumberline Actores}{32}{section*.31}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{32}{section*.32}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{32}{section*.33}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{32}{section*.34}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{32}{section*.35}
+\contentsline {subsection}{\numberline {3.1.6}CU106 Reportar Usuario}{33}{subsection.3.1.6}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{33}{section*.36}
+\contentsline {subsubsection}{\nonumberline Actores}{33}{section*.37}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{33}{section*.38}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{33}{section*.39}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{33}{section*.40}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}{33}{section*.41}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Campos vac\'{i}os.}{33}{section*.42}
+\contentsline {subsection}{\numberline {3.1.7}CU107 Crear Usuario}{34}{subsection.3.1.7}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{34}{section*.43}
+\contentsline {subsubsection}{\nonumberline Actores}{34}{section*.44}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{34}{section*.45}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{34}{section*.46}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{34}{section*.47}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos o usuario ya existente.}{34}{section*.48}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{34}{section*.49}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{34}{section*.50}
+\contentsline {subsection}{\numberline {3.1.8}CU108 Listar Usuarios}{35}{subsection.3.1.8}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{35}{section*.51}
+\contentsline {subsubsection}{\nonumberline Actores}{35}{section*.52}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{35}{section*.53}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{35}{section*.54}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{35}{section*.55}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen usuarios a mostrar.}{35}{section*.56}
+\contentsline {subsection}{\numberline {3.1.9}CU109 Bloquear Usuario}{36}{subsection.3.1.9}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{36}{section*.57}
+\contentsline {subsubsection}{\nonumberline Actores}{36}{section*.58}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{36}{section*.59}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{36}{section*.60}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{36}{section*.61}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{36}{section*.62}
+\contentsline {subsection}{\numberline {3.1.10}CU110 Desbloquear Usuario}{37}{subsection.3.1.10}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{37}{section*.63}
+\contentsline {subsubsection}{\nonumberline Actores}{37}{section*.64}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{37}{section*.65}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{37}{section*.66}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{37}{section*.67}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{37}{section*.68}
+\contentsline {subsection}{\numberline {3.1.11}CU107 Registrar Usuario}{38}{subsection.3.1.11}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{38}{section*.69}
+\contentsline {subsubsection}{\nonumberline Actores}{38}{section*.70}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{38}{section*.71}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{38}{section*.72}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{38}{section*.73}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos o usuario ya existente.}{38}{section*.74}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{38}{section*.75}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{38}{section*.76}
+\contentsline {section}{\numberline {3.2}Gesti\'{o}n de Anuncios}{39}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}CU201 Crear Anuncio.}{40}{subsection.3.2.1}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{40}{section*.77}
+\contentsline {subsubsection}{\nonumberline Actores.}{40}{section*.78}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{40}{section*.79}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{40}{section*.80}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{40}{section*.81}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos.}{40}{section*.82}
+\contentsline {subsection}{\numberline {3.2.2}CU202 Consultar Anuncio.}{41}{subsection.3.2.2}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{41}{section*.83}
+\contentsline {subsubsection}{\nonumberline Actores.}{41}{section*.84}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{41}{section*.85}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{41}{section*.86}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{41}{section*.87}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Restricci\'{o}n de operaciones}{41}{section*.88}
+\contentsline {subsection}{\numberline {3.2.3}CU203 Listar anuncios.}{42}{subsection.3.2.3}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{42}{section*.89}
+\contentsline {subsubsection}{\nonumberline Actores.}{42}{section*.90}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{42}{section*.91}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{42}{section*.92}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El usuario cancela la operaci\'{o}n}{42}{section*.93}
+\contentsline {subsection}{\numberline {3.2.4}CU204 Modificar Anuncio.}{43}{subsection.3.2.4}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{43}{section*.94}
+\contentsline {subsubsection}{\nonumberline Actores.}{43}{section*.95}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{43}{section*.96}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{43}{section*.97}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{43}{section*.98}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. El usuario introduce alg\'{u}n dato incorrecto.}{43}{section*.99}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}{43}{section*.100}
+\contentsline {subsection}{\numberline {3.2.5}CU205 Eliminar Anuncio.}{44}{subsection.3.2.5}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{44}{section*.101}
+\contentsline {subsubsection}{\nonumberline Actores.}{44}{section*.102}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{44}{section*.103}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{44}{section*.104}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{44}{section*.105}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El usuario cancela la operaci\'{o}n}{44}{section*.106}
+\contentsline {subsection}{\numberline {3.2.6}CU206 Comentar Anuncio.}{45}{subsection.3.2.6}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{45}{section*.107}
+\contentsline {subsubsection}{\nonumberline Actores.}{45}{section*.108}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{45}{section*.109}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{45}{section*.110}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{45}{section*.111}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El usuario cancela la operaci\'{o}n.}{45}{section*.112}
+\contentsline {subsection}{\numberline {3.2.7}CU207 Valorar Anuncio.}{46}{subsection.3.2.7}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{46}{section*.113}
+\contentsline {subsubsection}{\nonumberline Actores.}{46}{section*.114}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{46}{section*.115}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{46}{section*.116}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{46}{section*.117}
+\contentsline {subsection}{\numberline {3.2.8}CU208 Denunciar Anuncio.}{47}{subsection.3.2.8}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{47}{section*.118}
+\contentsline {subsubsection}{\nonumberline Actores.}{47}{section*.119}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{47}{section*.120}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{47}{section*.121}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{47}{section*.122}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. El usuario no cumple con los formatos de entrada en alguno de los campos.}{47}{section*.123}
+\contentsline {section}{\numberline {3.3}Gesti\'{o}n de Peticiones}{49}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}CU301 Crear Petici\'{o}n.}{50}{subsection.3.3.1}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{50}{section*.124}
+\contentsline {subsubsection}{\nonumberline Actores.}{50}{section*.125}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{50}{section*.126}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n.}{50}{section*.127}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{50}{section*.128}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}{50}{section*.129}
+\contentsline {subsection}{\numberline {3.3.2}CU302 Consultar Petici\'{o}n}{51}{subsection.3.3.2}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{51}{section*.130}
+\contentsline {subsubsection}{\nonumberline Actores}{51}{section*.131}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{51}{section*.132}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{51}{section*.133}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{51}{section*.134}
+\contentsline {subsection}{\numberline {3.3.3}CU303 Aceptar Petici\'{o}n}{52}{subsection.3.3.3}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{52}{section*.135}
+\contentsline {subsubsection}{\nonumberline Actores}{52}{section*.136}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{52}{section*.137}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{52}{section*.138}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{52}{section*.139}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{52}{section*.140}
+\contentsline {subsection}{\numberline {3.3.4}CU304 Denunciar Petici\'{o}n}{53}{subsection.3.3.4}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{53}{section*.141}
+\contentsline {subsubsection}{\nonumberline Actores}{53}{section*.142}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{53}{section*.143}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{53}{section*.144}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{53}{section*.145}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}{53}{section*.146}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos incorrectos.}{53}{section*.147}
+\contentsline {subsection}{\numberline {3.3.5}CU305 Listar Peticiones}{54}{subsection.3.3.5}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{54}{section*.148}
+\contentsline {subsubsection}{\nonumberline Actores}{54}{section*.149}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{54}{section*.150}
+\contentsline {subsubsection}{\nonumberline Postcondici\'{o}n}{54}{section*.151}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{54}{section*.152}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen peticiones a mostrar.}{54}{section*.153}
+\contentsline {subsection}{\numberline {3.3.6}CU306 Descartar Petici\'{o}n}{55}{subsection.3.3.6}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{55}{section*.154}
+\contentsline {subsubsection}{\nonumberline Actores}{55}{section*.155}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{55}{section*.156}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{55}{section*.157}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{55}{section*.158}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{55}{section*.159}
+\contentsline {section}{\numberline {3.4}Gesti\'{o}n de Denuncias}{56}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}CU401 Listar denuncias.}{57}{subsection.3.4.1}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{57}{section*.160}
+\contentsline {subsubsection}{\nonumberline Actores.}{57}{section*.161}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{57}{section*.162}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{57}{section*.163}
+\contentsline {subsection}{\numberline {3.4.2}CU402 Consultar denuncia.}{58}{subsection.3.4.2}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{58}{section*.164}
+\contentsline {subsubsection}{\nonumberline Actores.}{58}{section*.165}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{58}{section*.166}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{58}{section*.167}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{58}{section*.168}
+\contentsline {subsection}{\numberline {3.4.3}CU403 Aceptar denuncia.}{59}{subsection.3.4.3}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{59}{section*.169}
+\contentsline {subsubsection}{\nonumberline Actores.}{59}{section*.170}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{59}{section*.171}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{59}{section*.172}
+\contentsline {subsubsection}{\nonumberline Escenario Principal. Denuncia usuario)}{59}{section*.173}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Denuncia Anuncio.}{59}{section*.174}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Denuncia Comentario.}{59}{section*.175}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. Denuncia Petici\'{o}n.}{59}{section*.176}
+\contentsline {subsection}{\numberline {3.4.4}CU404 Rechazar denuncia.}{60}{subsection.3.4.4}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{60}{section*.177}
+\contentsline {subsubsection}{\nonumberline Actores.}{60}{section*.178}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{60}{section*.179}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{60}{section*.180}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{60}{section*.181}
+\contentsline {section}{\numberline {3.5}Gesti\'{o}n de Comentarios}{62}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}CU501 Listar Comentarios.}{63}{subsection.3.5.1}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{63}{section*.182}
+\contentsline {subsubsection}{\nonumberline Actores.}{63}{section*.183}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{63}{section*.184}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{63}{section*.185}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{63}{section*.186}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. No existen datos a mostrar.}{63}{section*.187}
+\contentsline {subsection}{\numberline {3.5.2}CU502 Denunciar Comentario}{64}{subsection.3.5.2}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{64}{section*.188}
+\contentsline {subsubsection}{\nonumberline Actores}{64}{section*.189}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{64}{section*.190}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{64}{section*.191}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{64}{section*.192}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Actor cancela la operaci\'{o}n.}{64}{section*.193}
+\contentsline {subsection}{\numberline {3.5.3}CU503 Eliminar Comentario}{65}{subsection.3.5.3}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{65}{section*.194}
+\contentsline {subsubsection}{\nonumberline Actores}{65}{section*.195}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{65}{section*.196}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{65}{section*.197}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{65}{section*.198}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{65}{section*.199}
+\contentsline {section}{\numberline {3.6}Gesti\'{o}n de Tipos}{66}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}CU601 Crear Tipo Vivienda.}{67}{subsection.3.6.1}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{67}{section*.200}
+\contentsline {subsubsection}{\nonumberline Actores.}{67}{section*.201}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{67}{section*.202}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{67}{section*.203}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{67}{section*.204}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}{67}{section*.205}
+\contentsline {subsection}{\numberline {3.6.2}CU602 Crear Tipo Operaci\'{o}n.}{68}{subsection.3.6.2}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n.}{68}{section*.206}
+\contentsline {subsubsection}{\nonumberline Actores.}{68}{section*.207}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n.}{68}{section*.208}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n.}{68}{section*.209}
+\contentsline {subsubsection}{\nonumberline Escenario Principal.}{68}{section*.210}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. Datos incorrectos.}{68}{section*.211}
+\contentsline {subsection}{\numberline {3.6.3}CU603 Listar Tipos Vivienda}{69}{subsection.3.6.3}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{69}{section*.212}
+\contentsline {subsubsection}{\nonumberline Actores}{69}{section*.213}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{69}{section*.214}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{69}{section*.215}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{69}{section*.216}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen tipos de viviendas a mostrar.}{69}{section*.217}
+\contentsline {subsection}{\numberline {3.6.4}CU604 Listar Tipos Operaciones}{70}{subsection.3.6.4}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{70}{section*.218}
+\contentsline {subsubsection}{\nonumberline Actores}{70}{section*.219}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{70}{section*.220}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{70}{section*.221}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{70}{section*.222}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 1. No existen tipos de operaciones a mostrar.}{70}{section*.223}
+\contentsline {subsection}{\numberline {3.6.5}CU605 Modificar Tipo Vivienda}{71}{subsection.3.6.5}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{71}{section*.224}
+\contentsline {subsubsection}{\nonumberline Actores}{71}{section*.225}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{71}{section*.226}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{71}{section*.227}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{71}{section*.228}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{71}{section*.229}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}{71}{section*.230}
+\contentsline {subsection}{\numberline {3.6.6}CU606 Modificar Tipo Operaci\'{o}n}{72}{subsection.3.6.6}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{72}{section*.231}
+\contentsline {subsubsection}{\nonumberline Actores}{72}{section*.232}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{72}{section*.233}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{72}{section*.234}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{72}{section*.235}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 3. El actor cancela la operaci\'{o}n.}{72}{section*.236}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 4. Datos inv\'{a}lidos.}{72}{section*.237}
+\contentsline {subsection}{\numberline {3.6.7}CU607 Eliminar Tipo Vivienda}{73}{subsection.3.6.7}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{73}{section*.238}
+\contentsline {subsubsection}{\nonumberline Actores}{73}{section*.239}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{73}{section*.240}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{73}{section*.241}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{73}{section*.242}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{73}{section*.243}
+\contentsline {subsection}{\numberline {3.6.8}CU608 Eliminar Tipo Operaci\'{o}n}{74}{subsection.3.6.8}
+\contentsline {subsubsection}{\nonumberline Descripci\'{o}n}{74}{section*.244}
+\contentsline {subsubsection}{\nonumberline Actores}{74}{section*.245}
+\contentsline {subsubsection}{\nonumberline Precondici\'{o}n}{74}{section*.246}
+\contentsline {subsubsection}{\nonumberline Poscondici\'{o}n}{74}{section*.247}
+\contentsline {subsubsection}{\nonumberline Escenario Principal}{74}{section*.248}
+\contentsline {subsubsection}{\nonumberline Escenario Alternativo. L\'{i}nea 2. El actor cancela la operaci\'{o}n.}{74}{section*.249}
+\contentsline {chapter}{\numberline {4}Requisitos No Funcionales}{75}{chapter.4}
+\contentsline {section}{\numberline {4.1}Interfaz}{75}{section.4.1}
+\contentsline {section}{\numberline {4.2}Seguridad}{75}{section.4.2}
+\contentsline {section}{\numberline {4.3}Arquitectura Software}{75}{section.4.3}
+\contentsline {section}{\numberline {4.4}Base de datos}{76}{section.4.4}
+\contentsline {section}{\numberline {4.5}Otros}{76}{section.4.5}
+\contentsline {chapter}{\numberline {5}Tabla Crud}{79}{chapter.5}
+\contentsline {chapter}{\numberline {6}Puntos donde se manipulan las entidades}{80}{chapter.6}
+\contentsline {section}{\numberline {6.1}Usuario}{80}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Crear}{80}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Modificar}{81}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Eliminar}{82}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Consultar}{82}{subsection.6.1.4}
+\contentsline {section}{\numberline {6.2}Anuncio}{83}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Crear}{83}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Modificar}{84}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Eliminar}{85}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Consultar}{85}{subsection.6.2.4}
+\contentsline {section}{\numberline {6.3}Peticiones}{86}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Crear}{86}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Modificar}{86}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Eliminar}{87}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Consultar}{87}{subsection.6.3.4}
+\contentsline {section}{\numberline {6.4}Denuncias}{87}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Crear}{87}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Modificar}{89}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}Consultar}{89}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Comentarios}{90}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Crear}{90}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Eliminar}{90}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}Consultar}{91}{subsection.6.5.3}
+\contentsline {section}{\numberline {6.6}Puntuaci\'{o}n}{92}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Crear}{92}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Modificar}{92}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}Consultar}{92}{subsection.6.6.3}
+\contentsline {chapter}{\numberline {7}Modelo Fisico}{94}{chapter.7}
+\contentsline {section}{\numberline {7.1}Anuncios}{94}{section.7.1}
+\contentsline {section}{\numberline {7.2}Comentarios}{95}{section.7.2}
+\contentsline {section}{\numberline {7.3}Comunidades Aut\'{o}nomas}{95}{section.7.3}
+\contentsline {section}{\numberline {7.4}Tipos de vivienda}{96}{section.7.4}
+\contentsline {section}{\numberline {7.5}Im\'{a}genes}{96}{section.7.5}
+\contentsline {section}{\numberline {7.6}Municipios}{97}{section.7.6}
+\contentsline {section}{\numberline {7.7}Tipos de Operaciones}{97}{section.7.7}
+\contentsline {section}{\numberline {7.8}Provincias}{98}{section.7.8}
+\contentsline {section}{\numberline {7.9}Denuncias}{98}{section.7.9}
+\contentsline {section}{\numberline {7.10}Peticiones}{99}{section.7.10}
+\contentsline {section}{\numberline {7.11}Puntuaciones}{99}{section.7.11}
+\contentsline {section}{\numberline {7.12}Estados}{100}{section.7.12}
+\contentsline {section}{\numberline {7.13}Usuarios}{100}{section.7.13}
+\contentsline {chapter}{\numberline {8}Manual de Usuario}{103}{chapter.8}
+\contentsline {section}{\numberline {8.1}Usuario no logueado}{103}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}P\'{a}gina Principal}{103}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Registro e Inicio de Sesi\'{o}n}{105}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Anuncios}{106}{subsection.8.1.3}
+\contentsline {section}{\numberline {8.2}Usuario Registrado}{109}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}P\'{a}gina Principal}{109}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Anuncios}{109}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Perfil de Usuario}{110}{subsection.8.2.3}
+\contentsline {subsubsection}{\nonumberline Perfil de otros usuarios}{111}{section*.250}
+\contentsline {subsection}{\numberline {8.2.4}Crear una denuncia}{112}{subsection.8.2.4}
+\contentsline {section}{\numberline {8.3}Usuario Administrador}{113}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}P\'{a}gina Principal}{113}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Anuncios}{113}{subsection.8.3.2}
+\contentsline {subsection}{\numberline {8.3.3}Perfil de Usuario}{113}{subsection.8.3.3}
+\contentsline {subsection}{\numberline {8.3.4}Dashboard o panel de gesti\'{o}n}{114}{subsection.8.3.4}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Usuarios}{114}{section*.251}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{117}{section*.252}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Comentarios}{117}{section*.253}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{118}{section*.254}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Denuncias}{119}{section*.255}
