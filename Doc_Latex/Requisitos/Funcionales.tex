@@ -1,0 +1,83 @@
+\newpage{\pagestyle{empty}\cleardoublepage}
+\newpage
+\vspace*{\fill}
+    \begin{center}
+      \thispagestyle{empty} \vspace*{0cm} \textbf{\huge
+An\'{a}lisis}
+    \end{center}
+    \vspace*{\fill}
+\newpage{\pagestyle{empty}\cleardoublepage}
+\chapter{Requisitos Funcionales}
+
+\section{Gesti\'{o}n de usuarios}
+
+El sistema deber\'{a} permitir que se puedan realizar operaciones del tipo crear, modificar, eliminar, consultar detalles y listar de los usuarios, de forma adecuada a cada una de las vistas proporcionadas seg\'{u}n los roles.
+
+Tanto un invitado como un administrador pueden dar de alta en el sistema a un usuario, con la distinci\'{o}n de que el administrador podr\'{a} elegir el rol del usuario a crear. Se entiende por esto tambi\'{e}n que el invitado se registrar\'{a} a s\'{i} mismo antes de poder identificarse en el sistema.
+
+La modificaci\'{o}n de usuario estar\'{a} disponible para los usuarios registrados, en su zona de perfil y en la zona de administraci\'{o}n para los usuarios administradores, pudiendo estos modiricar el rol.
+
+La eliminaci\'{o}n de usuarios ser\'{a} l\'{o}gica y por parte de un administrador, con la intenci\'{o}n de almacenar usuarios en el sistema para futuras estad\'{i}sticas, modificando sus datos asociados (anuncios, comentarios, etc) tambi\'{e}n a eliminados.
+
+El administrador podr\'{a} listar los usuarios para ver sus datos y acceder a mayor detalles de los mismos consult\'{a}ndolos a trav\'{e}s de un bot\'{o}n dispuesto para ello.
+
+El usuario administrador podr\'{a} bloquear y desbloquear usuarios del sistema, los cuales no deber\'{a}n poder entrar en ese estado.
+
+\section{Gesti\'{o}n de anuncios}
+
+El sistema deber\'{a} permitir que se puedan realizar opearciones del tipo crear, modificar, eliminar, consultar detalles y listar de los anuncios, de forma adecuada a cada una de las vistas proporcionadas seg\'{u}n los roles.
+
+Un usuario registrado podr\'{a} dar de alta un anuncio en el sistema, proporcionando los datos adecuados, como metros cuadrados, ba\~{n}o, n\'{u}mero de habitaciones, localizaci\'{o}n, galer\'{i}a de fotos, etc. 
+
+
+De los anuncios se permitir\'{a} que un usuario administrador o el propio anunciante puedan editarlos y eliminarlos desde una opci\'{o}n facilitada para ello en la vista del anuncio.
+
+
+Se listar\'{a}n los anuncios en la zona de administraci\'{o}n para que los administradores tengan referencia a ellos r\'{a}pidamente y puedan gestionarlos de forma c\'{o}moda.
+
+Se permitir\'{a} tambi\'{e}n la valoraci\'{o}n de los anuncios, de forma positiva o negativa, por los usuarios registrados que consulten.
+
+
+El usuario administrador tambi\'{e}n podr\'{a} bloquear y desbloquear anuncios.
+
+\section{Gesti\'{o}n de comentarios}
+
+Los usuarios registrados podr\'{a}n crear comentarios sobre anuncios existentes, de forma que el sistema deber\'{a} permitir su creaci\'{o}n, consulta y eliminaci\'{o}n.
+
+La creaci\'{o}n de \'{e}stos se deber\'{a} permitir en las vistas de los anuncios, de forma sencilla.
+
+Debajo de la creaci\'{o}n de los comentarios deber\'{a}n aparecer los comentarios asociados al anuncio de forma ordenada, de m\'{a}s reciente a m\'{a}s antiguo.
+
+El usuario administrador podr\'{a} eliminarlos desde la zona de administraci\'{o}n tras haberlos listado previamente.
+
+
+
+\section{Gesti\'{o}n de tipos}
+
+El sistema de anuncios se basa en los tipos de vivienda y tipos de operaciones que pueden requerirse para los anuncios, de forma que el sistema deber\'{a} permitir la creaci\'{o}n, modificaci\'{o}n, eliminaci\'{o}n y listado de tipos de vivienda y tipos de operaciones.
+
+La creaci\'{o}n, edici\'{o}n y eliminaci\'{o}n de los tipos de vivienda y operaciones debe permitirse al usuario administrador desde su zona de administraci\'{o}n.
+
+El listado de tipos de vivienda y tipos de operaciones se permitir\'{a} a usuarios registrados en la creaci\'{o}n y modificaci\'{o}n de anuncios, adem\'{a}s de la zona de administraci\'{o}n al propio administrador para poder gestionarlos.
+
+
+\section{Gesti\'{o}n de solicitudes}
+
+El sistema deber\'{a} permitir que se puedan crear solicitudes de los usuarios registrados sobre un anuncio de vivienda, de forma que se reciba desde el perfil de usuario del anunciante un listado de peticiones asociadas a usuarios registrados y anuncios del propio anunciante.
+
+La creaci\'{o}n de estas solicitudes ser\'{a} \'{u}nica por usuario y anuncio, quedando marcado como solcitado a la hora de consultarlo.
+
+La modificaci\'{o}n de las peticiones deber\'{a} ser llevada a cabo por el usuario anunciante, pudiendo aceptarlas o rechazarlas. En caso de aceptarse una petici\'{o}n las dem\'{a}s peticiones asociadas al mismo anuncio ser\'{a}n rechazadas.
+
+El listado de las solicitudes se permitir\'{a} \'{u}nicamente en los perfiles de los usuarios registrados, pudiendo acceder a ellos de forma sencilla.
+
+
+\section{Gesti\'{o}n de denuncias}
+
+El sistema deber\'{a} permtir que se puedan crear denuncias asociadas a usuarios, anuncios, comentarios y solicitudes para aquellos usuarios registrados que detecten alg\'{u}n tipo de actividad an\'{o}mala.
+
+La creaci\'{o}n de denuncias se facilitar\'{a} en las consultas de usuario, anuncios, listado de comentarios y solicitudes, de forma que el usuario registrado pueda reportar para que los administradores traten en funci\'{o}n de su necesidad.
+
+La modificaci\'{o}n de las denuncias depender\'{a} del usuario administrador, de forma que una denuncia pueda aceptarse y, en caso de ser sobre un usuario o un anuncio, \'{e}ste quedar\'{a} bloqueado. Si, por el contrario, se trata de una denuncia relacionada con una petici\'{o}n o un comentario, \'{e}ste se eliminar\'{a} del sistema.
+
+El listado de denuncias deber\'{a} aparecer en la zona de administraci\'{o}n al usuario administrador para que, de forma sencilla, pueda gestionarlas.
