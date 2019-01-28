@@ -68,7 +68,7 @@ Esta misma vista ser\'{a} utilizada para listar los anuncios de un usuario en pa
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.8\textwidth]{Img/VisionAplicacion/vision_3.jpg}
+\includegraphics[width=.6\textwidth]{Img/VisionAplicacion/vision_3.jpg}
 \end{figure}
 
 En caso de haber utilizado el buscador global y haber pulsado intro al escribir se mostrar\'{a} una p\'{a}gina con contenido similar al listado de anuncios, pero sin posibilidad de filtrar. El aspecto de las tarjetas mostradas ser\'{a} el mismo que las listadas en la p\'{a}gina principal. Se paginar\'{a} este resultado.
@@ -98,6 +98,8 @@ Por otro lado, si se consultara al usuario asociado a la solicitud o cualquier o
 \includegraphics[width=1\textwidth]{Img/VisionAplicacion/vision_5.jpg}
 \end{figure}
 
+\pagebreak
+
 \subsection{Anuncios}
 
 Al consultar un anuncio desde cualquier vista se observar\'{a}n todos los detalles asociados al mismo: 
@@ -105,7 +107,7 @@ tipo de vivienda, tipo de operaci\'{o}n, precio n\'{u}mero de habitaciones, metr
 
 Tambi\'{e}n se mostrar\'{a} una galer\'{i}a de fotos, donde se permitir\'{a} ampliar las im\'{a}genes haciendo click en ellas.\\
 
-Debajo de \'{e}stas aparecer\'{a} un peque\'~{n}o formulario para crear un comentario, en caso de que el usuario haya iniciado sesi\'{o}n, seguido de un listado de comentarios previamente existentes que se podr\'{a} consultar sin sesi\'{o}n activa. En caso de estar logado en el sistema se podr\'{a} denunciar un comentario si se cree conveniente.\\
+Debajo de \'{e}stas aparecer\'{a} un peque\~{n}o formulario para crear un comentario, en caso de que el usuario haya iniciado sesi\'{o}n, seguido de un listado de comentarios previamente existentes que se podr\'{a} consultar sin sesi\'{o}n activa. En caso de estar logado en el sistema se podr\'{a} denunciar un comentario si se cree conveniente.\\
 
 \begin{figure}[h!]
 \centering
@@ -115,7 +117,6 @@ Debajo de \'{e}stas aparecer\'{a} un peque\'~{n}o formulario para crear un comen
 A la derecha de los datos del anuncio se ver\'{a} un peque\~{n}o panel que muestre las acciones disponibles sobre el anuncio, como realizar una petici\'{o}n (en caso de no ser el propio anunciante o existir una petici\'{o}n previa del usuario sobre ese mismo anuncio), edici\'{o}n y eliminaci\'{o}n (si administrador o usuario anunciante) o bloqueo del anuncio (si usuario administrador). \\
 
 Encima de este panel se ofrecer\'{a} un bot\'{o}n para denunciar el anuncio.
-
 
 
 
@@ -131,10 +132,8 @@ Del mismo modo, se proveer\'{a} a los usuarios de la posibilidad de modificar y 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1\textwidth]{Img/VisionAplicacion/vision_7.jpg}
+\includegraphics[width=1.1\textwidth]{Img/VisionAplicacion/vision_7.jpg}
 \end{figure}
-
-\newpage{\pagestyle{empty}\cleardoublepage}
 
 
 \subsection{Dashboard}
@@ -151,7 +150,7 @@ Primeramente, el usuario administrador ver\'{a} en su zona de administraci\'{o}n
 Id, nombre, apellidos, email, rol, fecha de registro y un bot\'{o}n que permita consultar el resto de datos asociados al usuario y acceder a m\'{a}s funcionalidades, como editar, eliminar o bloquear paginada correctamente.
 
 
-
+\pagebreak
 
 \subsubsection{Anuncios}
 El usuario administrador podr\'{a} acceder desde su panel lateral en la zona de administraci\'{o}n a la gesti\'{o}n de los anuncios, en donde encontrar\'{a} una tabla con el id, uuid, precio, fecha registro y un bot\'{o}n que env\'{i}e a la consulta del anuncio seleccionado. Por supuesto, esta tabla estar\'{a} debidamente paginada.
@@ -163,23 +162,36 @@ El usuario administrador podr\'{a} acceder desde su panel lateral en la zona de 
 \includegraphics[width=1\textwidth]{Img/VisionAplicacion/vision_9.jpg}
 \end{figure}
 
+\pagebreak
+ 
 \subsubsection{Comentarios}
-El usuario administrador podr\'{a} acceder desde su panel lateral en la zona de administraci\'{o}n tambi\'{e}n a la gesti\'{o}n de los comentarios, donde se encontrar\'{a} una tabla con el id, anuncio, usuario, contenid, fecha registro y eliminar y un bot\'{o}n que env\'{i} a la consulta del anuncio seleccionado. Por supuesto, esta tabla tambi\'{e}n estar\'{a} debidamente paginada.
+El usuario administrador podr\'{a} acceder desde su panel lateral en la zona de administraci\'{o}n tambi\'{e}n a la gesti\'{o}n de los comentarios, donde se encontrar\'{a} una tabla con el id, anuncio, usuario, contenido, fecha registro y eliminar y un bot\'{o}n que env\'{i} a la consulta del anuncio seleccionado. Por supuesto, esta tabla tambi\'{e}n estar\'{a} debidamente paginada.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{Img/VisionAplicacion/vision_11.jpg}
 \end{figure}
 
+\pagebreak
+
 \subsubsection{Tipos}
 El usuario administrador tambi\'{e}n gestionar\'{a} los tipos de vivienda y tipos de operaciones como se puede apreciar en el siguiente mockup.\\
 
 Ser\'{a} requisito que se gestione de forma din\'{a}mica, apareciendo modales para editar y verificar. 
-
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{Img/VisionAplicacion/vision_12.jpg}
 \end{figure}
 
+\pagebreak
+
 \subsubsection{Denuncias}
 
+Existiendo en el sistema un conjunto de usuarios, anuncios, comentarios y peticiones, es posible que exista en alg\'{u}n momento alg\'{u}n uso indebido de la aplicaci\'{o}n. Para ello, el usuario administrador recibir\'{a} y gestionar\'{a} las denuncias recibidas por otros usuarios registrados en el sistema, pudiendo aceptar o rechazar las peticiones tras haberlas consultado en los modales presentes en el siguiente mockup.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{Img/VisionAplicacion/vision_13.jpg}
+\end{figure}
+
+Los contenido de las tablas deben mostrar m\'{i}nimamente t\'{i}tulo, usuario, objeto que denuncie y fecha registro. Al ampliar deben mostrarse, al menos, uuid, t\'{i}tulo, descripci\'{o}n, usuario denunciante, referencia al objeto denunciado, contenido o similar y la fecha de registro. 
