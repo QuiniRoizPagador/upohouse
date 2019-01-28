@@ -317,27 +317,44 @@
 \contentsline {subsection}{\numberline {4.2.2}Modificar}{76}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Eliminar}{77}{subsection.4.2.3}
 \contentsline {subsection}{\numberline {4.2.4}Consultar}{77}{subsection.4.2.4}
-\contentsline {chapter}{\numberline {5}Modelo Fisico}{78}{chapter.5}
-\contentsline {section}{\numberline {5.1}Anuncios}{78}{section.5.1}
-\contentsline {section}{\numberline {5.2}Comentarios}{79}{section.5.2}
-\contentsline {section}{\numberline {5.3}Comunidades Aut\'{o}nomas}{79}{section.5.3}
-\contentsline {section}{\numberline {5.4}Tipos de vivienda}{80}{section.5.4}
-\contentsline {section}{\numberline {5.5}Im\'{a}genes}{80}{section.5.5}
-\contentsline {section}{\numberline {5.6}Municipios}{81}{section.5.6}
-\contentsline {section}{\numberline {5.7}Tipos de Operaciones}{81}{section.5.7}
-\contentsline {section}{\numberline {5.8}Provincias}{82}{section.5.8}
-\contentsline {section}{\numberline {5.9}Denuncias}{82}{section.5.9}
-\contentsline {section}{\numberline {5.10}Peticiones}{83}{section.5.10}
-\contentsline {section}{\numberline {5.11}Puntuaciones}{83}{section.5.11}
-\contentsline {section}{\numberline {5.12}Estados}{84}{section.5.12}
-\contentsline {section}{\numberline {5.13}Usuarios}{84}{section.5.13}
-\contentsline {chapter}{\numberline {6}Usuario no logueado}{87}{chapter.6}
-\contentsline {section}{\numberline {6.1}P\'{a}gina Principal}{87}{section.6.1}
-\contentsline {section}{\numberline {6.2}Registro e Inicio de Sesi\'{o}n}{89}{section.6.2}
-\contentsline {section}{\numberline {6.3}Anuncios}{90}{section.6.3}
-\contentsline {chapter}{\numberline {7}Usuario Registrado}{92}{chapter.7}
-\contentsline {section}{\numberline {7.1}P\'{a}gina Principal}{92}{section.7.1}
-\contentsline {section}{\numberline {7.2}Anuncios}{92}{section.7.2}
-\contentsline {section}{\numberline {7.3}Perfil de Usuario}{94}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Perfil de otros usuarios}{95}{subsection.7.3.1}
-\contentsline {section}{\numberline {7.4}Crear una denuncia}{96}{section.7.4}
+\contentsline {section}{\numberline {4.3}Peticiones}{78}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Crear}{78}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Modificar}{78}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Eliminar}{79}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Consultar}{79}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}Denuncias}{79}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Crear}{79}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Modificar}{81}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Consultar}{81}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Comentarios}{82}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Crear}{82}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Eliminar}{82}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Consultar}{83}{subsection.4.5.3}
+\contentsline {section}{\numberline {4.6}Puntuaci\'{o}n}{84}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Crear}{84}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Modificar}{84}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Consultar}{84}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}Modelo Fisico}{86}{chapter.5}
+\contentsline {section}{\numberline {5.1}Anuncios}{86}{section.5.1}
+\contentsline {section}{\numberline {5.2}Comentarios}{87}{section.5.2}
+\contentsline {section}{\numberline {5.3}Comunidades Aut\'{o}nomas}{87}{section.5.3}
+\contentsline {section}{\numberline {5.4}Tipos de vivienda}{88}{section.5.4}
+\contentsline {section}{\numberline {5.5}Im\'{a}genes}{88}{section.5.5}
+\contentsline {section}{\numberline {5.6}Municipios}{89}{section.5.6}
+\contentsline {section}{\numberline {5.7}Tipos de Operaciones}{89}{section.5.7}
+\contentsline {section}{\numberline {5.8}Provincias}{90}{section.5.8}
+\contentsline {section}{\numberline {5.9}Denuncias}{90}{section.5.9}
+\contentsline {section}{\numberline {5.10}Peticiones}{91}{section.5.10}
+\contentsline {section}{\numberline {5.11}Puntuaciones}{91}{section.5.11}
+\contentsline {section}{\numberline {5.12}Estados}{92}{section.5.12}
+\contentsline {section}{\numberline {5.13}Usuarios}{92}{section.5.13}
+\contentsline {chapter}{\numberline {6}Usuario no logueado}{95}{chapter.6}
+\contentsline {section}{\numberline {6.1}P\'{a}gina Principal}{95}{section.6.1}
+\contentsline {section}{\numberline {6.2}Registro e Inicio de Sesi\'{o}n}{97}{section.6.2}
+\contentsline {section}{\numberline {6.3}Anuncios}{98}{section.6.3}
+\contentsline {chapter}{\numberline {7}Usuario Registrado}{100}{chapter.7}
+\contentsline {section}{\numberline {7.1}P\'{a}gina Principal}{100}{section.7.1}
+\contentsline {section}{\numberline {7.2}Anuncios}{100}{section.7.2}
+\contentsline {section}{\numberline {7.3}Perfil de Usuario}{102}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Perfil de otros usuarios}{103}{subsection.7.3.1}
+\contentsline {section}{\numberline {7.4}Crear una denuncia}{104}{section.7.4}

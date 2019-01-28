@@ -122,7 +122,7 @@ Dise\~{n}o}
 \item Localizaci\'{o}n
 \begin{itemize}
 \item Vista: view/users.php
-\item Controlador: controller/AdminController.php
+\item Controlador: controller/AdminController.php - controller/WSController.php
 \item Modelo: model/UserModel.php
 \item Dao: model/dao/UserDao.php
 \item Entidad: model/dao/dto/User.php
@@ -229,10 +229,283 @@ Dise\~{n}o}
 \begin{itemize}
 \item Url: index/Ad/read\&uuid=XXXXXXXX
 \item Vista: view/readAd.php
-\item Controlador: controller/AdController.php
+\item Controlador: controller/AdController.php - controller/WSController.php 
 \item Modelo: model/AdModel.php
 \item Dao: model/dao/AdDao.php
 \item Entidad: model/dao/dto/Ad.php
 \end{itemize}
 \item Acceso: Desde la vista de administrador o b\'{u}squeda de anuncios haremos click en el anuncio que queramos consultar.
+\end{itemize}
+
+\section{Peticiones}
+\subsection{Crear}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/readAd.php
+\item Controlador: controller/RequestController.php
+\item Modelo: model/RequestModel.php
+\item Dao: model/dao/RequestDao.php
+\item Entidad: model/dao/dto/Request.php
+\end{itemize}
+\item Acceso: Desde la lista de anuncios o desde el dashboard de Anuncios haremos click en consultar sobre el anuncio sobre el que queremos realizar la petici\'{o}n, posteriormente se clicar\'{a} en la opci\'{o}n estoy interesado, donde rellenaremos el formulario de la petici\'{o}n y pulsaremos en enviar.
+\end{itemize}
+\subsection{Modificar}
+\begin{itemize}
+\item Caso 1: Aceptar petici\'{o}n
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/profileView.php
+\item Controlador: controller/RequestController.php
+\item Modelo: model/RequestModel.php
+\item Dao: model/dao/RequestDao.php
+\item Entidad: model/dao/dto/Request.php
+\end{itemize}
+\item Acceso: Desde el perfil de usuario, se pulsar\'{a} en el apartado solicitudes y se consultar\'{a} la petici\'{o}n que se desea aceptar, haremos click en el bot\'{o}n del check para aceptarla.
+\end{itemize}
+\item Caso 2: Denegar petici\'{o}n
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/profileView.php
+\item Controlador: controller/RequestController.php
+\item Modelo: model/RequestModel.php
+\item Dao: model/dao/RequestDao.php
+\item Entidad: model/dao/dto/Request.php
+\end{itemize}
+\item Acceso: Desde el perfil de usuario, se pulsar\'{a} en el apartado solicitudes y se consultar\'{a} la petici\'{o}n que se desea denegar, haremos click en ''X''.
+\end{itemize}
+\end{itemize}
+\subsection{Eliminar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/RequestModel.php
+\item Dao: model/dao/RequestDao.php
+\item Entidad: model/dao/dto/Request.php
+\end{itemize}
+\item Acceso: Desde la vista de administrador, hacer clic en la llave inglesa que nos llevar\'{a} al dashboard del sistema en la opci\'{o}n Denuncias. Hacer clic al bot\'{o}n de la columna Ver del registro para consultar la denuncia, hacemos clic en el bot\'{o}n aceptar para modificar el estado de la petici\'{o}n a eliminado.
+\end{itemize}
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/profileView.php
+\item Controlador: controller/RequestController.php - controller/WSController.php
+\item Modelo: model/RequestModel.php
+\item Dao: model/dao/RequestDao.php
+\item Entidad: model/dao/dto/Request.php
+\end{itemize}
+\item Acceso: Desde el perfil de usuario, se pulsar\'{a} en el apartado solicitudes y se consultar\'{a} la petici\'{o}n deseada.
+\end{itemize}
+
+\section{Denuncias}
+\subsection{Crear}
+\begin{itemize}
+\item Caso 1: Denuncia usuarios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/profileView.php
+\item Controlador: controller/ReportController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Desde la consulta del usuario al c\'{u}al se quiere denunciar haremos click en denunciar. Esto nos llevar\'{a} al formulario de la denuncia que debemos rellenar y pulsar sobre el boto\'{o}n denunciar.
+\end{itemize}
+\item Caso 2: Denuncia anuncios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/ReportController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Accedemos a la consulta del anuncio que queremos denunciar, haremos click en denunciar. Esto nos llevar\'{a} al formulario de la denuncia que debemos rellenar y pulsar sobre el boto\'{o}n denunciar. 
+\end{itemize}
+\item Caso 3: Denuncia comentarios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/ReportController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Accedemos a la consulta de un anuncio y en la zona de comentarios haremos click en denunciar sobre el comentario que queremos denunciar, haremos click en denunciar. Esto nos llevar\'{a} al formulario de la denuncia que debemos rellenar y pulsar sobre el boto\'{o}n denunciar. 
+\end{itemize}
+\item Caso 4: Denuncia peticiones
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/profileView.php
+\item Controlador: controller/ReportController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Desde mi perfil de usuario haremos click en peticiones y en consultar la que petici\'{o}n que queramos denunciar, haremos click en denunciar. Esto nos llevar\'{a} al formulario de la denuncia que debemos rellenar y pulsar sobre el boto\'{o}n denunciar.
+\end{itemize}
+\end{itemize}
+\subsection{Modificar}
+\begin{itemize}
+\item Caso 1: Aceptar denuncia
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controller: controller/AdminController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Desde el dashboard de denuncias, consultamos la denuncia que queramos aceptar, posteriormente haremos click en el ''check'' para aceptar la denuncia.
+\end{itemize}
+\item Caso 2: Denegar denuncia
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controller: controller/AdminController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Desde el dashboard de denuncias, consultamos la denuncia que queramos denegar, posteriormente haremos click en el ''X'' para rechazar la denuncia.
+\end{itemize}
+\end{itemize}
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controller: controller/AdminController.php - controller/WSController.php
+\item Modelo: model/ReportModel.php
+\item Dao: model/dao/ReportDao.php
+\item Entidad: model/dao/dto/Report.php
+\end{itemize}
+\item Acceso: Desde el dashboard de denuncias se listar\'{a}n todas las denuncias sin ser atendidas, adem\'{a}s se podr\'{a}n consultar de forma m\'{a}s especifica cada denuncia haciendo click en Ver en el registro deseado.
+\end{itemize}
+
+\section{Comentarios}
+
+\subsection{Crear}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/CommentController.php
+\item Modelo: model/CommentModel.php
+\item Dao: model/dao/CommentDao.php
+\item Entidad: model/dao/dto/Comment.php
+\end{itemize}
+\item Acceso: Accedemos a la consulta de un anuncio y en la zona de comentarios rellenamos el campo de texto con nuestro comentario y pulsamos sobre el boto\'{o}n enviar. 
+\end{itemize}
+\subsection{Eliminar}
+\begin{itemize}
+\item Caso 1: Eliminar desde el dashboard
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/CommentModel.php
+\item Dao: model/dao/CommentDao.php
+\item Entidad: model/dao/dto/Comment.php
+\end{itemize}
+\item Acceso: Desde la vista de administrador, hacer clic en la llave inglesa que nos llevar\'{a} al dashboard del sistema en la opci\'{o}n comentarios. Hacer click al bot\'{o}n de la columna Eliminar del registro para eliminarlo, haciendo click posteriormente en Eliminar del modal que nos aparecer\'{a} para confirmar.
+\end{itemize}
+\item Caso 2: Aceptar denuncia comentario
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/CommentModel.php
+\item Dao: model/dao/CommentDao.php
+\item Entidad: model/dao/dto/Comment.php
+\end{itemize}
+\item Acceso: Desde la vista de administrador, hacer clic en la llave inglesa que nos llevar\'{a} al dashboard del sistema en la opci\'{o}n Denuncias. Hacer clic al bot\'{o}n de la columna Ver del registro para consultar la denuncia, hacemos clic en el bot\'{o}n aceptar para modificar el estado del comentario a eliminado.
+\end{itemize}
+\end{itemize}
+\subsection{Consultar}
+\begin{itemize}
+\item Caso 1: Listar desde el dashboard
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/denuncias.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/CommentModel.php
+\item Dao: model/dao/CommentDao.php
+\item Entidad: model/dao/dto/Comment.php
+\end{itemize}
+\item Acceso: Desde la vista de administrador, hacer clic en la llave inglesa que nos llevar\'{a} al dashboard del sistema en la opci\'{o}n comentarios. Se nos listar\'{a}n todos los comentarios paginados.
+\end{itemize}
+\item Caso 2: Listar comentarios del anuncio
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/CommentModel.php
+\item Dao: model/dao/CommentDao.php
+\item Entidad: model/dao/dto/Comment.php
+\end{itemize}
+\item Acceso: Consultamos el anuncio sobre el cual queremos ver sus comentarios asociados y estos nos aparecer\'{a}n al final de la p\'{a}gina paginados.
+\end{itemize}
+\end{itemize}
+
+\section{Puntuaci\'{o}n}
+
+\subsection{Crear}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/ScoreController.php
+\item Modelo: model/ScoreModel.php
+\item Dao: model/dao/ScoreDao.php
+\item Entidad: model/dao/dto/Score.php
+\end{itemize}
+\item Acceso: Accedemos a la consulta del anuncio que queramos puntuar, hacemos click en las manos para dar LIKE o DISLIKE.
+\end{itemize}
+
+\subsection{Modificar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/ScoreController.php
+\item Modelo: model/ScoreModel.php
+\item Dao: model/dao/ScoreDao.php
+\item Entidad: model/dao/dto/Score.php
+\end{itemize}
+\item Acceso: Accedemos a la consulta del anuncio que queramos modificar la puntuaci\'{o}n, hacemos click en las manos para dar LIKE o DISLIKE cambiando as\'{i} su puntuaci\'{o}n.
+\end{itemize}
+
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/ads.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/AdModel.php
+\item Dao: model/dao/AdDao.php
+\item Entidad: model/dao/dto/Score.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard a las opci\'{o}n de Anuncios y se nos mostrar\'{a} el n\'{u}mero de LIKES Y DISLIKES sobre cada anuncio.
 \end{itemize}

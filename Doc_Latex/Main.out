@@ -68,27 +68,44 @@
 \BOOKMARK [2][-]{subsection.4.2.2}{Modificar}{section.4.2}% 68
 \BOOKMARK [2][-]{subsection.4.2.3}{Eliminar}{section.4.2}% 69
 \BOOKMARK [2][-]{subsection.4.2.4}{Consultar}{section.4.2}% 70
-\BOOKMARK [0][-]{chapter.5}{Modelo Fisico}{}% 71
-\BOOKMARK [1][-]{section.5.1}{Anuncios}{chapter.5}% 72
-\BOOKMARK [1][-]{section.5.2}{Comentarios}{chapter.5}% 73
-\BOOKMARK [1][-]{section.5.3}{Comunidades Aut\363nomas}{chapter.5}% 74
-\BOOKMARK [1][-]{section.5.4}{Tipos de vivienda}{chapter.5}% 75
-\BOOKMARK [1][-]{section.5.5}{Im\341genes}{chapter.5}% 76
-\BOOKMARK [1][-]{section.5.6}{Municipios}{chapter.5}% 77
-\BOOKMARK [1][-]{section.5.7}{Tipos de Operaciones}{chapter.5}% 78
-\BOOKMARK [1][-]{section.5.8}{Provincias}{chapter.5}% 79
-\BOOKMARK [1][-]{section.5.9}{Denuncias}{chapter.5}% 80
-\BOOKMARK [1][-]{section.5.10}{Peticiones}{chapter.5}% 81
-\BOOKMARK [1][-]{section.5.11}{Puntuaciones}{chapter.5}% 82
-\BOOKMARK [1][-]{section.5.12}{Estados}{chapter.5}% 83
-\BOOKMARK [1][-]{section.5.13}{Usuarios}{chapter.5}% 84
-\BOOKMARK [0][-]{chapter.6}{Usuario no logueado}{}% 85
-\BOOKMARK [1][-]{section.6.1}{P\341gina Principal}{chapter.6}% 86
-\BOOKMARK [1][-]{section.6.2}{Registro e Inicio de Sesi\363n}{chapter.6}% 87
-\BOOKMARK [1][-]{section.6.3}{Anuncios}{chapter.6}% 88
-\BOOKMARK [0][-]{chapter.7}{Usuario Registrado}{}% 89
-\BOOKMARK [1][-]{section.7.1}{P\341gina Principal}{chapter.7}% 90
-\BOOKMARK [1][-]{section.7.2}{Anuncios}{chapter.7}% 91
-\BOOKMARK [1][-]{section.7.3}{Perfil de Usuario}{chapter.7}% 92
-\BOOKMARK [2][-]{subsection.7.3.1}{Perfil de otros usuarios}{section.7.3}% 93
-\BOOKMARK [1][-]{section.7.4}{Crear una denuncia}{chapter.7}% 94
+\BOOKMARK [1][-]{section.4.3}{Peticiones}{chapter.4}% 71
+\BOOKMARK [2][-]{subsection.4.3.1}{Crear}{section.4.3}% 72
+\BOOKMARK [2][-]{subsection.4.3.2}{Modificar}{section.4.3}% 73
+\BOOKMARK [2][-]{subsection.4.3.3}{Eliminar}{section.4.3}% 74
+\BOOKMARK [2][-]{subsection.4.3.4}{Consultar}{section.4.3}% 75
+\BOOKMARK [1][-]{section.4.4}{Denuncias}{chapter.4}% 76
+\BOOKMARK [2][-]{subsection.4.4.1}{Crear}{section.4.4}% 77
+\BOOKMARK [2][-]{subsection.4.4.2}{Modificar}{section.4.4}% 78
+\BOOKMARK [2][-]{subsection.4.4.3}{Consultar}{section.4.4}% 79
+\BOOKMARK [1][-]{section.4.5}{Comentarios}{chapter.4}% 80
+\BOOKMARK [2][-]{subsection.4.5.1}{Crear}{section.4.5}% 81
+\BOOKMARK [2][-]{subsection.4.5.2}{Eliminar}{section.4.5}% 82
+\BOOKMARK [2][-]{subsection.4.5.3}{Consultar}{section.4.5}% 83
+\BOOKMARK [1][-]{section.4.6}{Puntuaci\363n}{chapter.4}% 84
+\BOOKMARK [2][-]{subsection.4.6.1}{Crear}{section.4.6}% 85
+\BOOKMARK [2][-]{subsection.4.6.2}{Modificar}{section.4.6}% 86
+\BOOKMARK [2][-]{subsection.4.6.3}{Consultar}{section.4.6}% 87
+\BOOKMARK [0][-]{chapter.5}{Modelo Fisico}{}% 88
+\BOOKMARK [1][-]{section.5.1}{Anuncios}{chapter.5}% 89
+\BOOKMARK [1][-]{section.5.2}{Comentarios}{chapter.5}% 90
+\BOOKMARK [1][-]{section.5.3}{Comunidades Aut\363nomas}{chapter.5}% 91
+\BOOKMARK [1][-]{section.5.4}{Tipos de vivienda}{chapter.5}% 92
+\BOOKMARK [1][-]{section.5.5}{Im\341genes}{chapter.5}% 93
+\BOOKMARK [1][-]{section.5.6}{Municipios}{chapter.5}% 94
+\BOOKMARK [1][-]{section.5.7}{Tipos de Operaciones}{chapter.5}% 95
+\BOOKMARK [1][-]{section.5.8}{Provincias}{chapter.5}% 96
+\BOOKMARK [1][-]{section.5.9}{Denuncias}{chapter.5}% 97
+\BOOKMARK [1][-]{section.5.10}{Peticiones}{chapter.5}% 98
+\BOOKMARK [1][-]{section.5.11}{Puntuaciones}{chapter.5}% 99
+\BOOKMARK [1][-]{section.5.12}{Estados}{chapter.5}% 100
+\BOOKMARK [1][-]{section.5.13}{Usuarios}{chapter.5}% 101
+\BOOKMARK [0][-]{chapter.6}{Usuario no logueado}{}% 102
+\BOOKMARK [1][-]{section.6.1}{P\341gina Principal}{chapter.6}% 103
+\BOOKMARK [1][-]{section.6.2}{Registro e Inicio de Sesi\363n}{chapter.6}% 104
+\BOOKMARK [1][-]{section.6.3}{Anuncios}{chapter.6}% 105
+\BOOKMARK [0][-]{chapter.7}{Usuario Registrado}{}% 106
+\BOOKMARK [1][-]{section.7.1}{P\341gina Principal}{chapter.7}% 107
+\BOOKMARK [1][-]{section.7.2}{Anuncios}{chapter.7}% 108
+\BOOKMARK [1][-]{section.7.3}{Perfil de Usuario}{chapter.7}% 109
+\BOOKMARK [2][-]{subsection.7.3.1}{Perfil de otros usuarios}{section.7.3}% 110
+\BOOKMARK [1][-]{section.7.4}{Crear una denuncia}{chapter.7}% 111
