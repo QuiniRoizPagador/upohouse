@@ -1,12 +1,3 @@
-\newpage{\pagestyle{empty}\cleardoublepage}
-\newpage
-\vspace*{\fill}
-    \begin{center}
-      \thispagestyle{empty} \vspace*{0cm} \textbf{\huge
-Dise\~{n}o}
-    \end{center}
-    \vspace*{\fill}
-\newpage{\pagestyle{empty}\cleardoublepage}
 \chapter{Tabla Crud}
 
 
@@ -508,4 +499,242 @@ Dise\~{n}o}
 \item Entidad: model/dao/dto/Score.php
 \end{itemize}
 \item Acceso: Accedemos al dashboard a las opci\'{o}n de Anuncios y se nos mostrar\'{a} el n\'{u}mero de LIKES Y DISLIKES sobre cada anuncio.
+\end{itemize}
+
+\section{Tipos vivienda}
+\subsection{Crear}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Hacemos clic en el ''+'' de Tipos vivienda, rellenamos el formulario y hacemos click en enviar.
+\end{itemize}
+\subsection{Modificar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Hacemos click en el bot\'{o}n de Editar. Rellenamos el formulario del modal y hacemos click en Enviar.  
+\end{itemize}
+\subsection{Eliminar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Hacemos click en el bot\'{o}n de Eliminar. Aceptamos el modal haciendo click en Eliminar.  
+\end{itemize}
+\subsection{Consultar}
+\begin{itemize}
+\item Caso 1: Listar en creacion de anuncios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/createAdView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos a la creaci\'{o}n de anuncios y nos listar\'{a} los tipos de viviendas.
+\end{itemize}
+\item Caso 2: Listar en dashboard
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php - WSController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Y nos aparecer\'{a}n los tipos de viviendas paginados.
+\end{itemize}
+\item Caso 3: Listar en listado de anuncios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/listAdsView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al listado de anuncios y nos listar\'{a} los tipos de viviendas.
+\end{itemize}
+\end{itemize}
+
+
+\section{Tipos de operaci\'{o}n}
+\subsection{Crear}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/OperationTypeModel.php
+\item Dao: model/dao/OperationTypeDao.php
+\item Entidad: model/dao/dto/OperationType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Hacemos clic en el ''+'' de Tipos de operaci\'{o}n, rellenamos el formulario y hacemos click en enviar.
+\end{itemize}
+\subsection{Modificar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/OperationTypeModel.php
+\item Dao: model/dao/OperationTypeDao.php
+\item Entidad: model/dao/dto/OperationType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Hacemos click en el bot\'{o}n de Editar. Rellenamos el formulario del modal y hacemos click en Enviar.  
+\end{itemize}
+\subsection{Eliminar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php
+\item Modelo: model/OperationTypeModel.php
+\item Dao: model/dao/OperationTypeDao.php
+\item Entidad: model/dao/dto/OperationType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Hacemos click en el bot\'{o}n de Eliminar. Aceptamos el modal haciendo click en Eliminar.  
+\end{itemize}
+\subsection{Consultar}
+\begin{itemize}
+\item Caso 1: Listar en creacion de anuncios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/createAdView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/OperationTypeModel.php
+\item Dao: model/dao/OperationTypeDao.php
+\item Entidad: model/dao/dto/OperationType.php
+\end{itemize}
+\item Acceso: Accedemos a la creaci\'{o}n de anuncios y nos listar\'{a} los tipos de operaciones.
+\end{itemize}
+\item Caso 2: Listar en dashboard
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/tipos.php
+\item Controlador: controller/AdminController.php - WSController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al dashboard en la opci\'{o}n tipos. Y nos aparecer\'{a}n los tipos de operaciones paginados.
+\end{itemize}
+\item Caso 3: Listar en listado de anuncios
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/listAdsView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/HousingTypeModel.php
+\item Dao: model/dao/HousingTypeDao.php
+\item Entidad: model/dao/dto/HousingType.php
+\end{itemize}
+\item Acceso: Accedemos al listado de anuncios y nos listar\'{a} los tipos de operaciones.
+\end{itemize}
+\end{itemize}
+
+
+\section{Comunidades}
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/createAdView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/CommunityModel.php
+\item Dao: model/dao/CommunityDao.php
+\item Entidad: model/dao/dto/Community.php
+\end{itemize}
+\item Acceso: Entramos en la creaci\'{o}n de anuncios y en los campos select nos aparecer\'{a}n las comunidades.
+\end{itemize}
+\section{Provincias}
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/createAdView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/ProvinceModel.php
+\item Dao: model/dao/ProvinceDao.php
+\item Entidad: model/dao/dto/Province.php
+\end{itemize}
+\item Acceso: Entramos en la creaci\'{o}n de anuncios y en los campos select nos aparecer\'{a}n las provincias tras seleccionar una comunidad.
+\end{itemize}
+\section{Municipios}
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/createAdView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/MunicipalityModel.php
+\item Dao: model/dao/MunicipalityDao.php
+\item Entidad: model/dao/dto/Municipality.php
+\end{itemize}
+\item Acceso: Entramos en la creaci\'{o}n de anuncios y en los campos select nos aparecer\'{a}n los municipios tras seleccionar una provincia.
+\end{itemize}
+
+\section{Im\'{a}genes}
+
+\subsection{Crear}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Vista: view/createAdView.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/ImageModel.php
+\item Dao: model/dao/ImageDao.php
+\item Entidad: model/dao/dto/Image.php
+\end{itemize}
+\item Acceso: Entramos en la creaci\'{o}n de anuncios y seleccionamos el bot\'{o}n seleccionar archivos para subir las im\'{a}genes, una vez rellenemos todo el formulario haremos click en enviar.
+\end{itemize}
+\subsection{Eliminar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/ImageModel.php
+\item Dao: model/dao/ImageDao.php
+\item Entidad: model/dao/dto/Image.php
+\end{itemize}
+\item Acceso: Entramos en la consulta de un anuncio y seleccionamos el bot\'{o}n eliminar para eliminar el anuncio y las fotos del mismo. Posteriormente debemos aceptar el modal que nos aparecer\'{a}.
+\end{itemize}
+
+\subsection{Consultar}
+\begin{itemize}
+\item Localizaci\'{o}n
+\begin{itemize}
+\item Url: index/Ad/read\&uuid=XXXXXXXX
+\item Vista: view/readAd.php
+\item Controlador: controller/AdController.php
+\item Modelo: model/ImageModel.php
+\item Dao: model/dao/ImageDao.php
+\item Entidad: model/dao/dto/Image.php
+\end{itemize}
+\item Acceso: Entramos en la creaci\'{o}n de anuncios y seleccionamos el bot\'{o}n seleccionar archivos para subir las im\'{a}genes, una vez rellenemos todo el formulario haremos click en enviar.
 \end{itemize}

@@ -9,7 +9,7 @@
 \renewcommand{\listtablename}{Lista de Tablas}
 \renewcommand{\listfigurename}{Lista de Figuras}
 \renewcommand{\contentsname}{Contenido}
-
+\setcounter{tocdepth}{1}
 
 %\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 \tableofcontents
@@ -76,9 +76,15 @@
 
 \include{Requisitos/NoFuncionales}
 
-
+\include{Disenyo/ModeloER}
 \include{Disenyo/TablaCrud}
 \include{Disenyo/ModeloFisico}
+
+% diagrama interno - andrés
+
+\include{Disenyo/DiagramaDespliegue}
+
+\include{Disenyo/DiagramaFlujo}
 
 \include{Manual/Invitado}
 \include{Manual/Usuario}

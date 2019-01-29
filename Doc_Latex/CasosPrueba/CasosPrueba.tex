@@ -22,7 +22,7 @@ A su vez, en la capa del controlador, y haciendo uso de core/RegularUtils.php, s
 
 \item Las contrase\~{n}as vac\'{i}as y datos o campos vac\'{i}os no ser\'{a}n permitidos en el sistema, siendo controlados en el controlador pertinente usando el m\'{e}todo de validaci\'{o}n 'filtrarPorTipo' de RegularUtils.php.
 
-\item Se han abstra\'{i}do al usuario de la url a trav\'{e}s de url's amigables, las cuales no dejar\'{a}n ver f\'{a}cilmente el tipo de sistema que lleva el servidor (en este caso php).
+\item Se han abstra\'{i}do al usuario de la url a trav\'{e}s de url's amigables, las cuales no dejar\'{a}n ver f\'{a}cilmente el tipo de sistema que lleva el servidor (en este caso php). Esto ha sido implementado gracias al archivo .htaccess en el lado del servidor. Adem\'{a}s, tambi\'{e}n ha sido utilizado para restringir acceso a carpetas no deseadas.
 
 \item Si, por malas intenciones, alg\'{u}n usuario deshabilita las funciones de javascript del lado del cliente a la hora de enviar un formulario, el servidor validará y regresará a la página anterior con el error a mostrar o redirigirá a la página principal.
 
