@@ -319,51 +319,79 @@
 \contentsline {section}{\numberline {4.4}Base de datos}{76}{section.4.4}
 \contentsline {section}{\numberline {4.5}Otros}{76}{section.4.5}
 \contentsline {chapter}{\numberline {5}Tabla Crud}{79}{chapter.5}
-\contentsline {chapter}{\numberline {6}Modelo Fisico}{80}{chapter.6}
-\contentsline {section}{\numberline {6.1}Anuncios}{80}{section.6.1}
-\contentsline {section}{\numberline {6.2}Comentarios}{81}{section.6.2}
-\contentsline {section}{\numberline {6.3}Comunidades Aut\'{o}nomas}{81}{section.6.3}
-\contentsline {section}{\numberline {6.4}Tipos de vivienda}{82}{section.6.4}
-\contentsline {section}{\numberline {6.5}Im\'{a}genes}{82}{section.6.5}
-\contentsline {section}{\numberline {6.6}Municipios}{83}{section.6.6}
-\contentsline {section}{\numberline {6.7}Tipos de Operaciones}{83}{section.6.7}
-\contentsline {section}{\numberline {6.8}Provincias}{84}{section.6.8}
-\contentsline {section}{\numberline {6.9}Denuncias}{84}{section.6.9}
-\contentsline {section}{\numberline {6.10}Peticiones}{85}{section.6.10}
-\contentsline {section}{\numberline {6.11}Puntuaciones}{85}{section.6.11}
-\contentsline {section}{\numberline {6.12}Estados}{86}{section.6.12}
-\contentsline {section}{\numberline {6.13}Usuarios}{86}{section.6.13}
-\contentsline {chapter}{\numberline {7}Manual de Usuario}{89}{chapter.7}
-\contentsline {section}{\numberline {7.1}Usuario no logueado}{89}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}P\'{a}gina Principal}{89}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Registro e Inicio de Sesi\'{o}n}{91}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3}Anuncios}{92}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Usuario Registrado}{95}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}P\'{a}gina Principal}{95}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Anuncios}{95}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Perfil de Usuario}{96}{subsection.7.2.3}
-\contentsline {subsubsection}{\nonumberline Perfil de otros usuarios}{97}{section*.250}
-\contentsline {subsection}{\numberline {7.2.4}Crear una denuncia}{98}{subsection.7.2.4}
-\contentsline {section}{\numberline {7.3}Usuario Administrador}{99}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}P\'{a}gina Principal}{99}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Anuncios}{99}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Perfil de Usuario}{99}{subsection.7.3.3}
-\contentsline {subsection}{\numberline {7.3.4}Dashboard o panel de gesti\'{o}n}{100}{subsection.7.3.4}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Usuarios}{100}{section*.251}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{103}{section*.252}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Comentarios}{103}{section*.253}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{104}{section*.254}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Denuncias}{105}{section*.255}
-\contentsline {chapter}{\numberline {8}Casos de Prueba}{108}{chapter.8}
-\contentsline {section}{\numberline {8.1}Soluciones a vulnerabilidades}{108}{section.8.1}
-\contentsline {section}{\numberline {8.2}Vulnerabilidades no controladas}{109}{section.8.2}
-\contentsline {chapter}{\numberline {9}Resumen ejecutivo}{110}{chapter.9}
-\contentsline {section}{\numberline {9.1}HTML5}{110}{section.9.1}
-\contentsline {section}{\numberline {9.2}Aportaciones JavaScript}{110}{section.9.2}
-\contentsline {section}{\numberline {9.3}Aportaci\'{o}n WebService}{111}{section.9.3}
-\contentsline {section}{\numberline {9.4}Aportaci\'{o}n de traducci\'{o}n}{111}{section.9.4}
-\contentsline {section}{\numberline {9.5}Aportaci\'{o}n galer\'{i}a}{112}{section.9.5}
-\contentsline {section}{\numberline {9.6}Aportaciones de Librer\'{i}as}{112}{section.9.6}
-\contentsline {section}{\numberline {9.7}Patrones de usabilidad utilizados}{112}{section.9.7}
-\contentsline {section}{\numberline {9.8}Seguridad y formato}{113}{section.9.8}
-\contentsline {section}{\numberline {9.9}Patrones de arquitectura}{113}{section.9.9}
+\contentsline {chapter}{\numberline {6}Puntos donde se manipulan las entidades}{80}{chapter.6}
+\contentsline {section}{\numberline {6.1}Usuario}{80}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Crear}{80}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Modificar}{81}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Eliminar}{82}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Consultar}{82}{subsection.6.1.4}
+\contentsline {section}{\numberline {6.2}Anuncio}{83}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Crear}{83}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Modificar}{84}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Eliminar}{85}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Consultar}{85}{subsection.6.2.4}
+\contentsline {section}{\numberline {6.3}Peticiones}{86}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Crear}{86}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Modificar}{86}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Eliminar}{87}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Consultar}{87}{subsection.6.3.4}
+\contentsline {section}{\numberline {6.4}Denuncias}{87}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Crear}{87}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Modificar}{89}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}Consultar}{89}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Comentarios}{90}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Crear}{90}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Eliminar}{90}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}Consultar}{91}{subsection.6.5.3}
+\contentsline {section}{\numberline {6.6}Puntuaci\'{o}n}{92}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Crear}{92}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Modificar}{92}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}Consultar}{92}{subsection.6.6.3}
+\contentsline {chapter}{\numberline {7}Modelo Fisico}{94}{chapter.7}
+\contentsline {section}{\numberline {7.1}Anuncios}{94}{section.7.1}
+\contentsline {section}{\numberline {7.2}Comentarios}{95}{section.7.2}
+\contentsline {section}{\numberline {7.3}Comunidades Aut\'{o}nomas}{95}{section.7.3}
+\contentsline {section}{\numberline {7.4}Tipos de vivienda}{96}{section.7.4}
+\contentsline {section}{\numberline {7.5}Im\'{a}genes}{96}{section.7.5}
+\contentsline {section}{\numberline {7.6}Municipios}{97}{section.7.6}
+\contentsline {section}{\numberline {7.7}Tipos de Operaciones}{97}{section.7.7}
+\contentsline {section}{\numberline {7.8}Provincias}{98}{section.7.8}
+\contentsline {section}{\numberline {7.9}Denuncias}{98}{section.7.9}
+\contentsline {section}{\numberline {7.10}Peticiones}{99}{section.7.10}
+\contentsline {section}{\numberline {7.11}Puntuaciones}{99}{section.7.11}
+\contentsline {section}{\numberline {7.12}Estados}{100}{section.7.12}
+\contentsline {section}{\numberline {7.13}Usuarios}{100}{section.7.13}
+\contentsline {chapter}{\numberline {8}Manual de Usuario}{103}{chapter.8}
+\contentsline {section}{\numberline {8.1}Usuario no logueado}{103}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}P\'{a}gina Principal}{103}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Registro e Inicio de Sesi\'{o}n}{105}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Anuncios}{106}{subsection.8.1.3}
+\contentsline {section}{\numberline {8.2}Usuario Registrado}{109}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}P\'{a}gina Principal}{109}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Anuncios}{109}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Perfil de Usuario}{110}{subsection.8.2.3}
+\contentsline {subsubsection}{\nonumberline Perfil de otros usuarios}{111}{section*.250}
+\contentsline {subsection}{\numberline {8.2.4}Crear una denuncia}{112}{subsection.8.2.4}
+\contentsline {section}{\numberline {8.3}Usuario Administrador}{113}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}P\'{a}gina Principal}{113}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Anuncios}{113}{subsection.8.3.2}
+\contentsline {subsection}{\numberline {8.3.3}Perfil de Usuario}{113}{subsection.8.3.3}
+\contentsline {subsection}{\numberline {8.3.4}Dashboard o panel de gesti\'{o}n}{114}{subsection.8.3.4}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Usuarios}{114}{section*.251}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{117}{section*.252}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Comentarios}{117}{section*.253}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{118}{section*.254}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Denuncias}{119}{section*.255}
+\contentsline {chapter}{\numberline {9}Casos de Prueba}{122}{chapter.9}
+\contentsline {section}{\numberline {9.1}Soluciones a vulnerabilidades}{122}{section.9.1}
+\contentsline {section}{\numberline {9.2}Vulnerabilidades no controladas}{123}{section.9.2}
+\contentsline {chapter}{\numberline {10}Resumen ejecutivo}{124}{chapter.10}
+\contentsline {section}{\numberline {10.1}HTML5}{124}{section.10.1}
+\contentsline {section}{\numberline {10.2}Aportaciones JavaScript}{124}{section.10.2}
+\contentsline {section}{\numberline {10.3}Aportaci\'{o}n WebService}{125}{section.10.3}
+\contentsline {section}{\numberline {10.4}Aportaci\'{o}n de traducci\'{o}n}{125}{section.10.4}
+\contentsline {section}{\numberline {10.5}Aportaci\'{o}n galer\'{i}a}{126}{section.10.5}
+\contentsline {section}{\numberline {10.6}Aportaciones de Librer\'{i}as}{126}{section.10.6}
+\contentsline {section}{\numberline {10.7}Patrones de usabilidad utilizados}{126}{section.10.7}
+\contentsline {section}{\numberline {10.8}Seguridad y formato}{127}{section.10.8}
+\contentsline {section}{\numberline {10.9}Patrones de arquitectura}{127}{section.10.9}
