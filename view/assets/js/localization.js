@@ -7,7 +7,7 @@ function resetField(f, txt, disabled = false) { //Limpia un campo de tipo select
         f.attr("disabled", "disabled");
     } else {
         f.removeAttr("disabled");
-    }
+}
 }
 
 function getProvincesList(id) { //Devuelve lista de provincias en base a una comunidad(id)
@@ -20,6 +20,7 @@ function getProvincesList(id) { //Devuelve lista de provincias en base a una com
                 for (var i = 0; i < provinces.length; i++) {
                     $("#province").append("<option value='" + provinces[i].id + "'>" + provinces[i].province + "</option>");
                 }
+                $("#lockModal").modal("hide");
             });
 }
 
@@ -33,6 +34,7 @@ function getMunicipalitiesList(id) { //Devuelve lista de municipios en base a un
                 for (var i = 0; i < municipalities.length; i++) {
                     $("#municipality").append("<option value='" + municipalities[i].id + "'>" + municipalities[i].municipality + "</option>");
                 }
+                $("#lockModal").modal("hide");
             });
 }
 
@@ -43,6 +45,7 @@ $(document).ready(function () {//Al seleccionar una comunidad o provincia, carga
     cf.change(function () {
         var val = $(this).children("option:selected").val();
         if ($.isNumeric(val)) {
+            $("#lockModal").modal('show');
             resetField(pf, LANG["eligeProvincia"]);
             getProvincesList(val);
         } else {
@@ -53,6 +56,7 @@ $(document).ready(function () {//Al seleccionar una comunidad o provincia, carga
     pf.change(function () {
         var val = $(this).children("option:selected").val();
         if ($.isNumeric(val)) {
+            $("#lockModal").modal('show');
             resetField(mf, LANG["eligeMunicipio"]);
             getMunicipalitiesList(val);
         } else {

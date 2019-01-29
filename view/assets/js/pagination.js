@@ -966,7 +966,6 @@ function cargarComentarioAd(comentario)
                             try {
                                 $("#cuerpo").empty();
                                 var ads = data;
-                                console.log(ads);
                                 for (var i = 0; i < ads.length; i++) {
                                     $("#cuerpo").append(cargarAnuncio(ads[i]));
                                 }
