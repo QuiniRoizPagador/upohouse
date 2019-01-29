@@ -26,6 +26,7 @@ class AdminController extends AbstractController {
     private $reportModel;
     private $operationTypeModel;
     private $requestModel;
+    private $adModel;
 
     /*
      * Constructor por defecto
