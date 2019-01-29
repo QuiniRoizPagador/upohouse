@@ -73,7 +73,7 @@ if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
         <div class="container-fluid">
             <?php if (verifySession()) { ?>
                 <div class="float-md-left">
-                    <a href="index.php?controller=Ad&action=createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
+                    <a href="index/Ad/createView" class="m-3 btn btn-primary"><i class="fa fa-plus"></i></a>
                 </div>
             <?php } ?>
             <div class="float-md-right">
@@ -84,10 +84,12 @@ if (filter_has_var(INPUT_GET, 'user') && trim($_GET['user']) != "") {
                 foreach ($results as $result) {
                     ?>
                     <div class="row media">
-                        <picture class="align-self-center mr-3">
-                            <source srcset="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" type="image/svg+xml">
-                            <img src="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
-                        </picture>
+                        <a href="index/Ad/read&uuid=<?= $result->uuid ?>" class="align-self-center mr-3">
+                            <picture>
+                                <source srcset="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" type="image/svg+xml">
+                                <img src="<?= isset($result->thumbnail) ? $result->thumbnail : "view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
+                            </picture>
+                        </a>
                         <div class="media-body">
                             <h5 class="mt-0"><?= $result->title ?></h5>
                             <p>

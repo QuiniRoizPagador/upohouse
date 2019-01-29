@@ -169,10 +169,7 @@ class AdDao extends AbstractDao {
     public function countUserAds($id) {
         $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ? AND state = ?";
         $data = array("ii", "user_id" => $id, "state" => STATES["NEUTRO"]);
-        $resultSet = $this->preparedStatement($query, $data);
-        $res = mysqli_fetch_object($resultSet);
-        mysqli_free_result($resultSet);
-        return $res->ads;
+        return $this->preparedStatement($query, $data)[0]->ads;
     }
 
     /**
@@ -240,19 +237,10 @@ class AdDao extends AbstractDao {
             a.accepted_request IS NULL)
         GROUP BY 
             a.uuid
-        ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name DES
+        ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name DESC
         LIMIT 9 OFFSET $pag";
-
         $data = array("ssssss", $param, $param, $param, $param, $param, $param);
-        $resultSet = $this->preparedStatement($query, $data);
-
-        $res = array();
-        while ($row = $resultSet->fetch_object()) {
-            $res[] = $row;
-        }
-
-        mysqli_free_result($resultSet);
-        return $res;
+        return $this->preparedStatement($query, $data);
     }
 
     /**
@@ -303,11 +291,7 @@ class AdDao extends AbstractDao {
             GROUP BY a.uuid";
 
         $data = array("ssssss", $param, $param, $param, $param, $param, $param);
-        $resultSet = $this->preparedStatement($query, $data);
-
-        $res = $resultSet->fetch_object();
-
-        mysqli_free_result($resultSet);
+        $res = $this->preparedStatement($query, $data)[0];
         if (isset($res->count)) {
             return $res->count;
         }

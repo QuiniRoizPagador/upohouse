@@ -237,8 +237,7 @@ class ReportDao extends AbstractDao {
                 WHERE user_id = ? AND user_reported = ? ";
         $data = array("ii", "user_id" => $me, "user_reported" => $otherUser);
         $res = parent::preparedStatement($query, $data);
-        $count = $res->fetch_object()->count;
-        mysqli_free_result($res);
+        $count = $res[0]->count;
 
         return $count != 0;
     }
@@ -256,8 +255,7 @@ class ReportDao extends AbstractDao {
                 WHERE user_id = ? AND ad_reported = ? ";
         $data = array("ii", "user_id" => $user, "ad_reported" => $ad);
         $res = parent::preparedStatement($query, $data);
-        $count = $res->fetch_object()->count;
-        mysqli_free_result($res);
+        $count = $res[0]->count;
 
         return $count != 0;
     }

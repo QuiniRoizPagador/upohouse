@@ -23,16 +23,31 @@ class UserDao extends AbstractDao {
      * @return model\dao\dto\User encontrado en la base de datos
      */
     public function searchUser($login) {
-        $query = "SELECT u.id, u.uuid, u.name, u.surname, "
-                . "u.email,u.password, u.uuid, u.login, u.user_role, "
-                . "s.state FROM Users as u JOIN State_Types as s "
-                . "ON u.state = s.id "
-                . "WHERE (LOWER(u.login) = LOWER(?) OR LOWER(u.email) = LOWER(?)) AND u.state != ?";
-        $data = array("ssi", "u.login" => $login, "u.email" => $login, "u.state" => STATES['ELIMINADO']);
-        $resultSet = $this->preparedStatement($query, $data);
-        $user = mysqli_fetch_object($resultSet);
-        mysqli_free_result($resultSet);
-        return $user;
+        $query = "SELECT 
+            u.id, 
+            u.uuid, 
+            u.name, 
+            u.surname, 
+            u.email, 
+            u.password, 
+            u.uuid, 
+            u.login, 
+            u.user_role, 
+            s.state 
+        FROM 
+            Users as u 
+        JOIN State_Types as s 
+        ON 
+            u.state = s.id 
+        WHERE 
+            (LOWER(u.login) = LOWER(?) 
+        OR 
+            LOWER(u.email) = LOWER(?)) 
+        AND 
+            u.state != ?";
+        $data = array("ssi", "u.login" => $login, "u.email" => $login,
+            "u.state" => STATES['ELIMINADO']);
+        return $this->preparedStatement($query, $data)[0];
     }
 
     /**
@@ -44,10 +59,8 @@ class UserDao extends AbstractDao {
     public function create($obj) {
         $query = "SELECT count(*) as count FROM $this->table WHERE login = ? OR email = ?";
         $data = array("ss", "login" => $obj->getLogin(), "email" => $obj->getEmail());
-        $resultSet = parent::preparedStatement($query, $data, TRUE);
-        $count = mysqli_fetch_object($resultSet);
-        mysqli_free_result($resultSet);
-        if ($count->count > 0) {
+        $count = parent::preparedStatement($query, $data)[0]->count;
+        if ($count > 0) {
             return "duplicate_user";
         } else {
             $query = "INSERT INTO $this->table (`uuid`, `name`, `surname`,`email`, `password`, `login`, `user_role`, `phone`)

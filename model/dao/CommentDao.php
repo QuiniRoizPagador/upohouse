@@ -93,9 +93,7 @@ class CommentDao extends AbstractDao {
     public function countUserComments($id) {
         $query = "SELECT COUNT(*) as comments from $this->table WHERE user_id = ? AND state = ?";
         $data = array("ii", "user_id" => $id, "state" => STATES["NEUTRO"]);
-        $resultSet = $this->preparedStatement($query, $data);
-        $res = mysqli_fetch_object($resultSet);
-        mysqli_free_result($resultSet);
+        $res = $this->preparedStatement($query, $data)[0];
         return $res->comments;
     }
 
@@ -138,15 +136,7 @@ class CommentDao extends AbstractDao {
         ORDER BY 
             c.timestamp DESC LIMIT 5 OFFSET " . $pag * 5;
         $data = array("ii", "state" => STATES["NEUTRO"], "c.ad_id" => $id);
-        $res = parent::preparedStatement($query, $data);
-
-        $resultSet = array();
-        while ($row = $res->fetch_object()) {
-            $resultSet[] = $row;
-        }
-        mysqli_free_result($res);
-
-        return $resultSet;
+        return parent::preparedStatement($query, $data);
     }
 
     /**

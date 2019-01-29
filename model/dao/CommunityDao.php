@@ -14,10 +14,7 @@ class CommunityDao extends AbstractDao {
         $query = "SELECT * FROM $this->table WHERE id = ? LIMIT 1";
         $data = array('s', "id" => $id);
 
-        $resultSet = $this->preparedStatement($query, $data);
-        $res = $resultSet->fetch_object();
-        mysqli_free_result($resultSet);
-        return $res;
+        return $this->preparedStatement($query, $data)[0];
     }
 
     public function create($obj) {

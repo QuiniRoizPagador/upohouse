@@ -101,13 +101,7 @@ class RequestDao extends AbstractDao {
         LIMIT 10
         OFFSET $pag";
         $data = array("i", "a.user_id" => $user->id);
-        $resultSet = parent::preparedStatement($query, $data);
-        $res = array();
-        while ($row = $resultSet->fetch_object()) {
-            $res[] = $row;
-        }
-        mysqli_free_result($resultSet);
-        return $res;
+        return parent::preparedStatement($query, $data);
     }
 
     /**
@@ -130,9 +124,8 @@ class RequestDao extends AbstractDao {
             r.state = " . STATES['NEUTRO'];
 
         $data = array("i", "a.user_id" => $id);
-        $resultSet = parent::preparedStatement($query, $data);
-        $count = mysqli_fetch_object($resultSet)->count;
-        mysqli_free_result($resultSet);
+        $res = parent::preparedStatement($query, $data);
+        $count = $res[0]->count;
         return $count;
     }
 
@@ -208,9 +201,8 @@ class RequestDao extends AbstractDao {
             ad_id = ?";
 
         $data = array("ii", "user_id" => $userId, "ad_id" => $adId);
-        $resultSet = parent::preparedStatement($query, $data);
-        $count = mysqli_fetch_object($resultSet)->count;
-        mysqli_free_result($resultSet);
+        $res = parent::preparedStatement($query, $data);
+        $count = $res[0]->count;
         return $count != 0;
     }
 

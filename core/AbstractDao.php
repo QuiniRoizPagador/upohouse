@@ -14,7 +14,6 @@ abstract class AbstractDao {
     protected $table;
     protected $mysqli;
     protected $db;
-    protected $stmt;
 
     /**
      * Constructor de la clase
@@ -60,10 +59,7 @@ abstract class AbstractDao {
             $query = "SELECT * FROM $this->table WHERE uuid = ?  LIMIT 1";
             $data = array('s', "uuid" => $id);
         }
-        $resultSet = $this->preparedStatement($query, $data);
-        $res = mysqli_fetch_object($resultSet);
-        mysqli_free_result($resultSet);
-        return $res;
+        return $this->preparedStatement($query, $data)[0];
     }
 
     /**
@@ -83,15 +79,9 @@ abstract class AbstractDao {
         $data = array("s", $column => $value);
         $resultSet = $this->preparedStatement($query, $data);
         if ($limit !== FALSE || $limit === 1) {
-            $res = $resultSet->fetch_object();
-        } else {
-            $res = array();
-            while ($obj = $resultSet->fetch_object()) {
-                $res[] = $obj;
-            }
-        }
-        mysqli_free_result($resultSet);
-        return $res;
+            $resultSet = $resultSet[0];
+        } 
+        return $resultSet;
     }
 
     /**
@@ -137,12 +127,32 @@ abstract class AbstractDao {
     public function preparedStatement($sql, $data, $get = TRUE) {
         if (isset($data)) {
             $bind = $this->bindData($data);
-            $this->stmt = mysqli_stmt_init($this->mysqli) or die();
-            mysqli_stmt_prepare($this->stmt, $sql);
-            call_user_func_array(array($this->stmt, 'bind_param'), $bind);
-            $filas = mysqli_stmt_execute($this->stmt);
+            $stmt = mysqli_stmt_init($this->mysqli) or die();
+            mysqli_stmt_prepare($stmt, $sql);
+            call_user_func_array(array($stmt, 'bind_param'), $bind);
+            echo $this->mysqli->error;
+            $filas = mysqli_stmt_execute($stmt);
             if ($get) {
-                $resultado = mysqli_stmt_get_result($this->stmt);
+                $result = mysqli_stmt_result_metadata($stmt);
+                $arr_fields = $result->fetch_fields();
+                $obj_result = new \stdClass();
+                $arr_bind_fields = array();
+                foreach ($arr_fields as $obj_field) {
+                    $arr_bind_fields[] = &$obj_result->{$obj_field->name};
+                }
+                call_user_func_array(array($stmt, 'bind_result'), $arr_bind_fields);
+                $mix_data = array();
+                while ($stmt->fetch()) {
+                    // Manual clone method - nasty, but required because of all the binding references
+                    // to avoid each row being === the last row in the result set
+                    $obj_row = new \stdClass();
+                    foreach ($arr_fields as $obj_field) {
+                        $obj_row->{$obj_field->name} = $obj_result->{$obj_field->name};
+                    }
+                    $mix_data[] = $obj_row;
+                }
+                mysqli_stmt_free_result($stmt);
+                return $mix_data;
             }
         } else {
             $resultado = mysqli_query($this->mysqli, $sql);

@@ -59,8 +59,7 @@ class ScoreDao extends AbstractDao {
         $query = "SELECT COUNT(*) AS count FROM  $this->table WHERE ad_id = ? AND user_id = ?";
         $data = array("ii", "ad_id" => $idAd, "user_id" => $idUser);
         $res = parent::preparedStatement($query, $data);
-        $count = $res->fetch_object();
-        mysqli_free_result($res);
+        $count = $res[0];
         return $count->count != 0;
     }
 
@@ -73,10 +72,7 @@ class ScoreDao extends AbstractDao {
     public function getUserScore($idUser, $idAd) {
         $query = "SELECT * FROM  $this->table WHERE ad_id = ? AND user_id = ?";
         $data = array("ii", "ad_id" => $idAd, "user_id" => $idUser);
-        $res = parent::preparedStatement($query, $data);
-        $score = $res->fetch_object();
-        mysqli_free_result($res);
-        return $score;
+        return parent::preparedStatement($query, $data)[0];
     }
 
 }

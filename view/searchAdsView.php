@@ -12,10 +12,12 @@ require_once 'core/templates/nav.php';
                     ?>
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <picture class="text-center">
+                            <a href="index/Ad/read&uuid=<?= $result->uuid ?>" class="text-center">
+                            <picture>
                                 <source srcset="<?= isset($result->thumbnail)?$result->thumbnail:"view/images/home.png" ?>" type="image/svg+xml">
                                 <img src="<?= isset($result->thumbnail)?$result->thumbnail:"view/images/home.png" ?>" class="img-fluid img-thumbnail" alt="Card Image">
                             </picture>
+                            </a>
                             <div class="card-body">
                                 <p class="card-text">
                                     <?= $lang['precio'] . ": " . $result->price ?>

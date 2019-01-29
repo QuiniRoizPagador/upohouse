@@ -26,12 +26,12 @@ const IMAGE_FORMAT = array('image/gif', 'image/jpeg', 'image/png', 'image/jpg');
 // ruta para almacenar imágenes
 define("IMAGE_AD_URI", "view/images/anuncios");
 //Parámetros de correo.
-define("SMTP_HOST", "smtp.gmail.com");
-define("SMTP_PROTOCOL", "tls");
-define("SMTP_PORT", "587");
+define("SMTP_HOST", "smtp.strato.com");
+define("SMTP_PROTOCOL", "ssl");
+define("SMTP_PORT", "465");
 define("MAIL_NAME", "upohouse");
-define("MAIL_USER", "upohouse@gmail.com");
-define("MAIL_PASSWORD", "3vBCk=hgtTVpEQ4Wuvc#gWruLwXYxsEz_!88cMRRvU3vUDj#EK4jK$5Q+py8Vt?*WG79rnPQpfZ8e**hDMh?GpAt6fRyUkn*agTH");
+define("MAIL_USER", "webmaster@upohouse.es");
+define("MAIL_PASSWORD", "albertoquiniandres123.com");
 // estados
 const STATES = array(
     "NEUTRO" => 1,
