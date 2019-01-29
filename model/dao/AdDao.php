@@ -4,6 +4,9 @@ require_once "core/AbstractDao.php";
 
 use core\AbstractDao;
 
+/**
+ * Clase especializada en el acceso a la base de datos para anuncios
+ */
 class AdDao extends AbstractDao {
 
     public function __construct() {
@@ -34,6 +37,12 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que devolverá todos los anuncios paginados
+     * 
+     * @param string $pag página a devolver
+     * @return string listado encontrado
+     */
     public function getAllPaginated($pag) {
         $query = $this->mysqli->query("SELECT
             a.id as id,
@@ -58,7 +67,7 @@ class AdDao extends AbstractDao {
                 . " GROUP BY
             a.id
         ORDER BY
-            a.id ASC 
+            a.id DESC 
         LIMIT 10 
         OFFSET " . $pag * 10);
 
@@ -70,6 +79,11 @@ class AdDao extends AbstractDao {
         return $resultSet;
     }
 
+    /**
+     * Método que devuelve los 9 últimos anuncios
+     * 
+     * @return array con el listado de anuncios
+     */
     public function getTop() {
         $query = $this->mysqli->query("SELECT
             a.uuid,
@@ -161,6 +175,13 @@ class AdDao extends AbstractDao {
         return $res->ads;
     }
 
+    /**
+     * Método de búsqueda global para el buscador de la página principal
+     * 
+     * @param string $str palabra o palabras a buscar
+     * @param integer $pag página a devolver
+     * @return array listado encontrado
+     */
     public function globalSearch($str, $pag) {
         $param = "*" . $str;
         $param = str_replace(" ", "* *", trim($param));
@@ -219,7 +240,7 @@ class AdDao extends AbstractDao {
             a.accepted_request IS NULL)
         GROUP BY 
             a.uuid
-        ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name    
+        ORDER BY a.timestamp, a.description, c.community, p.province,m.municipality,o.name, h.name DES
         LIMIT 9 OFFSET $pag";
 
         $data = array("ssssss", $param, $param, $param, $param, $param, $param);
@@ -234,6 +255,12 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que devolverá el número de resultados encontrados por la búsqueda global
+     * 
+     * @param string $str palabra o palabras a buscar
+     * @return int número de resultados
+     */
     function countGlobalSearch($str = "") {
         $param = "*" . $str;
         $param = str_replace(" ", "* *", trim($param));
@@ -287,6 +314,12 @@ class AdDao extends AbstractDao {
         return 0;
     }
 
+    /**
+     * Método que asociará un anuncio a la petición aceptada 
+     * @param string $ad_id anuncio
+     * @param string $req_id petición
+     * @return string número de filas afectadas en la base de datos
+     */
     public function accept($ad_id, $req_id) {
         $query = "UPDATE $this->table SET `accepted_request` = ? WHERE id = ?";
         $data = array("ii", "accepted_request" => $req_id, "id" => $ad_id);
@@ -294,6 +327,15 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que listará los anuncios según tipos, paginando y asociados a un usuario
+     * 
+     * @param integer $house tipo de vivienda
+     * @param integer $operation tipo de operación
+     * @param integer $pag página a devolver
+     * @param integer $user usuario asociado
+     * @return array listado encontrado
+     */
     public function listAds($house, $operation, $pag, $user) {
         $query = "SELECT
             CONCAT(h.name,' - ',m.municipality) as title,
@@ -361,6 +403,15 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que contará anuncios según tipos, paginando y asociados a un usuario
+     * 
+     * @param integer $house tipo de vivienda
+     * @param integer $operation tipo de operación
+     * @param integer $pag página a devolver
+     * @param integer $user usuario asociado
+     * @return integer conteo de resultados
+     */
     public function countListAds($house, $operation, $user) {
         $query = "SELECT
             COUNT(*) AS count

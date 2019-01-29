@@ -1,3 +1,7 @@
+
+/*
+Estilos personalizados para la web
+*/
 body{
     min-height: 100vh;
     position: relative;
@@ -14,6 +18,7 @@ body{
     width: 100%;
     padding: 2%;
 }
+/* esto para el footer y su resonsividad*/
 @media (max-width: 575.98px){
     .footer-absolute{
         position: relative;
@@ -33,6 +38,7 @@ body{
     align-items: center;
     justify-content: center;
 }
+/* ajuste para menú superior y tamaño responsive */
 @media (min-width:992px) {
     .navbar-nav.navbar-center {
         position: absolute;
@@ -62,9 +68,7 @@ body{
 .site-header{
     background-color: inherit;
 }
-.site-header a{
-    /* color:black;*/
-}
+/* estilos del buscador */
 .searcher {
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
@@ -75,7 +79,7 @@ body{
 .searcher:focus {
     width: 100%;
 }
-
+/* estilos para la galería */ 
 .modal-gallery-content{
     background: transparent;
     border: none;

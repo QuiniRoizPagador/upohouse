@@ -9,12 +9,18 @@ use core\RegularUtils;
 use model\dao\dto\Request;
 use core\MailUtils;
 
+/**
+ * Clase controladora encargada de las acciones relacionadas con las peticiones
+ */
 class RequestController extends AbstractController {
 
     private $requestModel;
     private $adModel;
     private $userModel;
 
+    /**
+     * Constructor por defecto
+     */
     public function __construct() {
         parent::__construct();
         $this->adModel = new AdModel();
@@ -22,6 +28,9 @@ class RequestController extends AbstractController {
         $this->userModel = new UserModel();
     }
 
+    /**
+     * Método para aceptar una petición sobre un anuncio
+     */
     public function accept() {
         $variables = array('req_uuid' => "text", 'ad_uuid' => "text", "user_uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($variables, "accept");
@@ -46,15 +55,18 @@ class RequestController extends AbstractController {
                 $this->requestModel->refuseAll($ad->id, $request->id);
 
                 //Versión gratuita
-                MailUtils::sendFreeMail($user->email, "Your request was accepted", "Estimated $user->name, We are pleased to inform you that your"
-                        . " request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted."
-                        . " Therefore, the website terminates the agreement, and with this, your participation."
-                        . " We hope that the service provided was to your liking.\n\nKind regards,\n\nThe technical"
-                        . " team of Upohouse.", "From: upohouse@gmail.com");
+                /* MailUtils::sendFreeMail($user->email, "Your request was accepted", "Estimated $user->name, We are pleased to inform you that your"
+                  . " request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted."
+                  . " Therefore, the website terminates the agreement, and with this, your participation."
+                  . " We hope that the service provided was to your liking.\n\nKind regards,\n\nThe technical"
+                  . " team of Upohouse.", "From: upohouse@gmail.com"); */
 
                 //Versión de pago
-                /* MailUtils::sendMail($user->email, "Your request was accepted", "<p>Estimated $user->name, 
-                  We are pleased to inform you that your request to the advertisement posted by $ownerUserName ($ownerUserEmail) has been accepted. Therefore, the website terminates the agreement, and with this, your participation. We hope that the service provided was to your liking.</p><p>Kind regards,</p><p>The technical team of Upohouse.</p>"); */
+                MailUtils::sendMail($user->email, "Your request was accepted", "<p>Estimated $user->name, 
+                  We are pleased to inform you that your request to the advertisement posted by $ownerUserName "
+                        . "($ownerUserEmail) has been accepted. Therefore, the website terminates the agreement, "
+                        . "and with this, your participation. We hope that the service provided was to your "
+                        . "liking.</p><p>Kind regards,</p><p>The technical team of Upohouse.</p>");
                 $this->redirect("user", "readUser", array("uuid" => $_SESSION['uuid']));
             } else {
                 $this->redirect();
@@ -64,16 +76,18 @@ class RequestController extends AbstractController {
         }
     }
 
+    /**
+     * Método para rechazar una petición sobre un anuncio
+     */
     public function refuse() {
         $variables = array('req_uuid' => "text");
-        $errors = RegularUtils::filtrarPorTipo($variables, "accept");
-        if (!isset($errors['accept'])) {
+        $errors = RegularUtils::filtrarPorTipo($variables, "refuse");
+        if (!isset($errors['refuse'])) {
             $variables = array('req_uuid');
             $filtrado = RegularUtils::sanearStrings($variables);
             $req_uuid = $filtrado['req_uuid'];
 
             $this->requestModel->refuse($req_uuid);
-
 
             $this->redirect("user", "readUser", array("uuid" => $_SESSION['uuid']));
         } else {
@@ -81,6 +95,9 @@ class RequestController extends AbstractController {
         }
     }
 
+    /**
+     * Método para crear una petición del usuario sobre un anuncio consultado
+     */
     public function createRequest() {
         $variables = array('content' => "longText", "ad_uuid" => "text");
         $errors = RegularUtils::filtrarPorTipo($variables, "createRequest");

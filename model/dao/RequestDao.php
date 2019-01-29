@@ -4,12 +4,24 @@ require_once "core/AbstractDao.php";
 
 use core\AbstractDao;
 
+/**
+ * Clase especializada en el acceso a la base de datos de las peticiones
+ */
 class RequestDao extends AbstractDao {
 
+    /**
+     * Constructor por defecto
+     */
     public function __construct() {
         parent::__construct("Requests");
     }
 
+    /**
+     * Método de creación de una petición
+     * 
+     * @param \model\dao\dto\Request $obj petición a crear
+     * @return string número de filas afectadas
+     */
     public function create($obj) {
         $query = "INSERT INTO $this->table (`uuid`, `content`, `ad_id`,`user_id`)
                 VALUES(?, ?, ?, ?)";
@@ -19,6 +31,12 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que actualiza una petición
+     * 
+     * @param \model\dao\dto\Request $obj petición a actualizar
+     * @return string número de filas afectadas
+     */
     public function update($obj) {
         $prev = $this->search("uuid", $obj->getUuid(), FALSE);
         if (trim($obj->getState()) == '') {
@@ -30,6 +48,13 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que listará las peticiones del usuario paginando
+     * 
+     * @param string $user id del usuario a buscar
+     * @param integer $pag número de página a listar
+     * @return array con el listado paginado
+     */
     public function listUserRequest($user, $pag) {
         $query = "SELECT
             CONCAT(h.name,' - ',m.municipality) as title,
@@ -85,6 +110,12 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que contará las peticiones de un usuario
+     * 
+     * @param string $id id del usuario a buscar
+     * @return integer con el número de peticiones del usuario
+     */
     public function countUserRequests($id) {
         $query = "SELECT 
             COUNT(*) as count 
@@ -105,6 +136,12 @@ class RequestDao extends AbstractDao {
         return $count;
     }
 
+    /**
+     * Método que aceptará una petición 
+     * 
+     * @param string $req_uuid id de la petición a aceptar
+     * @return string número de filas afectadas
+     */
     public function accept($req_uuid) {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES['ACEPTADO'], "uuid" => $req_uuid);
@@ -112,6 +149,13 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que rechazará las peticiones asociadas a un anuncio menos una en particular
+     * 
+     * @param string $ad_id id del anuncio
+     * @param string $req_id id de la petición a no rechazar
+     * @return string número de filas afectadas
+     */
     public function refuseAll($ad_id, $req_id) {
         $query = "UPDATE $this->table SET state = ? WHERE ad_id = ? AND id != ?";
         $data = array("iss", "state" => STATES['DESCARTADO'], "ad_id" => $ad_id, "id" => $req_id);
@@ -119,6 +163,12 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que rechazará una petición 
+     * 
+     * @param type $req_uuid id de la petición a rechazará
+     * @return string número de filas afectadas
+     */
     public function refuseRequest($req_uuid) {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ? ";
         $data = array("is", "state" => STATES['DESCARTADO'], "uuid" => $req_uuid);
@@ -126,6 +176,12 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que bloqueará el estado de una petición
+     * 
+     * @param string $uuid uuid de la petición a bloquear
+     * @return string número de filas afectadas
+     */
     public function block($uuid) {
         $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES["BLOQUEADO"], "uuid" => $uuid);
@@ -133,6 +189,14 @@ class RequestDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que verificará la existencia de una petición cuyo usuario y anuncio
+     * sean los pasados por parámetros
+     * 
+     * @param string $userId usuario asociado
+     * @param string $adId anuncio asociado
+     * @return boolean verificación de la existencia
+     */
     public function verifyExist($userId, $adId) {
         $query = "SELECT 
             COUNT(*) as count 
@@ -150,6 +214,12 @@ class RequestDao extends AbstractDao {
         return $count != 0;
     }
 
+     /**
+     * Método que eliminará una petición
+     * 
+     * @param string $id uuid de la petición
+     * @return string número de filas afectadas en la base de datos
+     */
     public function removeRequest($id) {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ? ";
         $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);

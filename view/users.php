@@ -17,7 +17,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?php echo $helper->url("admin", "createUser", array("show" => "user")); ?>" method="post" class="formUser">
+                            <form action="<?php echo $helper->url("admin", "createUser", array("show" => "user")); ?>" method="post" class="form">
                                 <div class="modal-body">
                                     <?php
                                     if (isset($errors['createUser']['query'])) {
@@ -332,7 +332,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="<?php echo $helper->url("admin", "updateUser", array("show" => "user")); ?>" method="post" class="formUpdateUser">
+                                            <form action="<?php echo $helper->url("admin", "updateUser", array("show" => "user")); ?>" method="post" class="formUpdate">
                                                 <div class="modal-body">
                                                     <?php
                                                     if (isset($errors['updateUser'][$user->uuid]['query'])) {

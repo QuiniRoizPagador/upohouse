@@ -59,7 +59,7 @@ require_once 'core/templates/head.php';
                             <?php
                             if (verifyIsSame()) {
                                 ?>
-                                <form class="formUpdateUser row" action="<?php echo $helper->url("user", "updateProfile"); ?>" method="post" >
+                                <form class="formUpdate row" action="<?php echo $helper->url("user", "updateProfile"); ?>" method="post" >
                                     <input type="hidden" value="<?php echo $user->uuid; ?>" name="uuid" />
                                     <div class="form-control has-success col-md-6 ml-auto"> 
                                         <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>

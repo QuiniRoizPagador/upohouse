@@ -2,7 +2,7 @@
     <div class="pb-2 mb-3 border-bottom">
         <h2 class="h2"><?= $lang["modificar anuncio"] ?></h2>
     </div>
-    <form action="<?php echo $helper->url("Ad", "modify", array('uuid' => $ad->uuid)); ?>" method="post" enctype="multipart/form-data" class="formUpdateUser">
+    <form action="<?php echo $helper->url("Ad", "modify", array('uuid' => $ad->uuid)); ?>" method="post" enctype="multipart/form-data" class="formUpdate">
         <?php
         if (isset($errors['modify']['query'])) {
             ?>

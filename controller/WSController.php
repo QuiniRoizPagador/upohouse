@@ -2,10 +2,12 @@
 
 use core\AbstractController;
 
+/**
+ * Controladora de webservice encargada de atendes peticiones ajax 
+ */
 class WSController extends AbstractController {
 
     private $userModel;
-    private $provincesModel;
     private $municipalityModel;
     private $adModel;
     private $housingTypeModel;
@@ -30,8 +32,11 @@ class WSController extends AbstractController {
         $this->requestModel = new RequestModel();
     }
 
+    /**
+     * Método de búsqueda global. recibirá lo escrito por el usuario y realizará una búsqueda
+     * global en la base de datos para devolver en formato JSON.
+     */
     public function globalSearch() {
-// TODO: controlar encapsulando solo los atributos necesarios por seguridad
         if (filter_has_var(INPUT_POST, "str") && trim($_POST['str']) != "") {
             $str = filter_var($_POST['str'], FILTER_SANITIZE_STRING);
             $list = $this->adModel->globalSearch($str);
@@ -42,6 +47,10 @@ class WSController extends AbstractController {
         }
     }
 
+    /**
+     * Método que recibe el número de página de la tabla de usuarios del administrador
+     * y devuelve los usuarios correspondientes.
+     */
     public function paginateUsers() {
         if (filter_has_var(INPUT_POST, "userPag") && trim($_POST['userPag']) != "") {
             $num = filter_var($_POST['userPag'], FILTER_SANITIZE_NUMBER_INT);

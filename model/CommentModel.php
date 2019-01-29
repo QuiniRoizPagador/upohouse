@@ -78,10 +78,18 @@ class CommentModel extends AbstractModel {
 
     /**
      * Método que borra comentarios 
-     * @param Integer $id id del comentario 
+     * @param Integer $id uuid del comentario 
      */
     public function removeComment($id) {
         return $this->commentDao->delete($id);
+    }
+
+    /**
+     * Método que bloqueará los comentaros no eliminados
+     * @param nt $ad anuncio asociado
+     */
+    public function blockNoRemovedComment($ad) {
+        return $this->commentDao->blockNoRemovedComment($ad);
     }
 
 }

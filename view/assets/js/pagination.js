@@ -163,14 +163,14 @@ function cargarUsuario(user, pag) {
     modal_header.append(create("h5", LANG['editar datos de'] + user.name, "modal-title"));
     modal_header.append($("<button type='button' data-dismiss='modal' data-toggle='modal' data-target='#search" + user.uuid + "' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button>"))
     modal_card.append(modal_header);
-    form = $("<form method='post' action='index.php?controller=Admin&action=updateUser&show=users' class='formUpdateUser' />");
+    form = $("<form method='post' action='index.php?controller=Admin&action=updateUser&show=users' class='formUpdate' />");
     modal_card.append(form);
     modal_body = $("<div class='card-body modal-body' />");
     form.append(modal_body);
     var row = $("<div class='row' />");
     modal_body.append(row);
 
-    var form_control = $("<div class='form-control has-success col-md-6 ml-auto formUpdateUser' /;>");
+    var form_control = $("<div class='form-control has-success col-md-6 ml-auto formUpdate' /;>");
     form_control.append(create("input type='hidden' value='" + pag + "' name='pag'"), "", "");
     form_control.append(create("input type='hidden' value='" + user.uuid + "' name='uuid'"), "", "");
     form_control.append(create("label for='name'", LANG['nombre'], ""));
@@ -938,7 +938,7 @@ function cargarComentarioAd(comentario)
                                 for (var i = 0; i < users.length; i++) {
                                     $("#cuerpo").append(cargarUsuario(users[i], num - 1));
                                 }
-                                $(".formUpdateUser").validate({empty: true});
+                                $(".formUpdate").validate({empty: true});
                             } catch (Exception) {
 
                             }

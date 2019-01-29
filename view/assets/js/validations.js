@@ -1,3 +1,6 @@
+/**
+ * Plugin de validación de formularios
+ */
 (function ($) {
     $.fn.validate = function (options) {
         var settings = $.extend({
@@ -5,6 +8,7 @@
         }, options);
         this.each(function () {
             var form = this;
+            // validación de los campos del servidor al enviar
             $(this).submit(function () {
                 var error = false, errorPassw = 0;
                 $(':input:not(:submit)', this).each(function () {
@@ -50,7 +54,7 @@
                         $(this).addClass("is-valid");
                     }
                 });
-
+                // validación de constraseñas
                 var match = $(".password", form).val() === $(".password2", form).val();
                 var vacias = true;
                 if (!settings.empty) {
@@ -69,7 +73,7 @@
                 }
                 return !error;
             });
-
+            // verificar que ambas contraseñas son iguales mientras se escribe
             $(":password", form).each(function () {
                 $(this).keyup(function () {
                     var vacioOk = true;
@@ -100,8 +104,8 @@
 
 
 $(document).ready(function () {
-    $(".formUser").validate();
-    $(".formUpdateUser").validate({empty: true});
+    $(".form").validate();
+    $(".formUpdate").validate({empty: true});
 });
 
 

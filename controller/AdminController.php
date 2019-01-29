@@ -15,6 +15,9 @@ use model\dao\dto\Operation_type;
 use model\dao\dto\Report;
 use model\dao\dto\Request;
 
+/**
+ * Clase controladora de la zona de administración principal
+ */
 class AdminController extends AbstractController {
 
     private $userModel;
@@ -23,6 +26,10 @@ class AdminController extends AbstractController {
     private $reportModel;
     private $operationTypeModel;
     private $requestModel;
+
+    /*
+     * Constructor por defecto
+     */
 
     public function __construct() {
         parent::__construct();
@@ -36,7 +43,7 @@ class AdminController extends AbstractController {
     }
 
     /**
-     * Página principal del usuario
+     * Página principal del usuario administrador
      */
     public function dashboard($errors = NULL, $pag = NULL) {
         $show = null;
@@ -78,17 +85,23 @@ class AdminController extends AbstractController {
         ));
     }
 
+    /**
+     * Método que cargará la vista de administración para usuarios
+     * @param array $errors si hay algún error que recibir
+     * @param String $show vista de usuario
+     * @param int $pag si hay algún tipo de paginación en curso que almacenar
+     */
     private function users($errors, $show, $pag = NULL) {
-//TODO: según el usuario se mostrará la dashboard del admin 
-// por defecto o su página de administración básica
-//Conseguimos todos los usuarios
+        //según el usuario se mostrará la dashboard del admin 
+        // por defecto o su página de administración básica
+        //Conseguimos todos los usuarios
         if ($pag == NULL) {
             $pag = 0;
         }
         $numUsers = $this->userModel->countUsers();
         $allusers = $this->userModel->getAllPaginated($pag);
         $countRegistrations = $this->userModel->countRegistrations();
-//Cargamos la vista index y le pasamos valores
+        //Cargamos la vista index y le pasamos valores
         $this->view("dashboard", array(
             'title' => "dashboard",
             "allusers" => $allusers,
@@ -100,6 +113,9 @@ class AdminController extends AbstractController {
         ));
     }
 
+    /**
+     * Creación de un usuario en el sistema
+     */
     public function createUser() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -116,8 +132,9 @@ class AdminController extends AbstractController {
             $values = array("name", "login", "surname",
                 "email", "password",
                 "user_role", "phone");
+
             $filtrado = RegularUtils::sanearStrings($values);
-//Creamos un usuario
+            //Creamos un usuario
             $usuario = new User();
             $usuario->setName($filtrado["name"]);
             $usuario->setSurname($filtrado["surname"]);
@@ -138,11 +155,11 @@ class AdminController extends AbstractController {
             }
         }
         if (isset($errors["createUser"])) {
-//Conseguimos todos los usuarios
+            //Conseguimos todos los usuarios
             $numUsers = $this->userModel->countUsers();
             $allusers = $this->userModel->getAllPaginated(0);
 
-//Cargamos la vista index y le pasamos valores
+            //Cargamos la vista index y le pasamos valores
             $this->view("dashboard", array(
                 'title' => "dashboard",
                 "allusers" => $allusers,
@@ -204,6 +221,9 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Método encargado de bloqueo de usuario
+     */
     public function blockUser() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -225,6 +245,9 @@ class AdminController extends AbstractController {
         }
     }
 
+    /**
+     * Método encargado de desbloqueo de usuario
+     */
     public function unlockUser() {
         $show = null;
         if (isset($_GET["show"])) {
@@ -245,6 +268,10 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
+
+    /*
+     * Método encargado de eliimnar un usuario
+     */
 
     public function removeUser() {
         $show = null;
@@ -334,7 +361,7 @@ class AdminController extends AbstractController {
             }
         }
     }
-    
+
     /**
      * Método que crea tipo de operaciones
      */
@@ -378,7 +405,7 @@ class AdminController extends AbstractController {
             }
         }
     }
-    
+
     /**
      * Método que elimina tipos de casas
      */
@@ -402,6 +429,7 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
+
     /**
      * Método que elimina tipos de operaciones
      */
@@ -425,7 +453,7 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-    
+
     /**
      * Método que actualiza tipos de casas
      */
@@ -463,7 +491,7 @@ class AdminController extends AbstractController {
             $this->dashboard($errors, $pag);
         }
     }
-    
+
     /**
      * Método que actualiza tipos de operaciones
      */
@@ -527,7 +555,7 @@ class AdminController extends AbstractController {
             "pag" => $pag,
         ));
     }
-    
+
     /**
      * Método que pasa a la vista información
      * sobre los tipos de operaciones y tipos de casas
@@ -589,7 +617,7 @@ class AdminController extends AbstractController {
             "pag" => $pag,
         ));
     }
-    
+
     /**
      * Método que acepta una denuncia sobre un comentario
      */
@@ -619,7 +647,7 @@ class AdminController extends AbstractController {
             }
         }
     }
-    
+
     /**
      * Método que deniega una denuncia sobre un comentario
      */
@@ -642,7 +670,7 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-    
+
     /**
      * Método que acepta una denuncia sobre una petición
      */
@@ -718,11 +746,16 @@ class AdminController extends AbstractController {
                 $errors['acceptReportAd'][$_POST['ad_uuid']]['query'] = "error_block_ad";
                 $this->dashboard($errors);
             } else {
+                // bloquear todos los comentarios asociados no eliminados
+                $this->commentModel->blockNoRemovedComment($id);
+                // rechazar todas las peticiones del anuncio
+                $this->requestModel->refuseAll($id);
+
                 $this->redirect("admin", "dashboard", array("show" => "$show"));
             }
         }
     }
-    
+
     /**
      * Método que deniega una denuncia sobre un anuncio
      */
@@ -744,7 +777,7 @@ class AdminController extends AbstractController {
             $this->redirect("admin", "dashboard", array("show" => "$show"));
         }
     }
-    
+
     /**
      * Método que acepta una denuncia sobre un usuario
      */
@@ -773,7 +806,7 @@ class AdminController extends AbstractController {
             }
         }
     }
-    
+
     /**
      * Método que deniega una denuncia sobre un usuario
      */

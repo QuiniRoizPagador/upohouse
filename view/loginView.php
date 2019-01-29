@@ -8,7 +8,7 @@ require_once 'core/templates/nav.php';
 </ul>
 <div class="tab-content">
     <div id="login" class="tab-pane col-md-2 fade has-success <?= !isset($errors['createUser']) ? "show active" : "" ?> content-center">
-        <form action="<?= $helper->url("Session", "verify") ?>" method="post" class="formUser">
+        <form action="<?= $helper->url("Session", "verify") ?>" method="post" class="form">
             <h3 class="text-muted text-center">
                 <?= $lang['iniciar sesion'] ?>
             </h3><br />
@@ -29,7 +29,7 @@ require_once 'core/templates/nav.php';
         <h3 class="text-muted text-center">
             <?= $lang['registro'] ?>
         </h3><br />
-        <form action="<?= $helper->url("User", "register") ?>" method="post" class="formUser col-lg-12"><br />
+        <form action="<?= $helper->url("User", "register") ?>" method="post" class="form col-lg-12"><br />
             <div class="form-row has-success"> 
                 <div class="col-md-6 mb-2">
                     <label for="name" class="col-sm-2 col-form-label"><?= $lang['nombre'] ?></label>

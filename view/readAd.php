@@ -242,7 +242,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form method="post" action="<?= $helper->url("request", "createRequest") ?>" class="formUser">
+                                <form method="post" action="<?= $helper->url("request", "createRequest") ?>" class="form">
                                     <div class="modal-body">
                                         <input type="hidden" name="ad_uuid" value="<?= $ad->uuid ?>" />
                                         <div class="form-group">
@@ -308,7 +308,7 @@
             <h2 class="h5"><?= $lang["comentarios"] ?></h2>
         </div>
         <div class="row">
-            <form class="col-md-12 col-sm-12 formUser" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
+            <form class="col-md-12 col-sm-12 form" method="post" action="<?= $helper->url("comment", "createComment"); ?>">
                 <div class="form-group">
                     <textarea name="comentario" class="form-control" placeholder="<?= $lang['escribir comentario'] ?>" id="insertComentario" rows="4"></textarea>
                     <input name="idAd" type="hidden" value="<?= $ad->id ?>">

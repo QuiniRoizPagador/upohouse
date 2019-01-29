@@ -4,12 +4,24 @@ require_once "core/AbstractDao.php";
 
 use core\AbstractDao;
 
+/**
+ * Clase que especializa el acceso a la base de datos de un usuario
+ */
 class UserDao extends AbstractDao {
 
+    /**
+     * Constructor por defecto
+     */
     public function __construct() {
         parent::__construct("Users");
     }
 
+    /**
+     * Método que devolverá la búsqueda de un usuario en la base de datos en base al login recibido por parámetros.
+     * 
+     * @param String $login login del usuario
+     * @return model\dao\dto\User encontrado en la base de datos
+     */
     public function searchUser($login) {
         $query = "SELECT u.id, u.uuid, u.name, u.surname, "
                 . "u.email,u.password, u.uuid, u.login, u.user_role, "
@@ -23,6 +35,12 @@ class UserDao extends AbstractDao {
         return $user;
     }
 
+    /**
+     * Método para la creación de un usuario en la base de datos
+     * 
+     * @param model\dao\dto\User $obj usuario a crear
+     * @return string número de filas actualizadas en la base de datos o error
+     */
     public function create($obj) {
         $query = "SELECT count(*) as count FROM $this->table WHERE login = ? OR email = ?";
         $data = array("ss", "login" => $obj->getLogin(), "email" => $obj->getEmail());
@@ -42,6 +60,13 @@ class UserDao extends AbstractDao {
         }
     }
 
+    /**
+     * Método que eliminará lógicamente un usuario en el sistema marcando su estado a eliminado
+     * en la base de datos.
+     * 
+     * @param string $id id del usuario a eliminar.
+     * @return string número de filas actualizadas
+     */
     public function delete($id) {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES['ELIMINADO'], "uuid" => $id);
@@ -49,6 +74,12 @@ class UserDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Método que actualizará un usuario en la base de datos
+     * 
+     * @param model\dao\dto\User $obj usuario a actualizar
+     * @return string número de filas actualizadas
+     */
     public function update($obj) {
         $prev = $this->search("uuid", $obj->getUuid(), 1);
         if (trim($obj->getName()) == '') {

@@ -7,6 +7,9 @@ use core\AbstractController;
 use core\RegularUtils;
 use model\dao\dto\User;
 
+/**
+ * Clase controladora de usuario y sus acciones básicas relacionadas
+ */
 class UserController extends AbstractController {
 
     private $userModel;
@@ -28,8 +31,6 @@ class UserController extends AbstractController {
      * Página principal del usuario
      */
     public function index() {
-        //TODO: según el usuario se mostrará la dashboard del admin 
-        // por defecto o su página de administración básica
         //Conseguimos todos los usuarios
         //Cargamos la vista index y le pasamos valores
         $ads = $this->adModel->getTop();
@@ -39,6 +40,11 @@ class UserController extends AbstractController {
         ));
     }
 
+    /**
+     * Método de consulta de usuario, consultará los datos del usuario para mostrarlos y,
+     * en caso de ser el mismo usuario quien se consulta a sí mismo, el listado de las peticiones
+     * para mostrarlas
+     */
     public function readUser() {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'), "GET")['uuid'];
@@ -51,8 +57,12 @@ class UserController extends AbstractController {
             } else {
                 $userAds = $this->adModel->countUserAds($user->id);
                 $userComments = $this->commentModel->countUserComments($user->id);
-                $numRequests = $this->requestModel->countUserRequests($user->id);
-                $requests = $this->requestModel->listUserRequest($user);
+                $numRequests = 0;
+                $requests = array();
+                if (verifyIsSame()) {
+                    $numRequests = $this->requestModel->countUserRequests($user->id);
+                    $requests = $this->requestModel->listUserRequest($user);
+                }
                 $this->view("profile", array(
                     'title' => "profile",
                     "user" => $user,

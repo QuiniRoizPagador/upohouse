@@ -1,15 +1,28 @@
+/**
+ * Plugin que buscará en tiempo real mientras el usuario está escribiendo en el buscador
+ * global
+ */
 (function ($) {
     $.fn.globalSearch = function () {
         this.each(function () {
+            /**
+             * Cuando pulsa intro se redirige al listado paginado
+             */
             $(this).keypress(function (event) {
                 if (event.which == 13) {
                     window.location = "index/Ad/paginate&query=" + $.trim($(".searcher").val());
                 }
             });
+            /**
+             * Desaparición lenta
+             */
             $(this).blur(function () {
                 $(this).val("");
                 $("#searchList").hide("slow");
             });
+            /**
+             * limpieza y aparición rápida
+             */
             $(this).click(function () {
                 $(this).val("");
                 var lista = $("#searchList");
@@ -19,6 +32,9 @@
                     lista.empty();
                 });
             });
+            /**
+             * Búsqueda global al escribir
+             */
             $(this).keyup(function () {
                 var lista = $("#searchList");
                 if ($.trim($(".searcher").val()) != "") {
@@ -32,8 +48,8 @@
                                     lista.empty();
                                     $.map(data, function (k, v) {
                                         var li = "<a class='resultado dropdown-item' href='index/Ad/read&uuid=" + k.uuid + "'>"
-                                                + "<img class='img img-thumbnail' src='" + (k.thumbnail?k.thumbnail:'view/images/home.png') + "' alt='"+k.uuid+"' style='width:50px;'/>"
-                                                + " <b>" + LANG['descripcion'] + "</b>: " + k.name + " - " + "<b>" +LANG['m2'] + "</b>: " + k.m_2 +
+                                                + "<img class='img img-thumbnail' src='" + (k.thumbnail ? k.thumbnail : 'view/images/home.png') + "' alt='" + k.uuid + "' style='width:50px;'/>"
+                                                + " <b>" + LANG['descripcion'] + "</b>: " + k.name + " - " + "<b>" + LANG['m2'] + "</b>: " + k.m_2 +
                                                 " - <b>" + LANG['habitaciones'] + "</b>: " + k.rooms + " - <b>" + LANG['precio'] + "</b>: " + k.price +
                                                 "</a>";
                                         $($(".searcher").val().split(" ")).each(function () {

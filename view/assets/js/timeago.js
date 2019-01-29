@@ -1,3 +1,6 @@
+/**
+ * Funciones necesarias para calcular los tiempos
+ */
 var templates = {
     prefix: LANG['prefix_ago'],
     suffix: LANG['suffix_ago'],

@@ -2,7 +2,7 @@
     <div class="pb-2 mb-3 border-bottom">
         <h2 class="h2"><?= $lang["añadir anuncio"] ?></h2>
     </div>
-    <form class="formUser" action="<?php echo $helper->url("Ad", "create"); ?>" method="post" enctype="multipart/form-data">
+    <form class="form" action="<?php echo $helper->url("Ad", "create"); ?>" method="post" enctype="multipart/form-data">
         <?php
         if (isset($errors['create']['query'])) {
             ?>

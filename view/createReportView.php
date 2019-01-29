@@ -28,7 +28,7 @@ require_once 'core/templates/head.php';
                     break;
             }
             ?>
-            <form method="post" action="<?= $url ?>" class="formUser">
+            <form method="post" action="<?= $url ?>" class="form">
                 <div class="form-control col-md-6 content-center has-success">
                     <input type="hidden" value="<?= $_POST['uuid'] ?>" name="uuid" id="uuid" />
                     <label for="title" class="col-form-label"><?= $lang["titulo"] ?>:</label>

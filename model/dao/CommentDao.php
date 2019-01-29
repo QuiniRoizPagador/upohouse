@@ -76,7 +76,7 @@ class CommentDao extends AbstractDao {
 
     /**
      * Método que borra comentarios
-     * @param Integer $id id del comentario a borrar
+     * @param Integer $id uuid del comentario a borrar
      */
     public function delete($id) {
         $query = "UPDATE $this->table SET state = ? WHERE uuid = ?";
@@ -160,6 +160,13 @@ class CommentDao extends AbstractDao {
         $row = $query->fetch_object();
         mysqli_free_result($query);
         return $row->count;
+    }
+
+    public function blockNoRemovedComment($ad) {
+        $query = "UPDATE $this->table SET `state` = ? WHERE ad_id = ? AND state != ?";
+        $data = array("is", "state" => STATES["BLOQUEADO"], "ad_id" => $ad, 'state' => STATES["ELIMINADO"]);
+        $res = parent::preparedStatement($query, $data, FALSE);
+        return $res;
     }
 
 }

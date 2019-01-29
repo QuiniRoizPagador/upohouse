@@ -4,6 +4,9 @@ require_once "core/AbstractDao.php";
 
 use core\AbstractDao;
 
+/**
+ * Clase especializada de acceso a la base de datos para denuncias
+ */
 class ReportDao extends AbstractDao {
 
     /**
@@ -13,6 +16,12 @@ class ReportDao extends AbstractDao {
         parent::__construct("Reports");
     }
 
+    /**
+     * Método que creará una denuncia
+     * 
+     * @param model\dao\dto\Report $obj denuncia a crear
+     * @return string número de filas afectadas en la base de datos
+     */
     public function create($obj) {
         $query = "INSERT INTO $this->table (`uuid`, title, description, `user_id`, user_reported,
             comment_reported, request_reported, ad_reported)
@@ -25,6 +34,12 @@ class ReportDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Actualización de una petición
+     * 
+     * @param model\dao\dto\Report $obj petición a actualizar
+     * @return string número de filas afectadas en la base de datos
+     */
     public function update($obj) {
         $prev = $this->search("uuid", $obj->getUuid(), FALSE);
         if (trim($obj->getState()) == '') {
@@ -38,6 +53,7 @@ class ReportDao extends AbstractDao {
 
     /**
      * Método que modifica el estado de una denuncia
+     * 
      * @param String $uuid uuid de la denuncia
      * @param String estado al que debe pasar la denuncia
      */
@@ -66,6 +82,7 @@ class ReportDao extends AbstractDao {
 
     /**
      * Método que devuelve los usuarios denunciados paginados
+     * 
      * @param Integer $pag número del offset de paginación
      */
     public function getAllReportUserPaginated($pag = 0) {
@@ -115,6 +132,7 @@ class ReportDao extends AbstractDao {
 
     /**
      * Método que devuelve los anuncios denunciados paginados
+     * 
      * @param Integer $pag número del offset de paginación
      */
     public function getAllReportAdPaginated($pag = 0) {
@@ -150,6 +168,7 @@ class ReportDao extends AbstractDao {
 
     /**
      * Método que devuelve los comentarios denunciados paginados
+     * 
      * @param Integer $pag número del offset de paginación
      */
     public function getAllReportCommentPaginated($pag = 0) {
@@ -208,6 +227,7 @@ class ReportDao extends AbstractDao {
     /**
      * Método que devuelve si un usuario ha sido denunciado por 
      * el otro usuario pasado como parámetro
+     * 
      * @param Integer $me id del usuario logueado
      * @param Integer $otherUser id del usuario sobre que se consulta 
      * la denuncia
@@ -226,6 +246,7 @@ class ReportDao extends AbstractDao {
     /**
      * Método que devuelve si un anuncio ha sido denunciado por 
      * el usuario pasado como parámetro
+     * 
      * @param Integer $user id del usuario logueado
      * @param Integer $ad id del anuncio sobre que se consulta 
      * la denuncia
