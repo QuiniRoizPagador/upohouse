@@ -9,6 +9,9 @@ use core\RegularUtils;
 use model\dao\dto\Ad;
 use model\dao\dto\Image;
 
+/**
+ * Clase controladora de anuncios y sus acciones básicas relacionadas
+ */
 class AdController extends AbstractController {
 
     private $adModel;
@@ -24,6 +27,9 @@ class AdController extends AbstractController {
     private $userModel;
     private $reportModel;
 
+    /**
+     * Método constructor.
+     */
     public function __construct() {
         parent::__construct();
         $this->adModel = new AdModel();
@@ -40,6 +46,10 @@ class AdController extends AbstractController {
         $this->reportModel = new ReportModel();
     }
 
+    /**
+     * Método que muestra una vista que permite modificar un anuncio existente.
+     * Dicho anuncio viene determinado por un parámetro recibido por GET.
+     */
     public function modifyView() {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
@@ -64,6 +74,11 @@ class AdController extends AbstractController {
         }
     }
 
+    /**
+     * Método que lleva a cabo la modificación de un anuncio existente, el cual viene
+     * determinado por un parámetro GET. El nuevo valor de los campos son recibidos por POST
+     * y se conservarán los valores de los campos no modificados.
+     */
     public function modify() {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $uuid = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
@@ -185,7 +200,7 @@ class AdController extends AbstractController {
     }
 
     /**
-     * Página para crear anuncio.
+     * El método muestra una vista, la cual permite la creación de un anuncio.
      */
     public function createView() {
         $allHousingTypes = $this->housingTypeModel->getAll();
@@ -200,6 +215,11 @@ class AdController extends AbstractController {
         ));
     }
 
+    /**
+     * El método permite crear un nuevo anuncio en la base de datos. Recibiendo todos los valores
+     * necesarios a través de POST. Además, muestra el mensaje relacionado con el estado final de la
+     * transacción.
+     */
     public function create() {
         $allHousingTypes = $this->housingTypeModel->getAll();
         $allOperationTypes = $this->operationTypeModel->getAll();
@@ -270,6 +290,10 @@ class AdController extends AbstractController {
         }
     }
 
+    /**
+     * Método que muestra los datos de un anuncio. Dicho anuncio es identificado mediante
+     * un parámetro vía GET.
+     */
     public function read($pag = NULL) {
         if (filter_has_var(INPUT_GET, "uuid")) {
 
@@ -334,6 +358,10 @@ class AdController extends AbstractController {
         }
     }
 
+    /**
+     * Método que tiene como objetivo bloquear un anuncio identificado mediante
+     * un parámetro recibido por GET.
+     */
     public function block() {
         if (filter_has_var(INPUT_GET, "uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
@@ -345,6 +373,10 @@ class AdController extends AbstractController {
         $this->redirect("Admin", "dashboard", array("show" => "ads"));
     }
 
+    /**
+     * Método que tiene como objetivo desbloquear un anuncio identificado mediante
+     * un parámetro recibido por GET.
+     */
     public function unblock() {
         if (filter_has_var(INPUT_GET, "uuid") && (verifyIsAdmin())) {
             $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
@@ -356,6 +388,10 @@ class AdController extends AbstractController {
         $this->redirect("Admin", "dashboard", array("show" => "ads"));
     }
 
+    /**
+     * Método que tiene como objetivo eliminar un anuncio identificado mediante
+     * un parámetro recibido por GET.
+     */
     public function remove() {
         if (filter_has_var(INPUT_GET, "uuid")) {
             $id = RegularUtils::sanearStrings(array('uuid'), 'GET')['uuid'];
@@ -369,6 +405,9 @@ class AdController extends AbstractController {
         $this->redirect("User", "index", array("show" => "ads"));
     }
 
+    /**
+     * Método que tiene como objetivo devolver un conjunto de anuncios en función de un parámetro offset.
+     */
     public function paginate() {
         if (filter_has_var(INPUT_GET, 'query') && trim($_GET['query']) != "") {
             $pag = 0;
@@ -393,6 +432,10 @@ class AdController extends AbstractController {
         }
     }
 
+    /**
+     * Método que muestra un listado de anuncios en función de algunos parámetros
+     * recibidos mediante GET.
+     */
     public function listAds() {
         $house = null;
         $operation = null;

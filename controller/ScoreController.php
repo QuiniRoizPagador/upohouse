@@ -7,10 +7,17 @@ use core\AbstractController;
 use core\RegularUtils;
 use model\dao\dto\Score;
 
+/**
+ * Clase controladora de puntuaciones y sus acciones básicas relacionadas
+ */
 class ScoreController extends AbstractController {
 
     private $scoreModel;
     private $adModel;
+
+    /*
+     * Método constructor.
+     */
 
     public function __construct() {
         parent::__construct();
@@ -18,6 +25,10 @@ class ScoreController extends AbstractController {
         $this->adModel = new AdModel();
     }
 
+    /*
+     * Método que almacena un valoración (gusta o no gusta) sobre un anuncio por parte
+     * de un usuario
+     */
     public function score() {
         $values = array("ad_uuid" => "text", "score" => "number");
         $erros = RegularUtils::filtrarPorTipo($values, "score");

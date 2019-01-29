@@ -5,21 +5,33 @@ require_once 'core/RegularUtils.php';
 use core\AbstractController;
 use core\RegularUtils;
 
+/**
+ * Clase controladora de la sesión y sus acciones básicas relacionadas.
+ */
 class SessionController extends AbstractController {
 
     private $userModel;
 
+    /*
+     * Método constructor de la clase.
+     */
     public function __construct() {
         parent::__construct();
         $this->userModel = new UserModel();
     }
 
+    /*
+     * Método que muestra la vista de iniciar sesión
+     */
     public function login() {
         $this->view("login", array(
             "title" => "login",
         ));
     }
 
+    /*
+     * Método que cierra la sesión de un usuario logueado en el sistema.
+     */
     public function logout() {
         unset($_SESSION['login']);
         unset($_SESSION['name']);
@@ -31,6 +43,10 @@ class SessionController extends AbstractController {
         $this->redirect();
     }
 
+    /*
+     * Método que inicia la sesión de un usuario en el sistema, si los
+     * datos introducidos son correctos.
+     */
     public function verify() {
         $values = array("name" => "text", "password" => "text");
         $errors = RegularUtils::filtrarPorTipo($values, "login");
