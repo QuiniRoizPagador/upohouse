@@ -1,0 +1,136 @@
+\chapter{Resumen ejecutivo}
+
+\section{HTML5}
+
+Se han utilizado las etiquetas main, section, nav, article, footer, picture, 
+source por motivos de sem\'{a}ntica del sitio. La etiqueta main mostrar\'{a} el contenido principal, section 
+abarca una parte del main, es decir, secciones de la p\'{a}gina. Footer mostrar\'{a} el pie de p\'{a}gina, donde se suelen
+encontrar contactos y enlaces de utilidad. Article es usado para peque\~{n}as partes que contienen los sections,
+aportando informaci\'{o}n de forma individual. Nav es utilizado en los men\'{u}s de navegaci\'{o}n, de forma que se 
+pueda encontrar r\'{a}pidamente la situaci\'{o}n del mismo en el c\'{o}digo web. La etiqueta picture tiene un uso con visibilidad
+futuras ampliaciones, adem\'{a}s de facilidades para interpretadores web para personas con diversidad funcional.
+
+Atributos data-* y srcset, adem\'{a}s de aquellos aportados por las plantillas de Bootstrap
+ aportan informaci\'{o}n adicional de la etiqueta, donde lenguajes como JavaScript pueden hacer uso de ellas.
+
+
+\section{Aportaciones JavaScript }
+
+A partir de las posibilidades contempladas en este sistema, las aportaciones del lenguaje de javascript (mayormente utilizando la librer\'{i}a JQUERY)
+han facilitado los siguientes puntos:
+\begin{itemize}
+
+
+\item Validaciones(Validation.js): Se ha creado un plugin JQuery para validaciones del lado del cliente, donde se permita en una sola llamada
+y a partir de un selector y un par\'{a}metro posible la validaci\'{o}n de formularios de casi cualquier tipo.
+
+Los campos ser\'{a}n validados individualmente seg\'{u}n su tipo, seg\'{u}n la clase que contentan (no-validate o can-be-empty), 
+o hasta validaciones de dos campos de contrase\~{n}a en tiempo real mientras se escriben.
+
+\item Paginasiones(Pagination.js): Para cada tabla existente en el sistema se han realizado una aportaci\'{o}n individual y personalizada
+de una paginaci\'{o}n as\'{i}ncrona, la cual bloquea la interfaz de usuario mostrando un modal y un Spiner dando vueltas.
+Tras este bloqueo, el plugin realiza la petici\'{o}n pertinente al WebService y obtiene una respuesta en funci\'{o}n
+de los par\'{a}metros enviados en formato JSON, que posteriormente ser\'{a} recorrido en un mapeo de objetos inflando
+en las tablas sus correspondientes datos y, en caso necesario, modales.
+
+\item Buscador Global (Searcher.js): Este peque\~{n}o plugin detectar\'{a} la pulsaci\'{o}n de las teclas por el usuario 
+al escribir en cierto formulario que se ha facilitado en la vista principal (aunque es portable a otros sistemas).
+Tras cadad letra escrita, enviar\'{a} una petici\'{o}n al servidor para que \'{e}ste le devuelva las coincidencias encontradas 
+en un m\'{a}ximo de 10 y, posteriormente, al igual que el plugin "paginations.js", inflar debajo del formulario el resultado
+de forma amigable. Al hacer click en estos resultados se redirigir\'{a} a la consulta adecuada. Si por el contrario, el usuario
+pulsa intro al escribir en vez de seleccionar uno de los resultados se redireccionar\'{a} a un listado paginado de todos los resultados
+posibles dentro del sistema.
+
+
+\item Localizaciones (Localizations.js): Este script act\'{u}a en la creaci\'{o}n y modificaci\'{o}n de los anuncios,
+cuyo objetivo es cargar de forma as\'{i}ncrona las provincias y municipios del sistema en funci\'{o}n de los datos
+seleccionados por el usuario (comunidad y provincia). Para ello se vale de peticiones AJAX hacia el WebService 
+y, tras recibir los datos, los muestra en los campos 'select' oportunos.
+
+
+\item Hace X tiempo: Tanto a nivel de php como de javascript se ha realizado una funcionalidad que facilite el conteo de tiempo
+para tarjetas y modales, de forma que en vez de mostrar una fecha y hora, el sistema mostrar\'{a} "hace tantos minutos, horas o segundos".
+La implementaci\'{o}n en javascript es utilizada por los plugins de peticiones al servidor.
+
+\end{itemize}
+
+\section{Aportaci\'{o}n WebService}
+ Se ha implementado un controlador de WebService en el sistema para hacerse cargo de aquellas peticionesde tipo 
+ AJAX (POST siempre) realizadas desde la b\'{u}squeda. El webservice en cada uno de sus m\'{e}todos recibir\'{a} los par\'{a}metros
+ esperados y, tras validarlos y sanearlos, realizar\'{a} la petici\'{o}n correspondiente a la base de datos, devolviendo 
+ en formato JSON el resultado. En caso de no haber verificado correctamente los datos recibidos por par\'{a}metro
+ o ser una funci\'{o}n distinta a POST, se redirigir\'{a} a la p\'{a}gina principal.
+
+
+\section{Aportaci\'{o}n de traducci\'{o}n}
+
+Se ha decidido aportar al sistema una forma sencilla de traducir la p\'{a}gina web, de forma que con un fichero .php para cada idioma con un
+diccionario de claves-valores equivalentes y con los diferentes valores traducidos, el usuario sea capaz de ver la p\'{a}gina
+en otro idioma (en particular espa\~{n}ol e ingl\'{e}s). Esta misma funcionalidad se ha ampliado adem\'{a}s a su uso y compatibilidad con javascript,
+permitiendo a las peticiones ajax actualizar sus valores de forma sencilla.
+
+
+\section{Aportaci\'{o}n galer\'{i}a}
+Para el visualizado de las im\'{a}genes asociadas a un anuncio se ha creado una galer\'{i}a, la cual har\'{a} tambi\'{e}n uso del plugin ZoomJS para
+hacer zoom al clickear sobre la imagen mostrada. Las im\'{a}genes ir\'{a}n rotando en un modal mostrado con dos botones laterales de navegaci\'{o}n
+en caso de tener m\'{a}s de una imagen que mostrar.
+
+\section{Aportaciones de Librer\'{i}as}
+\begin{itemize}
+
+
+\item PHPMAIL: Para el env\'{i}o de mensajes de correo se ha hecho uso de PHPMail, el cual se encuentra encapsulado en core/MailUtils.php para su r\'{a}pido uso 
+en funciones est\'{a}ticas.
+
+\item Jquery: Para facilitar el uso de animaciones y acceso r\'{a}pido a variables de forma segura se ha hecho uso de 
+\item JQuery, el cual aporta tambi\'{e}n buenas pr\'{a}cticas de programaci\'{o}n y facilita el uso de AJAX para conexiones al WebService 
+mencionado anteriormente.
+
+\item ChartJS: Se ha hecho uso de la librer\'{i}a ChartJS para mostrar gr\'{a}ficos en la zona de administraci\'{o}n, en particular de los usuarios
+y los comentarios, mostrando fechas de registro frente a cantidades por meses/a\~{n}os.
+
+\item Zoom.js: En la galer\'{i}a implementada para la visualizaci\'{o}n de im\'{a}genes de los anuncios se ha hecho uso de la librer\'{i}a
+vista en el \'{u}ltimo examen de la asignatura, de forma que el usuario pueda ampliar la imagen al hacer click en ella.
+
+\item Bootstrap: Para controlar, gestionar y facilitar el dise\~{n}o web se ha hecho uso de la librer\'{i}a Boostrap v4.0, la cual, adem\'{a}s de facilitar en sus
+llamadas a clases un est\'{a}ndar propio basado en GRID de 12 columnas, implementaciones de modales, botones, visualizaciones de validaciones, etc.
+
+\item Font-Awesome: Para el uso de iconos se ha hecho uso de Font-Awesome, una librer\'{i}a gratu\'{i}ta que, a partir de css y, a veces, javascript
+mostrar\'{a} diferentes iconos en etiquetas del tipo <i> y <span> con tan s\'{o}lo llamar a una clase 'fa fa-nombreicono', adem\'{a}s
+de permitir controlar efectos, rotaciones, tama\~{n}os...
+\end{itemize}
+
+\section{Patrones de usabilidad utilizados}
+
+Se han utilizado algunos patrones de usabilidad para hacer la web 
+m\'{a}s amigable, intuitiva y sencilla para el usuario, de forma que se sienta c\'{o}modo con ella.
+Aplicaciones como el men\'{u} de navegaci\'{o}n, el buscador global, el inicio de sesi\'{o}n, el registro,
+dashboard y similares han sido los tenidos en cuenta.\\
+
+Adem\'{a}s, cuando un usuario completa un formulario con datos incorrectos, el servidor 
+muestra al usuario nuevamente estos datos, para que no se tengan que introducir otra vez.
+
+
+\section{Seguridad y formato}
+
+Como se ha mencioado en otros puntos de esta documentaci\'{o}n, el sistema contempla intentos de inyecci\'{o}n SQL y ataques XSS.
+Las inyecciones SQL se han controlado en la capa del controlador haciendo uso de core/RegularUtils.php y sus m\'{e}todos de saneamiento.
+Estas mismas funciones ayudar\'{a}n a evitar los ataques de XSS. Adem\'{a}s de este filtro, en la capa de DAO que accede a la base de datos
+se ha hecho uso de los PreparedStatement que filtrar\'{a}n este tipo de intentos.\\
+
+Los par\'{a}metros recibidos por post son exhaustivamente verificados en cada controlador, del mismo modo que se hace en las vistas con el uso
+de validations.js, a\~{n}adiendo una capa de validaci\'{o}n en el lado del servidor.
+
+
+\section{Patrones de arquitectura}
+La arquitectura de este sistema ha sido creada bas\'{a}ndose en un modelo MVC, haciendo uso de vistas que ser\'{a}n llamadas
+por los controladores, los cuales recibir\'{a}n datos por POST y/o GET, llamar\'{a}n a alg\'{u}n modelo en particular y soliciten ciertos
+datos a la l\'{o}gica de negocio. Adem\'{a}s, se presenta un patr\'{o}n de microarquitectura que facilitar\'{a} el acceso a la base de datos haciendo uso
+de una herencia de DAO gen\'{e}rico con los CRUD b\'{a}sicos y una implementaci\'{o}n por cadad Data Transfer Object que especialice estas funcionalidades 
+o ampl\'{i}en. El patr\'{o}n MVC mostrado presenta adem\'{a}s clases gen\'{e}ricas residentes en el paquete 'core',
+que contentr\'{a}n las estructuras b\'{a}sicas a heredar del sistema. \\
+
+Para el acceso a la base de datos, los DAO hacen uso de una clase que implementa el patr\'{o}n Singleton, llamada Conection.php. El motivo de este uso 
+es mantener una conexi\'{o}n \'{u}nica en el acceso a la base de datos a trav\'{e}s de una \'{u}nica instancia de esta conexi\'{o}n.
+
+
