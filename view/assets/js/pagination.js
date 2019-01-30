@@ -896,17 +896,19 @@ function cargarComentarioAd(comentario)
     divCard.append($("<h5 class='mt-0'><a href='index/user/readUser&uuid=" + comentario.uuid_user + "'>" + comentario.login + "</a></h5>"));
     var session = $("#session").val();
 
-    if (!!comentario.denunciado && session == 'true')
+    if (!comentario.denunciado && session == 'true')
     {
-
-        var divDenuncias = $("<div class='float-lg-right'>");
-        divCard.append(divDenuncias);
-        var form = $("<form method='post' action='index.php?controller=report&action=createReport'>");
-        divDenuncias.append(form);
-        form.append($("<input type='hidden' value='" + REPORTS['COMMENT'] + "' name='report' id='report'>"));
-        form.append($("<input type='hidden' value='" + comentario.uuid + "' name='uuid' id='uuid'>"));
-        form.append($("<input type='hidden' value='" + REPORTS['COMMENT'] + "' name='report' id='report'>"));
-        form.append($("<button type='submit' class='btn btn-warning btn-sm float-lg-right'><i class='fa fa-exclamation-triangle'></i></button> "));
+        if ($("#login").val() != comentario.login)
+        {
+            var divDenuncias = $("<div class='float-lg-right'>");
+            divCard.append(divDenuncias);
+            var form = $("<form method='post' action='index.php?controller=report&action=createReport'>");
+            divDenuncias.append(form);
+            form.append($("<input type='hidden' value='" + REPORTS['COMMENT'] + "' name='report' id='report'>"));
+            form.append($("<input type='hidden' value='" + comentario.uuid + "' name='uuid' id='uuid'>"));
+            form.append($("<input type='hidden' value='" + REPORTS['COMMENT'] + "' name='report' id='report'>"));
+            form.append($("<button type='submit' class='btn btn-warning btn-sm float-lg-right'><i class='fa fa-exclamation-triangle'></i></button> "));
+        }
     }
 
     divCard.append($("<p>" + comentario.content + "</p>"));

@@ -323,7 +323,7 @@
         ?>
         <div class="media text-center">
             <div class="card card-body media-body">
-                <h5 class="mt-0"><a href="index/session/login"><?= $lang["inicie sesion"] ?></a></h5>
+                <h5 class="mt-0"><a href="index/session/login"><?= $lang["inicie sesion"] ?></a> para comentar</h5>
             </div>
         </div>
     <?php }
@@ -335,7 +335,7 @@
                 <div class="media">
                     <div class="card card-body media-body">
                         <h5 class="mt-0"><a href="<?php echo $helper->url("user", "readUser", array("uuid" => "$result->uuid_user")); ?>"><?= $result->login ?></a></h5>
-                        <?php if (isset($result->denunciado) && !$result->denunciado) { ?>
+                        <?php if (isset($result->denunciado) && !$result->denunciado && $result->login != $_SESSION['login']) { ?>
                             <div class="float-lg-right">
                                 <form method="post" action="<?= $helper->url("report", "createReport") ?>">
                                     <input type="hidden" value="<?= REPORTS['COMMENT'] ?>" name="report"  id="report"/>
@@ -350,7 +350,19 @@
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+            <?php } 
+            
+            if(isset($_SESSION['login']))
+            {
+                $login=$_SESSION['login'];
+                ?>
+                        <input type="hidden" value="<?= 'true' ?>" name="session" id="session" />
+                        <input type="hidden" value="<?= $login ?>" name="login" id="login" />
+            <?php
+            }
+?>
+
+            
         </div>
     </div>
     <br>
