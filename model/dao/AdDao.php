@@ -308,7 +308,7 @@ class AdDao extends AbstractDao {
         $data = array("ssssss", $param, $param, $param, $param, $param, $param);
         $res = $this->preparedStatement($query, $data);
         if (isset($res[0]->ads)) {
-            return $res->ads;
+            return $res[0]->ads;
         }
         return 0;
     }
