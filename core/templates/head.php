@@ -60,14 +60,8 @@ function error($text) {
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
-        <!-- PRUEBAS -->
-        <base href="//<?= $_SERVER['HTTP_HOST'] ?>/CorePHPMVC/">
+        <base href="//<?= $_SERVER['HTTP_HOST'] ?>/upohouse/">
 
-        <?php /*
-         * <!-- PRODUCCIÓN -->
-         * <base href="//<?=$_SERVER['HTTP_HOST']?>"> 
-         * 
-         */ ?>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $lang[$title] ?></title>

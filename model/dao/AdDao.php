@@ -138,6 +138,9 @@ class AdDao extends AbstractDao {
         return $resultSet;
     }
 
+    /**
+     * Función que contará el número de anuncios
+     */
     public function countAds() {
         $query = $this->mysqli->query("SELECT count(*) as count FROM $this->table WHERE state != " . STATES['ELIMINADO'] . " ORDER BY id DESC LIMIT 1");
         $row = $query->fetch_object();
@@ -145,13 +148,19 @@ class AdDao extends AbstractDao {
         return $row->count;
     }
 
+    /**
+     * Función que bloqueará un ad basado en su uuid
+     */
     public function block($uuid) {
         $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES["BLOQUEADO"], "uuid" => $uuid);
         $res = parent::preparedStatement($query, $data, FALSE);
         return $res;
-    }
+    }   
 
+    /**
+     * Función que desbloqueará un ad
+     */
     public function unblock($uuid) {
         $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES["NEUTRO"], "uuid" => $uuid);
@@ -159,6 +168,9 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Función que realizará un borrado lógico de un ad en la base de datos
+     */
     public function delete($uuid) {
         $query = "UPDATE $this->table SET `state` = ? WHERE uuid = ?";
         $data = array("is", "state" => STATES["ELIMINADO"], "uuid" => $uuid);
@@ -166,6 +178,9 @@ class AdDao extends AbstractDao {
         return $res;
     }
 
+    /**
+     * Función que contará el número de anuncios asociados a un usuario
+     */
     public function countUserAds($id) {
         $query = "SELECT COUNT(*) as ads from $this->table WHERE user_id = ? AND state = ?";
         $data = array("ii", "user_id" => $id, "state" => STATES["NEUTRO"]);
@@ -254,7 +269,7 @@ class AdDao extends AbstractDao {
         $param = str_replace(" ", "* *", trim($param));
         $param .= "*";
         $query = "SELECT
-            COUNT(*) AS count
+            COUNT(*) AS ads
         FROM
             Ads AS a
         JOIN Communities AS c
@@ -291,9 +306,9 @@ class AdDao extends AbstractDao {
             GROUP BY a.uuid";
 
         $data = array("ssssss", $param, $param, $param, $param, $param, $param);
-        $res = $this->preparedStatement($query, $data)[0];
-        if (isset($res->count)) {
-            return $res->count;
+        $res = $this->preparedStatement($query, $data);
+        if (isset($res[0]->ads)) {
+            return $res->ads;
         }
         return 0;
     }
