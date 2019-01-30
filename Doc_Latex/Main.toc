@@ -320,7 +320,7 @@
 \contentsline {section}{\numberline {4.5}Otros}{76}{section.4.5}
 \contentsline {chapter}{\numberline {5}Modelo Entidad Relaci\'{o}n}{79}{chapter.5}
 \contentsline {section}{\numberline {5.1}Atributos y entidades}{79}{section.5.1}
-\contentsline {section}{\numberline {5.2}Relaciones y entidades}{79}{section.5.2}
+\contentsline {section}{\numberline {5.2}Relaciones y entidades}{80}{section.5.2}
 \contentsline {chapter}{\numberline {6}Tabla Crud}{82}{chapter.6}
 \contentsline {chapter}{\numberline {7}Puntos donde se manipulan las entidades}{83}{chapter.7}
 \contentsline {section}{\numberline {7.1}Usuario}{83}{section.7.1}
@@ -406,11 +406,11 @@
 \contentsline {subsection}{\numberline {12.3.1}P\'{a}gina Principal}{129}{subsection.12.3.1}
 \contentsline {subsection}{\numberline {12.3.2}Anuncios}{129}{subsection.12.3.2}
 \contentsline {subsection}{\numberline {12.3.3}Perfil de Usuario}{129}{subsection.12.3.3}
-\contentsline {subsection}{\numberline {12.3.4}Dashboard o panel de gesti\'{o}n}{130}{subsection.12.3.4}
+\contentsline {subsection}{\numberline {12.3.4}Dashboard o panel de gesti\'{o}n}{129}{subsection.12.3.4}
 \contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Usuarios}{130}{section*.251}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{133}{section*.252}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{132}{section*.252}
 \contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Comentarios}{133}{section*.253}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{134}{section*.254}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{133}{section*.254}
 \contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Denuncias}{135}{section*.255}
 \contentsline {chapter}{\numberline {13}Casos de Prueba}{141}{chapter.13}
 \contentsline {section}{\numberline {13.1}Soluciones a vulnerabilidades}{141}{section.13.1}
@@ -424,4 +424,4 @@
 \contentsline {section}{\numberline {14.6}Aportaciones de Librer\'{i}as}{145}{section.14.6}
 \contentsline {section}{\numberline {14.7}Patrones de usabilidad utilizados}{145}{section.14.7}
 \contentsline {section}{\numberline {14.8}Seguridad y formato}{146}{section.14.8}
-\contentsline {section}{\numberline {14.9}Patrones de arquitectura}{146}{section.14.9}
+\contentsline {section}{\numberline {14.9}Patrones de dise\~{n}o y arquitectura}{146}{section.14.9}
