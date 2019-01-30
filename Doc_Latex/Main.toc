@@ -384,39 +384,44 @@
 \contentsline {section}{\numberline {8.11}Puntuaciones}{108}{section.8.11}
 \contentsline {section}{\numberline {8.12}Estados}{109}{section.8.12}
 \contentsline {section}{\numberline {8.13}Usuarios}{109}{section.8.13}
-\contentsline {chapter}{\numberline {9}Diagrama de Despliegue}{110}{chapter.9}
-\contentsline {chapter}{\numberline {10}Diagrama de Flujo}{111}{chapter.10}
-\contentsline {chapter}{\numberline {11}Manual de Usuario}{115}{chapter.11}
-\contentsline {section}{\numberline {11.1}Usuario no logueado}{115}{section.11.1}
-\contentsline {subsection}{\numberline {11.1.1}P\'{a}gina Principal}{115}{subsection.11.1.1}
-\contentsline {subsection}{\numberline {11.1.2}Registro e Inicio de Sesi\'{o}n}{117}{subsection.11.1.2}
-\contentsline {subsection}{\numberline {11.1.3}Anuncios}{118}{subsection.11.1.3}
-\contentsline {section}{\numberline {11.2}Usuario Registrado}{121}{section.11.2}
-\contentsline {subsection}{\numberline {11.2.1}P\'{a}gina Principal}{121}{subsection.11.2.1}
-\contentsline {subsection}{\numberline {11.2.2}Anuncios}{121}{subsection.11.2.2}
-\contentsline {subsection}{\numberline {11.2.3}Perfil de Usuario}{122}{subsection.11.2.3}
-\contentsline {subsubsection}{\nonumberline Perfil de otros usuarios}{123}{section*.250}
-\contentsline {subsection}{\numberline {11.2.4}Crear una denuncia}{124}{subsection.11.2.4}
-\contentsline {section}{\numberline {11.3}Usuario Administrador}{125}{section.11.3}
-\contentsline {subsection}{\numberline {11.3.1}P\'{a}gina Principal}{125}{subsection.11.3.1}
-\contentsline {subsection}{\numberline {11.3.2}Anuncios}{125}{subsection.11.3.2}
-\contentsline {subsection}{\numberline {11.3.3}Perfil de Usuario}{125}{subsection.11.3.3}
-\contentsline {subsection}{\numberline {11.3.4}Dashboard o panel de gesti\'{o}n}{126}{subsection.11.3.4}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Usuarios}{126}{section*.251}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{129}{section*.252}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Comentarios}{129}{section*.253}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{130}{section*.254}
-\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Denuncias}{131}{section*.255}
-\contentsline {chapter}{\numberline {12}Casos de Prueba}{134}{chapter.12}
-\contentsline {section}{\numberline {12.1}Soluciones a vulnerabilidades}{134}{section.12.1}
-\contentsline {section}{\numberline {12.2}Vulnerabilidades no controladas}{135}{section.12.2}
-\contentsline {chapter}{\numberline {13}Resumen ejecutivo}{136}{chapter.13}
-\contentsline {section}{\numberline {13.1}HTML5}{136}{section.13.1}
-\contentsline {section}{\numberline {13.2}Aportaciones JavaScript}{136}{section.13.2}
-\contentsline {section}{\numberline {13.3}Aportaci\'{o}n WebService}{137}{section.13.3}
-\contentsline {section}{\numberline {13.4}Aportaci\'{o}n de traducci\'{o}n}{137}{section.13.4}
-\contentsline {section}{\numberline {13.5}Aportaci\'{o}n galer\'{i}a}{138}{section.13.5}
-\contentsline {section}{\numberline {13.6}Aportaciones de Librer\'{i}as}{138}{section.13.6}
-\contentsline {section}{\numberline {13.7}Patrones de usabilidad utilizados}{138}{section.13.7}
-\contentsline {section}{\numberline {13.8}Seguridad y formato}{139}{section.13.8}
-\contentsline {section}{\numberline {13.9}Patrones de arquitectura}{139}{section.13.9}
+\contentsline {chapter}{\numberline {9}Diagrama Interno}{111}{chapter.9}
+\contentsline {section}{\numberline {9.1}Visi\'{o}n General}{111}{section.9.1}
+\contentsline {section}{\numberline {9.2}Invitado}{111}{section.9.2}
+\contentsline {section}{\numberline {9.3}Usuario}{112}{section.9.3}
+\contentsline {section}{\numberline {9.4}Administrador}{112}{section.9.4}
+\contentsline {chapter}{\numberline {10}Diagrama de Flujo}{113}{chapter.10}
+\contentsline {chapter}{\numberline {11}Diagrama de Despliegue}{115}{chapter.11}
+\contentsline {chapter}{\numberline {12}Manual de Usuario}{119}{chapter.12}
+\contentsline {section}{\numberline {12.1}Usuario no logueado}{119}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}P\'{a}gina Principal}{119}{subsection.12.1.1}
+\contentsline {subsection}{\numberline {12.1.2}Registro e Inicio de Sesi\'{o}n}{121}{subsection.12.1.2}
+\contentsline {subsection}{\numberline {12.1.3}Anuncios}{122}{subsection.12.1.3}
+\contentsline {section}{\numberline {12.2}Usuario Registrado}{125}{section.12.2}
+\contentsline {subsection}{\numberline {12.2.1}P\'{a}gina Principal}{125}{subsection.12.2.1}
+\contentsline {subsection}{\numberline {12.2.2}Anuncios}{125}{subsection.12.2.2}
+\contentsline {subsection}{\numberline {12.2.3}Perfil de Usuario}{126}{subsection.12.2.3}
+\contentsline {subsubsection}{\nonumberline Perfil de otros usuarios}{127}{section*.250}
+\contentsline {subsection}{\numberline {12.2.4}Crear una denuncia}{128}{subsection.12.2.4}
+\contentsline {section}{\numberline {12.3}Usuario Administrador}{129}{section.12.3}
+\contentsline {subsection}{\numberline {12.3.1}P\'{a}gina Principal}{129}{subsection.12.3.1}
+\contentsline {subsection}{\numberline {12.3.2}Anuncios}{129}{subsection.12.3.2}
+\contentsline {subsection}{\numberline {12.3.3}Perfil de Usuario}{129}{subsection.12.3.3}
+\contentsline {subsection}{\numberline {12.3.4}Dashboard o panel de gesti\'{o}n}{130}{subsection.12.3.4}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Usuarios}{130}{section*.251}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Anuncios}{133}{section*.252}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Comentarios}{133}{section*.253}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Tipos}{134}{section*.254}
+\contentsline {subsubsection}{\nonumberline Gesti\'{o}n de Denuncias}{135}{section*.255}
+\contentsline {chapter}{\numberline {13}Casos de Prueba}{141}{chapter.13}
+\contentsline {section}{\numberline {13.1}Soluciones a vulnerabilidades}{141}{section.13.1}
+\contentsline {section}{\numberline {13.2}Vulnerabilidades no controladas}{142}{section.13.2}
+\contentsline {chapter}{\numberline {14}Resumen ejecutivo}{143}{chapter.14}
+\contentsline {section}{\numberline {14.1}HTML5}{143}{section.14.1}
+\contentsline {section}{\numberline {14.2}Aportaciones JavaScript}{143}{section.14.2}
+\contentsline {section}{\numberline {14.3}Aportaci\'{o}n WebService}{144}{section.14.3}
+\contentsline {section}{\numberline {14.4}Aportaci\'{o}n de traducci\'{o}n}{144}{section.14.4}
+\contentsline {section}{\numberline {14.5}Aportaci\'{o}n galer\'{i}a}{145}{section.14.5}
+\contentsline {section}{\numberline {14.6}Aportaciones de Librer\'{i}as}{145}{section.14.6}
+\contentsline {section}{\numberline {14.7}Patrones de usabilidad utilizados}{145}{section.14.7}
+\contentsline {section}{\numberline {14.8}Seguridad y formato}{146}{section.14.8}
+\contentsline {section}{\numberline {14.9}Patrones de arquitectura}{146}{section.14.9}
