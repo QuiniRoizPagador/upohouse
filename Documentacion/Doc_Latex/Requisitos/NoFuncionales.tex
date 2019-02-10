@@ -1,0 +1,70 @@
+\chapter{Requisitos No Funcionales}
+
+
+\section{Interfaz}
+
+El dise\~{n}o de la aplicaci\'{o}n deber\'{a} ser adecuado y flexible a las diferentes resoluciones, pudiendo adaptarse a dispositivos m\'{o}viles.
+
+Adem\'{a}s, la interfaz deber\'{a} ser intuitiva y amigable, facilitando en algunos botones iconos que recuerden la acci\'{o}n a realizar.
+
+
+\section{Seguridad}
+
+El sistema deber\'{a} estar excento de ataques de inyecci\'{o}n SQL e inyecci\'{o}n de etiquestas HTML, sobre todo para evitar ataques cross-site-scripting (XSS) que pongan en peligro la integridad de los datos del usuario.
+
+Las contrase\~{n}as deber\'{a}n estar cifradas en la base de datos.
+
+El acceso a p\'{a}ginas no permitidas por rol o restringidas deber\'{a} estar controlado en todo momento, evitando as\'{i} fallos de seguridad y permisos.
+
+Tanto del lado del servidor como del cliente, la validaci\'{o}n de los formularios deber\'{a} seguir una estructura adecuada, permitiendo adem\'{a}s en el lado del cliente la comprobaci\'{o}n de contrase\~{n}as escritas en tiempo real.
+
+El usuario no podr\'{a} interactuar con la pantalla ejecutando una tarea as\'{i}ncrona hasta que \'{e}sta haya terminado.
+
+
+\section{Arquitectura Software}
+
+La aplicaci\'{o}n deber\'{a} estar basada en una arquitectura cliente-servidor.
+
+Para los clientes y la visualizaci\'{o}n de la interfaz, la aplicaci\'{o}n deber\'{a} integrar HTML, CSS y JavaScript, adem\'{a}s de las tecnolog\'{i}as HTML5, CSS3.
+
+Del lado del servidor se har\'{a} uso del lenguaje PHP orientado a objetos.
+
+La arquitectura del servidor deber\'{a} aprovechar el paradigma orientado a objetos a partir de el patr\'{o}n arquitect\'{o}nico MVC.
+
+Para acceder a la base de datos se utilizar\'{a} la librer\'{i}a de pHP Mysqli, la cual ofrecer\'{a} operaciones sobre las entidades de la base de datos.
+
+El acceso a la base de datos se deber\'{a} realizar con un patr\'{o}n de dise\~{n}o Singleton, manteniendo con esto una \'{u}nica instancia de conexi\'{o}n en las diferentes llamadas.
+
+Para acceder a la base de datos correctamente para cada uno de las entidades deber\'{a} utilizarse el patr\'{o}n DAO, a partir de un AbstractDao que generalice todas las operaciones CRUD en com\'{u}n.
+
+Del lado del cliente se har\'{a} uso de JQuery para JavaScript, facilitando las acciones, localizaciones de eventos, animaciones, etc.
+
+A partir de JQuery se har\'{a} uso de peticiones AJAX al servidor en paginaciones de tablas y b\'{u}squedas, en medida de lo posible por POST.
+
+Las peticiones AJAX ser\'{a}n recibidas por un WebService del lado del servidor, respondiendo siempre en formato JSON.
+
+La interfaz deber\'{a} implementar el framework Boostrap v4, adapt\'{a}ndolo en medida de lo posible a HTML5.
+
+Para mostrar datos estad\'{i}sticos se har\'{a} uso del plugin ChartJS de javascript.
+
+La galer\'{i}a dispondr\'{a} del plugin JQuery Zoom, permitiendo hacer zoom al hacer click en una imagen mostrada.
+
+Para el env\'{i}o de correo se har\'{a} uso de la librer\'{i}a Mail de PHPMail.
+
+El sistema deber\'{a} permitir traducci\'{o}n al idioma escogido de la vista a partir de una opci\'{o}n facilitada para ello en el men\'{u} principal.
+
+Uso de librer\'{i}a font-awesome para css y javascript que mostrar\'{a} iconos.
+
+
+\section{Base de datos}
+
+La Base de Datos del sistema deber\'{a} ser relacional, utilizando un sistema gestor de bases de datos MariaDB o, en su defecto.
+
+
+\section{Otros}
+
+Los textos largos de los formularios deber\'{a}n permitir un m\'{a}ximo de 3000 caracteres.
+
+Las im\'{a}genes s\'{o}lo deber\'{a}n permitir formatos jpg, jpeg o png al subirse.
+
+\cleardoublepage

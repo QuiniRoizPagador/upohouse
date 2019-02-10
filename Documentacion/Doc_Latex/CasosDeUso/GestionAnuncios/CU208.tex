@@ -1,0 +1,30 @@
+\subsection{CU208 Denunciar Anuncio.}
+\subsubsection{Descripci\'{o}n.}
+El sistema permite al usuario denunciar un anuncio.
+\subsubsection{Actores.}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Precondici\'{o}n.}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Anuncio consultado (CU202 Consultar Anuncio).
+\end{itemize}
+\subsubsection{Poscondici\'{o}n.}
+Se almacen\'{o} la denuncia del anuncio.
+\subsubsection{Escenario Principal.}
+\begin{enumerate}
+\item El usuario ejecuta la operativo de denunciar de anuncio.
+\item El sistema solicita un mensaje y un t\'{i}tulo asociado a la denuncia.
+\item El usuario introduce el dato.
+\item El sistema guarda la denuncia.
+\end{enumerate}
+Finaliza el CU.
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. El usuario no cumple con los formatos de entrada en alguno de los campos.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item El sistema informa del fallo en los campos afectados.
+\end{enumerate}
+
+
+\clearpage\null\newpage

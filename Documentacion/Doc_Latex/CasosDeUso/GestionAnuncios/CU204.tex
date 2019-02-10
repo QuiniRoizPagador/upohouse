@@ -1,0 +1,34 @@
+\subsection{CU204 Modificar Anuncio.}
+\subsubsection{Descripci\'{o}n.}
+El sistema permite modificar la informaci\'{o}n que compone a un anuncio existente.
+\subsubsection{Actores.}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Precondici\'{o}n.}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\item Anuncio consultado (CU202 Consultar Anuncio).
+\end{itemize}
+\subsubsection{Poscondici\'{o}n.}
+Se modificaron los datos del anuncio existente con los nuevos datos aportados por el usuario.
+\subsubsection{Escenario Principal.}
+\begin{enumerate}
+\item El usuario inicia la operativa de modificar anuncio.
+\item El sistema permite editar el contenido de precio, habitaciones, $m^{2}$, ba\~{n}os, descripci\'{o}n, tipo de casa, tipo de operaci\'{o}n y localizaci\'{o}n geogr\'{a}fica.
+\item El usuario cambia los datos en los campos que le interese.
+\item El sistema valida y actualiza los datos del anuncio.
+\end{enumerate}
+Finaliza el CU.
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. El usuario introduce alg\'{u}n dato incorrecto.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item El sistema notifica al usuario el fallo en el formato de los campos afectados.
+\end{enumerate}
+Finaliza el CU.
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos en blanco.}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item No se actualizar\'{a}n los datos en blanco.
+\end{enumerate}
+Finaliza el caso de uso.

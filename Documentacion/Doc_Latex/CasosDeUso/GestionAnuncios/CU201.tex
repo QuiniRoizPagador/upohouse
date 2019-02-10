@@ -1,0 +1,27 @@
+\subsection{CU201 Crear Anuncio.}
+\subsubsection{Descripci\'{o}n.}
+El sistema permite al usuario que cree y almacene un nuevo anuncio.
+\subsubsection{Actores.}
+\begin{itemize}
+\item Usuario.
+\end{itemize}
+\subsubsection{Precondici\'{o}n}
+\begin{itemize}
+\item Usuario Logueado (CU101 Iniciar Sesi\'{o}n).
+\end{itemize}
+\subsubsection{Poscondici\'{o}n.}
+El nuevo anuncio qued\'{o} registrado en el sistema.
+\subsubsection{Escenario Principal.}
+\begin{enumerate}
+\item El usuario inicia la operativa crear anuncio.
+\item El sistema solicita precio, habitaciones, $m^{2}$, descripci\'{o}n, im\'{a}genes, tipo de vivienda, tipo de operaci\'{o}n y localizaci\'{o}n geogr\'{a}fica.
+\item El usuario introduce los datos.
+\item El sistema valida los datos y guarda el nuevo anuncio.
+\end{enumerate}
+Finaliza el CU.
+\subsubsection{Escenario Alternativo. L\'{i}nea 4. Datos incorrectos.}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item El sistema informa del error.
+\end{enumerate}
+Se regresa a l\'{i}nea 2.

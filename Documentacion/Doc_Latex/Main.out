@@ -1,0 +1,79 @@
+\BOOKMARK [0][-]{Doc-Start}{Resumen}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Visi\363n de la aplicaci\363n}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Descripci\363n general}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Descripci\363n Detallada}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Requisitos Funcionales}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Gesti\363n de usuarios}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Gesti\363n de anuncios}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Gesti\363n de comentarios}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Gesti\363n de tipos}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.5}{Gesti\363n de solicitudes}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.6}{Gesti\363n de denuncias}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Casos de Uso}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Gesti\363n de Usuarios}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Gesti\363n de Anuncios}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.3}{Gesti\363n de Peticiones}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.4}{Gesti\363n de Denuncias}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.5}{Gesti\363n de Comentarios}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.6}{Gesti\363n de Tipos}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.4}{Requisitos No Funcionales}{}% 19
+\BOOKMARK [1][-]{section.4.1}{Interfaz}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.2}{Seguridad}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.3}{Arquitectura Software}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.4}{Base de datos}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.5}{Otros}{chapter.4}% 24
+\BOOKMARK [0][-]{chapter.5}{Modelo Entidad Relaci\363n}{}% 25
+\BOOKMARK [1][-]{section.5.1}{Atributos y entidades}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.2}{Relaciones y entidades}{chapter.5}% 27
+\BOOKMARK [0][-]{chapter.6}{Tabla Crud}{}% 28
+\BOOKMARK [0][-]{chapter.7}{Puntos donde se manipulan las entidades}{}% 29
+\BOOKMARK [1][-]{section.7.1}{Usuario}{chapter.7}% 30
+\BOOKMARK [1][-]{section.7.2}{Anuncio}{chapter.7}% 31
+\BOOKMARK [1][-]{section.7.3}{Peticiones}{chapter.7}% 32
+\BOOKMARK [1][-]{section.7.4}{Denuncias}{chapter.7}% 33
+\BOOKMARK [1][-]{section.7.5}{Comentarios}{chapter.7}% 34
+\BOOKMARK [1][-]{section.7.6}{Puntuaci\363n}{chapter.7}% 35
+\BOOKMARK [1][-]{section.7.7}{Tipos vivienda}{chapter.7}% 36
+\BOOKMARK [1][-]{section.7.8}{Tipos de operaci\363n}{chapter.7}% 37
+\BOOKMARK [1][-]{section.7.9}{Comunidades}{chapter.7}% 38
+\BOOKMARK [1][-]{section.7.10}{Provincias}{chapter.7}% 39
+\BOOKMARK [1][-]{section.7.11}{Municipios}{chapter.7}% 40
+\BOOKMARK [1][-]{section.7.12}{Im\341genes}{chapter.7}% 41
+\BOOKMARK [0][-]{chapter.8}{Modelo Fisico}{}% 42
+\BOOKMARK [1][-]{section.8.1}{Anuncios}{chapter.8}% 43
+\BOOKMARK [1][-]{section.8.2}{Comentarios}{chapter.8}% 44
+\BOOKMARK [1][-]{section.8.3}{Comunidades Aut\363nomas}{chapter.8}% 45
+\BOOKMARK [1][-]{section.8.4}{Tipos de vivienda}{chapter.8}% 46
+\BOOKMARK [1][-]{section.8.5}{Im\341genes}{chapter.8}% 47
+\BOOKMARK [1][-]{section.8.6}{Municipios}{chapter.8}% 48
+\BOOKMARK [1][-]{section.8.7}{Tipos de Operaciones}{chapter.8}% 49
+\BOOKMARK [1][-]{section.8.8}{Provincias}{chapter.8}% 50
+\BOOKMARK [1][-]{section.8.9}{Denuncias}{chapter.8}% 51
+\BOOKMARK [1][-]{section.8.10}{Peticiones}{chapter.8}% 52
+\BOOKMARK [1][-]{section.8.11}{Puntuaciones}{chapter.8}% 53
+\BOOKMARK [1][-]{section.8.12}{Estados}{chapter.8}% 54
+\BOOKMARK [1][-]{section.8.13}{Usuarios}{chapter.8}% 55
+\BOOKMARK [0][-]{chapter.9}{Diagrama Interno}{}% 56
+\BOOKMARK [1][-]{section.9.1}{Visi\363n General}{chapter.9}% 57
+\BOOKMARK [1][-]{section.9.2}{Invitado}{chapter.9}% 58
+\BOOKMARK [1][-]{section.9.3}{Usuario}{chapter.9}% 59
+\BOOKMARK [1][-]{section.9.4}{Administrador}{chapter.9}% 60
+\BOOKMARK [0][-]{chapter.10}{Diagrama de Flujo}{}% 61
+\BOOKMARK [0][-]{chapter.11}{Diagrama de Despliegue}{}% 62
+\BOOKMARK [0][-]{chapter.12}{Manual de Usuario}{}% 63
+\BOOKMARK [1][-]{section.12.1}{Usuario no logueado}{chapter.12}% 64
+\BOOKMARK [1][-]{section.12.2}{Usuario Registrado}{chapter.12}% 65
+\BOOKMARK [1][-]{section.12.3}{Usuario Administrador}{chapter.12}% 66
+\BOOKMARK [0][-]{chapter.13}{Casos de Prueba}{}% 67
+\BOOKMARK [1][-]{section.13.1}{Soluciones a vulnerabilidades}{chapter.13}% 68
+\BOOKMARK [1][-]{section.13.2}{Vulnerabilidades no controladas}{chapter.13}% 69
+\BOOKMARK [0][-]{chapter.14}{Resumen ejecutivo}{}% 70
+\BOOKMARK [1][-]{section.14.1}{HTML5}{chapter.14}% 71
+\BOOKMARK [1][-]{section.14.2}{Aportaciones JavaScript}{chapter.14}% 72
+\BOOKMARK [1][-]{section.14.3}{Aportaci\363n WebService}{chapter.14}% 73
+\BOOKMARK [1][-]{section.14.4}{Aportaci\363n de traducci\363n}{chapter.14}% 74
+\BOOKMARK [1][-]{section.14.5}{Aportaci\363n galer\355a}{chapter.14}% 75
+\BOOKMARK [1][-]{section.14.6}{Aportaciones de Librer\355as}{chapter.14}% 76
+\BOOKMARK [1][-]{section.14.7}{Patrones de usabilidad utilizados}{chapter.14}% 77
+\BOOKMARK [1][-]{section.14.8}{Seguridad y formato}{chapter.14}% 78
+\BOOKMARK [1][-]{section.14.9}{Patrones de dise\361o y arquitectura}{chapter.14}% 79
